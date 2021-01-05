@@ -1,12 +1,7 @@
 module Covid
-
-export func
-
-"""
-    func(x)
-
-Returns double the number `x` plus `1`.
-"""
-func(x) = 2x + 1
-
-end # module
+export power #aqui exportamos las  funciones de nuestros includes
+export powered
+export powerer
+include("functions.jl") #incluimos los archivos con las funciones
+include("more_funcs.jl")
+end
