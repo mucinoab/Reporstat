@@ -1,7 +1,8 @@
+push!(LOAD_PATH,"../src/")
 using Pkg
 Pkg.activate(".")
 
-using Documenter, Covid
+using Documenter ,Covid
 
 makedocs(
     sitename = "Covid",
