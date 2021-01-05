@@ -1,3 +1,8 @@
+name = "Covid"
+uuid = "1f4fe3f7-a27c-4071-96f0-06df52edf599"
+authors = ["Bruno A. Muciño <mucinoab@gmail.com>"]
+version = "0.1.0"
+
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
