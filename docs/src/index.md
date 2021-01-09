@@ -7,9 +7,11 @@
 | :------------- | :----------: | -----------: |
 |  Cell Contents | More Stuff   | And Again    |
 | You Can Also   | Put Pipes In | Like this \| |
+
 ```@autodocs
 Modules=[Covid]
 ```
+
 ```@eval
 using CSV
 using Latexify
