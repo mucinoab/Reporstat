@@ -2,9 +2,8 @@
 # using lectura
 # Tabla::DataFrame 
 # numero= "23"
-# using DataFrames
+using DataFrames
  push!(LOAD_PATH,"../src/") #eso es por si Julia no encuentra el ./src
-using lectura
 Tabla = DataFrame()
 function Stats(Path::String,Tipo::String,Formato="csv")
 	# global Tabla = lectura.lecturas(Path,Tipo,Formato)
