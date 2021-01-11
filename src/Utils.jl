@@ -8,7 +8,7 @@ using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
 Descomprime y guarda el archivo en el destino indicado(`dest`), si no se proporciona un destino, se guarda en el directorio actual.
 
 # Ejemplo
-```
+```julia-repl
 julia> unzip("datos.zip")
 julia> unzip("datos.zip", pwd()*"/datos")
 ```
@@ -25,17 +25,17 @@ end
 """
     CSV_to_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
 
-Lee un archivo CSV con el `_encoding_` indicado y regresa un _DataFrame_.
+Lee un archivo CSV con el `encoding` indicado y regresa un _DataFrame_.
 
 # Ejemplo
-```
+```julia-repl
 julia> df = DataFrameEncode("datos.csv")
 julia> df_latin1 = DataFrameEncode("datos.csv", "LATIN1")
 ```
 
 Los _encodings_ soportados dependen de la plataforma, obtén la lista de la siguiente manera.
 
-```
+```julia-repl
 julia> using StringEncodings
 julia> encodings()
 
@@ -58,7 +58,7 @@ Crea un _DataFrame_ dado un archivo CSV o una liga al archivo.
 Se pude especificar el _encoding_.
 
 # Ejemplo
-```
+```julia-repl
 julia> url = "http://www.conapo.gob.mx/work/models/OMI/Datos_Abiertos/DA_IAIM/IAIM_Municipio_2010.csv"
 julia> first(data_check(url, "URL", "LATIN1"))
 julia> first(data_check("prueba.csv"))
