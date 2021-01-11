@@ -3,9 +3,9 @@ push!(LOAD_PATH,"../src/")
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
 
 """
-  unzip(path::String, dest::String=pwd())
+    unzip(path::String, dest::String="")
 
-Descomprime y guarda el archivo en el destino indicado, si no se proporciona un destino, se guarda en el directorio actual.
+Descomprime y guarda el archivo en el destino indicado(`dest`), si no se proporciona un destino, se guarda en el directorio actual.
 
 # Ejemplo
 ```
@@ -23,9 +23,9 @@ end
 
 
 """
-  CSV_to_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
+    CSV_to_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
 
-Lee un archivo CSV con el _encoding_ indicado y regresa un DataFrame.
+Lee un archivo CSV con el `_encoding_` indicado y regresa un _DataFrame_.
 
 # Ejemplo
 ```
@@ -52,11 +52,10 @@ end
 
 
 """
+    data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
 
-  data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
-
-Crea un DataFrame dado un archivo CSV o una liga al archivo.
-Se pude especificar el _encoding_
+Crea un _DataFrame_ dado un archivo CSV o una liga al archivo.
+Se pude especificar el _encoding_.
 
 # Ejemplo
 ```
