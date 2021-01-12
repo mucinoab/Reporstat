@@ -1,4 +1,5 @@
 push!(LOAD_PATH,"../src/")
+using Dates
 
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
 
@@ -73,4 +74,20 @@ function data_check(path_url::String, type::String="PATH", encoding::String="UTF
   else
     error("'type' debe de ser 'PATH' o 'URL'")
   end
+end
+
+#TODO nombre
+"""
+    fechahoy()::String
+
+Crea un string con la fecha de hoy utilizando el formato "yyyymmdd". Año con cuarto dígitos, mes y día con dos.
+
+# Ejemplo
+```julia-repl
+julia> fechahoy()
+"20210112"
+```
+"""
+function fechahoy()::String
+  string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
 end
