@@ -91,3 +91,4 @@ julia> fechahoy()
 function fechahoy()::String
   string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
 end
+end
