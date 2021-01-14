@@ -1,8 +1,8 @@
 push!(LOAD_PATH,"../src/")
+module Utils
 using Dates
-
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
-
+export unzip,data_check
 """
     unzip(path::String, dest::String="")
 

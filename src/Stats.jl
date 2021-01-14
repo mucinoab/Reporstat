@@ -1,4 +1,4 @@
-# module Stat
+module Stats
 # using lectura
 # Tabla::DataFrame 
 # numero= "23"
@@ -10,4 +10,5 @@ function Stats(Path::String,Tipo::String,Formato="csv")
 end
 function consulta(queries::Vector{String})
 	print(numero)
+end
 end
