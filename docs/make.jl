@@ -8,7 +8,6 @@ makedocs(
     sitename = "Covid",
     format = Documenter.HTML(),
     modules = [Operations,Utils],
-    workdir = "../src",
     pages=[
            "Home" => "index.md",
           ])
