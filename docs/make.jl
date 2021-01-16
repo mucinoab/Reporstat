@@ -9,7 +9,7 @@ makedocs(
     format = Documenter.HTML(),
     modules = [Covid],
     pages=[
-           "Home" => "index.md"
+           "Home" => "index.md",
           ])
 #aqui esta la informacion general de la pagina
 deploydocs(

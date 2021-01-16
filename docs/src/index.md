@@ -1,5 +1,4 @@
 # Covid.jl
-
 ```@autodocs
-Modules=[Covid]
+Modules = [Covid]
 ```

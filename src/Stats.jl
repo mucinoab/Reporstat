@@ -1,4 +1,4 @@
-# module Stat
+# module Stats
 # using lectura
 # Tabla::DataFrame 
 # numero= "23"
@@ -11,3 +11,4 @@ end
 function consulta(queries::Vector{String})
 	print(numero)
 end
+# end

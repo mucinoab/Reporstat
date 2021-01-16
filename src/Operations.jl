@@ -1,15 +1,42 @@
 push!(LOAD_PATH,"../src/")
-module Selects
 using DataFrames
-export Select
-  function Select(Tabla::DataFrame,query::Vector{String}, nombres_de_columnas::Vector{String} ,Formato::String)::DataFrame
+ export Select
+"""
+    Select(Tabla::DataFrame,query::Vector{String})::DataFrame
+
+Selecciona una o varias columnas del `DataFrame` puede ser por nombre o por número de columna y regresa un nuevo `DataFrame` con las columnas seleccionadas.
+
+# Ejemplo
+
+```julia-repl
+
+julia> tabla = DataFrame(A = 1:3, B= 1:3)
+3×2 DataFrame
+ Row │ A      B
+     │ Int32  Int32
+─────┼──────────────
+   1 │     1      1
+   2 │     2      2
+   3 │     3      3
+
+julia> q1 = Selects.Select(tabla,["1"])
+3×1 DataFrame
+ Row │ A
+     │ Int32
+─────┼───────
+   1 │     1
+   2 │     2
+   3 │     3
+```
+"""
+  function Select(Tabla::DataFrame,query::Vector{String})::DataFrame
     #las columnas no se pueden repetir 
     #
     #caso base por si las listas CSV no tienen header
     #
     #Checar si la columna esta repetida o no
     checker = Dict()
-
+    nombres_de_columnas = names(Tabla)
     # Procesar query
     for (indice,nombre_columna) in enumerate(query) # supongan que "1" es el nombre de la column      a
       idx = 0
@@ -44,8 +71,7 @@ export Select
         push!(query_inversa,nombre_columna)
       end
     end
-    q1 = select(Tabla, Not(query_inversa))
+    q1 = select!(Tabla, Not(query_inversa))
     # print(q1)
     return q1
   end
-end

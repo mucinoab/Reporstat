@@ -1,7 +1,7 @@
 push!(LOAD_PATH,"../src/")
 using Dates
-
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
+export unzip,data_check,fechahoy
 
 """
     unzip(path::String, dest::String="")
