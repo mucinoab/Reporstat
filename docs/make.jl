@@ -2,12 +2,12 @@ push!(LOAD_PATH,"../src/") #eso es por si Julia no encuentra el ./src
 using Pkg
 Pkg.activate(".")
 
-using Documenter, Operations, Utils
+using Documenter, Covid
 
 makedocs(
     sitename = "Covid",
     format = Documenter.HTML(),
-    modules = [Utils,Operations],
+    modules = [Covid],
     pages=[
            "Home" => "index.md",
           ])

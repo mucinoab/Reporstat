@@ -1,5 +1,4 @@
 push!(LOAD_PATH,"../src/")
-module Operations
 using DataFrames
  export Select
 """
@@ -76,4 +75,3 @@ julia> q1 = Selects.Select(tabla,["1"])
     # print(q1)
     return q1
   end
-end

@@ -5,5 +5,4 @@ include("Utils.jl")
 include("Operations.jl")
 # export Utils :unzip,data_check,fechahoy
 # export Operations: Select
-export Utils , Operations
 end

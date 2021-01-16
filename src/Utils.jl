@@ -1,5 +1,4 @@
 push!(LOAD_PATH,"../src/")
-module Utils
 using Dates
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
 export unzip,data_check,fechahoy
@@ -91,5 +90,4 @@ julia> fechahoy()
 """
 function fechahoy()::String
   string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
-end
 end
