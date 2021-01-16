@@ -1,7 +1,7 @@
 push!(LOAD_PATH,"../src/")
 module Operations
 using DataFrames
-export Select
+ export Select
 """
     Select(Tabla::DataFrame,query::Vector{String})::DataFrame
 

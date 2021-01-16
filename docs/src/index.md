@@ -1,4 +1,4 @@
 # Covid.jl
 ```@autodocs
-Modules = [Operations, Utils]
+Modules = [Utils,Operations]
 ```
