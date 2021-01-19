@@ -287,7 +287,15 @@ julia> popu.porcentaje_indigena
 ```
 """
 function poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
-  #TODO validar clave
+  if length(cve_entidad) == 2
+    entidad = tryparse(Int8, cve_entidad)
+    if entidad < 0 || entidad > 32 || entidad === nothing
+      error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad: $(Printf.@sprintf("%s", cve_entidad)).")
+    end
+  else 
+    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad: $(Printf.@sprintf("%s", cve_entidad)).")
+  end
+
   url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000002,1002000003,6207019014,6207020032,6207020033/es/"*cve_entidad*"/true/BISE/2.0/"*token_INEGI*"?type=json"
   return parse_poblacion(jsonparse(url))
 end
