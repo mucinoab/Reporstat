@@ -1,7 +1,8 @@
 push!(LOAD_PATH,"../src/")
 using Dates
+
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings
-export unzip,data_check,fechahoy
+export unzip, data_check, fechahoy, sumacolumna, sumafila
 
 """
     unzip(path::String, dest::String="")
@@ -90,4 +91,63 @@ julia> fechahoy()
 """
 function fechahoy()::String
   string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
+end
+
+"""
+    sumacolumna(tabla::DataFrame, col::Int)::Number
+    sumacolumna(tabla::DataFrame, col::String)::Number
+
+Suma todos los valores de una determinada columna en un DataFrame.
+Para hacer referencia a que columna se desea sumar se pude usar la posición de la columna o el nombre que tiene. 
+
+# Ejemplo
+```julia-repl
+julia> df = data_check("datos.csv")
+4×2 DataFrame
+ Row │ x      y
+     │ Int64  Int64
+─────┼──────────────
+   1 │     0     11
+   2 │     2     12
+   3 │     0     13
+   4 │    40     14
+
+julia> sumacolumna(df, 1)
+42
+
+julia> sumacolumna(df, "x")
+42
+```
+"""
+function sumacolumna(tabla::DataFrame, col)::Number
+  return sum(eachcol(tabla)[col])
+end
+
+"""
+    sumafila(tabla::DataFrame, fila::Int)::Number
+
+Suma todos los valores de una determinada fila en un DataFrame.
+La fila se especifica con la posición en la que se encuentra.
+
+# Ejemplo
+```julia-repl
+julia> df = data_check("datos.csv")
+4×2 DataFrame
+ Row │ x      y
+     │ Int64  Int64
+─────┼──────────────
+   1 │     0     11
+   2 │     2     12
+   3 │     0     13
+   4 │    40     14
+
+julia> sumafila(df, 2)
+14
+
+julia> sumafila(df, 4)
+54
+```
+"""
+function sumafila(tabla::DataFrame, fila::Int)::Number
+  return prod(eachrow(tabla)[fila])
 end
