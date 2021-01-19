@@ -193,9 +193,9 @@ La estructura _poblacion_  contiene los siguientes datos.
 - población total
 - población total hombres
 - población total mujeres
-- porcentaje de población que se considera indígena
 - porcentaje de hombres
 - porcentaje de mujeres
+- porcentaje de población que se considera indígena
 
 # Ejemplo
 ```julia-repl
@@ -228,9 +228,9 @@ La estructura _poblacion_  contiene los siguientes datos.
 - población total
 - población total hombres
 - población total mujeres
-- porcentaje de población que se considera indígena
 - porcentaje de hombres
 - porcentaje de mujeres
+- porcentaje de población que se considera indígena
 
 La entidad federativa se codifica de acuerdo con el orden alfabético de sus nombres _oficiales_, con una longitud de dos dígitos, a partir del 01 en adelante, según el número de entidades federativas que dispongan las leyes vigentes; en este momento son 32 entidades federativas (Aguascalientes 01, Baja California 02,... y Zacatecas 32). 
 
