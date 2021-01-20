@@ -5,6 +5,8 @@ using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
 export unzip, data_check, fechahoy, sumacolumna, sumafila, jsonparse, poblacion_mexico, poblacion_entidad
 export poblacion
 
+include("Constants.jl") # Diccionario de entidades y municipios 
+
 """
     unzip(path::String, dest::String="")
 
@@ -176,6 +178,7 @@ function jsonparse(url::String)::Dict
 end
 
 struct poblacion
+  lugar::String
   total::Float64
   hombres::Float64
   mujeres::Float64
@@ -189,25 +192,9 @@ end
 
 Regresa un una estructura `poblacion` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-La estructura _poblacion_  contiene los siguientes datos.
-- población total
-- población total hombres
-- población total mujeres
-- porcentaje de hombres
-- porcentaje de mujeres
-- porcentaje de población que se considera indígena
 
 # Ejemplo
 ```julia-repl
-julia> struct poblacion
-  total::Float64
-  hombres::Float64
-  mujeres::Float64
-  porcentaje_hombres::Float64
-  porcentaje_mujeres::Float64
-  porcentaje_indigena::Float64
-end
-
 julia> popu = poblacion_mexico(token)
 
 julia> popu.total
@@ -216,7 +203,7 @@ julia> popu.total
 """
 function poblacion_mexico(token_INEGI::String)::poblacion
   url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/6207019014,1002000001,1002000002,1002000003,6207020032,6207020033/es/0700/true/BISE/2.0/"*token_INEGI*"?type=json"
-  return parse_poblacion(jsonparse(url))
+  return parse_poblacion(jsonparse(url), "México")
 end
 
 """
@@ -225,6 +212,7 @@ end
 Regresa un una estructura `poblacion` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
 La estructura _poblacion_  contiene los siguientes datos.
+- lugar
 - población total
 - población total hombres
 - población total mujeres
@@ -232,46 +220,25 @@ La estructura _poblacion_  contiene los siguientes datos.
 - porcentaje de mujeres
 - porcentaje de población que se considera indígena
 
-La entidad federativa se codifica de acuerdo con el orden alfabético de sus nombres _oficiales_, con una longitud de dos dígitos, a partir del 01 en adelante, según el número de entidades federativas que dispongan las leyes vigentes; en este momento son 32 entidades federativas (Aguascalientes 01, Baja California 02,... y Zacatecas 32). 
+!!! note
+    ### Área geoestadística estatal (AGEE)
+    La entidad federativa se codifica de acuerdo con el orden alfabético de sus nombres _oficiales_, con una longitud de dos dígitos, a partir del 01 en adelante, según el número de entidades federativas que dispongan las leyes vigentes; en este momento son 32 entidades federativas (Aguascalientes 01, Baja California 02,... y Zacatecas 32).
+    Las puedes consultar [aquí.](https://www.inegi.org.mx/app/ageeml/)
 
-Clave Entidad | Entidad
---- | ---
-01 | Aguascalientes
-02 | Baja California
-03 | Baja California Sur
-04 | Campeche
-05 | Coahuila de Zaragoza
-06 | Colima
-07 | Chiapas
-08 | Chihuahua
-09 | Ciudad de México
-10 | Durango
-11 | Guanajuato
-12 | Guerrero
-13 | Hidalgo
-14 | Jalisco
-15 | México
-16 | Michoacán de Ocampo
-17 | Morelos
-18 | Nayarit
-19 | Nuevo León
-20 | Oaxaca
-21 | Puebla
-22 | Querétaro
-23 | Quintana Roo
-24 | San Luis Potosí
-25 | Sinaloa
-26 | Sonora
-27 | Tabasco
-28 | Tamaulipas
-29 | Tlaxcala
-30 | Veracruz de Ignacio de la Llave
-31 | Yucatán
-32 | Zacatecas
+   Clave Entidad | Entidad
+   --- | ---
+    01 | Aguascalientes
+    02 | Baja California
+    03 | Baja California Sur
+    ⋮  |⋮
+    30 | Veracruz de Ignacio de la Llave
+    31 | Yucatán
+    32 | Zacatecas
 
 # Ejemplo
 ```julia-repl
 julia> struct poblacion
+  lugar::String
   total::Float64
   hombres::Float64
   mujeres::Float64
@@ -280,28 +247,84 @@ julia> struct poblacion
   porcentaje_indigena::Float64
 end
 
-julia> popu = poblacion_mexico(token, "31") #Yucatán
+julia> popu = poblacion_entidad(token, "31")
+poblacion("Yucatán", 2.102259e6, 963333.0, 992244.0, 48.996769, 51.003231, 65.403459)
 
 julia> popu.porcentaje_indigena
 65.403459
 ```
 """
 function poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
-  if length(cve_entidad) == 2
-    entidad = tryparse(Int8, cve_entidad)
-    if entidad < 0 || entidad > 32 || entidad === nothing
-      error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad: $(Printf.@sprintf("%s", cve_entidad)).")
-    end
-  else 
-    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad: $(Printf.@sprintf("%s", cve_entidad)).")
+  try
+    global lugar = entidades[cve_entidad]
+  catch e
+    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$(Printf.@sprintf("%s", cve_entidad))' no existe.")
   end
 
   url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000002,1002000003,6207019014,6207020032,6207020033/es/"*cve_entidad*"/true/BISE/2.0/"*token_INEGI*"?type=json"
-  return parse_poblacion(jsonparse(url))
+  return parse_poblacion(jsonparse(url), lugar)
+end
+
+"""
+    poblacion_municipio(token_INEGI::String, cve_entidad::String, cve_municipio::String)::poblacion
+
+Regresa un una estructura `poblacion` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
+Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
+
+!!! note
+    ### Área geoestadística municipal (AGEM)
+    La clave del municipio está formada por tres números que se asignan de manera ascendente  a  partir  del  001,  de  acuerdo  con  el  orden  alfabético  de  los  nombres  de  los  municipios,  aunque  a  los  creados  posteriormente  a  la  clavificación  inicial,  se  les  asigna  la  clave  geoestadística  conforme se vayan creando.
+    Las puedes consultar [aquí.](https://www.inegi.org.mx/app/ageeml/)
+
+    Clave Entidad | Nombre Entidad | Clave Municipio | Nombre Municipio 
+      --- | --- | --- | --- 
+    01|Aguascalientes|001	|Aguascalientes
+    01|Aguascalientes|002 |Asientos	    
+    01|Aguascalientes|003 |Calvillo
+    ⋮|⋮|⋮|⋮
+    32|Zacatecas|056|Zacatecas
+    32|Zacatecas|057|Trancoso
+    32|Zacatecas|058|Santa María de la Paz
+
+# Ejemplo
+```julia-repl
+julia> popu = poblacion_municipio(token, "01", "002")
+
+julia> popu.lugar
+Aguascalientes, Asientos
+
+julia> popu.hombres
+22512.000000
+```
+"""
+function poblacion_municipio(token_INEGI::String, cve_entidad::String, cve_municipio::String)::poblacion
+  try
+    global estado = entidades[cve_entidad]
+  catch e
+    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$(Printf.@sprintf("%s", cve_entidad))' no existe.")
+  end
+
+  try
+    global municipio = municipios[cve_entidad*cve_municipio]
+  catch e
+    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio: $(Printf.@sprintf("%s", cve_municipio)).")
+  end
+
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
+
+  datos = jsonparse(url)["Series"]
+  lugar = estado * ", " * municipio
+  hombres = tryparse(Float64, datos[1]["OBSERVATIONS"][end]["OBS_VALUE"])            
+  mujeres = tryparse(Float64, datos[2]["OBSERVATIONS"][end]["OBS_VALUE"])            
+  total = hombres + mujeres #Parce ser que el API no proporciona este dato(!?)
+  porcentaje_indigena = tryparse(Float64, datos[3]["OBSERVATIONS"][end]["OBS_VALUE"])
+  porcentaje_hombres = tryparse(Float64, datos[4]["OBSERVATIONS"][end]["OBS_VALUE"]) 
+  porcentaje_mujeres = tryparse(Float64, datos[5]["OBSERVATIONS"][end]["OBS_VALUE"]) 
+  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena)
 end
 
 #TODO documentación
-function parse_poblacion(datos::Dict)::poblacion
+function parse_poblacion(datos::Dict, lugar::String)::poblacion
   datos = datos["Series"]
   total = tryparse(Float64, datos[1]["OBSERVATIONS"][end]["OBS_VALUE"])              # población total
   hombres = tryparse(Float64, datos[2]["OBSERVATIONS"][end]["OBS_VALUE"])            # población hombres
@@ -309,5 +332,5 @@ function parse_poblacion(datos::Dict)::poblacion
   porcentaje_indigena = tryparse(Float64, datos[4]["OBSERVATIONS"][end]["OBS_VALUE"])# porcentaje de población que se considera indígena
   porcentaje_hombres = tryparse(Float64, datos[5]["OBSERVATIONS"][end]["OBS_VALUE"]) # porcentaje de hombres
   porcentaje_mujeres = tryparse(Float64, datos[6]["OBSERVATIONS"][end]["OBS_VALUE"]) # porcentaje de mujeres
-  return poblacion(total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena)
+  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena)
 end

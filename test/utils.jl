@@ -23,4 +23,11 @@
     df = DataFrame(CSV.File(file))
     @test df_custom == df
   end;
+
+  @testset "API INEGI" begin
+    token = ENV["INEGI_TOKEN"]
+    @test Covid.poblacion_mexico(token).lugar == "México"
+    @test Covid.poblacion_entidad(token, "32").lugar == "Zacatecas"
+    @test Covid.poblacion_municipio(token, "01", "001").lugar == "Aguascalientes, Aguascalientes"
+  end;
 end;
