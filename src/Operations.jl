@@ -75,3 +75,31 @@ julia> q1 = Selects.Select(tabla,["1"])
     # print(q1)
     return q1
   end
+
+
+# ejemplo de tabla a unir No.1
+q1 = DataFrame(ID = [10,20,30,40], Nombre = ["gaby", "erandi","rosa","jose"]) 
+# ejemplo de tabla a unir No.2
+q2=DataFrame(ID = [10,20,30,40], trabajo = ["estudiante", "doctor","maestro","ingeniero"])
+
+#declarar la funcion unirtb (unir tablas) tiene como objetivo unir las tablas obtenidas
+# a partir de las busquedas que el usuario realice.
+function unirtb(tabla::DataFrame, ID::String)
+
+                      nva_tabla=tabla #crear una variabla auxiliar 
+#uso de try-catch para validar que las tablas tengan datos, es decir puedan unirse.
+                            try
+                        #uso de innerjoin para combinar las columnas de las tablas
+                        # a partr de que el id sea igual.
+                                innerjoin(q1,q2,on=:ID,makeunique=true)
+
+                            catch #mensaje de error 
+                            error("el ID: %ID no se encontro, por lo que no es posible unir las tablas resultantes")
+                        end #cierre try-catch
+                    end #cierre funcion unirtb
+
+#para indicar las tablas a unir utilizamos la siguiente linea:
+    ###   innerjoin(q1,q2,on= :ID,makeunique=true)   ###
+
+
+
