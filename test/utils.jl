@@ -41,5 +41,6 @@
     @test cdmx.porcentaje_mujeres == 54.152821
     @test cdmx.porcentaje_indigena == 5.0142822
     @test cdmx.densidad_poblacion == 7855.6605
+    @test Covid.poblacion_todos_municipios()[1] == Covid.poblacion_municipio("01", "001")
   end;
 end;
