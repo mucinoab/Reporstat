@@ -173,7 +173,7 @@ function jsonparse(url::String)::Dict
     json = String(request.body)
     return JSON.parse(json, dicttype=Dict, inttype=Int8)
   else
-    error("Error de servidor, respuesta http: $(Printf.@sprintf("%i", request.status))")
+    error("Error de servidor, respuesta http: $request.status")
   end
 end
 
@@ -185,6 +185,7 @@ struct poblacion
   porcentaje_hombres::Float64
   porcentaje_mujeres::Float64
   porcentaje_indigena::Float64
+  densidad_poblacion::Float64
 end
 
 """
@@ -196,13 +197,16 @@ Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://ww
 # Ejemplo
 ```julia-repl
 julia> popu = poblacion_mexico(token)
+México
 
-julia> popu.total
-1.19938473e8
+Población total 119938473.00 (60.96 hab/km²)
+Hombres 54855231.00 (48.57%)
+Mujeres 57481307.00 (51.43%)
+Porcentaje que se considera indígena 21.50%
 ```
 """
 function poblacion_mexico(token_INEGI::String)::poblacion
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/6207019014,1002000001,1002000002,1002000003,6207020032,6207020033/es/0700/true/BISE/2.0/"*token_INEGI*"?type=json"
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/6207019014,1002000001,1002000002,1002000003,6207020032,6207020033,3105001001/es/0700/true/BISE/2.0/"*token_INEGI*"?type=json"
   return parse_poblacion(jsonparse(url), "México")
 end
 
@@ -248,7 +252,12 @@ julia> struct poblacion
 end
 
 julia> popu = poblacion_entidad(token, "31")
-poblacion("Yucatán", 2.102259e6, 963333.0, 992244.0, 48.996769, 51.003231, 65.403459)
+Yucatán
+
+Población total 2102259.00 (53.06 hab/km²)
+Hombres 963333.00 (49.00%)
+Mujeres 992244.00 (51.00%)
+Porcentaje que se considera indígena 65.40%
 
 julia> popu.porcentaje_indigena
 65.403459
@@ -258,10 +267,10 @@ function poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
   try
     global lugar = entidades[cve_entidad]
   catch e
-    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$(Printf.@sprintf("%s", cve_entidad))' no existe.")
+    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000002,1002000003,6207019014,6207020032,6207020033/es/"*cve_entidad*"/true/BISE/2.0/"*token_INEGI*"?type=json"
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/"*cve_entidad*"/true/BISE/2.0/"*token_INEGI*"?type=json"
   return parse_poblacion(jsonparse(url), lugar)
 end
 
@@ -289,48 +298,78 @@ Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://ww
 # Ejemplo
 ```julia-repl
 julia> popu = poblacion_municipio(token, "01", "002")
-
-julia> popu.lugar
 Aguascalientes, Asientos
 
-julia> popu.hombres
-22512.000000
+Población total 45492.00 (84.63 hab/km²)
+Hombres 22512.00 (48.95%)
+Mujeres 22980.00 (51.05%)
+Porcentaje que se considera indígena 3.64%
 ```
 """
 function poblacion_municipio(token_INEGI::String, cve_entidad::String, cve_municipio::String)::poblacion
   try
     global estado = entidades[cve_entidad]
   catch e
-    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$(Printf.@sprintf("%s", cve_entidad))' no existe.")
+    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
     global municipio = municipios[cve_entidad*cve_municipio]
   catch e
-    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio: $(Printf.@sprintf("%s", cve_municipio)).")
+    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
 
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
 
-  datos = jsonparse(url)["Series"]
+
+  datos = jsonparse(url)
+  indicadores = Dict{String, Float64}()
+
+  for dato in datos["Series"]
+    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
+  end
+
   lugar = estado * ", " * municipio
-  hombres = tryparse(Float64, datos[1]["OBSERVATIONS"][end]["OBS_VALUE"])            
-  mujeres = tryparse(Float64, datos[2]["OBSERVATIONS"][end]["OBS_VALUE"])            
+  hombres = indicadores["1002000002"]             
+  mujeres = indicadores["1002000003"]             
   total = hombres + mujeres #Parce ser que el API no proporciona este dato(!?)
-  porcentaje_indigena = tryparse(Float64, datos[3]["OBSERVATIONS"][end]["OBS_VALUE"])
-  porcentaje_hombres = tryparse(Float64, datos[4]["OBSERVATIONS"][end]["OBS_VALUE"]) 
-  porcentaje_mujeres = tryparse(Float64, datos[5]["OBSERVATIONS"][end]["OBS_VALUE"]) 
-  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena)
+  densidad = indicadores["3105001001"]            
+  porcentaje_hombres = indicadores["6207020032"]  
+  porcentaje_mujeres = indicadores["6207020033"]  
+  porcentaje_indigena = indicadores["6207019014"] 
+
+  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena, densidad)
 end
 
 #TODO documentación
 function parse_poblacion(datos::Dict, lugar::String)::poblacion
-  datos = datos["Series"]
-  total = tryparse(Float64, datos[1]["OBSERVATIONS"][end]["OBS_VALUE"])              # población total
-  hombres = tryparse(Float64, datos[2]["OBSERVATIONS"][end]["OBS_VALUE"])            # población hombres
-  mujeres = tryparse(Float64, datos[3]["OBSERVATIONS"][end]["OBS_VALUE"])            # población mujeres
-  porcentaje_indigena = tryparse(Float64, datos[4]["OBSERVATIONS"][end]["OBS_VALUE"])# porcentaje de población que se considera indígena
-  porcentaje_hombres = tryparse(Float64, datos[5]["OBSERVATIONS"][end]["OBS_VALUE"]) # porcentaje de hombres
-  porcentaje_mujeres = tryparse(Float64, datos[6]["OBSERVATIONS"][end]["OBS_VALUE"]) # porcentaje de mujeres
-  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena)
+  
+  indicadores = Dict{String, Float64}()
+
+  for dato in datos["Series"]
+    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
+  end
+
+  # indicadores INEGI, 
+  # total =   1002000001 hombres = 1002000002 mujeres = 1002000003
+  # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
+  # indígena= 6207019014 
+
+  total = indicadores["1002000001"]               # población total                                 
+  hombres = indicadores["1002000002"]             # población hombres
+  mujeres = indicadores["1002000003"]             # población mujeres
+  densidad = indicadores["3105001001"]            # densidad de población
+  porcentaje_hombres = indicadores["6207020032"]  # porcentaje de hombres
+  porcentaje_mujeres = indicadores["6207020033"]  # porcentaje de mujeres
+  porcentaje_indigena = indicadores["6207019014"] # porcentaje de población que se considera indígena
+
+  return poblacion(lugar, total, hombres, mujeres, porcentaje_hombres, porcentaje_mujeres, porcentaje_indigena, densidad)
+end
+
+#Sobrecarga la manera en la que la estructura poblacion se imprime.
+function Base.show(io::IO, ::MIME"text/plain", p::poblacion)
+    compact = get(io, :compact, false)
+    msg = Printf.@sprintf("%s\n\nPoblación total %.02f (%.02f hab/km²)\nHombres %.02f (%.02f%%)\nMujeres %.02f (%.02f%%)\nPorcentaje que se considera indígena %.02f%%", 
+                          p.lugar, p.total, p.densidad_poblacion, p.hombres, p.porcentaje_hombres, p.mujeres, p.porcentaje_mujeres, p.porcentaje_indigena)
+    println(io, msg)
 end
