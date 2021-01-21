@@ -74,7 +74,17 @@ julia> Filtrar(dt, "2 == :A" , "'A'== :B")
 ```
 """
 function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
-  condiciones = collect(condiciones)
+  aux = collect(condiciones)
+  condiciones = []
+  for cond in aux
+    if isa(cond,Tuple)
+      v = collect(cond)
+      condiciones = cat(condiciones,v,dims= (1,1))
+    else
+       push!(condiciones, cond)
+    end
+  end
+
   if length(condiciones) == 0
     return tabla
   end
@@ -129,8 +139,6 @@ function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
   end
   return ans
 end
-
-
 function matcher(input::String)
   # input = ":col != 90"
   operadores_expr= r">=|<=|={2}|>{1}|<{1}|!="
@@ -180,3 +188,35 @@ function matcher(input::String)
   return tokens(literal,"$(operador.match)", "$(columna[2:end])","$izquierda","$derecha")
 end
 
+
+"""
+    contar_renglones(tabla::DataFrame, condiciones...)::Int32
+
+Llama internamente a la funcion [`Covid.Filtrar`](@ref Covid.Filtrar)  con los mismos arguemtnos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Covid.Filtrar`](@ref Covid.Filtrar)
+# Ejemplo 
+
+```julia-repl
+julia> dt
+4×2 DataFrame
+ Row │ A      B      
+     │ Int32  String 
+─────┼───────────────
+   1 │     1  A
+   2 │     2  A
+   3 │     2  B
+   4 │     3  BB
+
+julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+1×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+
+julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
+1
+```
+"""
+function contar_renglones(tabla::DataFrame, condiciones...)::Int32
+  return nrow(Filtrar(tabla, condiciones))
+end
