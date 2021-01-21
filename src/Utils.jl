@@ -2,7 +2,7 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf
 
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export unzip, data_check, fechahoy, sumacolumna, sumafila, jsonparse, poblacion_mexico, poblacion_entidad, poblacion_municipio
+export unzip, data_check, fechahoy, sumacolumna, sumafila, jsonparse, poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios
 export poblacion
 
 include("Constants.jl") # Diccionario de entidades y municipios 
@@ -401,4 +401,36 @@ function Base.show(io::IO, ::MIME"text/plain", p::poblacion)
     msg = Printf.@sprintf("%s\n\nPoblación total %.02f (%.02f hab/km²)\nHombres %.02f (%.02f%%)\nMujeres %.02f (%.02f%%)\nPorcentaje que se considera indígena %.02f%%", 
                           p.lugar, p.total, p.densidad_poblacion, p.hombres, p.porcentaje_hombres, p.mujeres, p.porcentaje_mujeres, p.porcentaje_indigena)
     println(io, msg)
+end
+
+"""
+    poblacion_todos_municipios()::Vector{poblacion}
+
+Regresa un vector de `poblacion` con los datos de _todos_ los municipios.
+
+# Ejemplo
+```julia-repl
+julia> poblacion_todos_municipios()
+poblacion("Aguascalientes, Aguascalientes", 797010.0, 744.58015, 386429.0, 410581.0, 48.533499, 51.466501, 11.87029)
+poblacion("Aguascalientes, Asientos", 797010.0, 744.58015, 386429.0, 410581.0, 48.533499, 51.466501, 11.87029)
+⋮ 
+poblacion("Zacatecas, Trancoso", 138176.0, 331.02637, 66297.0, 71879.0, 48.482008, 51.517992, 8.3546019)
+poblacion("Zacatecas, Santa María de la Paz", 16934.0, 87.919183, 8358.0, 8576.0, 48.962036, 51.037964, 5.223304)
+```
+"""
+function poblacion_todos_municipios()::Vector{poblacion}
+  munis =  Vector{poblacion}()
+  sizehint!(munis, 2469)
+
+  path = "muni.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/muni.csv", pwd())
+  end
+
+  df = CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
+
+  for r in df
+    push!(munis, poblacion(r[2] * ", " * r[4], r[5], r[7], r[8], r[9], r[10], r[11], r[6]))
+  end
+  return munis
 end
