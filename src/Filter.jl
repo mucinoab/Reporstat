@@ -1,4 +1,5 @@
 using DataFrames
+export Filtrar
 mutable struct tokens 
   literal::Any
   operador::String
@@ -26,6 +27,52 @@ function evaluador(operador::String , izq::Any, der::Any)
     return izq < der
   end
 end
+""" 
+    Filtrar(tabla::DataFrame, condiciones...)::DataFrame
+
+Filtra una `DataFrame` de acuerdo a los parametros que sean pasados, en este caso los parameteros actuan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
+# Ejemplo
+```julia-repl
+julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
+4×2 DataFrame
+ Row │ A      B      
+     │ Int32  String 
+─────┼───────────────
+   1 │     1  A
+   2 │     2  A
+   3 │     2  B
+   4 │     3  BB
+
+julia> Filtrar(dt, ":1 == 2")
+2×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+   2 │ 2    B
+```
+En caso de que se trate de una string se deben siempre encerrar entre comillas simples.
+
+```julia-repl
+julia> Filtrar(dt, "'A' == :2")
+2×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 1    A
+   2 │ 2    A
+```
+Las condiciones se deben poner en parametros diferentes.
+
+```julia-repl
+julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+1×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+```
+"""
 function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
   condiciones = collect(condiciones)
   if length(condiciones) == 0
@@ -80,8 +127,7 @@ function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
       push!(ans,renglon)
     end
   end
-  print(ans)
-  return DataFrame()
+  return ans
 end
 
 
@@ -109,7 +155,7 @@ function matcher(input::String)
   if (local columna_reg = match( col_expr,args[1][1:end])) !== nothing
       global columna = columna_reg.match
     if (local expr = match(string_expr,args[2]) ) !== nothing
-      global literal = expr.match    
+      global literal = expr.match[2:end-1]
     else
       if (local expr = match(numero_expr,args[2]))  !== nothing
         global literal = parse(Float64,String(expr.match))

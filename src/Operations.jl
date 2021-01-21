@@ -19,7 +19,7 @@ julia> tabla = DataFrame(A = 1:3, B= 1:3)
    2 │     2      2
    3 │     3      3
 
-julia> q1 = Selects.Select(tabla,["1"])
+julia> q1 = Select(tabla,["1"])
 3×1 DataFrame
  Row │ A
      │ Int32
