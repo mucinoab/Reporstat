@@ -373,3 +373,4 @@ function Base.show(io::IO, ::MIME"text/plain", p::poblacion)
                           p.lugar, p.total, p.densidad_poblacion, p.hombres, p.porcentaje_hombres, p.mujeres, p.porcentaje_mujeres, p.porcentaje_indigena)
     println(io, msg)
 end
+
