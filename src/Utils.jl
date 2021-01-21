@@ -2,7 +2,7 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf
 
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export unzip, data_check, fechahoy, sumacolumna, sumafila, jsonparse, poblacion_mexico, poblacion_entidad
+export unzip, data_check, fechahoy, sumacolumna, sumafila, jsonparse, poblacion_mexico, poblacion_entidad, poblacion_municipio
 export poblacion
 
 include("Constants.jl") # Diccionario de entidades y municipios 
@@ -177,6 +177,18 @@ function jsonparse(url::String)::Dict
   end
 end
 
+#verifica que la 
+function token_check(token_INEGI::String)::String
+  if token_INEGI == ""
+    try
+      token_INEGI = ENV["token_INEGI"]
+    catch e
+      error("'token_INEGI' no encotrado. Proporcionala directamente o asignala de la siquiente manera 'ENV[\"token_INEGI\"] = <tu token>'")
+    end
+  end
+  return token_INEGI
+end
+
 struct poblacion
   lugar::String
   total::Float64
@@ -189,14 +201,18 @@ struct poblacion
 end
 
 """
-    poblacion_mexico(token_INEGI::String)::poblacion
+    poblacion_mexico(token_INEGI::String="")::poblacion
 
 Regresa un una estructura `poblacion` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
+Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
 
 # Ejemplo
 ```julia-repl
-julia> popu = poblacion_mexico(token)
+julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
+"00000000-0000-0000-0000-000000000000"
+
+julia> popu = poblacion_mexico()
 México
 
 Población total 119938473.00 (60.96 hab/km²)
@@ -205,16 +221,23 @@ Mujeres 57481307.00 (51.43%)
 Porcentaje que se considera indígena 21.50%
 ```
 """
-function poblacion_mexico(token_INEGI::String)::poblacion
+function poblacion_mexico(token_INEGI::String="")::poblacion
+  token_INEGI = token_check(token_INEGI)
   url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/6207019014,1002000001,1002000002,1002000003,6207020032,6207020033,3105001001/es/0700/true/BISE/2.0/"*token_INEGI*"?type=json"
   return parse_poblacion(jsonparse(url), "México")
 end
 
 """
-    poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
+    poblacion_entidad(cve_entidad::String, token_INEGI::String="")::poblacion
 
 Regresa un una estructura `poblacion` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
+Se pude proporcionar el token directamente o por medio de una variable de entorno, de la siguiente manera. 
+
+```julia-repl
+julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
+```
+
 La estructura _poblacion_  contiene los siguientes datos.
 - lugar
 - población total
@@ -251,7 +274,7 @@ julia> struct poblacion
   porcentaje_indigena::Float64
 end
 
-julia> popu = poblacion_entidad(token, "31")
+julia> popu = poblacion_entidad("31", token)
 Yucatán
 
 Población total 2102259.00 (53.06 hab/km²)
@@ -263,7 +286,8 @@ julia> popu.porcentaje_indigena
 65.403459
 ```
 """
-function poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
+function poblacion_entidad(cve_entidad::String, token_INEGI::String="")::poblacion
+  token_INEGI = token_check(token_INEGI)
   try
     global lugar = entidades[cve_entidad]
   catch e
@@ -275,10 +299,11 @@ function poblacion_entidad(token_INEGI::String, cve_entidad::String)::poblacion
 end
 
 """
-    poblacion_municipio(token_INEGI::String, cve_entidad::String, cve_municipio::String)::poblacion
+    poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::poblacion
 
 Regresa un una estructura `poblacion` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
+Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
 
 !!! note
     ### Área geoestadística municipal (AGEM)
@@ -297,7 +322,10 @@ Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://ww
 
 # Ejemplo
 ```julia-repl
-julia> popu = poblacion_municipio(token, "01", "002")
+julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
+"00000000-0000-0000-0000-000000000000"
+
+julia> popu = poblacion_municipio("01", "002")
 Aguascalientes, Asientos
 
 Población total 45492.00 (84.63 hab/km²)
@@ -306,7 +334,8 @@ Mujeres 22980.00 (51.05%)
 Porcentaje que se considera indígena 3.64%
 ```
 """
-function poblacion_municipio(token_INEGI::String, cve_entidad::String, cve_municipio::String)::poblacion
+function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::poblacion
+  token_INEGI = token_check(token_INEGI)
   try
     global estado = entidades[cve_entidad]
   catch e
