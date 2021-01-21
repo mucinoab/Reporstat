@@ -190,7 +190,7 @@ end
 
 
 """
-    contar_renglones(tabla::DataFrame, condiciones...)::Int32
+    contar_renglones(tabla::DataFrame, condiciones...)::Number
 
 Llama internamente a la funcion [`Covid.Filtrar`](@ref Covid.Filtrar)  con los mismos arguemtnos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Covid.Filtrar`](@ref Covid.Filtrar)
 # Ejemplo 
@@ -217,6 +217,6 @@ julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
 1
 ```
 """
-function contar_renglones(tabla::DataFrame, condiciones...)::Int32
+function contar_renglones(tabla::DataFrame, condiciones...)::Number
   return nrow(Filtrar(tabla, condiciones))
 end
