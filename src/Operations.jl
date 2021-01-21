@@ -1,5 +1,5 @@
 push!(LOAD_PATH,"../src/")
-using DataFrames, Latexify
+using DataFrames
  export Select,formato
 """
     Select(Tabla::DataFrame,query::Vector{String})::DataFrame
