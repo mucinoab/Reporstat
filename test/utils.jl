@@ -25,15 +25,14 @@
   end;
 
   @testset "API INEGI" begin
-    token = ENV["INEGI_TOKEN"]
-    @test Covid.poblacion_mexico(token).lugar == "México"
+    @test Covid.poblacion_mexico().lugar == "México"
 
-    @test Covid.poblacion_entidad(token, "32").lugar == "Zacatecas"
-    @test Covid.poblacion_entidad(token, "06").densidad_poblacion == 126.39943
+    @test Covid.poblacion_entidad("32").lugar == "Zacatecas"
+    @test Covid.poblacion_entidad("06").densidad_poblacion == 126.39943
 
-    @test Covid.poblacion_municipio(token, "01", "001").lugar == "Aguascalientes, Aguascalientes"
+    @test Covid.poblacion_municipio("01", "001").lugar == "Aguascalientes, Aguascalientes"
 
-    cdmx = Covid.poblacion_municipio(token, "09", "016")
+    cdmx = Covid.poblacion_municipio("09", "016")
     @test cdmx.lugar == "Ciudad de México, Miguel Hidalgo"
     @test cdmx.hombres == 172667.00
     @test cdmx.hombres == 172667.00
@@ -42,5 +41,6 @@
     @test cdmx.porcentaje_mujeres == 54.152821
     @test cdmx.porcentaje_indigena == 5.0142822
     @test cdmx.densidad_poblacion == 7855.6605
+    @test Covid.poblacion_todos_municipios()[1] == Covid.poblacion_municipio("01", "001")
   end;
 end;
