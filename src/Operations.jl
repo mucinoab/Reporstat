@@ -1,6 +1,6 @@
 push!(LOAD_PATH,"../src/")
 using DataFrames
- export Select
+ export Select,formato
 """
     Select(Tabla::DataFrame,query::Vector{String})::DataFrame
 
@@ -75,3 +75,33 @@ julia> q1 = Select(tabla,["1"])
     # print(q1)
     return q1
   end
+# """
+    # formato(tabla::DataFrame, formato="latex", copiar= true)::Any
+
+# Regresa una String con la tabla en el formato especificado, puede ser ``\\LaTeX`` o `markdown`, tambien se puede especificar si la string de regreso se copia al portapapeles por medio del parametro copiar, por default esta habilitado.
+# ```julia-repl
+# julia> formato(dt,"latex")
+# "\\begin{tabular}{cc}
+# A & B\\\\
+# 1 & 1\\\\
+# 2 & 2\\\\
+# 3 & 3\\\\
+# \\end{tabular}
+# "
+
+# julia> formato(dt,"md",false)
+# A B
+# – –
+# 1 1
+# 2 2
+# 3 3
+# ```
+# """
+# function formato(tabla::DataFrame, formato="latex", copiar= true)::Any
+  # copy_to_clipboard(copiar)
+  # if formato == "latex"
+    # return latexify(tabla,env=:table,latex=false)
+  # elseif formato == "md"
+    # return mdtable(tabla,latex=false)
+  # end
+# end
