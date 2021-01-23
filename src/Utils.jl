@@ -151,7 +151,7 @@ julia> sumafila(df, 4)
 ```
 """
 function sumafila(tabla::DataFrame, fila::Int)::Number
-  return prod(eachrow(tabla)[fila])
+  return sum(eachrow(tabla)[fila])
 end
 
 """

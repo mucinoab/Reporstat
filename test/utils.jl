@@ -7,7 +7,7 @@
 
   @testset "sumafila" begin
     df = DataFrame(A = 1:4, B = 4.0:-1.0:1.0)
-    @test Covid.sumafila(df, 1) == 4.0
+    @test Covid.sumafila(df, 1) == 5.0
   end;
 
   @testset "data_check url" begin
