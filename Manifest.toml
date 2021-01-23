@@ -284,9 +284,9 @@ version = "0.3.3"
 
 [[StructTypes]]
 deps = ["Dates", "UUIDs"]
-git-tree-sha1 = "d94235fcdc4a09649f263365c5f7e4ed4ba6ed34"
+git-tree-sha1 = "f66fdeb76151f8e6eb2d08e56e169b0915c8fff0"
 uuid = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
-version = "1.2.1"
+version = "1.2.2"
 
 [[TableTraits]]
 deps = ["IteratorInterfaceExtensions"]
