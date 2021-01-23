@@ -416,3 +416,40 @@ function poblacion_todos_municipios()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
+"""
+    poblacion_todos_entidades()::DataFrame
+
+Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
+
+- clave de entidad 
+- nombre oficial de la entidad
+- población total
+- densidad de población (habitantes por kilómetro cuadrado) 
+- población total hombres
+- población total mujeres
+- porcentaje de hombres
+- porcentaje de mujeres
+- porcentaje de población que se considera indígena
+
+# Ejemplo
+```julia-repl
+julia> poblacion_todos_entidades()
+32×9 DataFrame
+ Row │ entidad  entidad_nombre     total         densidad    hombres         mujeres         porcentaje_hombres ⋯
+     │ String   String             Float64       Float64     Float64         Float64         Float64            ⋯
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+   1 │ 01       Aguascalientes      1.185e6     233.729    576638.0        608358.0           48.7672 ⋯
+   2 │ 02       Baja California     3.15507e6    46.4066        1.59161e6       1.56346e6     49.7725 
+   ⋮ │ ⋮             ⋮               ⋮               ⋮            ⋮           ⋮                 ⋮      
+  32 │ 32       Zacatecas           1.49067e6    20.9791   726897.0        763771.0           48.7819
+```                                                                                                                            
+"""                                                                                                                             
+function poblacion_todos_entidades()::DataFrame
+  path = "poblacion_entidades.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/poblacion_entidades.csv", pwd())
+  end
+
+  return DataFrame(CSV.File(path, types=[String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+end
+
