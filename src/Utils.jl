@@ -2,7 +2,7 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf
 
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export unzip, data_check, fechahoy, sumacolumna, sumafila, poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios
+export unzip, data_check, fechahoy, sumacolumna, sumafila, poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todos_entidades, CSV_to_DataFrame, jsonparse
 
 include("Constants.jl") # Diccionario de entidades y municipios 
 
@@ -157,7 +157,7 @@ end
 """
     jsonparse(url::String)::Dict
 
-Hace un http request al `url` especificado y convierte el json obtenido del sitio web en un diccionario.
+Hace un http request al `url` especificado y convierte el `json` obtenido del sitio web en un diccionario.
 En caso de que el servidor devuelva un _status_ distinto a _200_, se arroja un `error`.
 
 # Ejemplo
