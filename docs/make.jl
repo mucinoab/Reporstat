@@ -5,7 +5,7 @@ Pkg.activate(".")
 using Documenter, Covid
 
 makedocs(
-    sitename = "Covid",
+    sitename = "Covid.jl",
     format = Documenter.HTML(),
     modules = [Covid],
     pages=[

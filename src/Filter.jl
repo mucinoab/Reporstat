@@ -1,5 +1,6 @@
 using DataFrames
-export Filtrar
+export filtrar, contar_renglones
+
 mutable struct tokens 
   literal::Any
   operador::String
@@ -7,6 +8,7 @@ mutable struct tokens
   izq::String
   der::String
 end
+
 function evaluador(operador::String , izq::Any, der::Any)
   if operador == ">="
     return izq >= der
@@ -28,9 +30,9 @@ function evaluador(operador::String , izq::Any, der::Any)
   end
 end
 """ 
-    Filtrar(tabla::DataFrame, condiciones...)::DataFrame
+    filtrar(tabla::DataFrame, condiciones...)::DataFrame
 
-Filtra una `DataFrame` de acuerdo a los parametros que sean pasados, en este caso los parameteros actuan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
+Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este caso los parámetros actúan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
 # Ejemplo
 ```julia-repl
 julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
@@ -73,7 +75,7 @@ julia> Filtrar(dt, "2 == :A" , "'A'== :B")
    1 │ 2    A
 ```
 """
-function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
+function filtrar(tabla::DataFrame, condiciones...)::DataFrame
   aux = collect(condiciones)
   condiciones = []
   for cond in aux
@@ -88,7 +90,7 @@ function Filtrar(tabla::DataFrame, condiciones...)::DataFrame
   if length(condiciones) == 0
     return tabla
   end
-  #los nombres de las colmnas 
+  #los nombres de las columnas 
   nombres_columnas = names(tabla)
   posicion_columnas = Dict()
   # para poder acceder por medio del numero de la columna a la columna
@@ -192,7 +194,7 @@ end
 """
     contar_renglones(tabla::DataFrame, condiciones...)::Number
 
-Llama internamente a la funcion [`Covid.Filtrar`](@ref Covid.Filtrar)  con los mismos arguemtnos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Covid.Filtrar`](@ref Covid.Filtrar)
+Llama internamente a la función [`Covid.filtrar`](@ref Covid.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Covid.filtrar`](@ref Covid.filtrar)
 # Ejemplo 
 
 ```julia-repl
@@ -218,5 +220,5 @@ julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
 ```
 """
 function contar_renglones(tabla::DataFrame, condiciones...)::Number
-  return nrow(Filtrar(tabla, condiciones))
+  return nrow(filtrar(tabla, condiciones))
 end
