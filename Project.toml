@@ -1,8 +1,16 @@
 name = "Covid"
-uuid = "1f4fe3f7-a27c-4071-96f0-06df52edf599"
+uuid = "d7c52d05-8ad2-4f52-9d74-13b6c97b52ae"
 authors = ["Bruno A. Muciño <mucinoab@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DocumenterTools = "35a29f4d-8980-5a13-9543-d66fff28ecb8"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+InfoZIP = "f4508453-b816-52ab-a864-26fc7f6211fc"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+StringEncodings = "69024149-9ee7-55f6-a4c4-859efe599b68"
