@@ -1,6 +1,6 @@
 push!(LOAD_PATH,"../src/")
 using DataFrames
-export select 
+export select
 """
     select(Tabla::DataFrame, query::Vector{String})::DataFrame
 
@@ -70,7 +70,7 @@ function select(Tabla::DataFrame,query::Vector{String})::DataFrame
       push!(query_inversa,nombre_columna)
     end
   end
-  q1 = select!(Tabla, Not(query_inversa))
+  q1 = select(Tabla, Not(query_inversa))
   # print(q1)
   return q1
 end
