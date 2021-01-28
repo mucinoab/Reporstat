@@ -32,7 +32,7 @@ jsonparse
 fechahoy
 
 filtrar
-select
+seleccionar
 
 contar_renglones
 sumacolumna
