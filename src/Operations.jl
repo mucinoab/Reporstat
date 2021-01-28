@@ -1,8 +1,8 @@
 push!(LOAD_PATH,"../src/")
 using DataFrames
-export select 
+export seleccionar 
 """
-    select(Tabla::DataFrame, query::Vector{String})::DataFrame
+    seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame
 
 Selecciona una o varias columnas del `DataFrame` puede ser por nombre o por número de columna y regresa un nuevo `DataFrame` con las columnas seleccionadas.
 
@@ -18,7 +18,7 @@ julia> tabla = DataFrame(A = 1:3, B= 1:3)
    2 │     2      2
    3 │     3      3
 
-julia> q1 = select(tabla,["1"])
+julia> q1 = seleccionar(tabla,["1"])
 3×1 DataFrame
  Row │ A
      │ Int32
@@ -28,7 +28,7 @@ julia> q1 = select(tabla,["1"])
    3 │     3
 ```
 """
-function select(Tabla::DataFrame,query::Vector{String})::DataFrame
+function seleccionar(Tabla::DataFrame,query::Vector{String})::DataFrame
   #las columnas no se pueden repetir
   #
   #caso base por si las listas CSV no tienen header
@@ -70,7 +70,8 @@ function select(Tabla::DataFrame,query::Vector{String})::DataFrame
       push!(query_inversa,nombre_columna)
     end
   end
-  q1 = select!(Tabla, Not(query_inversa))
+  aux = Tabla
+  q1 = select(Tabla, Not(query_inversa))
   # print(q1)
   return q1
 end
