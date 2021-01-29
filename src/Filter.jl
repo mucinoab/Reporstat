@@ -6,8 +6,7 @@ mutable struct tokens
   operador::String
   col::Any
   izq::String
-  der::String
-end
+  der::String end
 
 function evaluador(operador::String , izq::Any, der::Any)
   if operador == ">="
@@ -144,7 +143,7 @@ end
 function matcher(input::String)
   # input = ":col != 90"
   operadores_expr= r">=|<=|={2}|>{1}|<{1}|!="
-  col_expr= r":[A-Za-z0-9]++"
+  col_expr= r":[^\s]++"
   string_expr = r"'.*'"
   numero_expr  = r"[+-]?((\d+\.?\d*)|(\.\d+))"
   izquierdo = "izq"
