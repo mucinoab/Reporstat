@@ -1,5 +1,7 @@
 push!(LOAD_PATH,"../src/")
 using DataFrames
+include("Utils.jl")
+include("Filter.jl")
 export seleccionar 
 """
     seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame
@@ -74,6 +76,35 @@ function seleccionar(Tabla::DataFrame,query::Vector{String})::DataFrame
   q1 = select(Tabla, Not(query_inversa))
   # print(q1)
   return q1
+end
+"""
+    idh(cve_entidad::String, cve_municipio::String="")::Number
+
+Regresa el IDH de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.
+"""
+function idh(cve_entidad::String, cve_municipio::String="")::Number
+    tabla = data_check("IDH.csv")
+    if length(cve_municipio) < 5
+        if !haskey(entidades,cve_entidad)
+            error("No se encontro la clave")
+        end
+        cve_municipio = cve_entidad*cve_municipio
+    end
+    if cve_municipio == ""
+        #TODO
+        print("TODO recolectar idh de estados en general")
+    else
+    if !haskey(municipios,cve_municipio)
+        error("No se encontro la clave")
+    end
+    q1 = ":cve_entidad == $cve_entidad"
+    q2 = ":cve_municipio == $(parse(Int32,cve_municipio[end-2:end]))"
+    try 
+    return filtrar(tabla,q1,q2)[1,:].idh
+catch
+    error("No se encontro la clave")
+end
+    end
 end
 # """
 # formato(tabla::DataFrame, formato="latex", copiar= true)::Any
