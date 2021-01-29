@@ -194,7 +194,7 @@ end
 """
     contar_renglones(tabla::DataFrame, condiciones...)::Number
 
-Llama internamente a la función [`Covid.filtrar`](@ref Covid.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Covid.filtrar`](@ref Covid.filtrar)
+Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
 # Ejemplo 
 
 ```julia-repl
