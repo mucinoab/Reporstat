@@ -2,7 +2,7 @@
 #Desde el directorio principal correr "julia --project test/runtests.jl" 
 using Test
 
-using Covid, DataFrames, CSV
+using Reporstat, DataFrames, CSV
 
 #agregar aquí el nombre del archivo donde hagan los test de su módulo
 tests = [
