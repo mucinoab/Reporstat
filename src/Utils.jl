@@ -1,83 +1,11 @@
 push!(LOAD_PATH,"../src/")
 using Dates, Printf
-
+include("Operations.jl")
+include("Constants.jl")
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export unzip, data_check, fechahoy, sumacolumna, sumafila, poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todos_entidades, CSV_to_DataFrame, jsonparse
-
-include("Constants.jl") # Diccionario de entidades y municipios 
-
-"""
-    unzip(path::String, dest::String="")
-
-Descomprime y guarda el archivo en el destino indicado(`dest`), si no se proporciona un destino, se guarda en el directorio actual.
-
-# Ejemplo
-```julia-repl
-julia> unzip("datos.zip")
-julia> unzip("datos.zip", pwd()*"/datos")
-```
-"""
-function unzip(path::String, dest::String="")
-  if dest == ""
-    InfoZIP.unzip(path, pwd())
-  else
-    InfoZIP.unzip(path, dest)
-  end
-end
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todos_entidades, clave,idh
 
 
-"""
-    CSV_to_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
-
-Lee un archivo CSV con el `encoding` indicado y regresa un `DataFrame`.
-
-# Ejemplo
-```julia-repl
-julia> df = DataFrameEncode("datos.csv")
-julia> df_latin1 = DataFrameEncode("datos.csv", "LATIN1")
-```
-
-Los _encodings_ soportados dependen de la plataforma, obtén la lista de la siguiente manera.
-
-```julia-repl
-julia> using StringEncodings
-julia> encodings()
-
-```
-"""
-function CSV_to_DataFrame(path::String, encoding::String="UTF-8")
-  f = open(path, "r")
-  s = StringDecoder(f, encoding, "UTF-8")
-  data = DataFrame(CSV.File(s))
-  close(s)
-  close(f)
-  return data
-end
-
-
-"""
-    data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
-
-Crea un `DataFrame` dado un archivo CSV o una liga al archivo.
-Se pude especificar el _encoding_.
-
-# Ejemplo
-```julia-repl
-julia> url = "http://www.conapo.gob.mx/work/models/OMI/Datos_Abiertos/DA_IAIM/IAIM_Municipio_2010.csv"
-julia> first(data_check(url, "URL", "LATIN1"))
-julia> first(data_check("prueba.csv"))
-```
-"""
-function data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
-  if type == "PATH"
-    return CSV_to_DataFrame(path_url, encoding)
-  elseif type == "URL"
-    path = HTTP.download(path_url, pwd())
-    return CSV_to_DataFrame(path, encoding)
-  else
-    error("'type' debe de ser 'PATH' o 'URL'")
-  end
-end
 
 #TODO nombre
 """
@@ -93,87 +21,6 @@ julia> fechahoy()
 """
 function fechahoy()::String
   string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
-end
-
-"""
-    sumacolumna(tabla::DataFrame, col::Int)::Number
-    sumacolumna(tabla::DataFrame, col::String)::Number
-
-Suma todos los valores de una determinada columna en un `DataFrame`.
-Para hacer referencia a que columna se desea sumar se pude usar la posición de la columna o el nombre que tiene.
-
-# Ejemplo
-```julia-repl
-julia> df = data_check("datos.csv")
-4×2 DataFrame
- Row │ x      y
-     │ Int64  Int64
-─────┼──────────────
-   1 │     0     11
-   2 │     2     12
-   3 │     0     13
-   4 │    40     14
-
-julia> sumacolumna(df, 1)
-42
-
-julia> sumacolumna(df, "x")
-42
-```
-"""
-function sumacolumna(tabla::DataFrame, col)::Number
-  return sum(eachcol(tabla)[col])
-end
-
-"""
-    sumafila(tabla::DataFrame, fila::Int)::Number
-
-Suma todos los valores de una determinada fila en un `DataFrame`.
-La fila se especifica con la posición en la que se encuentra.
-
-# Ejemplo
-```julia-repl
-julia> df = data_check("datos.csv")
-4×2 DataFrame
- Row │ x      y
-     │ Int64  Int64
-─────┼──────────────
-   1 │     0     11
-   2 │     2     12
-   3 │     0     13
-   4 │    40     14
-
-julia> sumafila(df, 2)
-14
-
-julia> sumafila(df, 4)
-54
-```
-"""
-function sumafila(tabla::DataFrame, fila::Int)::Number
-  return sum(eachrow(tabla)[fila])
-end
-
-"""
-    jsonparse(url::String)::Dict
-
-Hace un http request al `url` especificado y convierte el `json` obtenido del sitio web en un diccionario.
-En caso de que el servidor devuelva un _status_ distinto a _200_, se arroja un `error`.
-
-# Ejemplo
-```julia-repl
-julia> datos = jsonparse("https://sitioweb.com/datos.json")
-```
-"""
-function jsonparse(url::String)::Dict
-  request = HTTP.request("GET", url)
-
-  if request.status == 200
-    json = String(request.body)
-    return JSON.parse(json, dicttype=Dict, inttype=Int8)
-  else
-    error("Error de servidor, respuesta http: $request.status")
-  end
 end
 
 #verifica que la 
@@ -453,13 +300,45 @@ function poblacion_todos_entidades()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
-function clave(id::String) 
+"""
+   clave(id::String)::String
+
+Toma como parametro el nombre de algun municipio o entidad y regresa la clave de este.
+"""
+function clave(id::String)::String
   if haskey(entidad_nombre, id)
     return entidad_nombre[id]
   end
   if haskey(municipio_nombre, id)
-    return municipio_nombre[id]
+    return municipio_nombre[id][3:end]
   end
   error("No existe $id esa entidad o estado")
 end
 
+"""
+    idh(cve_entidad::String, cve_municipio::String="")::Number
+
+Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+"""
+function idh(cve_entidad::String, cve_municipio::String="")::Number
+    tabla = data_check("IDH.csv")
+       
+    if !haskey(entidades,cve_entidad)
+        error("No se encontro la clave")
+    end
+    if cve_municipio == ""
+        #TODO
+        print("TODO recolectar idh de estados en general")
+    else
+        if !haskey(municipios,cve_entidad*cve_municipio)
+            error("No se encontro la clave")
+        end
+        q1 = ":cve_entidad == \"$cve_entidad\""
+        q2 = ":cve_municipio == \"$(parse(Int32,cve_municipio))\""
+        try 
+            return filtrar(tabla,q1,q2)[1,:].idh
+        catch
+            error("No se encontro la clave")
+        end
+    end
+end

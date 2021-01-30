@@ -20,6 +20,10 @@ proporcionados son del 2015 y la extensión territorial que se calcula con
 la densidad y población total.
 
 ```@docs
+idh
+
+clave
+
 poblacion_mexico
 poblacion_entidad
 poblacion_municipio
