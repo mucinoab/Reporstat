@@ -2,16 +2,16 @@ push!(LOAD_PATH,"../src/") #eso es por si Julia no encuentra el ./src
 using Pkg
 Pkg.activate(".")
 
-using Documenter, Covid
+using Documenter, Reporstat
 
 makedocs(
-    sitename = "Covid.jl",
+    sitename = "Reporstat.jl",
     format = Documenter.HTML(),
-    modules = [Covid],
+    modules = [Reporstat],
     pages=[
            "Home" => "index.md",
           ])
 #aqui esta la informacion general de la pagina
 deploydocs(
-    repo = "github.com/mucinoab/Covid.git"
+    repo = "github.com/mucinoab/Reporstat.git"
 )
