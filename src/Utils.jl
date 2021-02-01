@@ -301,9 +301,18 @@ function poblacion_todas_entidades()::DataFrame
 end
 
 """
-   clave(id::String)::String
+    clave(id::String)::String
 
-Toma como parametro el nombre de algun municipio o entidad y regresa la clave de este.
+Toma como parámetro el nombre de algún municipio o entidad y regresa la clave de este.
+
+# Ejemplo
+
+```julia-repl
+julia> clave("Campeche")
+"04"
+julia> clave("Calakmul")
+"010"
+```
 """
 function clave(id::String)::String
   if haskey(entidad_nombre, id)
@@ -319,10 +328,16 @@ end
     idh(cve_entidad::String, cve_municipio::String="")::Number
 
 Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+# Ejemplo
+```julia-repl
+julia> idh(clave("Campeche"),"002")
+0.797
+julia> idh(clave("Campeche"),"003")
+0.775
+```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = cargar_csv("IDH.csv")
-       
+    tabla = cargar_csv("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/IDH.csv","URL")
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
     end
