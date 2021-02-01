@@ -1,344 +1,497 @@
 push!(LOAD_PATH,"../src/")
-using Dates, Printf
-include("Operations.jl")
-include("Constants.jl")
-using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh
-
-
-
-#TODO nombre
+using DataFrames,CSV,HTTP
+export seleccionar, filtrar, contar_renglones, unzip, cargar_csv, fechahoy, sumar_columna, sumar_fila,csv_a_DataFrame, jsonparse,get_info
 """
-    fechahoy()::String
+    seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame
 
-Crea un string con la fecha de hoy utilizando el formato "yyyymmdd". Año con cuarto dígitos, mes y día con dos.
+Selecciona una o varias columnas del `DataFrame` puede ser por nombre o por número de columna y regresa un nuevo `DataFrame` con las columnas seleccionadas.
 
 # Ejemplo
 ```julia-repl
-julia> fechahoy()
-"20210112"
+
+julia> tabla = DataFrame(A = 1:3, B= 1:3)
+3×2 DataFrame
+ Row │ A      B
+     │ Int32  Int32
+─────┼──────────────
+   1 │     1      1
+   2 │     2      2
+   3 │     3      3
+
+julia> q1 = seleccionar(tabla,["1"])
+3×1 DataFrame
+ Row │ A
+     │ Int32
+─────┼───────
+   1 │     1
+   2 │     2
+   3 │     3
 ```
 """
-function fechahoy()::String
-  string(Dates.format(DateTime(Dates.today()), "yyyymmdd"))
-end
-
-#verifica que la 
-function token_check(token_INEGI::String)::String
-  if token_INEGI == ""
-    try
-      token_INEGI = ENV["token_INEGI"]
-    catch e
-      error("'token_INEGI' no encotrado. Proporcionala directamente o asignala de la siquiente manera 'ENV[\"token_INEGI\"] = <tu token>'")
+function seleccionar(Tabla::DataFrame,query::Vector{String})::DataFrame
+  #las columnas no se pueden repetir
+  #
+  #caso base por si las listas CSV no tienen header
+  #
+  #Checar si la columna esta repetida o no
+  checker = Dict()
+  nombres_de_columnas = names(Tabla)
+  # Procesar query
+  for (indice,nombre_columna) in enumerate(query) # supongan que "1" es el nombre de la column      a
+    idx = 0
+    if !(nombre_columna in nombres_de_columnas)
+      try
+        idx = parse(Int32,nombre_columna)
+      catch
+        error("$nombre_columna no esta en al archivo CSV")
+      end
+      if idx > length(nombres_de_columnas)
+        error("$idx esta fuera del rango de columnas: rango = 1-$(length(nombres_de_columnas))")
+      else
+        query[indice] = nombres_de_columnas[idx]
+      end
     end
   end
-  return token_INEGI
-end
-
-"""
-    poblacion_mexico(token_INEGI::String="")::DataFrame
-
-Regresa un `DataFrame` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
-Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
-
-# Ejemplo
-```julia-repl
-julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
-"00000000-0000-0000-0000-000000000000"
-
-julia> popu = poblacion_mexico()
-1×8 DataFrame
- Row │ lugar   total      hombres    mujeres    porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String  Float64    Float64    Float64    Float64             Float64             Float64              Float64
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ México  1.19938e8  5.48552e7  5.74813e7               48.57               51.43              21.4965   60.9642
-```
-"""
-function poblacion_mexico(token_INEGI::String="")::DataFrame
-  token_INEGI = token_check(token_INEGI)
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/6207019014,1002000001,1002000002,1002000003,6207020032,6207020033,3105001001/es/0700/true/BISE/2.0/"*token_INEGI*"?type=json"
-  return parse_poblacion(jsonparse(url), "México")
-end
-
-"""
-    poblacion_entidad(cve_entidad::String, token_INEGI::String="")::poblacion
-
-Regresa un una `DataFrame` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
-Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno, de la siguiente manera. 
-
-```julia-repl
-julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
-```
-El `DataFrame` resultante contiene los siguientes datos.
-
-- lugar
-- población total
-- densidad de población (habitantes por kilómetro cuadrado) 
-- población total hombres
-- población total mujeres
-- porcentaje de hombres
-- porcentaje de mujeres
-- porcentaje de población que se considera indígena
-
-!!! note
-    ### Área geoestadística estatal (AGEE)
-    La entidad federativa se codifica de acuerdo con el orden alfabético de sus nombres _oficiales_, con una longitud de dos dígitos, a partir del 01 en adelante, según el número de entidades federativas que dispongan las leyes vigentes; en este momento son 32 entidades federativas (Aguascalientes 01, Baja California 02,... y Zacatecas 32).
-    Las puedes consultar [aquí.](https://www.inegi.org.mx/app/ageeml/)
-
-   Clave Entidad | Entidad
-   --- | ---
-    01 | Aguascalientes
-    02 | Baja California
-    03 | Baja California Sur
-    ⋮  |⋮
-    30 | Veracruz de Ignacio de la Llave
-    31 | Yucatán
-    32 | Zacatecas
-
-# Ejemplo
-```julia-repl
-julia> popu = poblacion_entidad("31", token)
-1×8 DataFrame
- Row │ lugar    total      hombres   mujeres   porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String   Float64    Float64   Float64   Float64             Float64             Float64              Float64
-─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ Yucatán  2.10226e6  963333.0  992244.0             48.9968             51.0032              65.4035   53.0607
-```
-"""
-function poblacion_entidad(cve_entidad::String, token_INEGI::String="")::DataFrame
-  token_INEGI = token_check(token_INEGI)
-  try
-    global lugar = entidades[cve_entidad]
-  catch e
-    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
-  end
-
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/"*cve_entidad*"/true/BISE/2.0/"*token_INEGI*"?type=json"
-  return parse_poblacion(jsonparse(url), lugar)
-end
-
-"""
-    poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
-
-Regresa un `DataFrame` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
-Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
-
-!!! note
-    ### Área geoestadística municipal (AGEM)
-    La clave del municipio está formada por tres números que se asignan de manera ascendente  a  partir  del  001,  de  acuerdo  con  el  orden  alfabético  de  los  nombres  de  los  municipios,  aunque  a  los  creados  posteriormente  a  la  clavificación  inicial,  se  les  asigna  la  clave  geoestadística  conforme se vayan creando.
-    Las puedes consultar [aquí.](https://www.inegi.org.mx/app/ageeml/)
-
-    Clave Entidad | Nombre Entidad | Clave Municipio | Nombre Municipio 
-      --- | --- | --- | --- 
-    01|Aguascalientes|001	|Aguascalientes
-    01|Aguascalientes|002 |Asientos	    
-    01|Aguascalientes|003 |Calvillo
-    ⋮|⋮|⋮|⋮
-    32|Zacatecas|056|Zacatecas
-    32|Zacatecas|057|Trancoso
-    32|Zacatecas|058|Santa María de la Paz
-
-# Ejemplo
-```julia-repl
-julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
-"00000000-0000-0000-0000-000000000000"
-
-julia> popu = poblacion_municipio("01", "002")
-1×8 DataFrame
- Row │ lugar                     total    hombres  mujeres  porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String                    Float64  Float64  Float64  Float64             Float64             Float64              Float64
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ Aguascalientes, Asientos  45492.0  22512.0  22980.0             48.9519             51.0481              3.63938   84.6325
-```
-"""
-function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
-  token_INEGI = token_check(token_INEGI)
-  try
-    global estado = entidades[cve_entidad]
-  catch e
-    error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
-  end
-
-  try
-    global municipio = municipios[cve_entidad*cve_municipio]
-  catch e
-    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
-  end
-
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
-
-  datos = jsonparse(url)
-  indicadores = Dict{String, Float64}()
-
-  for dato in datos["Series"]
-    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
-  end
-
-  lugar = estado * ", " * municipio
-  hom = trunc(Int64, indicadores["1002000002"])
-  muj = trunc(Int64, indicadores["1002000003"])
-  tot = trunc(Int64, hom + muj) #Parce ser que el API no proporciona este dato(!?)
-  den = indicadores["3105001001"]       
-  porcen_hom = indicadores["6207020032"]
-  porcen_muj = indicadores["6207020033"]
-  porcen_ind = indicadores["6207019014"]
-
-  df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
-    porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
- 
-  return df 
-end
-
-#TODO documentación
-function parse_poblacion(datos::Dict, lugar::String)::DataFrame
-  
-  indicadores = Dict{String, Float64}()
-
-  for dato in datos["Series"]
-    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
-  end
-
-  # indicadores INEGI, 
-  # total =   1002000001 hombres = 1002000002 mujeres = 1002000003
-  # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
-  # indígena= 6207019014 
-
-  tot = trunc(Int64, indicadores["1002000001"])        # población total                                 
-  hom = trunc(Int64, indicadores["1002000002"])        # población hombres
-  muj = trunc(Int64, indicadores["1002000003"])        # población mujeres
-  den = indicadores["3105001001"]        # densidad de población
-  porcen_hom = indicadores["6207020032"] # porcentaje de hombres
-  porcen_muj = indicadores["6207020033"] # porcentaje de mujeres
-  porcen_ind = indicadores["6207019014"] # porcentaje de población que se considera indígena
-
-  df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
-    porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
-
-  return df 
-end
-
-"""
-    poblacion_todos_municipios()::DataFrame
-
-Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
-
-- nombre del lugar
-- clave de entidad 
-- nombre de la entidad
-- clave de municipio
-- nombre de municipio
-- población total
-- densidad de población (habitantes por kilómetro cuadrado) 
-- población total hombres
-- población total mujeres
-- porcentaje de hombres
-- porcentaje de mujeres
-- porcentaje de población que se considera indígena
-
-# Ejemplo
-```julia-repl
-julia> poblacion_todos_municipios()
-2469×11 DataFrame
-  Row │ entidad  entidad_nombre  municipio  municipio_nombre              total     densidad   hombres   mujeres   porcentaje_hombres  porcentajes_mujeres ⋯
-      │ String   String          String     String                        Float64   Float64    Float64   Float64   Float64             Float64             ⋯
-──────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    1 │ 01       Aguascalientes  001        Aguascalientes                797010.0  744.58     386429.0  410581.0             48.5335              51.4665 ⋯
-    2 │ 01       Aguascalientes  002        Asientos                      797010.0  744.58     386429.0  410581.0             48.5335              51.4665 
-    ⋮   │    ⋮           ⋮             ⋮                   ⋮                   ⋮          ⋮         ⋮         ⋮              ⋮                    ⋮          ⋱
- 2468 │ 32       Zacatecas       057        Trancoso                      138176.0  331.026     66297.0   71879.0             48.482               51.518  ⋯
- 2469 │ 32       Zacatecas       058        Santa María de la Paz          16934.0   87.9192     8358.0    8576.0             48.962               51.038  
-```
-"""
-function poblacion_todos_municipios()::DataFrame
-  path = "muni.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/muni.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
-end
-
-"""
-    poblacion_todas_entidades()::DataFrame
-
-Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
-
-- clave de entidad 
-- nombre oficial de la entidad
-- población total
-- densidad de población (habitantes por kilómetro cuadrado) 
-- población total hombres
-- población total mujeres
-- porcentaje de hombres
-- porcentaje de mujeres
-- porcentaje de población que se considera indígena
-
-# Ejemplo
-```julia-repl
-julia> poblacion_todas_entidades()
-32×9 DataFrame
- Row │ entidad  entidad_nombre     total         densidad    hombres         mujeres         porcentaje_hombres ⋯
-     │ String   String             Float64       Float64     Float64         Float64         Float64            ⋯
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────── 
-   1 │ 01       Aguascalientes      1.185e6     233.729    576638.0        608358.0           48.7672 ⋯
-   2 │ 02       Baja California     3.15507e6    46.4066        1.59161e6       1.56346e6     49.7725 
-   ⋮ │ ⋮             ⋮               ⋮               ⋮            ⋮           ⋮                 ⋮      
-  32 │ 32       Zacatecas           1.49067e6    20.9791   726897.0        763771.0           48.7819
-```                                                                                                                            
-"""                                                                                                                             
-function poblacion_todas_entidades()::DataFrame
-  path = "poblacion_entidades.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/poblacion_entidades.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
-end
-
-"""
-   clave(id::String)::String
-
-Toma como parametro el nombre de algun municipio o entidad y regresa la clave de este.
-"""
-function clave(id::String)::String
-  if haskey(entidad_nombre, id)
-    return entidad_nombre[id]
-  end
-  if haskey(municipio_nombre, id)
-    return municipio_nombre[id][3:end]
-  end
-  error("No existe $id esa entidad o estado")
-end
-
-"""
-    idh(cve_entidad::String, cve_municipio::String="")::Number
-
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
-"""
-function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = cargar_csv("IDH.csv")
-       
-    if !haskey(entidades,cve_entidad)
-        error("No se encontro la clave")
+  for nombre_columna in query
+    #Checar si la columna esta en la tabla
+    if !(nombre_columna in nombres_de_columnas)
+      error("$nombre_columna no se encuentra en el archivo CSV")
     end
-    if cve_municipio == ""
-        #TODO
-        print("TODO recolectar idh de estados en general")
+    #Checar si la columna esta repetida
+    if haskey(checker , nombre_columna)
+      error("Columna $nombre_columna repetida")
     else
-        if !haskey(municipios,cve_entidad*cve_municipio)
-            error("No se encontro la clave")
-        end
-        q1 = ":cve_entidad == \"$cve_entidad\""
-        q2 = ":cve_municipio == \"$(parse(Int32,cve_municipio))\""
-        try 
-            return filtrar(tabla,q1,q2)[1,:].idh
-        catch
-            error("No se encontro la clave")
-        end
+      push!(checker, nombre_columna => 1)
     end
+  end
+  query_inversa= Vector{String}()
+  for nombre_columna in nombres_de_columnas
+    if !(nombre_columna in query)
+      push!(query_inversa,nombre_columna)
+    end
+  end
+  aux = Tabla
+  q1 = select(Tabla, Not(query_inversa))
+  return q1
 end
+# """
+# formato(tabla::DataFrame, formato="latex", copiar= true)::Any
+
+# Regresa una String con la tablANDREAa en el formato especificado, puede ser ``\\LaTeX`` o `markdown`, tambien se puede especificar si la string de regreso se copia al portapapeles por medio del parametro copiar, por default esta habilitado.
+# ```julia-repl
+# julia> formato(dt,"latex")
+# "\\begin{tabular}{cc}
+# A & B\\\\
+# 1 & 1\\\\
+# 2 & 2\\\\
+# 3 & 3\\\\
+# \\end{tabular}
+# "
+
+# julia> formato(dt,"md",false)
+# A B
+# – –
+# 1 1
+# 2 2
+# 3 3
+# ```
+# """
+# function formato(tabla::DataFrame, formato="latex", copiar= true)::Any
+# copy_to_clipboard(copiar)
+# if formato == "latex"
+# return latexify(tabla,env=:table,latex=false)
+# elseif formato == "md"
+# return mdtable(tabla,latex=false)
+# end
+# end
+
+
+mutable struct tokens 
+  literal::Any
+  operador::String
+  col::Any
+  izq::String
+  der::String end
+
+function evaluador(operador::String , izq::Any, der::Any)
+  if operador == ">="
+    return izq >= der
+  end
+  if operador == "<="
+    return izq <= der
+  end
+  if operador == "=="
+    return izq == der
+  end
+  if operador == "!="
+    return izq != der
+  end
+  if operador == ">"
+    return izq > der
+  end
+  if operador == "<"
+    return izq < der
+  end
+end
+""" 
+    filtrar(tabla::DataFrame, condiciones...)::DataFrame
+
+Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este caso los parámetros actúan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
+# Ejemplo
+```julia-repl
+julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
+4×2 DataFrame
+ Row │ A      B      
+     │ Int32  String 
+─────┼───────────────
+   1 │     1  A
+   2 │     2  A
+   3 │     2  B
+   4 │     3  BB
+
+julia> Filtrar(dt, ":1 == 2")
+2×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+   2 │ 2    B
+```
+En caso de que se trate de una string se deben siempre encerrar entre comillas simples.
+
+```julia-repl
+julia> Filtrar(dt, "'A' == :2")
+2×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 1    A
+   2 │ 2    A
+```
+Las condiciones se deben poner en parametros diferentes.
+
+```julia-repl
+julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+1×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+```
+"""
+function filtrar(tabla::DataFrame, condiciones...)::DataFrame
+  aux = collect(condiciones)
+  condiciones = []
+  for cond in aux
+    if isa(cond,Tuple)
+      v = collect(cond)
+      condiciones = cat(condiciones,v,dims= (1,1))
+    else
+       push!(condiciones, cond)
+    end
+  end
+
+  if length(condiciones) == 0
+    return tabla
+  end
+  #los nombres de las columnas 
+  nombres_columnas = names(tabla)
+  posicion_columnas = Dict()
+  # para poder acceder por medio del numero de la columna a la columna
+  for (idx,nombre_columna) in enumerate(nombres_columnas)
+    push!(posicion_columnas, nombre_columna => idx)
+  end
+  tokens_arr= []
+  for (idx , condicion) in enumerate(condiciones )
+    data = matcher(condicion)  #
+    if data.col in nombres_columnas
+      data.col = posicion_columnas[data.col]
+    else
+      try 
+      data.col = parse(Int32,data.col)
+      catch
+        error("$(data.col) no existe en la tabla")
+      end
+      if length(nombres_columnas) < data.col
+        error("$(data.col) fuera de rango ")
+      end
+    end
+    push!(tokens_arr,data)
+  end
+  #iterar sobre la tabla
+  ans = DataFrame()
+  for nombre in nombres_columnas
+    ans[:,nombre] = []
+  end
+  for renglon in eachrow(tabla)
+    ban = true
+    for tokens in tokens_arr
+      aux = renglon[tokens.col]
+      if tokens.der == "literal"
+        if !evaluador(tokens.operador, aux,tokens.literal)
+          ban = false
+          break
+        end
+      else
+        if !evaluador(tokens.operador, tokens.literal, aux)
+          ban = false
+          break
+        end
+      end
+    end
+    if ban
+      push!(ans,renglon)
+    end
+  end
+  return ans
+end
+function matcher(input::String)
+  # input = ":col != 90"
+  operadores_expr= r">=|<=|={2}|>{1}|<{1}|!="
+  col_expr= r":[^\s]++"
+  string_expr = r"'.*'"
+  numero_expr  = r"[+-]?((\d+\.?\d*)|(\.\d+))"
+  izquierdo = "izq"
+  derecha = ""
+  izquierda =""
+  columna = ""
+  literal = ""
+  operador = match(operadores_expr, input)
+   operadores_reales =["==","<=","!=",">=",">","<"]
+  if operador === nothing
+    error("No hay operador")
+  end
+  args = split(input, operador.match)
+  if !(operador.match in operadores_reales)
+    error("No hay operador")
+  end
+
+  if (local columna_reg = match( col_expr,args[1][1:end])) !== nothing
+      global columna = columna_reg.match
+    if (local expr = match(string_expr,args[2]) ) !== nothing
+      global literal = expr.match[2:end-1]
+    else
+      if (local expr = match(numero_expr,args[2]))  !== nothing
+        global literal = parse(Float64,String(expr.match))
+      end
+    end
+      global derecha = "literal"
+      global izquierda = "columna"
+  elseif (local columna_reg = match( col_expr,args[2][1:end])) !== nothing
+      global columna = columna_reg.match
+    if (local expr = match(string_expr,args[1]) ) !== nothing
+      global literal = expr.match[2:end-1]
+    else
+      if (local expr = match(numero_expr,args[1]))  !== nothing
+        global literal = parse(Float64,expr.match)
+      end
+    end
+    global izquierda = "literal"
+    global derecha = "columna"
+  else
+    error("No hay columna")
+  end
+  return tokens(literal,"$(operador.match)", "$(columna[2:end])","$izquierda","$derecha")
+end
+
+
+"""
+    contar_renglones(tabla::DataFrame, condiciones...)::Number
+
+Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
+# Ejemplo 
+
+```julia-repl
+julia> dt
+4×2 DataFrame
+ Row │ A      B      
+     │ Int32  String 
+─────┼───────────────
+   1 │     1  A
+   2 │     2  A
+   3 │     2  B
+   4 │     3  BB
+
+julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+1×2 DataFrame
+ Row │ A    B   
+     │ Any  Any 
+─────┼──────────
+   1 │ 2    A
+
+julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
+1
+```
+"""
+function contar_renglones(tabla::DataFrame, condiciones...)::Number
+  return nrow(filtrar(tabla, condiciones))
+end
+
+
+
+"""
+    unzip(path::String, dest::String="")
+
+Descomprime y guarda el archivo en el destino indicado(`dest`), si no se proporciona un destino, se guarda en el directorio actual.
+
+# Ejemplo
+```julia-repl
+julia> unzip("datos.zip")
+julia> unzip("datos.zip", pwd()*"/datos")
+```
+"""
+function unzip(path::String, dest::String="")
+  if dest == ""
+    InfoZIP.unzip(path, pwd())
+  else
+    InfoZIP.unzip(path, dest)
+  end
+end
+
+
+"""
+    csv_a_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
+
+Lee un archivo CSV con el `encoding` indicado y regresa un `DataFrame`.
+
+# Ejemplo
+```julia-repl
+julia> df = DataFrameEncode("datos.csv")
+julia> df_latin1 = DataFrameEncode("datos.csv", "LATIN1")
+```
+
+Los _encodings_ soportados dependen de la plataforma, obtén la lista de la siguiente manera.
+
+```julia-repl
+julia> using StringEncodings
+julia> encodings()
+
+```
+"""
+function csv_a_DataFrame(path::String, encoding::String="UTF-8")
+  f = open(path, "r")
+  s = StringDecoder(f, encoding, "UTF-8")
+  data = DataFrame(CSV.File(s))
+  close(s)
+  close(f)
+  return data
+end
+
+
+"""
+    cargar_csv(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
+
+Crea un `DataFrame` dado un archivo CSV o una liga al archivo.
+Se pude especificar el _encoding_.
+
+# Ejemplo
+```julia-repl
+julia> url = "http://www.conapo.gob.mx/work/models/OMI/Datos_Abiertos/DA_IAIM/IAIM_Municipio_2010.csv"
+julia> first(cargar_csv(url, "URL", "LATIN1"))
+julia> first(cargar_csv("prueba.csv"))
+```
+"""
+function cargar_csv(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
+  if type == "PATH"
+    return csv_a_DataFrame(path_url, encoding)
+  elseif type == "URL"
+    path = HTTP.download(path_url, pwd())
+    return csv_a_DataFrame(path, encoding)
+  else
+    error("'type' debe de ser 'PATH' o 'URL'")
+  end
+end
+
+"""
+    sumar_columna(tabla::DataFrame, col::Int)::Number
+    sumar_columna(tabla::DataFrame, col::String)::Number
+
+Suma todos los valores de una determinada columna en un `DataFrame`.
+Para hacer referencia a que columna se desea sumar se pude usar la posición de la columna o el nombre que tiene.
+
+# Ejemplo
+```julia-repl
+julia> df = cargar_csv("datos.csv")
+4×2 DataFrame
+ Row │ x      y
+     │ Int64  Int64
+─────┼──────────────
+   1 │     0     11
+   2 │     2     12
+   3 │     0     13
+   4 │    40     14
+
+julia> sumar_columna(df, 1)
+42
+
+julia> sumar_columna(df, "x")
+42
+```
+"""
+function sumar_columna(tabla::DataFrame, col)::Number
+  return sum(eachcol(tabla)[col])
+end
+
+
+"""
+    sumar_fila(tabla::DataFrame, fila::Int)::Number
+
+Suma todos los valores de una determinada fila en un `DataFrame`.
+La fila se especifica con la posición en la que se encuentra.
+
+# Ejemplo
+```julia-repl
+julia> df = cargar_csv("datos.csv")
+4×2 DataFrame
+ Row │ x      y
+     │ Int64  Int64
+─────┼──────────────
+   1 │     0     11
+   2 │     2     12
+   3 │     0     13
+   4 │    40     14
+
+julia> sumar_fila(df, 2)
+14
+
+julia> sumar_fila(df, 4)
+54
+```
+"""
+function sumar_fila(tabla::DataFrame, fila::Int)::Number
+  return sum(eachrow(tabla)[fila])
+end
+
+"""
+    jsonparse(url::String)::Dict
+
+Hace un http request al `url` especificado y convierte el `json` obtenido del sitio web en un diccionario.
+En caso de que el servidor devuelva un _status_ distinto a _200_, se arroja un `error`.
+
+# Ejemplo
+```julia-repl
+julia> datos = jsonparse("https://sitioweb.com/datos.json")
+```
+"""
+function jsonparse(url::String)::Dict
+  request = HTTP.request("GET", url)
+
+  if request.status == 200
+    json = String(request.body)
+    return JSON.parse(json, dicttype=Dict, inttype=Int8)
+  else
+    error("Error de servidor, respuesta http: $request.status")
+  end
+end
+function get_info(path::String,tipos=[])
+  if !isfile(path)
+    path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path")
+  end
+  if length(tipos) > 0 
+    return DataFrame(CSV.File(path,types=tipos))
+  else
+    return DataFrame(CSV.File(path))
+  end
+end
+# Int32,Int32,Int32,String,Int32,Int32,Int32,String,String,String
+
