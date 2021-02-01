@@ -303,14 +303,13 @@ end
 """
     clave(id::String)::String
 
-Toma como parametro el nombre de algun municipio o entidad y regresa la clave de este.
+Toma como parámetro el nombre de algún municipio o entidad y regresa la clave de este.
 
 # Ejemplo
 
 ```julia-repl
 julia> clave("Campeche")
 "04"
-
 julia> clave("Calakmul")
 "010"
 ```
@@ -333,14 +332,15 @@ Regresa el indice de desarrollo humano de una entidad o de un municipio se debe 
 ```julia-repl
 julia> idh(clave("Campeche"),"002")
 0.797
-
 julia> idh(clave("Campeche"),"003")
 0.775
 ```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = data_check("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/IDH.csv","URL")
+    tabla = cargar_csv("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/IDH.csv","URL")
        
+  if !isfile(path)
+
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
     end
