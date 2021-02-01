@@ -3,7 +3,7 @@ using Dates, Printf
 include("Operations.jl")
 include("Constants.jl")
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todos_entidades, clave,idh
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh
 
 
 
@@ -178,9 +178,9 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
   end
 
   lugar = estado * ", " * municipio
-  hom = indicadores["1002000002"]       
-  muj = indicadores["1002000003"]       
-  tot = hom + muj #Parce ser que el API no proporciona este dato(!?)
+  hom = trunc(Int64, indicadores["1002000002"])
+  muj = trunc(Int64, indicadores["1002000003"])
+  tot = trunc(Int64, hom + muj) #Parce ser que el API no proporciona este dato(!?)
   den = indicadores["3105001001"]       
   porcen_hom = indicadores["6207020032"]
   porcen_muj = indicadores["6207020033"]
@@ -189,7 +189,7 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
   df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
     porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
     porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
-  
+ 
   return df 
 end
 
@@ -207,9 +207,9 @@ function parse_poblacion(datos::Dict, lugar::String)::DataFrame
   # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
   # indígena= 6207019014 
 
-  tot = indicadores["1002000001"]        # población total                                 
-  hom = indicadores["1002000002"]        # población hombres
-  muj = indicadores["1002000003"]        # población mujeres
+  tot = trunc(Int64, indicadores["1002000001"])        # población total                                 
+  hom = trunc(Int64, indicadores["1002000002"])        # población hombres
+  muj = trunc(Int64, indicadores["1002000003"])        # población mujeres
   den = indicadores["3105001001"]        # densidad de población
   porcen_hom = indicadores["6207020032"] # porcentaje de hombres
   porcen_muj = indicadores["6207020033"] # porcentaje de mujeres
@@ -218,7 +218,7 @@ function parse_poblacion(datos::Dict, lugar::String)::DataFrame
   df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
     porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
     porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
-  
+
   return df 
 end
 
@@ -264,7 +264,7 @@ function poblacion_todos_municipios()::DataFrame
 end
 
 """
-    poblacion_todos_entidades()::DataFrame
+    poblacion_todas_entidades()::DataFrame
 
 Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 
@@ -280,7 +280,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 
 # Ejemplo
 ```julia-repl
-julia> poblacion_todos_entidades()
+julia> poblacion_todas_entidades()
 32×9 DataFrame
  Row │ entidad  entidad_nombre     total         densidad    hombres         mujeres         porcentaje_hombres ⋯
      │ String   String             Float64       Float64     Float64         Float64         Float64            ⋯
@@ -291,7 +291,7 @@ julia> poblacion_todos_entidades()
   32 │ 32       Zacatecas           1.49067e6    20.9791   726897.0        763771.0           48.7819
 ```                                                                                                                            
 """                                                                                                                             
-function poblacion_todos_entidades()::DataFrame
+function poblacion_todas_entidades()::DataFrame
   path = "poblacion_entidades.csv"
   if !isfile(path)
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/poblacion_entidades.csv", pwd())
@@ -321,7 +321,7 @@ end
 Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = data_check("IDH.csv")
+    tabla = cargar_csv("IDH.csv")
        
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
