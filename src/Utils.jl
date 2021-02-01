@@ -178,9 +178,9 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
   end
 
   lugar = estado * ", " * municipio
-  hom = indicadores["1002000002"]       
-  muj = indicadores["1002000003"]       
-  tot = hom + muj #Parce ser que el API no proporciona este dato(!?)
+  hom = trunc(Int64, indicadores["1002000002"])
+  muj = trunc(Int64, indicadores["1002000003"])
+  tot = trunc(Int64, hom + muj) #Parce ser que el API no proporciona este dato(!?)
   den = indicadores["3105001001"]       
   porcen_hom = indicadores["6207020032"]
   porcen_muj = indicadores["6207020033"]
@@ -189,7 +189,7 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
   df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
     porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
     porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
-  
+ 
   return df 
 end
 
@@ -207,9 +207,9 @@ function parse_poblacion(datos::Dict, lugar::String)::DataFrame
   # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
   # indígena= 6207019014 
 
-  tot = indicadores["1002000001"]        # población total                                 
-  hom = indicadores["1002000002"]        # población hombres
-  muj = indicadores["1002000003"]        # población mujeres
+  tot = trunc(Int64, indicadores["1002000001"])        # población total                                 
+  hom = trunc(Int64, indicadores["1002000002"])        # población hombres
+  muj = trunc(Int64, indicadores["1002000003"])        # población mujeres
   den = indicadores["3105001001"]        # densidad de población
   porcen_hom = indicadores["6207020032"] # porcentaje de hombres
   porcen_muj = indicadores["6207020033"] # porcentaje de mujeres
