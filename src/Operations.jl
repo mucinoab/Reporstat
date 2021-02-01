@@ -1,6 +1,6 @@
 push!(LOAD_PATH,"../src/")
 using DataFrames
-export seleccionar, filtrar, contar_renglones, unzip, data_check, fechahoy, sumacolumna, sumafila,CSV_to_DataFrame, jsonparse
+export seleccionar, filtrar, contar_renglones, unzip, cargar_csv, fechahoy, sumar_columna, sumar_fila,csv_a_DataFrame, jsonparse
 """
     seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame
 
@@ -350,7 +350,7 @@ end
 
 
 """
-    CSV_to_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
+    csv_a_DataFrame(path_url::String, encoding::String="UTF-8")::DataFrame
 
 Lee un archivo CSV con el `encoding` indicado y regresa un `DataFrame`.
 
@@ -368,7 +368,7 @@ julia> encodings()
 
 ```
 """
-function CSV_to_DataFrame(path::String, encoding::String="UTF-8")
+function csv_a_DataFrame(path::String, encoding::String="UTF-8")
   f = open(path, "r")
   s = StringDecoder(f, encoding, "UTF-8")
   data = DataFrame(CSV.File(s))
@@ -379,7 +379,7 @@ end
 
 
 """
-    data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
+    cargar_csv(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
 
 Crea un `DataFrame` dado un archivo CSV o una liga al archivo.
 Se pude especificar el _encoding_.
@@ -387,31 +387,31 @@ Se pude especificar el _encoding_.
 # Ejemplo
 ```julia-repl
 julia> url = "http://www.conapo.gob.mx/work/models/OMI/Datos_Abiertos/DA_IAIM/IAIM_Municipio_2010.csv"
-julia> first(data_check(url, "URL", "LATIN1"))
-julia> first(data_check("prueba.csv"))
+julia> first(cargar_csv(url, "URL", "LATIN1"))
+julia> first(cargar_csv("prueba.csv"))
 ```
 """
-function data_check(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
+function cargar_csv(path_url::String, type::String="PATH", encoding::String="UTF-8")::DataFrame
   if type == "PATH"
-    return CSV_to_DataFrame(path_url, encoding)
+    return csv_a_DataFrame(path_url, encoding)
   elseif type == "URL"
     path = HTTP.download(path_url, pwd())
-    return CSV_to_DataFrame(path, encoding)
+    return csv_a_DataFrame(path, encoding)
   else
     error("'type' debe de ser 'PATH' o 'URL'")
   end
 end
 
 """
-    sumacolumna(tabla::DataFrame, col::Int)::Number
-    sumacolumna(tabla::DataFrame, col::String)::Number
+    sumar_columna(tabla::DataFrame, col::Int)::Number
+    sumar_columna(tabla::DataFrame, col::String)::Number
 
 Suma todos los valores de una determinada columna en un `DataFrame`.
 Para hacer referencia a que columna se desea sumar se pude usar la posición de la columna o el nombre que tiene.
 
 # Ejemplo
 ```julia-repl
-julia> df = data_check("datos.csv")
+julia> df = cargar_csv("datos.csv")
 4×2 DataFrame
  Row │ x      y
      │ Int64  Int64
@@ -421,27 +421,27 @@ julia> df = data_check("datos.csv")
    3 │     0     13
    4 │    40     14
 
-julia> sumacolumna(df, 1)
+julia> sumar_columna(df, 1)
 42
 
-julia> sumacolumna(df, "x")
+julia> sumar_columna(df, "x")
 42
 ```
 """
-function sumacolumna(tabla::DataFrame, col)::Number
+function sumar_columna(tabla::DataFrame, col)::Number
   return sum(eachcol(tabla)[col])
 end
 
 
 """
-    sumafila(tabla::DataFrame, fila::Int)::Number
+    sumar_fila(tabla::DataFrame, fila::Int)::Number
 
 Suma todos los valores de una determinada fila en un `DataFrame`.
 La fila se especifica con la posición en la que se encuentra.
 
 # Ejemplo
 ```julia-repl
-julia> df = data_check("datos.csv")
+julia> df = cargar_csv("datos.csv")
 4×2 DataFrame
  Row │ x      y
      │ Int64  Int64
@@ -451,14 +451,14 @@ julia> df = data_check("datos.csv")
    3 │     0     13
    4 │    40     14
 
-julia> sumafila(df, 2)
+julia> sumar_fila(df, 2)
 14
 
-julia> sumafila(df, 4)
+julia> sumar_fila(df, 4)
 54
 ```
 """
-function sumafila(tabla::DataFrame, fila::Int)::Number
+function sumar_fila(tabla::DataFrame, fila::Int)::Number
   return sum(eachrow(tabla)[fila])
 end
 
