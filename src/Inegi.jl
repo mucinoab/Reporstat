@@ -335,7 +335,7 @@ julia> idh(clave("Campeche"),"003")
 ```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = cargar_csv("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/IDH.csv","URL")
+    tabla = get_info("IDH.csv",[String,String,String,String,Float64])
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
     end
