@@ -493,6 +493,6 @@ function get_info(path::String,tipos=[])
   else
     return DataFrame(CSV.File(path))
   end
+  error("No existe $id esa entidad o estado")
 end
-
 
