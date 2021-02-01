@@ -3,9 +3,7 @@ using Dates, Printf
 include("Operations.jl")
 include("Constants.jl")
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh
-
-
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
 
 #TODO nombre
 """
@@ -357,3 +355,56 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
         end
     end
 end
+
+"""
+    indicadores_pobreza()::DataFrame
+
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_. 
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza() 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Int64    Int64      Int64     ⋯
+──────┼────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes   224949      13650     211299 ⋯
+    2 │ 01       Aguascalientes       002        Asientos          25169       2067      23101 ⋯
+   ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮   
+```
+"""
+function indicadores_pobreza()::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
+  end
+  return DataFrame(CSV.File(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64]))
+end
+
+"""
+    indicadores_pobreza_porcentaje()::DataFrame
+
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_.
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_porcentaje() 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Float64  Float64    Float64   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes      26.1        1.6       24.5 ⋯
+    2 │ 01       Aguascalientes       002        Asientos            54.0        4.4       49.5 ⋯
+   ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮    
+```
+"""
+function indicadores_pobreza_porcentaje()::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
+  end
+  return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+end
+
