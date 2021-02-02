@@ -2,7 +2,7 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf
 include("Utils.jl")
 include("Constants.jl")
-using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
+using InfoZIP, HTTP,  StringEncodings, JSON
 export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh
 
 
@@ -318,7 +318,7 @@ end
 """
     idh(cve_entidad::String, cve_municipio::String="")::Number
 
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
     tabla = get_info("IDH.csv",[String,String,String,String,Float64])
