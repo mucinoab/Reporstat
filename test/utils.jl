@@ -34,8 +34,8 @@
 
     cdmx = Reporstat.poblacion_municipio("09", "016")
     @test cdmx.lugar == ["Ciudad de México, Miguel Hidalgo"]
-    @test cdmx.hombres == [172667]
-    @test cdmx.mujeres == [200222]
+    @test cdmx.hombres == [195467]
+    @test cdmx.mujeres == [219003]
     @test cdmx.porcentaje_hombres == [47.1607112698145]
     @test cdmx.porcentaje_mujeres == [52.8392887301855]
     @test cdmx.porcentaje_indigena == [5.0142822]

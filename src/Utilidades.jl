@@ -484,7 +484,7 @@ function jsonparse(url::String)::Dict
   end
 end
 
-function get_info(path::String,tipos=[])
+function get_info(path::String,tipos=[])::DataFrame
   if !isfile(path)
     path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path")
   end
@@ -493,6 +493,5 @@ function get_info(path::String,tipos=[])
   else
     return DataFrame(CSV.File(path))
   end
-  error("No existe $id esa entidad o estado")
 end
 
