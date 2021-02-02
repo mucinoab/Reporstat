@@ -1,5 +1,8 @@
 push!(LOAD_PATH,"../src/")
-using Dates, Printf include("Utilidades.jl") include("Constants.jl") using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
+using Dates, Printf 
+include("Utilidades.jl") 
+include("Constants.jl") 
+using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
 export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
 
 #TODO nombre
