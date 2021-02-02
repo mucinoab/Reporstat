@@ -1,8 +1,5 @@
 push!(LOAD_PATH,"../src/")
-using Dates, Printf
-include("Utilidades.jl")
-include("Constants.jl")
-using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
+using Dates, Printf include("Utilidades.jl") include("Constants.jl") using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
 export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
 
 #TODO nombre
@@ -347,7 +344,7 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
             error("No se encontro la clave")
         end
         q1 = ":cve_entidad == \"$cve_entidad\""
-        q2 = ":cve_municipio == \"$(parse(Int32,cve_municipio))\""
+        q2 = ":cve_municipio == '$cve_municipio'"
         try 
             return filtrar(tabla,q1,q2)[1,:].idh
         catch
@@ -408,3 +405,38 @@ function indicadores_pobreza_porcentaje()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
+"""
+    int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+
+Devuelve la intensidad migratoria de una entidad o municipio.
+
+# Ejemplo
+
+```julia-repl
+julia> int_migratoria(clave("Campeche"),"003")
+0.288
+
+julia> int_migratoria(clave("Campeche"))
+0.64
+```
+"""
+
+function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+  q1 = ":ENT == '$cve_entidad'"
+  if cve_municipio == ""
+    tabla = get_info("IAIM_Entidad.csv",[String,Float64])
+    try 
+      return filtrar(tabla,q1)[1,:].IAIM
+    catch 
+      error("Clave $cve_entidad no encontrada")
+    end
+  else
+    q2 = ":MUN == '$cve_municipio'"
+    tabla = get_info("IAIM_Municipio.csv",[String,String,Float64])
+    try 
+      return filtrar(tabla,q1,q2)[1,:].IAIM
+    catch 
+      error("Clave no encontrada")
+    end
+  end
+end
