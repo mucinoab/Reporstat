@@ -1,5 +1,5 @@
 push!(LOAD_PATH,"../src/")
-using DataFrames
+using DataFrames,CSV
 export seleccionar, filtrar, contar_renglones, unzip, cargar_csv, fechahoy, sumar_columna, sumar_fila,csv_a_DataFrame, jsonparse
 """
     seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame

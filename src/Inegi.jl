@@ -1,8 +1,8 @@
 push!(LOAD_PATH,"../src/")
-using Dates, Printf
-include("Utilidades.jl")
-include("Constants.jl")
-using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
+using Dates, Printf 
+include("Utilidades.jl") 
+include("Constants.jl") 
+using InfoZIP, HTTP,  StringEncodings, JSON
 export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
 
 #TODO nombre
@@ -300,7 +300,7 @@ end
 """
     idh(cve_entidad::String, cve_municipio::String="")::Number
 
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
 julia> idh(clave("Campeche"),"002")
@@ -322,7 +322,7 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
             error("No se encontro la clave")
         end
         q1 = ":cve_entidad == \"$cve_entidad\""
-        q2 = ":cve_municipio == \"$(parse(Int32,cve_municipio))\""
+        q2 = ":cve_municipio == '$cve_municipio'"
         try 
             return filtrar(tabla,q1,q2)[1,:].idh
         catch
@@ -383,3 +383,39 @@ function indicadores_pobreza_porcentaje()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
+"""
+    int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+
+Devuelve la intensidad migratoria de una entidad o municipio,
+los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+
+# Ejemplo
+
+```julia-repl
+julia> int_migratoria(clave("Campeche"),"003")
+0.288
+
+julia> int_migratoria(clave("Campeche"))
+0.64
+```
+"""
+
+function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+  q1 = ":ENT == '$cve_entidad'"
+  if cve_municipio == ""
+    tabla = get_info("IAIM_Entidad.csv",[String,Float64])
+    try 
+      return filtrar(tabla,q1)[1,:].IAIM
+    catch 
+      error("Clave $cve_entidad no encontrada")
+    end
+  else
+    q2 = ":MUN == '$cve_municipio'"
+    tabla = get_info("IAIM_Municipio.csv",[String,String,Float64])
+    try 
+      return filtrar(tabla,q1,q2)[1,:].IAIM
+    catch 
+      error("Clave no encontrada")
+    end
+  end
+end
