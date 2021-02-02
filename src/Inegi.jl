@@ -386,7 +386,8 @@ end
 """
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
 
-Devuelve la intensidad migratoria de una entidad o municipio.
+Devuelve la intensidad migratoria de una entidad o municipio,
+los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
 
 # Ejemplo
 
