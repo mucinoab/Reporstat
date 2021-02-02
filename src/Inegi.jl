@@ -166,29 +166,11 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
 
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
-
-  datos = jsonparse(url)
-  indicadores = Dict{String, Float64}()
-
-  for dato in datos["Series"]
-    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
-  end
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
 
   lugar = estado * ", " * municipio
-  hom = trunc(Int64, indicadores["1002000002"])
-  muj = trunc(Int64, indicadores["1002000003"])
-  tot = trunc(Int64, hom + muj) #Parce ser que el API no proporciona este dato(!?)
-  den = indicadores["3105001001"]       
-  porcen_hom = indicadores["6207020032"]
-  porcen_muj = indicadores["6207020033"]
-  porcen_ind = indicadores["6207019014"]
 
-  df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
-    porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
- 
-  return df 
+  return parse_poblacion(jsonparse(url), lugar)
 end
 
 #TODO documentación
@@ -205,17 +187,18 @@ function parse_poblacion(datos::Dict, lugar::String)::DataFrame
   # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
   # indígena= 6207019014 
 
-  tot = trunc(Int64, indicadores["1002000001"])        # población total                                 
-  hom = trunc(Int64, indicadores["1002000002"])        # población hombres
-  muj = trunc(Int64, indicadores["1002000003"])        # población mujeres
-  den = indicadores["3105001001"]        # densidad de población
-  porcen_hom = indicadores["6207020032"] # porcentaje de hombres
-  porcen_muj = indicadores["6207020033"] # porcentaje de mujeres
-  porcen_ind = indicadores["6207019014"] # porcentaje de población que se considera indígena
+  tot = trunc(Int64, indicadores["1002000001"])# población total                                 
+  den = indicadores["3105001001"]              # densidad de población
+  ext = tot/den                                # extensión territorial
+  porcen_hom = indicadores["6207020032"]       # porcentaje de hombres
+  porcen_muj = indicadores["6207020033"]       # porcentaje de mujeres
+  porcen_ind = indicadores["6207019014"]       # porcentaje de población que se considera indígena
+  hom =trunc(Int64,round(0.01*tot*porcen_hom)) # población hombres
+  muj =trunc(Int64,round(0.01*tot*porcen_muj)) # población mujeres
 
   df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
     porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
+    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den], extesion_territorial=[ext])
 
   return df 
 end
@@ -253,12 +236,8 @@ julia> poblacion_todos_municipios()
 ```
 """
 function poblacion_todos_municipios()::DataFrame
-  path = "muni.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/muni.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  path = "poblacion_municipios.csv"
+  return get_info(path, [String, String, String, String, Int64, Float64, Int64, Int64, Float64, Float64, Float64, Float64])
 end
 
 """
@@ -291,11 +270,7 @@ julia> poblacion_todas_entidades()
 """                                                                                                                             
 function poblacion_todas_entidades()::DataFrame
   path = "poblacion_entidades.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/poblacion_entidades.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  return get_info(path, [String, String, Int64, Float64, Float64, Int64, Int64, Float64, Float64, Float64])
 end
 
 """
