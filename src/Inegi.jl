@@ -1,11 +1,9 @@
 push!(LOAD_PATH,"../src/")
 using Dates, Printf
-include("Operations.jl")
+include("Utilidades.jl")
 include("Constants.jl")
 using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh
-
-
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
 
 #TODO nombre
 """
@@ -301,9 +299,18 @@ function poblacion_todas_entidades()::DataFrame
 end
 
 """
-   clave(id::String)::String
+    clave(id::String)::String
 
-Toma como parametro el nombre de algun municipio o entidad y regresa la clave de este.
+Toma como parámetro el nombre de algún municipio o entidad y regresa la clave de este.
+
+# Ejemplo
+
+```julia-repl
+julia> clave("Campeche")
+"04"
+julia> clave("Calakmul")
+"010"
+```
 """
 function clave(id::String)::String
   if haskey(entidad_nombre, id)
@@ -319,10 +326,16 @@ end
     idh(cve_entidad::String, cve_municipio::String="")::Number
 
 Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+# Ejemplo
+```julia-repl
+julia> idh(clave("Campeche"),"002")
+0.797
+julia> idh(clave("Campeche"),"003")
+0.775
+```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = cargar_csv("IDH.csv")
-       
+    tabla = get_info("IDH.csv",[String,String,String,String,Float64])
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
     end
@@ -342,3 +355,56 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
         end
     end
 end
+
+"""
+    indicadores_pobreza()::DataFrame
+
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_. 
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza() 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Int64    Int64      Int64     ⋯
+──────┼────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes   224949      13650     211299 ⋯
+    2 │ 01       Aguascalientes       002        Asientos          25169       2067      23101 ⋯
+   ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮   
+```
+"""
+function indicadores_pobreza()::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
+  end
+  return DataFrame(CSV.File(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64]))
+end
+
+"""
+    indicadores_pobreza_porcentaje()::DataFrame
+
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_.
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_porcentaje() 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Float64  Float64    Float64   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes      26.1        1.6       24.5 ⋯
+    2 │ 01       Aguascalientes       002        Asientos            54.0        4.4       49.5 ⋯
+   ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮    
+```
+"""
+function indicadores_pobreza_porcentaje()::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
+  end
+  return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+end
+
