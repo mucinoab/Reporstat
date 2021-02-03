@@ -530,33 +530,62 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 
 	nacimientos = get_info("nacimientos.csv")
 
-	localidad = poblacion_municipio(cve_entidad, cve_municipio)
-	pob_mujeres = localidad[:1, :4]
+	if(cve_entidad=="")
+		localidad = poblacion_entidad(cve_entidad)
+		pob_mujeres = localidad[:1, :4]
 
-	municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
-  	nacimientos_muni = municipio[:1, :4]
-	if(nacimientos_muni == "")
-		natalidad = 0
+		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+  		nacimientos_ent = estado[:1, :4]
+		if(nacimientos_ent == "")
+			natalidad = 0
+		else
+			natalidad = nacimientos_ent/pob_mujeres
+		end
 	else
-		natalidad = nacimientos_muni/pob_mujeres
+		localidad = poblacion_municipio(cve_entidad, cve_municipio)
+		pob_mujeres = localidad[:1, :4]
+
+		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+  		nacimientos_muni = municipio[:1, :4]
+		if(nacimientos_muni == "")
+			natalidad = 0
+		else
+			natalidad = nacimientos_muni/pob_mujeres
+		end
 	end
 
 	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv")
 
-	fertil_muni = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
-	pob_fertil = fertil_muni[:1, :4]
-	fecundidad = nacimientos_muni/pob_fertil
-
+	if(cve_entidad=="")
+		fertil_ent = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == '000'")
+		pob_fertil = fertil_ent[:1, :4]
+		fecundidad = nacimientos_ent/pob_fertil
+	else
+		fertil_muni = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		pob_fertil = fertil_muni[:1, :4]
+		fecundidad = nacimientos_muni/pob_fertil
+	end
+	
 	defunciones = get_info("defunciones_municipio_2019.csv")
 
 	pob_total = localidad[:1, :2]
 
-	municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
-	defunciones_muni = municipio[:1, :4]
-	if(defunciones_muni == "")
-		mortalidad = 0
+	if(cve_entidad=="")
+		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+		defunciones_ent = estado[:1, :4]
+		if(defunciones_ent == "")
+			mortalidad = 0
+		else
+			mortalidad = defunciones_ent/pob_total
+		end
 	else
-		mortalidad = defunciones_muni/pob_total
+		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		defunciones_muni = municipio[:1, :4]
+		if(defunciones_muni == "")
+			mortalidad = 0
+		else
+			mortalidad = defunciones_muni/pob_total
+		end
 	end
 	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
 end
