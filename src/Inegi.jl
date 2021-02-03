@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales, edad_municipios, edad_entidades 
 
 #TODO nombre
 """
@@ -384,6 +384,52 @@ function indicadores_pobreza_porcentaje()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
+
+"""
+    edad_municipios()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por municipio en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_municipios()
+2469×7 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
+      │ String   String          String     String            Float64        Float64       Float64                  
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes        14           28              46
+    2 │ 01       Aguascalientes  002        Asientos              11           24              42
+    3 │ 01       Aguascalientes  003        Calvillo              12           27              46
+   ⋮           ⋮             ⋮       ⋮             ⋮                   ⋮            ⋮               ⋮
+```
+"""
+function edad_municipios()::DataFrame
+  return get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
+end
+
+"""
+    edad_entidades()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por entidad en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_entidades()
+32×5 DataFrame
+  Row │ entidad  entidad_nombre    	  Q1             Q2            Q3
+      │ String   String                 Float64        Float64       Float64                  
+──────┼───────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes            13           26              43
+    2 │ 02       Baja California           15           28              44
+    3 │ 03       Baja California Sur  	   14           28              43
+   ⋮        ⋮             ⋮      		     ⋮             ⋮                ⋮            
+```
+"""
+function edad_entidades()::DataFrame
+  return get_info("cuartiles_entidades_2020.csv",[String,String,Float64,Float64,Float64])
+end
+
+
+
+
 """
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
 
@@ -592,44 +638,4 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 end
 
 
-"""
-    edad_municipios()::DataFrame
-Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por municipio en formato `DataFrame`.
-Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
-# Ejemplo
-```julia-repl
-julia> edad_municipios()
-2469×7 DataFrame
-  Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
-      │ String   String          String     String            Float64        Float64       Float64                  
-──────┼──────────────────────────────────────────────────────────────────────────────────────────────────
-    1 │ 01       Aguascalientes  001        Aguascalientes        14           28              46
-    2 │ 01       Aguascalientes  002        Asientos              11           24              42
-    3 │ 01       Aguascalientes  003        Calvillo              12           27              46
-   ⋮           ⋮             ⋮       ⋮             ⋮                   ⋮            ⋮               ⋮
-```
-"""
-function edad_municipios()::DataFrame
-  return get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
-end
 
-"""
-    edad_entidades()::DataFrame
-Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por entidad en formato `DataFrame`.
-Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
-# Ejemplo
-```julia-repl
-julia> edad_entidades()
-32×5 DataFrame
-  Row │ entidad  entidad_nombre    	  Q1             Q2            Q3
-      │ String   String                 Float64        Float64       Float64                  
-──────┼───────────────────────────────────────────────────────────────────────────
-    1 │ 01       Aguascalientes            13           26              43
-    2 │ 02       Baja California           15           28              44
-    3 │ 03       Baja California S         14           28              43
-   ⋮        ⋮             ⋮      		     ⋮             ⋮                ⋮            
-```
-"""
-function edad_entidades()::DataFrame
-  return get_info("cuartiles_entidades_2020.csv",[String,String,Float64,Float64,Float64])
-end
