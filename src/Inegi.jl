@@ -2,9 +2,11 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf 
 include("Utilidades.jl") 
 include("Constants.jl") 
-using InfoZIP, HTTP,  StringEncodings, JSON
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales
+using InfoZIP, HTTP,  StringEncodings, JSON
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipior
+
+
 
 #TODO nombre
 """
@@ -384,6 +386,52 @@ function indicadores_pobreza_porcentaje()::DataFrame
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
 end
 
+
+"""
+    edad_municipios()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por municipio en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_municipios()
+2469×7 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
+      │ String   String          String     String            Float64        Float64       Float64                  
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes        14           28              46
+    2 │ 01       Aguascalientes  002        Asientos              11           24              42
+    3 │ 01       Aguascalientes  003        Calvillo              12           27              46
+   ⋮           ⋮             ⋮       ⋮             ⋮                   ⋮            ⋮               ⋮
+```
+"""
+function edad_municipios()::DataFrame
+  return get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
+end
+
+"""
+    edad_entidades()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por entidad en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_entidades()
+32×5 DataFrame
+  Row │ entidad  entidad_nombre    	  Q1             Q2            Q3
+      │ String   String                 Float64        Float64       Float64                  
+──────┼───────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes            13           26              43
+    2 │ 02       Baja California           15           28              44
+    3 │ 03       Baja California Sur  	   14           28              43
+   ⋮        ⋮             ⋮      		     ⋮             ⋮                ⋮            
+```
+"""
+function edad_entidades()::DataFrame
+  return get_info("cuartiles_entidades_2020.csv",[String,String,Float64,Float64,Float64])
+end
+
+
+
+
 """
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
 
@@ -400,31 +448,52 @@ julia> int_migratoria(clave("Campeche"))
 0.64
 ```
 """
-
 function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
-  q1 = ":ENT == '$cve_entidad'"
+  q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     tabla = get_info("IAIM_Entidad.csv",[String,Float64])
     try 
-      return filtrar(tabla,q1)[1,:].IAIM
+      return filtrar(tabla,q1).IAIM
     catch 
       error("Clave $cve_entidad no encontrada")
     end
   else
-    q2 = ":MUN == '$cve_municipio'"
-    tabla = get_info("IAIM_Municipio.csv",[String,String,Float64])
+    q2 = ":mun == '$cve_municipio'"
+    tabla = get_info("IAIM_Municipio.csv",[String,String,String,String,Float64])
     try 
-      return filtrar(tabla,q1,q2)[1,:].IAIM
+      return filtrar(tabla,q1,q2).iaim
     catch 
       error("Clave no encontrada")
     end
   end
 end
+"""
+    int_migratoria_todos()::DataFrame
 
+Regresa un `DataFrame` con  los indices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+
+# Ejemplo
+
+```julia-repl
+julia> int_migratoria_todos()
+2469×5 DataFrame
+  Row │ ent     ent_nombre      mun     mun_nom                       iaim     ⋯
+      │ String  String          String  String                        Float64? ⋯
+──────┼─────────────────────────────────────────────────────────────────────────
+    1 │ 01      Aguascalientes  001     Aguascalientes                   1.92  ⋯
+    2 │ 01      Aguascalientes  002     Asientos                         5.18
+  ⋮   │   ⋮           ⋮           ⋮                  ⋮                   ⋮     ⋱
+ 2468 │ 32      Zacatecas       057     Trancoso                         4.141 ⋯
+ 2469 │ 32      Zacatecas       058     Santa María de la Paz           10.074
+```
+ """
+function int_migratoria_todos()::DataFrame
+     return get_info("IAIM_Municipio.csv",[String,String,String,String,Float64])
+end
 """
     geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
 
-Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.
+Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.Puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 Se pueden hacer consultas de una entidad o de un municipio.
 ```julia-repl
@@ -453,11 +522,11 @@ julia> geografia(clave("Campeche"))
 ```
 """
 function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
-  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,Float64])
+  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     try
-      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","3","4","5"])
+      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","2","5","6","7"])
     catch 
       error("Clave $cve_entidad no encontrada")
     end
@@ -470,7 +539,32 @@ function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
     end
   end
 end
+"""
+    geografia_todos_municipios()::DataFrame
+Devuelve los datos geograficos de todos los municipios, puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
+# Ejemplo
+
+```julia-repl
+julia> geografia_todos_municipios()
+2469×7 DataFrame
+  Row │ ent     nom_ent         mun     nom_mun                       latitud  ⋯
+      │ String  String          String  String                        String   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────
+    1 │ 01      Aguascalientes  001     Aguascalientes                22°03´26 ⋯
+    2 │ 01      Aguascalientes  002     Asientos                      22°17´45
+  ⋮   │   ⋮           ⋮           ⋮                  ⋮                     ⋮   ⋱
+ 2468 │ 32      Zacatecas       057     Trancoso                      22°49´06 ⋯
+ 2469 │ 32      Zacatecas       058     Santa María de la Paz         21°33´55
+```
+"""
+function geografia_todos_municipios()::DataFrame
+  try 
+    return get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
+  catch
+    error("Hubo un problema consiguiendo la informacion")
+  end
+end
 """
     codigos_postales()::DataFrame
 
@@ -505,7 +599,7 @@ Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019)
 # Ejemplo
 
 ```julia-repl
-julia tasas_vitales("01", "001")
+julia> tasas_vitales("01", "001")
 1×3 DataFrame
  Row │ Natalidad  Fecundidad  Mortalidad
      │ Float64    Float64     Float64    
@@ -524,7 +618,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	end
 
 	try
-    		global municipio = municipios[cve_entidad*cve_municipio]
+    		 municipio = municipios[cve_entidad*cve_municipio]
 	catch e
     		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
@@ -589,4 +683,81 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 		end
 	end
 	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
+end
+
+
+# toma un string (a) y un arreglo (b) para regresar los elementos de b 
+# que tengan similitud con a. Qué tan similar tiene que ser un elemento
+# de b a "a" para ser considerado se ajusta con el parámetro "min_score".
+function colecta_similitud(id::String, iter::Array{String})::Array{String}
+  similar = String[]
+  for f in findall(id, iter, StringDistances.Levenshtein(), min_score = 0.5)
+    push!(similar, iter[f])
+  end
+  return similar
+end
+
+"""
+    similitud_entidad(entidad::String)::Array{String}
+
+Proporciona un arreglo con todas las entidades con un nombre igual o similar a `entidad`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_entidad("oajaca")
+1-element Array{String,1}:
+ "Oaxaca"
+
+julia> clave(similitud_entidad("oaxjaca")[1])
+"29"
+```
+"""
+function similitud_entidad(id::String)::Array{String}
+  entidades_iter = collect(values(entidades))
+  return colecta_similitud(id, entidades_iter)
+end
+ 
+"""
+    similitud_municipio(municipio::String)::Array{String}
+
+Proporciona un arreglo con todos los municipios con un nombre igual o similar a `municipio`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_municipio("tequixciapn")
+3-element Array{String,1}:
+ "Tequisquiapan"
+ "Atlequizayan"
+ "Tequixquiac"
+
+julia> clave(similitud_municipio("tequixciapn")[end])
+"096"
+```
+"""
+function similitud_municipio(id::String)::Array{String}
+  municipios_iter = collect(values(municipios))
+  return colecta_similitud(id, municipios_iter)
+end
+
+"""
+    similitud_region(region::String)::Array{Array{String}}
+
+Proporciona _dos_ arreglos dentro de un arreglo. El primer arreglo contiene todas
+las entidades similares a `region` y el segundo todos los municipios similares a 
+`region`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_region("jalisto")
+2-element Array{Array{String,N} where N,1}:
+ ["Jalisco"]
+ ["Xalisco", "Naolinco", "Xaloztoc", "Calvillo", "Saltillo"]
+```
+"""
+function similitud_region(id::String)::Array{Array{String}}
+  entidades_iter = collect(values(entidades))
+  municipios_iter = collect(values(municipios))
+  simil_entidades = colecta_similitud(id, entidades_iter)
+  simil_municipio = colecta_similitud(id, municipios_iter)
+  return [simil_entidades, simil_municipio]
 end
