@@ -22,7 +22,12 @@ la densidad y población total.
 ```@docs
 idh
 
+int_migratoria
+int_migratoria_todos
+
 geografia
+geografia_todos_municipios
+
 codigos_postales
 
 poblacion_mexico
