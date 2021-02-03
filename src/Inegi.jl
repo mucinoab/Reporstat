@@ -3,7 +3,9 @@ using Dates, Printf
 include("Utilidades.jl") 
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
+
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria,geografia
+
 
 #TODO nombre
 """
@@ -321,7 +323,7 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
         if !haskey(municipios,cve_entidad*cve_municipio)
             error("No se encontro la clave")
         end
-        q1 = ":cve_entidad == \"$cve_entidad\""
+        q1 = ":cve_entidad == '$cve_entidad'"
         q2 = ":cve_municipio == '$cve_municipio'"
         try 
             return filtrar(tabla,q1,q2)[1,:].idh
@@ -419,3 +421,54 @@ function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
     end
   end
 end
+
+"""
+    geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
+
+Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.
+
+Se pueden hacer consultas de una entidad o de un municipio.
+```julia-repl
+julia> geografia(clave("Oaxaca"),"003")
+1×5 DataFrame
+ Row │ ent  mun  latitud       longitud       altitud 
+     │ Any  Any  Any           Any            Any     
+─────┼────────────────────────────────────────────────
+   1 │ 20   003  17°04´10.549  095°58´04.929  1486
+
+julia> geografia(clave("Oaxaca"),"003").latitud
+1-element Array{Any,1}:
+ "17°04´10.549"
+
+julia> geografia(clave("Oaxaca"),"003").altitud
+1-element Array{Any,1}:
+ "1486"
+
+julia> geografia(clave("Campeche"))
+1×4 DataFrame
+ Row │ ent  latitud       longitud       altitud 
+     │ Any  Any           Any            Any     
+─────┼───────────────────────────────────────────
+   1 │ 04   19°01´17.138  092°27´54.859  14
+
+```
+"""
+function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
+  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,Float64])
+  q1 = ":ent == '$cve_entidad'"
+  if cve_municipio == ""
+    try
+      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","3","4","5"])
+    catch 
+      error("Clave $cve_entidad no encontrada")
+    end
+  else
+    q2 = ":mun == '$cve_municipio'"
+    try
+      return filtrar(tabla,q1,q2)
+    catch
+      error("Clave no encontrada ")
+    end
+  end
+end
+
