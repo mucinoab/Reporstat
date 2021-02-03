@@ -456,16 +456,8 @@ julia> int_migratoria_todos()
 ──────┼─────────────────────────────────────────────────────────────────────────
     1 │ 01      Aguascalientes  001     Aguascalientes                   1.92  ⋯
     2 │ 01      Aguascalientes  002     Asientos                         5.18
-    3 │ 01      Aguascalientes  003     Calvillo                        12.147
-    4 │ 01      Aguascalientes  004     Cosío                            4.182
-    5 │ 01      Aguascalientes  005     Jesús María                      3.323 ⋯
   ⋮   │   ⋮           ⋮           ⋮                  ⋮                   ⋮     ⋱
- 2463 │ 32      Zacatecas       052     Villa García                     5.928 ⋯
- 2464 │ 32      Zacatecas       053     Villa González Ortega            9.531 
- 2465 │ 32      Zacatecas       054     Villa Hidalgo                    7.432
- 2466 │ 32      Zacatecas       055     Villanueva                       9.89
- 2467 │ 32      Zacatecas       056     Zacatecas                        1.427 ⋯
- 2468 │ 32      Zacatecas       057     Trancoso                         4.141
+ 2468 │ 32      Zacatecas       057     Trancoso                         4.141 ⋯
  2469 │ 32      Zacatecas       058     Santa María de la Paz           10.074
 ```
  """
@@ -535,19 +527,8 @@ julia> geografia_todos_municipios()
 ──────┼─────────────────────────────────────────────────────────────────────────
     1 │ 01      Aguascalientes  001     Aguascalientes                22°03´26 ⋯
     2 │ 01      Aguascalientes  002     Asientos                      22°17´45
-    3 │ 01      Aguascalientes  003     Calvillo                      22°06´18
-    4 │ 01      Aguascalientes  004     Cosío                         22°26´28
-    5 │ 01      Aguascalientes  005     Jesús María                   22°02´50 ⋯
-    6 │ 01      Aguascalientes  006     Pabellón de Arteaga           22°10´16
-    7 │ 01      Aguascalientes  007     Rincón de Romos               22°22´27
-    8 │ 01      Aguascalientes  008     San José de Gracia            22°19´05
   ⋮   │   ⋮           ⋮           ⋮                  ⋮                     ⋮   ⋱
- 2463 │ 32      Zacatecas       052     Villa García                  22°12´43 ⋯
- 2464 │ 32      Zacatecas       053     Villa González Ortega         22°38´42
- 2465 │ 32      Zacatecas       054     Villa Hidalgo                 22°29´21
- 2466 │ 32      Zacatecas       055     Villanueva                    22°39´12
- 2467 │ 32      Zacatecas       056     Zacatecas                     22°48´56 ⋯
- 2468 │ 32      Zacatecas       057     Trancoso                      22°49´06
+ 2468 │ 32      Zacatecas       057     Trancoso                      22°49´06 ⋯
  2469 │ 32      Zacatecas       058     Santa María de la Paz         21°33´55
 ```
 """
