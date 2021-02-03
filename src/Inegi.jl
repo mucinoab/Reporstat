@@ -423,27 +423,6 @@ end
 """
     int_migratoria_todos()::DataFrame
 
-julia> int_migratoria_todos()
-2469×5 DataFrame
-  Row │ ent     ent_nombre      mun     mun_nom                       iaim     ⋯
-      │ String  String          String  String                        Float64? ⋯
-──────┼─────────────────────────────────────────────────────────────────────────
-    1 │ 01      Aguascalientes  001     Aguascalientes                   1.92  ⋯
-    2 │ 01      Aguascalientes  002     Asientos                         5.18
-    3 │ 01      Aguascalientes  003     Calvillo                        12.147
-    4 │ 01      Aguascalientes  004     Cosío                            4.182
-    5 │ 01      Aguascalientes  005     Jesús María                      3.323 ⋯
-    6 │ 01      Aguascalientes  006     Pabellón de Arteaga              4.741
-    7 │ 01      Aguascalientes  007     Rincón de Romos                  4.98
-    8 │ 01      Aguascalientes  008     San José de Gracia               8.448
-  ⋮   │   ⋮           ⋮           ⋮                  ⋮                   ⋮     ⋱
- 2463 │ 32      Zacatecas       052     Villa García                     5.928 ⋯
- 2464 │ 32      Zacatecas       053     Villa González Ortega            9.531
- 2465 │ 32      Zacatecas       054     Villa Hidalgo                    7.432
- 2466 │ 32      Zacatecas       055     Villanueva                       9.89
- 2467 │ 32      Zacatecas       056     Zacatecas                        1.427 ⋯
- 2468 │ 32      Zacatecas       057     Trancoso                         4.141
- 2469 │ 32      Zacatecas       058     Santa María de la Paz           10.074
 Regresa un `DataFrame` con  los indices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
 
 # Ejemplo
