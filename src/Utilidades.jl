@@ -1,5 +1,5 @@
 push!(LOAD_PATH,"../src/")
-using DataFrames
+using DataFrames,CSV
 export seleccionar, filtrar, contar_renglones, unzip, cargar_csv, fechahoy, sumar_columna, sumar_fila,csv_a_DataFrame, jsonparse
 """
     seleccionar(Tabla::DataFrame, query::Vector{String})::DataFrame
@@ -484,15 +484,14 @@ function jsonparse(url::String)::Dict
   end
 end
 
-function get_info(path::String,tipos=[])
+function get_info(path::String,tipos=[])::DataFrame
   if !isfile(path)
-    path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path")
+    path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path", pwd())
   end
   if length(tipos) > 0 
     return DataFrame(CSV.File(path,types=tipos))
   else
     return DataFrame(CSV.File(path))
   end
-  error("No existe $id esa entidad o estado")
 end
 

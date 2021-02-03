@@ -1,9 +1,10 @@
 push!(LOAD_PATH,"../src/")
-using Dates, Printf
-include("Utilidades.jl")
-include("Constants.jl")
-using InfoZIP, HTTP, DataFrames, CSV, StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy
+using Dates, Printf 
+include("Utilidades.jl") 
+include("Constants.jl") 
+using InfoZIP, HTTP,  StringEncodings, JSON
+
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales
 
 #TODO nombre
 """
@@ -166,29 +167,11 @@ function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_I
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
 
-  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002,1002000003,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
-
-  datos = jsonparse(url)
-  indicadores = Dict{String, Float64}()
-
-  for dato in datos["Series"]
-    indicadores[dato["INDICADOR"]] = tryparse(Float64, dato["OBSERVATIONS"][end]["OBS_VALUE"])
-  end
+  url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,6207019014,6207020032,6207020033,3105001001/es/070000"*cve_entidad*"0"*cve_municipio*"/true/BISE/2.0/"*token_INEGI*"?type=json"
 
   lugar = estado * ", " * municipio
-  hom = trunc(Int64, indicadores["1002000002"])
-  muj = trunc(Int64, indicadores["1002000003"])
-  tot = trunc(Int64, hom + muj) #Parce ser que el API no proporciona este dato(!?)
-  den = indicadores["3105001001"]       
-  porcen_hom = indicadores["6207020032"]
-  porcen_muj = indicadores["6207020033"]
-  porcen_ind = indicadores["6207019014"]
 
-  df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
-    porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
- 
-  return df 
+  return parse_poblacion(jsonparse(url), lugar)
 end
 
 #TODO documentación
@@ -205,17 +188,18 @@ function parse_poblacion(datos::Dict, lugar::String)::DataFrame
   # densdad = 3105001001 (hab/km^2) porhom = 6207020032 pormuj = 6207020033
   # indígena= 6207019014 
 
-  tot = trunc(Int64, indicadores["1002000001"])        # población total                                 
-  hom = trunc(Int64, indicadores["1002000002"])        # población hombres
-  muj = trunc(Int64, indicadores["1002000003"])        # población mujeres
-  den = indicadores["3105001001"]        # densidad de población
-  porcen_hom = indicadores["6207020032"] # porcentaje de hombres
-  porcen_muj = indicadores["6207020033"] # porcentaje de mujeres
-  porcen_ind = indicadores["6207019014"] # porcentaje de población que se considera indígena
+  tot = trunc(Int64, indicadores["1002000001"])# población total                                 
+  den = indicadores["3105001001"]              # densidad de población
+  ext = tot/den                                # extensión territorial
+  porcen_hom = indicadores["6207020032"]       # porcentaje de hombres
+  porcen_muj = indicadores["6207020033"]       # porcentaje de mujeres
+  porcen_ind = indicadores["6207019014"]       # porcentaje de población que se considera indígena
+  hom =trunc(Int64,round(0.01*tot*porcen_hom)) # población hombres
+  muj =trunc(Int64,round(0.01*tot*porcen_muj)) # población mujeres
 
   df = DataFrame(lugar=[lugar], total=[tot], hombres=[hom], mujeres=[muj],
     porcentaje_hombres=[porcen_hom], porcentaje_mujeres=[porcen_muj], 
-    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den])
+    porcentaje_indigena=[porcen_ind], densidad_poblacion=[den], extesion_territorial=[ext])
 
   return df 
 end
@@ -253,12 +237,8 @@ julia> poblacion_todos_municipios()
 ```
 """
 function poblacion_todos_municipios()::DataFrame
-  path = "muni.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/muni.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  path = "poblacion_municipios.csv"
+  return get_info(path, [String, String, String, String, Int64, Float64, Int64, Int64, Float64, Float64, Float64, Float64])
 end
 
 """
@@ -291,11 +271,7 @@ julia> poblacion_todas_entidades()
 """                                                                                                                             
 function poblacion_todas_entidades()::DataFrame
   path = "poblacion_entidades.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/poblacion_entidades.csv", pwd())
-  end
-
-  return DataFrame(CSV.File(path, types=[String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  return get_info(path, [String, String, Int64, Float64, Float64, Int64, Int64, Float64, Float64, Float64])
 end
 
 """
@@ -325,7 +301,7 @@ end
 """
     idh(cve_entidad::String, cve_municipio::String="")::Number
 
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aqui](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
 julia> idh(clave("Campeche"),"002")
@@ -346,8 +322,8 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
         if !haskey(municipios,cve_entidad*cve_municipio)
             error("No se encontro la clave")
         end
-        q1 = ":cve_entidad == \"$cve_entidad\""
-        q2 = ":cve_municipio == \"$(parse(Int32,cve_municipio))\""
+        q1 = ":cve_entidad == '$cve_entidad'"
+        q2 = ":cve_municipio == '$cve_municipio'"
         try 
             return filtrar(tabla,q1,q2)[1,:].idh
         catch
@@ -406,5 +382,116 @@ function indicadores_pobreza_porcentaje()::DataFrame
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
   end
   return DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+end
+
+"""
+    int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+
+Devuelve la intensidad migratoria de una entidad o municipio,
+los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+
+# Ejemplo
+
+```julia-repl
+julia> int_migratoria(clave("Campeche"),"003")
+0.288
+
+julia> int_migratoria(clave("Campeche"))
+0.64
+```
+"""
+
+function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+  q1 = ":ENT == '$cve_entidad'"
+  if cve_municipio == ""
+    tabla = get_info("IAIM_Entidad.csv",[String,Float64])
+    try 
+      return filtrar(tabla,q1)[1,:].IAIM
+    catch 
+      error("Clave $cve_entidad no encontrada")
+    end
+  else
+    q2 = ":MUN == '$cve_municipio'"
+    tabla = get_info("IAIM_Municipio.csv",[String,String,Float64])
+    try 
+      return filtrar(tabla,q1,q2)[1,:].IAIM
+    catch 
+      error("Clave no encontrada")
+    end
+  end
+end
+
+"""
+    geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
+
+Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.
+
+Se pueden hacer consultas de una entidad o de un municipio.
+```julia-repl
+julia> geografia(clave("Oaxaca"),"003")
+1×5 DataFrame
+ Row │ ent  mun  latitud       longitud       altitud 
+     │ Any  Any  Any           Any            Any     
+─────┼────────────────────────────────────────────────
+   1 │ 20   003  17°04´10.549  095°58´04.929  1486
+
+julia> geografia(clave("Oaxaca"),"003").latitud
+1-element Array{Any,1}:
+ "17°04´10.549"
+
+julia> geografia(clave("Oaxaca"),"003").altitud
+1-element Array{Any,1}:
+ "1486"
+
+julia> geografia(clave("Campeche"))
+1×4 DataFrame
+ Row │ ent  latitud       longitud       altitud 
+     │ Any  Any           Any            Any     
+─────┼───────────────────────────────────────────
+   1 │ 04   19°01´17.138  092°27´54.859  14
+
+```
+"""
+function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
+  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,Float64])
+  q1 = ":ent == '$cve_entidad'"
+  if cve_municipio == ""
+    try
+      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","3","4","5"])
+    catch 
+      error("Clave $cve_entidad no encontrada")
+    end
+  else
+    q2 = ":mun == '$cve_municipio'"
+    try
+      return filtrar(tabla,q1,q2)
+    catch
+      error("Clave no encontrada ")
+    end
+  end
+end
+
+"""
+    codigos_postales()::DataFrame
+
+Proporciona todos los _códigos postales_ de México, segregados por municpio,
+en un `DataFrame`.
+Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
+
+# Ejemplo
+
+```julia-repl
+julia> codigos_postales()
+2465×6 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
+      │ String   String          String     String            Int64                       String          
+──────┼────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                           599  20000;20010;20010 ⋯
+    2 │ 01       Aguascalientes  002        Asientos                                  82  20700;20700;20700 ⋯
+  ⋮   │    ⋮           ⋮             ⋮                   ⋮                ⋮                               ⋮
+```
+"""
+function codigos_postales()::DataFrame
+  return get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
 end
 

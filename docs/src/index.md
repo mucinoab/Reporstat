@@ -22,6 +22,8 @@ la densidad y población total.
 ```@docs
 idh
 
+geografia
+codigos_postales
 
 poblacion_mexico
 poblacion_entidad
