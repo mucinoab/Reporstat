@@ -498,8 +498,8 @@ end
 """
     tasas_vitales()::DataFrame
 
-Proporciona un DataFrame con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
-Datos obtenidos del registro de nacimientos, defunciones generales y población de mujeres en edad fertil (15-45 años) del INEGI, 2019.
+Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
+Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fertil (15-45 años, 2020) del INEGI.
 
 # Ejemplo
 
@@ -523,7 +523,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	end
 
 	try
-    	global municipio = municipios[cve_entidad*cve_municipio]
+    		global municipio = municipios[cve_entidad*cve_municipio]
 	catch e
     	error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
@@ -558,5 +558,5 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	else
 		mortalidad = defunciones_muni/pob_total
 	end
-return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
+	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
 end
