@@ -495,3 +495,68 @@ function codigos_postales()::DataFrame
   return get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
 end
 
+"""
+    tasas_vitales()::DataFrame
+
+Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
+Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fertil (15-45 años, 2020) del INEGI.
+
+# Ejemplo
+
+```julia-repl
+julia tasas_vitales("01", "001")
+1×3 DataFrame
+ Row │ Natalidad  Fecundidad  Mortalidad
+     │ Float64    Float64     Float64    
+─────┼───────────────────────────────────  
+   1 │ 0.0430915   0.0915221   0.0221098
+```
+"""
+function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
+
+	token_INEGI = token_check(token_INEGI)
+
+	try
+		global estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+
+	try
+    		global municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+
+	nacimientos = get_info("nacimientos.csv")
+
+	localidad = poblacion_municipio(cve_entidad, cve_municipio)
+	pob_mujeres = localidad[:1, :4]
+
+	municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+  	nacimientos_muni = municipio[:1, :4]
+	if(nacimientos_muni == "")
+		natalidad = 0
+	else
+		natalidad = nacimientos_muni/pob_mujeres
+	end
+
+	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv")
+
+	fertil_muni = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+	pob_fertil = fertil_muni[:1, :4]
+	fecundidad = nacimientos_muni/pob_fertil
+
+	defunciones = get_info("defunciones_municipio_2019.csv")
+
+	pob_total = localidad[:1, :2]
+
+	municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+	defunciones_muni = municipio[:1, :4]
+	if(defunciones_muni == "")
+		mortalidad = 0
+	else
+		mortalidad = defunciones_muni/pob_total
+	end
+	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
+end
