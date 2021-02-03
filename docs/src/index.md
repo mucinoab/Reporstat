@@ -21,9 +21,11 @@ la densidad y población total.
 
 ```@docs
 idh
-
+int_migratoria
+tasas_vitales
 geografia
 codigos_postales
+
 
 poblacion_mexico
 poblacion_entidad
