@@ -486,7 +486,7 @@ end
 
 function get_info(path::String,tipos=[])::DataFrame
   if !isfile(path)
-    path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path")
+    path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path", pwd())
   end
   if length(tipos) > 0 
     return DataFrame(CSV.File(path,types=tipos))
