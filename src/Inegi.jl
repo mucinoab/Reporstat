@@ -4,7 +4,8 @@ include("Utilidades.jl")
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios
+
 
 #TODO nombre
 """
@@ -402,29 +403,80 @@ julia> int_migratoria(clave("Campeche"))
 """
 
 function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
-  q1 = ":ENT == '$cve_entidad'"
+  q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     tabla = get_info("IAIM_Entidad.csv",[String,Float64])
     try 
-      return filtrar(tabla,q1)[1,:].IAIM
+      return filtrar(tabla,q1).IAIM
     catch 
       error("Clave $cve_entidad no encontrada")
     end
   else
-    q2 = ":MUN == '$cve_municipio'"
-    tabla = get_info("IAIM_Municipio.csv",[String,String,Float64])
+    q2 = ":mun == '$cve_municipio'"
+    tabla = get_info("IAIM_Municipio.csv",[String,String,String,String,Float64])
     try 
-      return filtrar(tabla,q1,q2)[1,:].IAIM
+      return filtrar(tabla,q1,q2).iaim
     catch 
       error("Clave no encontrada")
     end
   end
 end
+"""
+    int_migratoria_todos()::DataFrame
 
+julia> int_migratoria_todos()
+2469×5 DataFrame
+  Row │ ent     ent_nombre      mun     mun_nom                       iaim     ⋯
+      │ String  String          String  String                        Float64? ⋯
+──────┼─────────────────────────────────────────────────────────────────────────
+    1 │ 01      Aguascalientes  001     Aguascalientes                   1.92  ⋯
+    2 │ 01      Aguascalientes  002     Asientos                         5.18
+    3 │ 01      Aguascalientes  003     Calvillo                        12.147
+    4 │ 01      Aguascalientes  004     Cosío                            4.182
+    5 │ 01      Aguascalientes  005     Jesús María                      3.323 ⋯
+    6 │ 01      Aguascalientes  006     Pabellón de Arteaga              4.741
+    7 │ 01      Aguascalientes  007     Rincón de Romos                  4.98
+    8 │ 01      Aguascalientes  008     San José de Gracia               8.448
+  ⋮   │   ⋮           ⋮           ⋮                  ⋮                   ⋮     ⋱
+ 2463 │ 32      Zacatecas       052     Villa García                     5.928 ⋯
+ 2464 │ 32      Zacatecas       053     Villa González Ortega            9.531
+ 2465 │ 32      Zacatecas       054     Villa Hidalgo                    7.432
+ 2466 │ 32      Zacatecas       055     Villanueva                       9.89
+ 2467 │ 32      Zacatecas       056     Zacatecas                        1.427 ⋯
+ 2468 │ 32      Zacatecas       057     Trancoso                         4.141
+ 2469 │ 32      Zacatecas       058     Santa María de la Paz           10.074
+Regresa un `DataFrame` con  los indices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+
+# Ejemplo
+
+```julia-repl
+julia> int_migratoria_todos()
+2469×5 DataFrame
+  Row │ ent     ent_nombre      mun     mun_nom                       iaim     ⋯
+      │ String  String          String  String                        Float64? ⋯
+──────┼─────────────────────────────────────────────────────────────────────────
+    1 │ 01      Aguascalientes  001     Aguascalientes                   1.92  ⋯
+    2 │ 01      Aguascalientes  002     Asientos                         5.18
+    3 │ 01      Aguascalientes  003     Calvillo                        12.147
+    4 │ 01      Aguascalientes  004     Cosío                            4.182
+    5 │ 01      Aguascalientes  005     Jesús María                      3.323 ⋯
+  ⋮   │   ⋮           ⋮           ⋮                  ⋮                   ⋮     ⋱
+ 2463 │ 32      Zacatecas       052     Villa García                     5.928 ⋯
+ 2464 │ 32      Zacatecas       053     Villa González Ortega            9.531 
+ 2465 │ 32      Zacatecas       054     Villa Hidalgo                    7.432
+ 2466 │ 32      Zacatecas       055     Villanueva                       9.89
+ 2467 │ 32      Zacatecas       056     Zacatecas                        1.427 ⋯
+ 2468 │ 32      Zacatecas       057     Trancoso                         4.141
+ 2469 │ 32      Zacatecas       058     Santa María de la Paz           10.074
+```
+ """
+function int_migratoria_todos()::DataFrame
+     return get_info("IAIM_Municipio.csv",[String,String,String,String,Float64])
+end
 """
     geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
 
-Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.
+Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.Puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 Se pueden hacer consultas de una entidad o de un municipio.
 ```julia-repl
@@ -453,11 +505,11 @@ julia> geografia(clave("Campeche"))
 ```
 """
 function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
-  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,Float64])
+  tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     try
-      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","3","4","5"])
+      return seleccionar(filtrar(tabla,q1,":mun =='003'"),["1","2","5","6","7"])
     catch 
       error("Clave $cve_entidad no encontrada")
     end
@@ -470,7 +522,43 @@ function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
     end
   end
 end
+"""
+    geografia_todos_municipios()::DataFrame
+Devuelve los datos geograficos de todos los municipios, puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
+# Ejemplo
+
+```julia-repl
+julia> geografia_todos_municipios()
+2469×7 DataFrame
+  Row │ ent     nom_ent         mun     nom_mun                       latitud  ⋯
+      │ String  String          String  String                        String   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────
+    1 │ 01      Aguascalientes  001     Aguascalientes                22°03´26 ⋯
+    2 │ 01      Aguascalientes  002     Asientos                      22°17´45
+    3 │ 01      Aguascalientes  003     Calvillo                      22°06´18
+    4 │ 01      Aguascalientes  004     Cosío                         22°26´28
+    5 │ 01      Aguascalientes  005     Jesús María                   22°02´50 ⋯
+    6 │ 01      Aguascalientes  006     Pabellón de Arteaga           22°10´16
+    7 │ 01      Aguascalientes  007     Rincón de Romos               22°22´27
+    8 │ 01      Aguascalientes  008     San José de Gracia            22°19´05
+  ⋮   │   ⋮           ⋮           ⋮                  ⋮                     ⋮   ⋱
+ 2463 │ 32      Zacatecas       052     Villa García                  22°12´43 ⋯
+ 2464 │ 32      Zacatecas       053     Villa González Ortega         22°38´42
+ 2465 │ 32      Zacatecas       054     Villa Hidalgo                 22°29´21
+ 2466 │ 32      Zacatecas       055     Villanueva                    22°39´12
+ 2467 │ 32      Zacatecas       056     Zacatecas                     22°48´56 ⋯
+ 2468 │ 32      Zacatecas       057     Trancoso                      22°49´06
+ 2469 │ 32      Zacatecas       058     Santa María de la Paz         21°33´55
+```
+"""
+function geografia_todos_municipios()::DataFrame
+  try 
+    return get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
+  catch
+    error("Hubo un problema consiguiendo la informacion")
+  end
+end
 """
     codigos_postales()::DataFrame
 
@@ -523,7 +611,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	end
 
 	try
-    		global municipio = municipios[cve_entidad*cve_municipio]
+    		 municipio = municipios[cve_entidad*cve_municipio]
 	catch e
     		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
@@ -560,3 +648,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	end
 	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
 end
+#Cve_Ent,Nom_Ent,Cve_Mun,Nom_Mun
+
+#entidad,entidad_nombre,municipio,municipio_nombre
+
