@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales
 
 #TODO nombre
 """
