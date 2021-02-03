@@ -2,9 +2,9 @@ push!(LOAD_PATH,"../src/")
 using Dates, Printf 
 include("Utilidades.jl") 
 include("Constants.jl") 
-using InfoZIP, HTTP,  StringEncodings, JSON
+using InfoZIP, HTTP,  StringEncodings, JSON, StringDistances
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales, edad_municipios, edad_entidades 
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, tasas_vitales, edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipior
 
 #TODO nombre
 """
@@ -446,7 +446,6 @@ julia> int_migratoria(clave("Campeche"))
 0.64
 ```
 """
-
 function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
   q1 = ":ENT == '$cve_entidad'"
   if cve_municipio == ""
@@ -551,7 +550,7 @@ Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019)
 # Ejemplo
 
 ```julia-repl
-julia tasas_vitales("01", "001")
+julia> tasas_vitales("01", "001")
 1×3 DataFrame
  Row │ Natalidad  Fecundidad  Mortalidad
      │ Float64    Float64     Float64    
@@ -637,5 +636,78 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
 end
 
+# toma un string (a) y un arreglo (b) para regresar los elementos de b 
+# que tengan similitud con a. Qué tan similar tiene que ser un elemento
+# de b a "a" para ser considerado se ajusta con el parámetro "min_score".
+function colecta_similitud(id::String, iter::Array{String})::Array{String}
+  similar = String[]
+  for f in findall(id, iter, StringDistances.Levenshtein(), min_score = 0.5)
+    push!(similar, iter[f])
+  end
+  return similar
+end
 
+"""
+    similitud_entidad(entidad::String)::Array{String}
 
+Proporciona un arreglo con todas las entidades con un nombre igual o similar a `entidad`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_entidad("oajaca")
+1-element Array{String,1}:
+ "Oaxaca"
+
+julia> clave(similitud_entidad("oaxjaca")[1])
+"29"
+```
+"""
+function similitud_entidad(id::String)::Array{String}
+  entidades_iter = collect(values(entidades))
+  return colecta_similitud(id, entidades_iter)
+end
+ 
+"""
+    similitud_municipio(municipio::String)::Array{String}
+
+Proporciona un arreglo con todos los municipios con un nombre igual o similar a `municipio`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_municipio("tequixciapn")
+3-element Array{String,1}:
+ "Tequisquiapan"
+ "Atlequizayan"
+ "Tequixquiac"
+
+julia> clave(similitud_municipio("tequixciapn")[end])
+"096"
+```
+"""
+function similitud_municipio(id::String)::Array{String}
+  municipios_iter = collect(values(municipios))
+  return colecta_similitud(id, municipios_iter)
+end
+
+"""
+    similitud_region(region::String)::Array{Array{String}}
+
+Proporciona _dos_ arreglos dentro de un arreglo. El primer arreglo contiene todas
+las entidades similares a `region` y el segundo todos los municipios similares a 
+`region`.
+
+# Ejemplo
+```julia-repl
+julia> similitud_region("jalisto")
+2-element Array{Array{String,N} where N,1}:
+ ["Jalisco"]
+ ["Xalisco", "Naolinco", "Xaloztoc", "Calvillo", "Saltillo"]
+```
+"""
+function similitud_region(id::String)::Array{Array{String}}
+  entidades_iter = collect(values(entidades))
+  municipios_iter = collect(values(municipios))
+  simil_entidades = colecta_similitud(id, entidades_iter)
+  simil_municipio = colecta_similitud(id, municipios_iter)
+  return [simil_entidades, simil_municipio]
+end
