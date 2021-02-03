@@ -4,8 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
 
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria,geografia
-
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales
 
 #TODO nombre
 """
@@ -470,5 +469,29 @@ function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
       error("Clave no encontrada ")
     end
   end
+end
+
+"""
+    codigos_postales()::DataFrame
+
+Proporciona todos los _códigos postales_ de México, segregados por municpio,
+en un `DataFrame`.
+Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
+
+# Ejemplo
+
+```julia-repl
+julia> codigos_postales()
+2465×6 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
+      │ String   String          String     String            Int64                       String          
+──────┼────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                           599  20000;20010;20010 ⋯
+    2 │ 01       Aguascalientes  002        Asientos                                  82  20700;20700;20700 ⋯
+  ⋮   │    ⋮           ⋮             ⋮                   ⋮                ⋮                               ⋮
+```
+"""
+function codigos_postales()::DataFrame
+  return get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
 end
 
