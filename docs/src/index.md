@@ -35,6 +35,10 @@ poblacion_entidad
 poblacion_municipio
 poblacion_todas_entidades
 poblacion_todos_municipios
+
+similitud_region
+similitud_entidad
+similitud_municipio
 ```
 
 ## Indicadores de Pobreza 
