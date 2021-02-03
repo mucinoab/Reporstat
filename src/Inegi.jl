@@ -499,6 +499,7 @@ end
     tasas_vitales()::DataFrame
 
 Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
+En caso de omitir el parametro cve_municipio, se mostraran datos de la entidad indicada.
 Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fertil (15-45 años, 2020) del INEGI.
 
 # Ejemplo
