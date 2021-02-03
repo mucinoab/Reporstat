@@ -525,7 +525,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	try
     		global municipio = municipios[cve_entidad*cve_municipio]
 	catch e
-    	error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
 
 	nacimientos = get_info("nacimientos.csv")
