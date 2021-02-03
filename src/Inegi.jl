@@ -3,7 +3,9 @@ using Dates, Printf
 include("Utilidades.jl") 
 include("Constants.jl") 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria
+
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria,geografia
+
 
 #TODO nombre
 """
@@ -469,7 +471,4 @@ function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
     end
   end
 end
-
-
-
 
