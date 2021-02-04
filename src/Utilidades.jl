@@ -136,7 +136,7 @@ end
 """
     filtrar(tabla::DataFrame, condiciones...)::DataFrame
 
-Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este caso los parámetros actúan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
+Filtra un `DataFrame` de acuerdo a las condiciones indicadas en los parametros (los parámetros actúan como expresiones). Los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
 # Ejemplo
 ```julia-repl
 julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
@@ -168,7 +168,7 @@ julia> Filtrar(dt, "'A' == :2")
    1 │ 1    A
    2 │ 2    A
 ```
-Las condiciones se deben poner en parametros diferentes.
+Las condiciones se deben poner en parámetros diferentes.
 
 ```julia-repl
 julia> Filtrar(dt, "2 == :A" , "'A'== :B")
@@ -298,7 +298,7 @@ end
 """
     contar_renglones(tabla::DataFrame, condiciones...)::Number
 
-Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
+Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el número de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
 # Ejemplo
 
 ```julia-repl
@@ -326,8 +326,6 @@ julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
 function contar_renglones(tabla::DataFrame, condiciones...)::Number
   return nrow(filtrar(tabla, condiciones))
 end
-
-
 
 """
     unzip(path::String, dest::String="")
@@ -465,7 +463,7 @@ end
 """
     jsonparse(url::String)::Dict
 
-Hace un http request al `url` especificado y convierte el `json` obtenido del sitio web en un diccionario.
+Del `url` indicado,convierte el `json` obtenido del sitio web en un diccionario.
 En caso de que el servidor devuelva un _status_ distinto a _200_, se arroja un `error`.
 
 # Ejemplo
