@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl") 
 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos
 
 
 
@@ -334,15 +334,68 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
     end
 end
 
+
 """
     indicadores_pobreza()::DataFrame
 
-Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_. 
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, del _municipio_ indicado. 
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
-julia> df = indicadores_pobreza() 
+julia> df = indicadores_pobreza("01", "001") 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Int64    Int64      Int64     ⋯
+──────┼────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes   224949      13650     211299 ⋯
+
+```
+"""
+function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
+  end
+  tabla = DataFrame(CSV.File(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64]))
+  return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio") 
+end
+
+"""
+    indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
+
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, del _municipio_ indicado.
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_porcentaje("01", "001") 
+2457×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Float64  Float64    Float64   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes      26.1        1.6       24.5 ⋯
+   
+```
+"""
+function indicadores_pobreza_porcentaje()::DataFrame
+  path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
+  if !isfile(path)
+    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
+  end
+  tabla = DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio")
+end
+
+"""
+    indicadores_pobreza_todos()::DataFrame
+
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _federal_ segregado por _municipios. 
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_todos() 
 2457×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Int64    Int64      Int64     ⋯
@@ -352,7 +405,7 @@ julia> df = indicadores_pobreza()
    ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮   
 ```
 """
-function indicadores_pobreza()::DataFrame
+function indicadores_pobreza_todos()::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
   if !isfile(path)
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
@@ -361,14 +414,14 @@ function indicadores_pobreza()::DataFrame
 end
 
 """
-    indicadores_pobreza_porcentaje()::DataFrame
+    indicadores_pobreza_porcentaje_todos()::DataFrame
 
-Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_.
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _federal_ segregado por _municipios_.
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
-julia> df = indicadores_pobreza_porcentaje() 
+julia> df = indicadores_pobreza_porcentaje_todos() 
 2457×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Float64  Float64    Float64   ⋯
@@ -378,7 +431,7 @@ julia> df = indicadores_pobreza_porcentaje()
    ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮    
 ```
 """
-function indicadores_pobreza_porcentaje()::DataFrame
+function indicadores_pobreza_porcentaje_todos()::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
   if !isfile(path)
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
