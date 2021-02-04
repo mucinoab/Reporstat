@@ -453,7 +453,7 @@ function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
   if cve_municipio == ""
     tabla = get_info("IAIM_Entidad.csv",[String,Float64])
     try 
-      return filtrar(tabla,q1).IAIM
+      return filtrar(tabla,":ENT == '$cve_entidad'").IAIM[1]
     catch 
       error("Clave $cve_entidad no encontrada")
     end
@@ -461,7 +461,7 @@ function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
     q2 = ":mun == '$cve_municipio'"
     tabla = get_info("IAIM_Municipio.csv",[String,String,String,String,Float64])
     try 
-      return filtrar(tabla,q1,q2).iaim
+      return filtrar(tabla,q1,q2).iaim[1]
     catch 
       error("Clave no encontrada")
     end
@@ -612,7 +612,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 	token_INEGI = token_check(token_INEGI)
 
 	try
-		global estado = entidades[cve_entidad]
+		estado = entidades[cve_entidad]
 	catch e
 		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
 	end
