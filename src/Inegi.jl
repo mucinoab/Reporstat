@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl") 
 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipior
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos_municipios, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos
 
 
 
@@ -248,7 +248,7 @@ end
 
 Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 
-- clave de entidad 
+- clave de entidad
 - nombre oficial de la entidad
 - población total
 - densidad de población (habitantes por kilómetro cuadrado) 
@@ -334,15 +334,85 @@ function idh(cve_entidad::String, cve_municipio::String="")::Number
     end
 end
 
-"""
-    indicadores_pobreza()::DataFrame
 
-Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_. 
+"""
+    indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
+
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, del _municipio_ indicado. 
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
-julia> df = indicadores_pobreza() 
+julia> df = indicadores_pobreza("01", "001") 
+1×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Int64    Int64      Int64     ⋯
+──────┼────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes   224949      13650     211299 ⋯
+
+```
+"""
+function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+ 	path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
+  	tabla = get_info(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
+  	return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'") 
+end
+
+"""
+    indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
+
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, del _municipio_ indicado.
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_porcentaje("01", "001") 
+1×20 DataFrame
+  Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
+      │ String   String               String     String           Float64  Float64    Float64   ⋯
+──────┼─────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes       001        Aguascalientes      26.1        1.6       24.5 ⋯
+   
+```
+"""
+function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+	
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+	
+  	path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
+ 	 tabla = get_info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
+ 	 return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
+end
+
+"""
+    indicadores_pobreza_todos()::DataFrame
+
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _nacional_ segregado por _municipios. 
+
+Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
+Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+```julia-repl
+julia> df = indicadores_pobreza_todos() 
 2457×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Int64    Int64      Int64     ⋯
@@ -352,7 +422,7 @@ julia> df = indicadores_pobreza()
    ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮   
 ```
 """
-function indicadores_pobreza()::DataFrame
+function indicadores_pobreza_todos()::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
   if !isfile(path)
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
@@ -361,14 +431,14 @@ function indicadores_pobreza()::DataFrame
 end
 
 """
-    indicadores_pobreza_porcentaje()::DataFrame
+    indicadores_pobreza_porcentaje_todos()::DataFrame
 
-Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _municipal_.
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _federal_ segregado por _municipios_.
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
-julia> df = indicadores_pobreza_porcentaje() 
+julia> df = indicadores_pobreza_porcentaje_todos() 
 2457×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Float64  Float64    Float64   ⋯
@@ -378,7 +448,7 @@ julia> df = indicadores_pobreza_porcentaje()
    ⋮  │ ⋮             ⋮               ⋮               ⋮            ⋮            ⋮          ⋮    
 ```
 """
-function indicadores_pobreza_porcentaje()::DataFrame
+function indicadores_pobreza_porcentaje_todos()::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
   if !isfile(path)
     global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
@@ -568,14 +638,48 @@ end
 """
     codigos_postales()::DataFrame
 
-Proporciona todos los _códigos postales_ de México, segregados por municpio,
+Proporciona los _códigos postales_ del municpio indicado,
 en un `DataFrame`.
 Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
 
 # Ejemplo
 
 ```julia-repl
-julia> codigos_postales()
+julia> codigos_postales("01", "001")
+1×6 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
+      │ String   String          String     String            Int64                       String          
+──────┼────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                           599  20000;20010;20010 ⋯
+```
+"""
+function codigos_postales(cve_entidad::String, cve_municipio::String)::DataFrame
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+ 	codigos = get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
+	return filtrar(codigos, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
+end
+
+"""
+    codigos_postales_todos()::DataFrame
+
+Proporciona todos los _códigos postales_ de México, segregados por municipio,
+en un `DataFrame`.
+Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
+
+# Ejemplo
+
+```julia-repl
+julia> codigos_postales_todos()
 2465×6 DataFrame
   Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
       │ String   String          String     String            Int64                       String          
@@ -585,7 +689,7 @@ julia> codigos_postales()
   ⋮   │    ⋮           ⋮             ⋮                   ⋮                ⋮                               ⋮
 ```
 """
-function codigos_postales()::DataFrame
+function codigos_postales_todos()::DataFrame
   return get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
 end
 
@@ -607,12 +711,12 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
-
+function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="")::DataFrame
+	
 	token_INEGI = token_check(token_INEGI)
 
 	try
-		global estado = entidades[cve_entidad]
+		estado = entidades[cve_entidad]
 	catch e
 		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
 	end
@@ -623,13 +727,13 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
     		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
 
-	nacimientos = get_info("nacimientos.csv")
+	nacimientos = get_info("nacimientos.csv", types=[String, String, String, Int64])
 
-	if(cve_entidad=="")
+	if(cve_municipio=="")
 		localidad = poblacion_entidad(cve_entidad)
 		pob_mujeres = localidad[:1, :4]
 
-		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+		estado = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '000'")
   		nacimientos_ent = estado[:1, :4]
 		if(nacimientos_ent == "")
 			natalidad = 0
@@ -640,7 +744,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 		localidad = poblacion_municipio(cve_entidad, cve_municipio)
 		pob_mujeres = localidad[:1, :4]
 
-		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		municipio = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
   		nacimientos_muni = municipio[:1, :4]
 		if(nacimientos_muni == "")
 			natalidad = 0
@@ -649,24 +753,24 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 		end
 	end
 
-	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv")
+	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", types=[String, String, String, Int64])
 
-	if(cve_entidad=="")
-		fertil_ent = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == '000'")
+	if(cve_municipio=="")
+		fertil_ent = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '000'")
 		pob_fertil = fertil_ent[:1, :4]
 		fecundidad = nacimientos_ent/pob_fertil
 	else
-		fertil_muni = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		fertil_muni = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
 		pob_fertil = fertil_muni[:1, :4]
 		fecundidad = nacimientos_muni/pob_fertil
 	end
 	
-	defunciones = get_info("defunciones_municipio_2019.csv")
+	defunciones = get_info("defunciones_municipio_2019.csv", types=[String, String, String, Int64])
 
 	pob_total = localidad[:1, :2]
 
-	if(cve_entidad=="")
-		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+	if(cve_municipio=="")
+		estado = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '000'")
 		defunciones_ent = estado[:1, :4]
 		if(defunciones_ent == "")
 			mortalidad = 0
@@ -674,7 +778,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 			mortalidad = defunciones_ent/pob_total
 		end
 	else
-		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		municipio = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
 		defunciones_muni = municipio[:1, :4]
 		if(defunciones_muni == "")
 			mortalidad = 0
@@ -682,7 +786,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 			mortalidad = defunciones_muni/pob_total
 		end
 	end
-	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
+	return DataFrame(natalidad=[natalidad], fecundidad=[fecundidad], mortalidad=[mortalidad])
 end
 
 

@@ -28,7 +28,7 @@ geografia
 geografia_todos_municipios
 
 codigos_postales
-
+codigos_postales_todos
 
 poblacion_mexico
 poblacion_entidad
@@ -68,6 +68,8 @@ Datos proporcionados por el Consejo Nacional de Evaluación de la Política de D
 ```@docs
 indicadores_pobreza
 indicadores_pobreza_porcentaje
+indicadores_pobreza_todos
+indicadores_pobreza_porcentaje_todos
 ```
 
 ## Utilidades
