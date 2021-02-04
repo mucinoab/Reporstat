@@ -296,7 +296,23 @@ function clave(id::String)::String
   if haskey(MUNICIPIO_NOMBRE, id)
     return MUNICIPIO_NOMBRE[id][3:end]
   end
-  error("No existe $id esa entidad o estado")
+  aux = "No existe $id en los registros de entidades o estados.\n"
+  ent , mun = similitud_region(id)
+  ent ,mun = unique(ent), unique(mun)
+  if length(ent) > 0
+    aux *= "Prueba estas sugerencias: \n"
+    aux *= "Entidades: \n"
+  end
+  for en in ent
+    aux *= "\t"*en*" ➜ "*ENTIDAD_NOMBRE[en] *"\n"
+  end
+  if length(mun) > 0
+    aux *= "Municipios: \n"
+  end
+  for mu in mun
+    aux *= "\t"*mu*" ➜ "*MUNICIPIO_NOMBRE[mu][3:5]*"\n"
+  end
+  error(aux)
 end
 
 """
