@@ -136,7 +136,7 @@ end
 """
     filtrar(tabla::DataFrame, condiciones...)::DataFrame
 
-Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este caso los parámetros actúan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
+Filtra un `DataFrame` de acuerdo a las condiciones indicadas en los parametros (los parámetros actúan como expresiones). Los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
 # Ejemplo
 ```julia-repl
 julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
@@ -463,7 +463,7 @@ end
 """
     jsonparse(url::String)::Dict
 
-Hace un http request al `url` especificado y convierte el `json` obtenido del sitio web en un diccionario.
+Del `url` indicado,convierte el `json` obtenido del sitio web en un diccionario.
 En caso de que el servidor devuelva un _status_ distinto a _200_, se arroja un `error`.
 
 # Ejemplo
