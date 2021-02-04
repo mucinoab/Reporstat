@@ -1,5 +1,5 @@
 #Correr este archivo para correr todos los tests
-#Desde el directorio principal correr "julia --project test/runtests.jl" 
+#Desde el directorio principal correr "julia --project test/runtests.jl"
 using Test
 
 using Reporstat, DataFrames, CSV
