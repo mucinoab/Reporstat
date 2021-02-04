@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl")
 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos,idh_todos_municipios
 
 #TODO nombre
 """
@@ -348,7 +348,7 @@ end
 """
     idh_todos_municipios()::DataFrame
 
-Regresa un `DataFrame` con todos los valores agregados del IDH de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa un `DataFrame` con todos los valores agregados del  índice de desarrollo humano de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 
 # Ejemplo
 ```julia-repl

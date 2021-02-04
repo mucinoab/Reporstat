@@ -21,6 +21,7 @@ la densidad y población total.
 
 ```@docs
 idh
+idh_todos_municipios
 
 int_migratoria
 int_migratoria_todos
