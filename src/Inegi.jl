@@ -228,14 +228,14 @@ Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
 ```julia-repl
 julia> poblacion_todos_municipios()
 2469×11 DataFrame
-  Row │ entidad  entidad_nombre  municipio  municipio_nombre              total     densidad   hombres   mujeres   porcentaje_hombres  porcentajes_mujeres ⋯
-      │ String   String          String     String                        Float64   Float64    Float64   Float64   Float64             Float64             ⋯
-──────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    1 │ 01       Aguascalientes  001        Aguascalientes                797010.0  744.58     386429.0  410581.0             48.5335              51.4665 ⋯
-    2 │ 01       Aguascalientes  002        Asientos                      797010.0  744.58     386429.0  410581.0             48.5335              51.4665
-    ⋮   │    ⋮           ⋮             ⋮                   ⋮                   ⋮          ⋮         ⋮         ⋮              ⋮                    ⋮          ⋱
- 2468 │ 32       Zacatecas       057        Trancoso                      138176.0  331.026     66297.0   71879.0             48.482               51.518  ⋯
- 2469 │ 32       Zacatecas       058        Santa María de la Paz          16934.0   87.9192     8358.0    8576.0             48.962               51.038
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre              total   densidad   hombres   mujeres   porcentaje_hombres  porcentajes_mujeres ⋯
+      │ String   String          String     String                        Int64   Float64    Int64     Int64     Float64             Float64             ⋯
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                797010   744.58     386429   410581.0             48.5335              51.4665 ⋯
+    2 │ 01       Aguascalientes  002        Asientos                      797010   744.58     386429   410581.0             48.5335              51.4665
+    ⋮   │    ⋮           ⋮             ⋮                   ⋮                   ⋮           ⋮         ⋮         ⋮              ⋮                    ⋮          ⋱
+ 2468 │ 32       Zacatecas       057        Trancoso                      138176   331.026     66297    71879.0             48.482               51.518  ⋯
+ 2469 │ 32       Zacatecas       058        Santa María de la Paz          16934    87.9192     8358     8576.0             48.962               51.038
 ```
 """
 function poblacion_todos_municipios()::DataFrame
@@ -261,14 +261,14 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 # Ejemplo
 ```julia-repl
 julia> poblacion_todas_entidades()
-32×9 DataFrame
- Row │ entidad  entidad_nombre     total         densidad    hombres         mujeres         porcentaje_hombres ⋯
-     │ String   String             Float64       Float64     Float64         Float64         Float64            ⋯
-─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ 01       Aguascalientes      1.185e6     233.729    576638.0        608358.0           48.7672 ⋯
-   2 │ 02       Baja California     3.15507e6    46.4066        1.59161e6       1.56346e6     49.7725
-   ⋮ │ ⋮             ⋮               ⋮               ⋮            ⋮           ⋮                 ⋮
-  32 │ 32       Zacatecas           1.49067e6    20.9791   726897.0        763771.0           48.7819
+32×10 DataFrame
+ Row │ entidad  entidad_nombre     total     densidad   extension_territorial  hombres    mujeres    ⋯
+     │ String   String             Int64     Float64    Float64                Int64      Int64      ⋯
+─────┼───────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 01       Aguascalientes      1425607   253.862            5615.67        69668300   72892400  ⋯
+   2 │ 02       Baja California     3769020    52.7505          71450.0        190058900  186843100        
+   ⋮ │ ⋮             ⋮                 ⋮            ⋮           ⋮                 ⋮                      ⋱
+  32 │ 32       Zacatecas           1622138    21.5494          75275.3         79105800   83108000  ⋯
 ```
 """
 function poblacion_todas_entidades()::DataFrame
