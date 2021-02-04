@@ -9,4 +9,6 @@ IAIM_Entidad_2010.csv
 IAIM_Municipio.csv
 IAIM_Entidad.csv
 /src/*.csv
+*.csv
 codigos_postales_municipios_2021.csv
+lat_lon_alt_municipios.csv 
