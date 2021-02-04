@@ -327,6 +327,7 @@ julia> idh(clave("Campeche"))
 ```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
+  check(cve_entidad,cve_municipio) 
   if cve_municipio == ""
     tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
     try
@@ -582,6 +583,7 @@ julia> int_migratoria(clave("Campeche"))
 ```
 """
 function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+  check(cve_entidad,cve_municipio) 
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     tabla = get_info("IAIM_Entidad.csv",[String,Float64])
@@ -657,6 +659,7 @@ julia> geografia(clave("Campeche"))
 ```
 """
 function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
+  check(cve_entidad,cve_municipio) 
   tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
@@ -932,3 +935,12 @@ function similitud_region(id::String)::Array{Array{String}}
   simil_municipio = colecta_similitud(id, municipios_iter)
   return [simil_entidades, simil_municipio]
 end
+function check(cve_entidad,cve_municipio)
+   if cve_municipio != "" && !haskey(MUNICIPIOS,cve_entidad*cve_municipio)
+    error("La clave $cve_municipio no se encontró.")
+  end
+  if !haskey(ENTIDADES,cve_entidad)
+    error("La clave $cve_entidad no se encontró.")
+  end
+end
+
