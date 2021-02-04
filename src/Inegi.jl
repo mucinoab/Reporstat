@@ -218,6 +218,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
 - nombre de municipio
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
+- extensión territorial
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
@@ -252,6 +253,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 - nombre oficial de la entidad
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
+- extensión territorial
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
