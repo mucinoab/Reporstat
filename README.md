@@ -1,5 +1,4 @@
 # Reporstat
-[![codecov](https://codecov.io/gh/mucinoab/Reporstat/branch/master/graph/badge.svg?token=3aik50X26D)](https://codecov.io/gh/mucinoab/Reporstat)
     <p align="center">
       <img width="578" height="374" src="https://user-images.githubusercontent.com/28630268/105275429-f62e0380-5b64-11eb-8e7b-7788053c50ce.png">
     </p>
