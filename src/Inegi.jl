@@ -780,7 +780,7 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="")::DataFrame
+function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEGI="")::DataFrame
 
   token_INEGI = token_check(token_INEGI)
 
