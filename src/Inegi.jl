@@ -328,22 +328,21 @@ julia> idh(clave("Campeche"))
 ```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
-    if cve_municipio == ""
-      tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
-      try
-       return filtrar(tabla,":ent == '$cve_entidad'")
-      catch 
-        error("No se encontro la clave $cve_entidad")
-      end
-    else
-        tabla = get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
-        q1 = ":ent == '$cve_entidad'"
-        q2 = ":mun == '$cve_municipio'"
-        try 
-            return filtrar(tabla,q1,q2)
-        catch
-            error("No se encontro la clave")
-        end
+  if cve_municipio == ""
+    tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
+    try
+      return filtrar(tabla,":ent == '$cve_entidad'")
+    catch 
+      error("No se encontro la clave $cve_entidad")
+    end
+  else
+    tabla = get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
+    q1 = ":ent == '$cve_entidad'"
+    q2 = ":mun == '$cve_municipio'"
+    try 
+      return filtrar(tabla,q1,q2)
+    catch
+      error("No se encontro la clave")
     end
   end
 end
