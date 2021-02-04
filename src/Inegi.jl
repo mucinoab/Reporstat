@@ -109,6 +109,7 @@ julia> popu = poblacion_entidad("31", token)
 """
 function poblacion_entidad(cve_entidad::String, token_INEGI::String="")::DataFrame
   token_INEGI = token_check(token_INEGI)
+   cve_entidad, cve_municipio= check(cve_entidad,"") 
   try
     global lugar = ENTIDADES[cve_entidad]
   catch e
@@ -156,6 +157,7 @@ julia> popu = poblacion_municipio("01", "002")
 """
 function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
   token_INEGI = token_check(token_INEGI)
+     cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
   try
     global estado = ENTIDADES[cve_entidad]
   catch e
@@ -289,12 +291,21 @@ julia> clave("Calakmul")
 "010"
 ```
 """
-function clave(id::String)::String
-  if haskey(ENTIDAD_NOMBRE, id)
-    return ENTIDAD_NOMBRE[id]
-  end
-  if haskey(MUNICIPIO_NOMBRE, id)
-    return MUNICIPIO_NOMBRE[id][3:end]
+function clave(id::String,prio::Bool=true)::String
+  if prio == true
+    if haskey(ENTIDAD_NOMBRE, id)
+      return ENTIDAD_NOMBRE[id]
+    end
+    if haskey(MUNICIPIO_NOMBRE, id)
+      return MUNICIPIO_NOMBRE[id][3:end]
+    end
+  else
+    if haskey(MUNICIPIO_NOMBRE, id)
+      return MUNICIPIO_NOMBRE[id][3:end]
+    end
+    if haskey(ENTIDAD_NOMBRE, id)
+      return ENTIDAD_NOMBRE[id]
+    end
   end
   aux = "No existe $id en los registros de entidades o estados.\n"
   ent , mun = similitud_region(id)
@@ -343,7 +354,7 @@ julia> idh(clave("Campeche"))
 ```
 """
 function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
-  check(cve_entidad,cve_municipio) 
+     cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
   if cve_municipio == ""
     tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
     try
@@ -404,6 +415,7 @@ julia> df = indicadores_pobreza("01", "001")
 ```
 """
 function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
+  cve_entidad, cve_municipio= check(cve_entidad,cve_municipio)
   try
     estado = ENTIDADES[cve_entidad]
   catch e
@@ -438,6 +450,8 @@ julia> df = indicadores_pobreza_porcentaje("01", "001")
 ```
 """
 function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
+     cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
+
   try
     estado = ENTIDADES[cve_entidad]
   catch e
@@ -524,6 +538,7 @@ julia> edad_municipios("01", "001")
 ```
 """
 function edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+  cve_entidad, cve_municipio= check(cve_entidad,cve_municipio)
   try
     estado = ENTIDADES[cve_entidad]
   catch e
@@ -599,7 +614,8 @@ julia> int_migratoria(clave("Campeche"))
 ```
 """
 function int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
-  check(cve_entidad,cve_municipio) 
+   cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
+
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
     tabla = get_info("IAIM_Entidad.csv",[String,Float64])
@@ -675,7 +691,7 @@ julia> geografia(clave("Campeche"))
 ```
 """
 function geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
-  check(cve_entidad,cve_municipio) 
+   cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
   tabla = get_info("lat_lon_alt_municipios.csv",[String,String,String,String,String,String,Float64])
   q1 = ":ent == '$cve_entidad'"
   if cve_municipio == ""
@@ -740,6 +756,8 @@ julia> codigos_postales("01", "001")
 ```
 """
 function codigos_postales(cve_entidad::String, cve_municipio::String)::DataFrame
+
+   cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
   try
     estado = ENTIDADES[cve_entidad]
   catch e
@@ -798,7 +816,7 @@ julia> tasas_vitales("01", "001")
 ```
 """
 function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="")::DataFrame
-
+   cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
   token_INEGI = token_check(token_INEGI)
 
   try
@@ -951,12 +969,21 @@ function similitud_region(id::String)::Array{Array{String}}
   simil_municipio = colecta_similitud(id, municipios_iter)
   return [simil_entidades, simil_municipio]
 end
-function check(cve_entidad,cve_municipio)
-   if cve_municipio != "" && !haskey(MUNICIPIOS,cve_entidad*cve_municipio)
-    error("La clave $cve_municipio no se encontró.")
-  end
+function check(cve_entidad,cve_municipio)::Any
+  cve_mun , cve_ent = cve_municipio, cve_entidad
   if !haskey(ENTIDADES,cve_entidad)
-    error("La clave $cve_entidad no se encontró.")
+    cve_entidad = clave(cve_entidad)
   end
+   if cve_municipio != "" && !haskey(MUNICIPIOS,cve_entidad*cve_municipio)
+     cve_municipio =  clave(cve_municipio,false)
+  end
+  # print("$cve_entidad $cve_municipio")
+
+  if haskey(MUNICIPIO_NOMBRE , cve_mun)
+    if cve_entidad*cve_municipio != MUNICIPIO_NOMBRE[cve_mun]
+      error("El municipio $(cve_mun) no pertenece la entidad $(ENTIDADES[cve_entidad]).")
+    end
+  end
+  return (cve_entidad ,cve_municipio)
 end
 
