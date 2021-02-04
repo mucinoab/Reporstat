@@ -494,4 +494,3 @@ function get_info(path::String,tipos=[])::DataFrame
     return DataFrame(CSV.File(path))
   end
 end
-
