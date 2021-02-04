@@ -248,7 +248,7 @@ end
 
 Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 
-- clave de entidad 
+- clave de entidad
 - nombre oficial de la entidad
 - población total
 - densidad de población (habitantes por kilómetro cuadrado) 
@@ -568,14 +568,37 @@ end
 """
     codigos_postales()::DataFrame
 
-Proporciona todos los _códigos postales_ de México, segregados por municpio,
+Proporciona los _códigos postales_ del municpio indicado,
 en un `DataFrame`.
 Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
 
 # Ejemplo
 
 ```julia-repl
-julia> codigos_postales()
+julia> codigos_postales("01", "001")
+2465×6 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
+      │ String   String          String     String            Int64                       String          
+──────┼────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                           599  20000;20010;20010 ⋯
+```
+"""
+function codigos_postales(cve_entidad::String, cve_municipio::String)::DataFrame
+ 	codigos = get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
+	return filtrar(codigos, ":entidad==$cve_entidad", ":municipio==$cve_municipio")
+end
+
+"""
+    codigos_postales_todos()::DataFrame
+
+Proporciona todos los _códigos postales_ de México, segregados por municipio,
+en un `DataFrame`.
+Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/correosdemexico)
+
+# Ejemplo
+
+```julia-repl
+julia> codigos_postales_todos()
 2465×6 DataFrame
   Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
       │ String   String          String     String            Int64                       String          
@@ -585,7 +608,7 @@ julia> codigos_postales()
   ⋮   │    ⋮           ⋮             ⋮                   ⋮                ⋮                               ⋮
 ```
 """
-function codigos_postales()::DataFrame
+function codigos_postales_todos()::DataFrame
   return get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
 end
 
@@ -607,7 +630,7 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
+function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEGI::String="")::DataFrame
 
 	token_INEGI = token_check(token_INEGI)
 
@@ -625,7 +648,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 
 	nacimientos = get_info("nacimientos.csv")
 
-	if(cve_entidad=="")
+	if(cve_municipio=="")
 		localidad = poblacion_entidad(cve_entidad)
 		pob_mujeres = localidad[:1, :4]
 
@@ -651,7 +674,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 
 	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv")
 
-	if(cve_entidad=="")
+	if(cve_municipio=="")
 		fertil_ent = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == '000'")
 		pob_fertil = fertil_ent[:1, :4]
 		fecundidad = nacimientos_ent/pob_fertil
@@ -665,7 +688,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI::
 
 	pob_total = localidad[:1, :2]
 
-	if(cve_entidad=="")
+	if(cve_municipio=="")
 		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
 		defunciones_ent = estado[:1, :4]
 		if(defunciones_ent == "")
