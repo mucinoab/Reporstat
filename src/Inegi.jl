@@ -364,7 +364,7 @@ function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFra
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
   path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
-  tabla = get_info(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
+  tabla = get_info(path, [String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
   return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
@@ -399,7 +399,7 @@ function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::Strin
   end
 
   path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
-  tabla = get_info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
+  tabla = get_info(path, [String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
   return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
@@ -457,12 +457,43 @@ end
 
 
 """
-    edad_municipios()::DataFrame
-Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por municipio en formato `DataFrame`.
+    edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades del municipio indicado en formato `DataFrame`.
 Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
 # Ejemplo
 ```julia-repl
-julia> edad_municipios()
+julia> edad_municipios("01", "001")
+1×7 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
+      │ String   String          String     String            Float64        Float64       Float64
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes        14           28              46
+```
+"""
+function edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+  try
+    estado = entidades[cve_entidad]
+  catch e
+    error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+  end
+
+  try
+    municipio = municipios[cve_entidad*cve_municipio]
+  catch e
+    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+  end
+    
+  tabla = get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
+  return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
+end
+
+"""
+    edad_municipios_todos()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades, a nivel nacional segregado por municipio en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_municipios_todos()
 2469×7 DataFrame
   Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
       │ String   String          String     String            Float64        Float64       Float64
@@ -473,7 +504,7 @@ julia> edad_municipios()
    ⋮           ⋮             ⋮       ⋮             ⋮                   ⋮            ⋮               ⋮
 ```
 """
-function edad_municipios()::DataFrame
+function edad_municipios_todos()::DataFrame
   return get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
 end
 
@@ -497,9 +528,6 @@ julia> edad_entidades()
 function edad_entidades()::DataFrame
   return get_info("cuartiles_entidades_2020.csv",[String,String,Float64,Float64,Float64])
 end
-
-
-
 
 """
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
@@ -730,7 +758,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
 
-  nacimientos = get_info("nacimientos.csv", types=[String, String, String, Int64])
+  nacimientos = get_info("nacimientos.csv", [String, String, String, Int64])
 
   if(cve_municipio=="")
     localidad = poblacion_entidad(cve_entidad)
@@ -756,7 +784,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     end
   end
 
-  fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", types=[String, String, String, Int64])
+  fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", [String, String, String, Int64])
 
   if(cve_municipio=="")
     fertil_ent = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '000'")
@@ -768,7 +796,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     fecundidad = nacimientos_muni/pob_fertil
   end
 
-  defunciones = get_info("defunciones_municipio_2019.csv", types=[String, String, String, Int64])
+  defunciones = get_info("defunciones_municipio_2019.csv", [String, String, String, Int64])
 
   pob_total = localidad[:1, :2]
 
