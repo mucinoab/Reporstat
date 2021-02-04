@@ -6,4 +6,4 @@
     
 [Documentación](https://mucinoab.github.io/Reporstat/dev/)
 
-Se tiene como objetivo aprovechar la información a nivel municipal del INEGI, CONAPO y CONEVAL para consolidar en un solo lugar los datos abiertos de la Secretaría de Salud sobre COVID-19 en México, junto con información relevante del municipio de residencia de cada caso.
+Paquete que tiene como objetivo agilizar la consulta de información poblacional de instituciones como INEGI, CONAPO y CONEVAL segregada por municipios para que, en conjunto con datos abiertos de cualquier índole, se facilite la realización de análisis y reportes estadísticos al usuario.
