@@ -336,7 +336,7 @@ end
 
 
 """
-    indicadores_pobreza()::DataFrame
+    indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
 
 Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, del _municipio_ indicado. 
 
@@ -344,7 +344,7 @@ Los datos son obtenidos de la página oficial de datos abiertos del gobierno fed
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
 julia> df = indicadores_pobreza("01", "001") 
-2457×20 DataFrame
+1×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Int64    Int64      Int64     ⋯
 ──────┼────────────────────────────────────────────────────────────────────────────────────────
@@ -378,7 +378,7 @@ Los datos son obtenidos de la página oficial de datos abiertos del gobierno fed
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
 ```julia-repl
 julia> df = indicadores_pobreza_porcentaje("01", "001") 
-2457×20 DataFrame
+1×20 DataFrame
   Row │ entidad  entidad_nombre       municipio  municipio_nombre pobreza  pobreza_e  pobreza_m ⋯
       │ String   String               String     String           Float64  Float64    Float64   ⋯
 ──────┼─────────────────────────────────────────────────────────────────────────────────────────
@@ -407,7 +407,7 @@ end
 """
     indicadores_pobreza_todos()::DataFrame
 
-Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _federal_ segregado por _municipios. 
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _nacional_ segregado por _municipios. 
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
@@ -646,7 +646,7 @@ Los datos son obtenidos del [Servicio Postal Mexicano.](https://www.gob.mx/corre
 
 ```julia-repl
 julia> codigos_postales("01", "001")
-2465×6 DataFrame
+1×6 DataFrame
   Row │ entidad  entidad_nombre  municipio  municipio_nombre  número de códigos postales  códigos postales
       │ String   String          String     String            Int64                       String          
 ──────┼────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -711,7 +711,9 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String)::DataFrame
+function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="")::DataFrame
+	
+	token_INEGI = token_check(token_INEGI)
 
 	try
 		estado = entidades[cve_entidad]
