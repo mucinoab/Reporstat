@@ -4,7 +4,7 @@ include("Utilidades.jl")
 include("Constants.jl")
 
 using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos,idh_todos_municipios
 
 #TODO nombre
 """
@@ -300,39 +300,74 @@ function clave(id::String)::String
 end
 
 """
-    idh(cve_entidad::String, cve_municipio::String="")::Number
-
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+    idh(cve_entidad::String, cve_municipio::String="")::DataFrame
+Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresara el IDH de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
-julia> idh(clave("Campeche"),"002")
-0.797
+julia> idh(clave("Campeche"),"003").idh*100
+1-element Array{Float64,1}:
+ 77.50874
+
+julia> idh(clave("Campeche"),"003").idh[1]*100
+77.50874
+
 julia> idh(clave("Campeche"),"003")
-0.775
+1×8 DataFrame
+ Row │ ent  mun  entidad   municipio  idh       anio_promedio_escolaridad  anios_esperados_escolaridad  ingreso_per_capita 
+     │ Any  Any  Any       Any        Any       Any                        Any                          Any                
+─────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 04   003  Campeche  Carmen     0.775087  9.19528                    12.6746                      18552.8
+
+julia> idh(clave("Campeche"))
+1×3 DataFrame
+ Row │ ent  ent_nombre  idh  
+     │ Any  Any         Any  
+─────┼───────────────────────
+   1 │ 04   Campeche    0.82
 ```
 """
-function idh(cve_entidad::String, cve_municipio::String="")::Number
-  tabla = get_info("IDH.csv",[String,String,String,String,Float64])
-  if !haskey(entidades,cve_entidad)
-    error("No se encontro la clave")
-  end
+function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
   if cve_municipio == ""
-    #TODO
-    print("TODO recolectar idh de estados en general")
-  else
-    if !haskey(municipios,cve_entidad*cve_municipio)
-      error("No se encontro la clave")
-    end
-    q1 = ":cve_entidad == '$cve_entidad'"
-    q2 = ":cve_municipio == '$cve_municipio'"
+    tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
     try
-      return filtrar(tabla,q1,q2)[1,:].idh
+      return filtrar(tabla,":ent == '$cve_entidad'")
+    catch 
+      error("No se encontro la clave $cve_entidad")
+    end
+  else
+    tabla = get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
+    q1 = ":ent == '$cve_entidad'"
+    q2 = ":mun == '$cve_municipio'"
+    try 
+      return filtrar(tabla,q1,q2)
     catch
       error("No se encontro la clave")
     end
   end
 end
+"""
+    idh_todos_municipios()::DataFrame
 
+Regresa un `DataFrame` con todos los valores agregados del  índice de desarrollo humano de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+
+# Ejemplo
+```julia-repl
+julia> idh_todos_municipios()
+2456×8 DataFrame
+  Row │ ent     mun     entidad              municipio                     idh       anio_promedio_escolaridad  anios_esperados_escolaridad  ingreso_per_capita 
+      │ String  String  String               String                        Float64   Float64                    Float64                      Float64            
+──────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01      001     Aguascalientes       Aguascalientes                0.789432                    9.55307                      12.8703            17848.3
+    2 │ 01      002     Aguascalientes       Asientos                      0.6615                      6.22975                      11.1364             6877.03
+    3 │ 01      003     Aguascalientes       Calvillo                      0.669557                    5.95726                      10.8926             8764.94
+  ⋮   │   ⋮       ⋮              ⋮                        ⋮                   ⋮                  ⋮                           ⋮                       ⋮
+ 2455 │ 32      057     Zacatecas            Trancoso                      0.673578                    6.24331                      10.8909             7555.7
+ 2456 │ 32      058     Zacatecas            Santa María de la Paz         0.668754                    5.86283                      12.143              8092.09
+```
+"""
+function idh_todos_municipios()::DataFrame
+   return get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
+ end
 
 """
     indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
@@ -364,7 +399,7 @@ function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFra
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
   path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
-  tabla = get_info(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
+  tabla = get_info(path, [String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
   return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
@@ -399,7 +434,7 @@ function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::Strin
   end
 
   path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
-  tabla = get_info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
+  tabla = get_info(path, [String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
   return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
@@ -457,12 +492,43 @@ end
 
 
 """
-    edad_municipios()::DataFrame
-Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades por municipio en formato `DataFrame`.
+    edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades del municipio indicado en formato `DataFrame`.
 Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
 # Ejemplo
 ```julia-repl
-julia> edad_municipios()
+julia> edad_municipios("01", "001")
+1×7 DataFrame
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
+      │ String   String          String     String            Float64        Float64       Float64
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes        14           28              46
+```
+"""
+function edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+  try
+    estado = entidades[cve_entidad]
+  catch e
+    error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+  end
+
+  try
+    municipio = municipios[cve_entidad*cve_municipio]
+  catch e
+    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+  end
+    
+  tabla = get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
+  return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
+end
+
+"""
+    edad_municipios_todos()::DataFrame
+Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades, a nivel nacional segregado por municipio en formato `DataFrame`.
+Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
+# Ejemplo
+```julia-repl
+julia> edad_municipios_todos()
 2469×7 DataFrame
   Row │ entidad  entidad_nombre  municipio  municipio_nombre    Q1             Q2            Q3
       │ String   String          String     String            Float64        Float64       Float64
@@ -473,7 +539,7 @@ julia> edad_municipios()
    ⋮           ⋮             ⋮       ⋮             ⋮                   ⋮            ⋮               ⋮
 ```
 """
-function edad_municipios()::DataFrame
+function edad_municipios_todos()::DataFrame
   return get_info("cuartiles_municipios_2020.csv",[String,String,String,String, Float64,Float64,Float64])
 end
 
@@ -497,9 +563,6 @@ julia> edad_entidades()
 function edad_entidades()::DataFrame
   return get_info("cuartiles_entidades_2020.csv",[String,String,Float64,Float64,Float64])
 end
-
-
-
 
 """
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
@@ -730,7 +793,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
 
-  nacimientos = get_info("nacimientos.csv", types=[String, String, String, Int64])
+  nacimientos = get_info("nacimientos.csv", [String, String, String, Int64])
 
   if(cve_municipio=="")
     localidad = poblacion_entidad(cve_entidad)
@@ -756,7 +819,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     end
   end
 
-  fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", types=[String, String, String, Int64])
+  fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", [String, String, String, Int64])
 
   if(cve_municipio=="")
     fertil_ent = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '000'")
@@ -768,7 +831,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
     fecundidad = nacimientos_muni/pob_fertil
   end
 
-  defunciones = get_info("defunciones_municipio_2019.csv", types=[String, String, String, Int64])
+  defunciones = get_info("defunciones_municipio_2019.csv", [String, String, String, Int64])
 
   pob_total = localidad[:1, :2]
 
