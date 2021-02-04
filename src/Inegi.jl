@@ -3,8 +3,8 @@ using Dates, Printf
 include("Utilidades.jl")
 include("Constants.jl")
 
-using InfoZIP, HTTP,  StringEncodings, JSON
-export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos,idh_todos_municipios
+using InfoZIP, HTTP,  StringEncodings, JSON, StringDistances
+export poblacion_mexico, poblacion_entidad, poblacion_municipio, poblacion_todos_municipios, poblacion_todas_entidades, clave,idh,indicadores_pobreza_porcentaje,indicadores_pobreza, indicadores_pobreza_porcentaje_todos,indicadores_pobreza_todos, fechahoy, int_migratoria, geografia, codigos_postales, int_migratoria_todos, geografia_todos_municipios,tasas_vitales,edad_municipios, edad_entidades, similitud_region, similitud_entidad, similitud_municipio, codigos_postales_todos,idh_todos_municipios, edad_municipios_todos
 
 #TODO nombre
 """
@@ -40,7 +40,7 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
+Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 # Ejemplo
 ```julia-repl
@@ -66,7 +66,7 @@ end
 
 Regresa un una `DataFrame` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno, de la siguiente manera.
+Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV), de la siguiente manera.
 
 ```julia-repl
 julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
@@ -110,7 +110,7 @@ julia> popu = poblacion_entidad("31", token)
 function poblacion_entidad(cve_entidad::String, token_INEGI::String="")::DataFrame
   token_INEGI = token_check(token_INEGI)
   try
-    global lugar = entidades[cve_entidad]
+    global lugar = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
@@ -124,7 +124,7 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una variable de entorno llamada de la misma manera, `token_INEGI`.
+Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 !!! note
     ### Área geoestadística municipal (AGEM)
@@ -157,13 +157,13 @@ julia> popu = poblacion_municipio("01", "002")
 function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
   token_INEGI = token_check(token_INEGI)
   try
-    global estado = entidades[cve_entidad]
+    global estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe de ser de dos dígitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    global municipio = municipios[cve_entidad*cve_municipio]
+    global municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -290,11 +290,11 @@ julia> clave("Calakmul")
 ```
 """
 function clave(id::String)::String
-  if haskey(entidad_nombre, id)
-    return entidad_nombre[id]
+  if haskey(ENTIDAD_NOMBRE, id)
+    return ENTIDAD_NOMBRE[id]
   end
-  if haskey(municipio_nombre, id)
-    return municipio_nombre[id][3:end]
+  if haskey(MUNICIPIO_NOMBRE, id)
+    return MUNICIPIO_NOMBRE[id][3:end]
   end
   error("No existe $id esa entidad o estado")
 end
@@ -388,13 +388,13 @@ julia> df = indicadores_pobreza("01", "001")
 """
 function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
   try
-    estado = entidades[cve_entidad]
+    estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    municipio = municipios[cve_entidad*cve_municipio]
+    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -422,13 +422,13 @@ julia> df = indicadores_pobreza_porcentaje("01", "001")
 """
 function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
   try
-    estado = entidades[cve_entidad]
+    estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    municipio = municipios[cve_entidad*cve_municipio]
+    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -441,7 +441,7 @@ end
 """
     indicadores_pobreza_todos()::DataFrame
 
-Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _nacional_ segregado por _municipios.
+Proporciona el número de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _nacional_ segregado por _municipios_.
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
@@ -467,7 +467,7 @@ end
 """
     indicadores_pobreza_porcentaje_todos()::DataFrame
 
-Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _federal_ segregado por _municipios_.
+Proporciona el _porcentaje_ de personas que cumple con los indicadores de pobreza según el CONEVAL, a nivel _nacional_ segregado por _municipios_.
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
@@ -493,6 +493,7 @@ end
 
 """
     edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
+
 Da a conocer el primer y tercer cuartil, así como mediana(segundo cuartil) de las edades del municipio indicado en formato `DataFrame`.
 Dichos datos de edades actualizados al año 2020 se obtuvieron de la página [INEGI.](https://www.inegi.org.mx/sistemas/Olap/Proyectos/bd/censos/cpv2020/pt.asp)
 # Ejemplo
@@ -507,13 +508,13 @@ julia> edad_municipios("01", "001")
 """
 function edad_municipios(cve_entidad::String,cve_municipio::String)::DataFrame
   try
-    estado = entidades[cve_entidad]
+    estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    municipio = municipios[cve_entidad*cve_municipio]
+    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -721,13 +722,13 @@ julia> codigos_postales("01", "001")
 """
 function codigos_postales(cve_entidad::String, cve_municipio::String)::DataFrame
   try
-    estado = entidades[cve_entidad]
+    estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    municipio = municipios[cve_entidad*cve_municipio]
+    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -782,13 +783,13 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String, token_INEGI="
   token_INEGI = token_check(token_INEGI)
 
   try
-    estado = entidades[cve_entidad]
+    estado = ENTIDADES[cve_entidad]
   catch e
     error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
   end
 
   try
-    municipio = municipios[cve_entidad*cve_municipio]
+    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
   catch e
     error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
   end
@@ -883,7 +884,7 @@ julia> clave(similitud_entidad("oaxjaca")[1])
 ```
 """
 function similitud_entidad(id::String)::Array{String}
-  entidades_iter = collect(values(entidades))
+  entidades_iter = collect(values(ENTIDADES))
   return colecta_similitud(id, entidades_iter)
 end
 
@@ -905,7 +906,7 @@ julia> clave(similitud_municipio("tequixciapn")[end])
 ```
 """
 function similitud_municipio(id::String)::Array{String}
-  municipios_iter = collect(values(municipios))
+  municipios_iter = collect(values(MUNICIPIOS))
   return colecta_similitud(id, municipios_iter)
 end
 
@@ -925,8 +926,8 @@ julia> similitud_region("jalisto")
 ```
 """
 function similitud_region(id::String)::Array{Array{String}}
-  entidades_iter = collect(values(entidades))
-  municipios_iter = collect(values(municipios))
+  entidades_iter = collect(values(ENTIDADES))
+  municipios_iter = collect(values(MUNICIPIOS))
   simil_entidades = colecta_similitud(id, entidades_iter)
   simil_municipio = colecta_similitud(id, municipios_iter)
   return [simil_entidades, simil_municipio]
