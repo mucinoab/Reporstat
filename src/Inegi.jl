@@ -301,39 +301,76 @@ function clave(id::String)::String
 end
 
 """
-    idh(cve_entidad::String, cve_municipio::String="")::Number
+    idh(cve_entidad::String, cve_municipio::String="")::DataFrame
 
-Regresa el indice de desarrollo humano de una entidad o de un municipio se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pgina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el indice de desarrollo humano,los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
-julia> idh(clave("Campeche"),"002")
-0.797
+julia> idh(clave("Campeche"),"003").idh*100
+1-element Array{Float64,1}:
+ 77.50874
+
+julia> idh(clave("Campeche"),"003").idh[1]*100
+77.50874
+
 julia> idh(clave("Campeche"),"003")
-0.775
+1×8 DataFrame
+ Row │ ent  mun  entidad   municipio  idh       anio_promedio_escolaridad  anios_esperados_escolaridad  ingreso_per_capita 
+     │ Any  Any  Any       Any        Any       Any                        Any                          Any                
+─────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 04   003  Campeche  Carmen     0.775087  9.19528                    12.6746                      18552.8
+
+julia> idh(clave("Campeche"))
+1×3 DataFrame
+ Row │ ent  ent_nombre  idh  
+     │ Any  Any         Any  
+─────┼───────────────────────
+   1 │ 04   Campeche    0.82
 ```
 """
-function idh(cve_entidad::String, cve_municipio::String="")::Number
-    tabla = get_info("IDH.csv",[String,String,String,String,Float64])
+function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
     if !haskey(entidades,cve_entidad)
         error("No se encontro la clave")
     end
     if cve_municipio == ""
-        #TODO
-        print("TODO recolectar idh de estados en general")
+      tabla = get_info("IDH_Entidad.csv",[String,String,Float64])
+      try
+       return filtrar(tabla,":ent == '$cve_entidad'")
+      catch 
+        error("No se encontro la clave $cve_entidad")
+      end
     else
-        if !haskey(municipios,cve_entidad*cve_municipio)
-            error("No se encontro la clave")
-        end
-        q1 = ":cve_entidad == '$cve_entidad'"
-        q2 = ":cve_municipio == '$cve_municipio'"
+        tabla = get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
+        q1 = ":ent == '$cve_entidad'"
+        q2 = ":mun == '$cve_municipio'"
         try 
-            return filtrar(tabla,q1,q2)[1,:].idh
+            return filtrar(tabla,q1,q2)
         catch
             error("No se encontro la clave")
         end
     end
 end
-
+"""
+    idh_todos_municipios()::DataFrame
+Regresa un `DataFrame` con todos los valores agregados del IDH de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+# Ejemplo
+```julia-repl
+julia> idh_todos_municipios()
+2456×8 DataFrame
+  Row │ ent     mun     entidad              municipio                     idh       anio_promedio_escolaridad  anios_esperados_escolaridad  ingreso_per_capita 
+      │ String  String  String               String                        Float64   Float64                    Float64                      Float64            
+──────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01      001     Aguascalientes       Aguascalientes                0.789432                    9.55307                      12.8703            17848.3
+    2 │ 01      002     Aguascalientes       Asientos                      0.6615                      6.22975                      11.1364             6877.03
+    3 │ 01      003     Aguascalientes       Calvillo                      0.669557                    5.95726                      10.8926             8764.94
+  ⋮   │   ⋮       ⋮              ⋮                        ⋮                   ⋮                  ⋮                           ⋮                       ⋮
+ 2455 │ 32      057     Zacatecas            Trancoso                      0.673578                    6.24331                      10.8909             7555.7
+ 2456 │ 32      058     Zacatecas            Santa María de la Paz         0.668754                    5.86283                      12.143              8092.09
+```
+"""
+function idh_todos_municipios()::DataFrame
+   return get_info("IDH_Municipios.csv",[String,String,String,String,Float64,Float64,Float64,Float64])
+ end
 
 """
     indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
