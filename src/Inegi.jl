@@ -354,10 +354,7 @@ julia> df = indicadores_pobreza("01", "001")
 """
 function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_poblacion.csv", pwd())
-  end
-  tabla = DataFrame(CSV.File(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64]))
+  tabla = get.info(path, ypes=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
   return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio") 
 end
 
@@ -378,12 +375,9 @@ julia> df = indicadores_pobreza_porcentaje("01", "001")
    
 ```
 """
-function indicadores_pobreza_porcentaje()::DataFrame
+function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
   path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
-  if !isfile(path)
-    global path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/indicadores_de_pobreza_municipal_2015_porcentaje.csv", pwd())
-  end
-  tabla = DataFrame(CSV.File(path, types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64]))
+  tabla = get.info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
   return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio")
 end
 
@@ -683,12 +677,12 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEGI::String="")::DataFrame
+function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
 
 	token_INEGI = token_check(token_INEGI)
 
 	try
-		global estado = entidades[cve_entidad]
+		estado = entidades[cve_entidad]
 	catch e
 		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
 	end
