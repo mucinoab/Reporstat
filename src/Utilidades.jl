@@ -106,12 +106,12 @@ end
 # end
 
 
-mutable struct tokens 
+mutable struct tokens
   literal::Any
   operador::String
   col::Any
   izq::String
-  der::String end
+der::String end
 
 function evaluador(operador::String , izq::Any, der::Any)
   if operador == ">="
@@ -133,7 +133,7 @@ function evaluador(operador::String , izq::Any, der::Any)
     return izq < der
   end
 end
-""" 
+"""
     filtrar(tabla::DataFrame, condiciones...)::DataFrame
 
 Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este caso los parámetros actúan como expresiones, los nombres de las columnas deben siempre tener el prefijo `:` , y puede ser especificada por nombre o por numero de columna.
@@ -141,8 +141,8 @@ Filtra un `DataFrame` de acuerdo a los parámetros que sean pasados, en este cas
 ```julia-repl
 julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
 4×2 DataFrame
- Row │ A      B      
-     │ Int32  String 
+ Row │ A      B
+     │ Int32  String
 ─────┼───────────────
    1 │     1  A
    2 │     2  A
@@ -151,8 +151,8 @@ julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
 
 julia> Filtrar(dt, ":1 == 2")
 2×2 DataFrame
- Row │ A    B   
-     │ Any  Any 
+ Row │ A    B
+     │ Any  Any
 ─────┼──────────
    1 │ 2    A
    2 │ 2    B
@@ -162,8 +162,8 @@ En caso de que se trate de una string se deben siempre encerrar entre comillas s
 ```julia-repl
 julia> Filtrar(dt, "'A' == :2")
 2×2 DataFrame
- Row │ A    B   
-     │ Any  Any 
+ Row │ A    B
+     │ Any  Any
 ─────┼──────────
    1 │ 1    A
    2 │ 2    A
@@ -173,8 +173,8 @@ Las condiciones se deben poner en parametros diferentes.
 ```julia-repl
 julia> Filtrar(dt, "2 == :A" , "'A'== :B")
 1×2 DataFrame
- Row │ A    B   
-     │ Any  Any 
+ Row │ A    B
+     │ Any  Any
 ─────┼──────────
    1 │ 2    A
 ```
@@ -187,14 +187,14 @@ function filtrar(tabla::DataFrame, condiciones...)::DataFrame
       v = collect(cond)
       condiciones = cat(condiciones,v,dims= (1,1))
     else
-       push!(condiciones, cond)
+      push!(condiciones, cond)
     end
   end
 
   if length(condiciones) == 0
     return tabla
   end
-  #los nombres de las columnas 
+  #los nombres de las columnas
   nombres_columnas = names(tabla)
   posicion_columnas = Dict()
   # para poder acceder por medio del numero de la columna a la columna
@@ -207,8 +207,8 @@ function filtrar(tabla::DataFrame, condiciones...)::DataFrame
     if data.col in nombres_columnas
       data.col = posicion_columnas[data.col]
     else
-      try 
-      data.col = parse(Int32,data.col)
+      try
+        data.col = parse(Int32,data.col)
       catch
         error("$(data.col) no existe en la tabla")
       end
@@ -257,7 +257,7 @@ function matcher(input::String)
   columna = ""
   literal = ""
   operador = match(operadores_expr, input)
-   operadores_reales =["==","<=","!=",">=",">","<"]
+  operadores_reales =["==","<=","!=",">=",">","<"]
   if operador === nothing
     error("No hay operador")
   end
@@ -267,7 +267,7 @@ function matcher(input::String)
   end
 
   if (local columna_reg = match( col_expr,args[1][1:end])) !== nothing
-      global columna = columna_reg.match
+    global columna = columna_reg.match
     if (local expr = match(string_expr,args[2]) ) !== nothing
       global literal = expr.match[2:end-1]
     else
@@ -275,10 +275,10 @@ function matcher(input::String)
         global literal = parse(Float64,String(expr.match))
       end
     end
-      global derecha = "literal"
-      global izquierda = "columna"
+    global derecha = "literal"
+    global izquierda = "columna"
   elseif (local columna_reg = match( col_expr,args[2][1:end])) !== nothing
-      global columna = columna_reg.match
+    global columna = columna_reg.match
     if (local expr = match(string_expr,args[1]) ) !== nothing
       global literal = expr.match[2:end-1]
     else
@@ -299,13 +299,13 @@ end
     contar_renglones(tabla::DataFrame, condiciones...)::Number
 
 Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
-# Ejemplo 
+# Ejemplo
 
 ```julia-repl
 julia> dt
 4×2 DataFrame
- Row │ A      B      
-     │ Int32  String 
+ Row │ A      B
+     │ Int32  String
 ─────┼───────────────
    1 │     1  A
    2 │     2  A
@@ -314,8 +314,8 @@ julia> dt
 
 julia> Filtrar(dt, "2 == :A" , "'A'== :B")
 1×2 DataFrame
- Row │ A    B   
-     │ Any  Any 
+ Row │ A    B
+     │ Any  Any
 ─────┼──────────
    1 │ 2    A
 
@@ -488,7 +488,7 @@ function get_info(path::String,tipos=[])::DataFrame
   if !isfile(path)
     path = HTTP.download("https://raw.githubusercontent.com/mucinoab/mucinoab.github.io/dev/extras/$path", pwd())
   end
-  if length(tipos) > 0 
+  if length(tipos) > 0
     return DataFrame(CSV.File(path,types=tipos))
   else
     return DataFrame(CSV.File(path))

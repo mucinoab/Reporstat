@@ -21,9 +21,15 @@ la densidad y población total.
 
 ```@docs
 idh
+
 int_migratoria
 int_migratoria_todos
+
+edad_entidades
+edad_municipios
+
 tasas_vitales
+
 geografia
 geografia_todos_municipios
 
