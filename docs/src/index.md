@@ -27,6 +27,7 @@ int_migratoria_todos
 
 edad_entidades
 edad_municipios
+edad_municipios_todos
 
 tasas_vitales
 
