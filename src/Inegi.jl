@@ -301,8 +301,7 @@ end
 
 """
     idh(cve_entidad::String, cve_municipio::String="")::DataFrame
-
-Regresa el indice de desarrollo humano,los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parametros, si solo se manda el parametro _cve_entidad_ se regresara el idh de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresara el IDH de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
 julia> idh(clave("Campeche"),"003").idh*100
@@ -348,7 +347,9 @@ function idh(cve_entidad::String, cve_municipio::String="")::DataFrame
 end
 """
     idh_todos_municipios()::DataFrame
+
 Regresa un `DataFrame` con todos los valores agregados del IDH de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+
 # Ejemplo
 ```julia-repl
 julia> idh_todos_municipios()
