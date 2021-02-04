@@ -937,10 +937,10 @@ function similitud_region(id::String)::Array{Array{String}}
 end
 function check(cve_entidad,cve_municipio)
    if cve_municipio != "" && !haskey(MUNICIPIOS,cve_entidad*cve_municipio)
-    error("La clave $cve_municipio no se encontro.")
+    error("La clave $cve_municipio no se encontró.")
   end
   if !haskey(ENTIDADES,cve_entidad)
-    error("La clave $cve_entidad no se encontro.")
+    error("La clave $cve_entidad no se encontró.")
   end
 end
 
