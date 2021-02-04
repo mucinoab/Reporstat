@@ -168,7 +168,7 @@ julia> Filtrar(dt, "'A' == :2")
    1 │ 1    A
    2 │ 2    A
 ```
-Las condiciones se deben poner en parametros diferentes.
+Las condiciones se deben poner en parámetros diferentes.
 
 ```julia-repl
 julia> Filtrar(dt, "2 == :A" , "'A'== :B")
@@ -298,7 +298,7 @@ end
 """
     contar_renglones(tabla::DataFrame, condiciones...)::Number
 
-Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el numero de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
+Llama internamente a la función [`Reporstat.filtrar`](@ref Reporstat.filtrar) con los mismos argumentos y regresa el número de renglones que tiene el `DataFrame` que retorna  [`Reporstat.filtrar`](@ref Reporstat.filtrar)
 # Ejemplo
 
 ```julia-repl
@@ -326,8 +326,6 @@ julia> contar_renglones(dt, "2 == :A" , "'A'== :B")
 function contar_renglones(tabla::DataFrame, condiciones...)::Number
   return nrow(filtrar(tabla, condiciones))
 end
-
-
 
 """
     unzip(path::String, dest::String="")

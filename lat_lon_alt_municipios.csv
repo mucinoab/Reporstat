@@ -1,0 +1,2470 @@
+ent,nom_ent,mun,nom_mun,latitud,longitud,altitud
+01,Aguascalientes,001,Aguascalientes,22°03´26.004,102°32´18.793,1916
+01,Aguascalientes,002,Asientos,22°17´45.544,102°12´24.275,2032
+01,Aguascalientes,003,Calvillo,22°06´18.615,102°51´27.923,1817
+01,Aguascalientes,004,Cosío,22°26´28.061,102°19´26.495,1969
+01,Aguascalientes,005,Jesús María,22°02´50.408,102°35´03.164,1936
+01,Aguascalientes,006,Pabellón de Arteaga,22°10´16.991,102°21´05.063,1912
+01,Aguascalientes,007,Rincón de Romos,22°22´27.166,102°25´54.493,1939
+01,Aguascalientes,008,San José de Gracia,22°19´05.161,102°40´50.681,2346
+01,Aguascalientes,009,Tepezalá,22°19´48.602,102°16´36.163,1950
+01,Aguascalientes,010,El Llano,22°02´47.763,102°10´05.974,2022
+01,Aguascalientes,011,San Francisco de los Romo,22°05´14.013,102°18´22.055,1913
+02,Baja California,001,Ensenada,32°16´56.008,116°53´01.587,367
+02,Baja California,002,Mexicali,32°42´58.278,115°51´12.497,24
+02,Baja California,003,Tecate,32°36´41.749,116°44´47.158,768
+02,Baja California,004,Tijuana,32°32´41.553,117°15´36.000,220
+02,Baja California,005,Playas de Rosarito,32°25´32.791,117°05´26.995,111
+02,Baja California,006,San Quintín,31°07´02.157,118°19´37.676,145
+03,Baja California Sur,001,Comondú,26°34´42.743,112°45´05.489,116
+03,Baja California Sur,002,Mulegé,27°59´10.474,115°10´13.858,264
+03,Baja California Sur,003,La Paz,25°05´51.613,111°40´17.315,201
+03,Baja California Sur,008,Los Cabos,23°39´26.480,110°06´05.419,228
+03,Baja California Sur,009,Loreto,26°33´12.176,111°46´26.460,185
+04,Campeche,001,Calkiní,20°41´25.798,090°27´08.853,12
+04,Campeche,002,Campeche,20°12´16.849,091°57´43.908,33
+04,Campeche,003,Carmen,19°01´17.138,092°27´54.859,14
+04,Campeche,004,Champotón,19°36´23.023,091°10´54.981,23
+04,Campeche,005,Hecelchakán,20°14´45.865,090°29´11.201,23
+04,Campeche,006,Hopelchén,20°11´14.923,090°02´51.187,112
+04,Campeche,007,Palizada,18°32´11.618,092°07´58.819,4
+04,Campeche,008,Tenabo,20°05´36.282,090°22´07.150,20
+04,Campeche,009,Escárcega,18°57´42.836,091°01´10.952,76
+04,Campeche,010,Calakmul,19°00´22.772,090°11´13.019,210
+04,Campeche,011,Candelaria,18°29´32.869,091°17´21.062,64
+04,Campeche,012,Seybaplaya,19°42´28.900,090°42´35.054,10
+05,Coahuila de Zaragoza,001,Abasolo,27°14´04.340,101°25´55.814,432
+05,Coahuila de Zaragoza,002,Acuña,29°50´21.829,102°49´55.160,497
+05,Coahuila de Zaragoza,003,Allende,28°22´40.314,101°01´42.009,398
+05,Coahuila de Zaragoza,004,Arteaga,25°30´50.220,100°56´10.161,2084
+05,Coahuila de Zaragoza,005,Candela,27°04´11.818,101°02´29.169,487
+05,Coahuila de Zaragoza,006,Castaños,26°49´57.561,101°44´59.806,896
+05,Coahuila de Zaragoza,007,Cuatro Ciénegas,27°13´43.938,103°09´43.188,930
+05,Coahuila de Zaragoza,008,Escobedo,27°30´08.565,101°28´42.122,443
+05,Coahuila de Zaragoza,009,Francisco I. Madero,26°38´23.930,103°20´45.130,1103
+05,Coahuila de Zaragoza,010,Frontera,27°04´04.893,101°35´41.419,560
+05,Coahuila de Zaragoza,011,General Cepeda,25°43´00.556,101°52´14.387,1416
+05,Coahuila de Zaragoza,012,Guerrero,28°33´19.140,100°38´34.932,265
+05,Coahuila de Zaragoza,013,Hidalgo,28°04´18.285,100°17´36.835,181
+05,Coahuila de Zaragoza,014,Jiménez,29°16´18.180,101°18´20.077,315
+05,Coahuila de Zaragoza,015,Juárez,27°52´44.990,101°00´48.796,277
+05,Coahuila de Zaragoza,016,Lamadrid,27°13´58.635,101°58´45.644,808
+05,Coahuila de Zaragoza,017,Matamoros,25°45´44.715,103°21´50.785,1116
+05,Coahuila de Zaragoza,018,Monclova,27°03´10.894,101°28´42.576,564
+05,Coahuila de Zaragoza,019,Morelos,28°27´02.591,101°17´44.184,388
+05,Coahuila de Zaragoza,020,Múzquiz,29°02´09.096,102°34´34.501,612
+05,Coahuila de Zaragoza,021,Nadadores,27°26´51.439,101°53´02.940,562
+05,Coahuila de Zaragoza,022,Nava,28°38´23.400,100°49´04.741,288
+05,Coahuila de Zaragoza,023,Ocampo,29°11´33.560,103°35´52.479,1182
+05,Coahuila de Zaragoza,024,Parras,26°03´04.028,102°51´18.430,1402
+05,Coahuila de Zaragoza,025,Piedras Negras,28°54´46.890,100°43´42.149,240
+05,Coahuila de Zaragoza,026,Progreso,27°41´09.059,101°35´40.099,377
+05,Coahuila de Zaragoza,027,Ramos Arizpe,26°18´30.355,101°46´30.949,1180
+05,Coahuila de Zaragoza,028,Sabinas,28°14´36.733,101°21´38.239,371
+05,Coahuila de Zaragoza,029,Sacramento,27°02´03.869,101°48´12.720,599
+05,Coahuila de Zaragoza,030,Saltillo,25°30´48.479,101°35´14.924,1858
+05,Coahuila de Zaragoza,031,San Buenaventura,28°35´27.530,102°24´44.880,682
+05,Coahuila de Zaragoza,032,San Juan de Sabinas,28°13´14.888,101°33´22.706,387
+05,Coahuila de Zaragoza,033,San Pedro,26°29´15.649,103°13´22.647,1094
+05,Coahuila de Zaragoza,034,Sierra Mojada,28°28´04.368,103°55´07.361,1295
+05,Coahuila de Zaragoza,035,Torreón,25°40´38.339,103°30´00.906,1151
+05,Coahuila de Zaragoza,036,Viesca,25°32´29.802,103°29´13.546,1169
+05,Coahuila de Zaragoza,037,Villa Unión,28°22´06.561,101°01´35.171,408
+05,Coahuila de Zaragoza,038,Zaragoza,29°20´26.668,101°56´11.245,465
+06,Colima,001,Armería,19°08´26.150,104°06´26.259,53
+06,Colima,002,Colima,19°19´06.000,103°48´21.830,458
+06,Colima,003,Comala,19°28´50.470,103°53´52.130,980
+06,Colima,004,Coquimatlán,19°15´51.621,104°02´23.389,329
+06,Colima,005,Cuauhtémoc,19°26´30.050,103°41´23.039,977
+06,Colima,006,Ixtlahuacán,19°03´54.542,103°45´25.000,222
+06,Colima,007,Manzanillo,19°18´12.436,112°03´54.000,117
+06,Colima,008,Minatitlán,19°28´42.531,104°10´49.056,898
+06,Colima,009,Tecomán,19°06´43.792,114°45´25.000,39
+06,Colima,010,Villa de Álvarez,19°25´23.100,103°59´49.657,740
+07,Chiapas,001,Acacoyagua,15°29´01.477,092°45´34.759,287
+07,Chiapas,002,Acala,16°38´52.054,092°54´50.358,455
+07,Chiapas,003,Acapetahua,15°23´14.741,092°53´18.028,16
+07,Chiapas,004,Altamirano,16°50´30.289,092°07´20.073,1116
+07,Chiapas,005,Amatán,17°30´24.748,092°55´30.049,560
+07,Chiapas,006,Amatenango de la Frontera,15°38´13.271,092°11´37.081,1064
+07,Chiapas,007,Amatenango del Valle,16°33´50.488,092°28´34.984,2184
+07,Chiapas,008,Ángel Albino Corzo,15°52´50.345,092°49´13.820,1115
+07,Chiapas,009,Arriaga,16°23´14.844,094°05´37.461,83
+07,Chiapas,010,Bejucal de Ocampo,15°32´43.476,092°11´51.980,1916
+07,Chiapas,011,Bella Vista,15°41´29.688,092°18´55.951,1423
+07,Chiapas,012,Berriozábal,17°01´31.382,093°25´33.772,882
+07,Chiapas,013,Bochil,17°09´34.664,093°04´00.188,1296
+07,Chiapas,014,El Bosque,17°05´21.984,092°48´29.988,1106
+07,Chiapas,015,Cacahoatán,15°11´16.010,092°13´12.935,843
+07,Chiapas,016,Catazajá,17°54´50.419,092°10´54.176,20
+07,Chiapas,017,Cintalapa,17°01´59.988,094°07´14.431,663
+07,Chiapas,018,Coapilla,17°10´11.831,093°12´03.349,1371
+07,Chiapas,019,Comitán de Domínguez,16°31´22.159,092°20´32.754,1585
+07,Chiapas,020,La Concordia,16°14´35.988,093°07´21.000,860
+07,Chiapas,021,Copainalá,17°12´49.501,093°22´41.447,706
+07,Chiapas,022,Chalchihuitán,17°05´06.917,092°39´51.609,1320
+07,Chiapas,023,Chamula,16°53´18.009,092°49´22.070,2244
+07,Chiapas,024,Chanal,16°42´36.376,092°20´35.566,2006
+07,Chiapas,025,Chapultenango,17°24´24.408,093°12´19.642,690
+07,Chiapas,026,Chenalhó,17°04´03.138,092°41´41.845,1483
+07,Chiapas,027,Chiapa de Corzo,16°54´07.680,093°05´11.004,503
+07,Chiapas,028,Chiapilla,16°34´58.484,092°45´46.441,473
+07,Chiapas,029,Chicoasén,17°02´25.394,093°09´21.830,707
+07,Chiapas,030,Chicomuselo,15°56´35.217,092°36´20.406,807
+07,Chiapas,031,Chilón,17°15´34.517,092°23´35.762,978
+07,Chiapas,032,Escuintla,15°28´24.238,092°43´20.122,469
+07,Chiapas,033,Francisco León,17°21´10.059,093°22´31.363,608
+07,Chiapas,034,Frontera Comalapa,15°55´21.627,092°14´34.490,652
+07,Chiapas,035,Frontera Hidalgo,14°47´22.371,092°14´47.826,42
+07,Chiapas,036,La Grandeza,15°33´18.956,092°14´51.567,2137
+07,Chiapas,037,Huehuetán,15°06´15.498,092°32´53.800,128
+07,Chiapas,038,Huixtán,16°46´11.471,092°30´45.957,2048
+07,Chiapas,039,Huitiupán,17°18´39.996,092°48´39.785,593
+07,Chiapas,040,Huixtla,15°17´00.625,092°43´19.674,242
+07,Chiapas,041,La Independencia,16°17´59.510,092°01´50.640,1209
+07,Chiapas,042,Ixhuatán,17°20´13.306,093°03´35.466,919
+07,Chiapas,043,Ixtacomitán,17°29´01.578,093°08´44.692,277
+07,Chiapas,044,Ixtapa,16°54´40.975,092°58´59.152,1175
+07,Chiapas,045,Ixtapangajoya,17°32´23.301,093°02´10.240,309
+07,Chiapas,046,Jiquipilas,16°49´16.440,093°55´17.004,608
+07,Chiapas,047,Jitotol,17°09´07.019,092°58´16.663,1430
+07,Chiapas,048,Juárez,17°49´59.118,093°21´11.080,45
+07,Chiapas,049,Larráinzar,16°59´40.464,092°50´57.098,1909
+07,Chiapas,050,La Libertad,17°43´09.066,091°51´04.399,42
+07,Chiapas,051,Mapastepec,15°38´09.760,093°06´59.394,67
+07,Chiapas,052,Las Margaritas,16°37´07.602,092°08´49.516,1187
+07,Chiapas,053,Mazapa de Madero,15°27´16.226,092°14´07.265,1780
+07,Chiapas,054,Mazatán,14°57´18.821,092°37´22.507,13
+07,Chiapas,055,Metapa,14°51´09.027,092°12´36.979,93
+07,Chiapas,056,Mitontic,16°53´23.330,092°37´49.999,1926
+07,Chiapas,057,Motozintla,15°25´34.524,092°28´50.512,1374
+07,Chiapas,058,Nicolás Ruíz,16°26´13.463,092°35´07.250,732
+07,Chiapas,059,Ocosingo,17°11´47.917,092°19´59.027,806
+07,Chiapas,060,Ocotepec,17°15´36.278,093°12´49.761,1449
+07,Chiapas,061,Ocozocoautla de Espinosa,17°08´52.192,093°51´38.529,783
+07,Chiapas,062,Ostuacán,17°34´06.547,093°32´35.000,174
+07,Chiapas,063,Osumacinta,16°56´28.222,093°08´27.572,939
+07,Chiapas,064,Oxchuc,16°53´31.491,092°27´06.930,1827
+07,Chiapas,065,Palenque,17°48´28.530,092°20´22.620,83
+07,Chiapas,066,Pantelhó,17°07´24.375,092°31´28.739,923
+07,Chiapas,067,Pantepec,17°16´01.690,093°06´07.120,1437
+07,Chiapas,068,Pichucalco,17°40´38.114,093°23´49.090,123
+07,Chiapas,069,Pijijiapan,15°50´35.746,093°28´57.249,59
+07,Chiapas,070,El Porvenir,15°27´44.150,092°19´39.077,2416
+07,Chiapas,071,Villa Comaltitlán,15°19´48.954,092°42´46.822,111
+07,Chiapas,072,Pueblo Nuevo Solistahuacán,17°18´32.959,092°56´18.062,1184
+07,Chiapas,073,Rayón,17°14´07.242,093°02´03.538,1480
+07,Chiapas,074,Reforma,17°58´39.256,093°20´27.201,27
+07,Chiapas,075,Las Rosas,16°26´34.861,092°26´55.680,1423
+07,Chiapas,076,Sabanilla,17°25´23.233,092°42´11.130,486
+07,Chiapas,077,Salto de Agua,17°38´46.299,092°28´33.624,120
+07,Chiapas,078,San Cristóbal de las Casas,16°47´08.025,092°42´46.736,2202
+07,Chiapas,079,San Fernando,17°00´08.214,093°18´02.314,876
+07,Chiapas,080,Siltepec,15°41´20.080,092°27´11.513,1700
+07,Chiapas,081,Simojovel,17°13´22.595,092°49´24.555,725
+07,Chiapas,082,Sitalá,17°05´03.915,092°24´31.760,998
+07,Chiapas,083,Socoltenango,16°16´07.964,092°30´22.387,677
+07,Chiapas,084,Solosuchiapa,17°28´45.949,093°02´54.241,373
+07,Chiapas,085,Soyaló,16°58´09.560,093°02´05.270,1005
+07,Chiapas,086,Suchiapa,16°40´20.103,093°13´09.672,556
+07,Chiapas,087,Suchiate,14°43´24.906,092°18´56.613,10
+07,Chiapas,088,Sunuapa,17°31´03.616,093°16´26.444,272
+07,Chiapas,089,Tapachula,15°13´18.751,092°27´18.446,375
+07,Chiapas,090,Tapalapa,17°15´53.712,093°08´30.509,1396
+07,Chiapas,091,Tapilula,17°16´26.888,093°02´50.010,898
+07,Chiapas,092,Tecpatán,17°18´27.409,093°30´02.712,424
+07,Chiapas,093,Tenejapa,16°55´19.243,092°32´32.356,1875
+07,Chiapas,094,Teopisca,16°38´07.000,092°34´59.901,1780
+07,Chiapas,096,Tila,17°33´56.640,092°37´19.245,764
+07,Chiapas,097,Tonalá,16°11´49.015,093°54´51.939,58
+07,Chiapas,098,Totolapa,16°33´58.657,092°45´20.262,597
+07,Chiapas,099,La Trinitaria,16°10´26.860,092°11´24.769,970
+07,Chiapas,100,Tumbalá,17°23´43.130,092°23´22.130,773
+07,Chiapas,101,Tuxtla Gutiérrez,16°50´21.691,093°14´13.660,795
+07,Chiapas,102,Tuxtla Chico,14°59´14.183,092°15´03.602,293
+07,Chiapas,103,Tuzantán,15°13´28.263,092°28´05.070,192
+07,Chiapas,104,Tzimol,16°16´02.558,092°19´30.620,785
+07,Chiapas,105,Unión Juárez,15°05´52.242,092°08´31.615,1278
+07,Chiapas,106,Venustiano Carranza,16°28´50.560,092°51´43.240,684
+07,Chiapas,107,Villa Corzo,16°16´17.170,093°35´20.178,729
+07,Chiapas,108,Villaflores,16°30´04.128,093°43´02.768,685
+07,Chiapas,109,Yajalón,17°14´51.162,092°25´44.813,1061
+07,Chiapas,110,San Lucas,16°38´52.762,092°44´30.244,709
+07,Chiapas,111,Zinacantán,16°46´29.693,092°51´03.956,1943
+07,Chiapas,112,San Juan Cancuc,16°59´46.336,092°26´15.783,1205
+07,Chiapas,113,Aldama,16°58´07.271,092°42´47.853,1736
+07,Chiapas,114,Benemérito de las Américas,16°35´58.594,090°46´25.234,149
+07,Chiapas,115,Maravilla Tenejapa,16°20´31.383,091°21´45.604,284
+07,Chiapas,116,Marqués de Comillas,16°25´31.540,090°55´27.000,174
+07,Chiapas,117,Montecristo de Guerrero,15°44´49.819,092°44´29.938,1174
+07,Chiapas,118,San Andrés Duraznal,17°12´06.477,092°49´45.012,1014
+07,Chiapas,119,Santiago el Pinar,16°58´28.229,092°43´55.843,1573
+07,Chiapas,120,Capitán Luis Ángel Vidal,15°36´52.994,092°40´09.084,1483
+07,Chiapas,121,Rincón Chamula San Pedro,17°15´01.543,092°57´40.351,1748
+07,Chiapas,122,El Parral,16°24´53.403,093°05´41.340,700
+07,Chiapas,123,Emiliano Zapata,16°37´30.976,092°56´45.300,498
+07,Chiapas,124,Mezcalapa,17°22´56.450,093°49´52.834,210
+07,Chiapas,125,Honduras de la Sierra,15°40´02.012,092°32´23.587,1465
+08,Chihuahua,001,Ahumada,31°07´20.686,107°07´30.136,1289
+08,Chihuahua,002,Aldama,29°38´05.163,106°12´40.281,1247
+08,Chihuahua,003,Allende,27°24´01.832,105°33´13.432,1529
+08,Chihuahua,004,Aquiles Serdán,28°40´24.805,105°57´46.004,1557
+08,Chihuahua,005,Ascensión,31°46´58.700,108°11´50.636,1277
+08,Chihuahua,006,Bachíniva,29°03´20.107,107°25´45.279,1999
+08,Chihuahua,007,Balleza,27°11´13.016,106°55´09.098,2224
+08,Chihuahua,008,Batopilas de Manuel Gómez Morín,27°14´27.062,108°01´27.798,1319
+08,Chihuahua,009,Bocoyna,28°05´52.581,107°56´27.938,2344
+08,Chihuahua,010,Buenaventura,30°48´52.278,107°38´31.417,1474
+08,Chihuahua,011,Camargo,28°41´36.975,105°16´43.189,1317
+08,Chihuahua,012,Carichí,28°10´06.019,107°26´32.034,2110
+08,Chihuahua,013,Casas Grandes,30°38´15.604,108°35´36.134,1621
+08,Chihuahua,014,Coronado,26°53´05.349,105°23´39.593,1555
+08,Chihuahua,015,Coyame del Sotol,30°25´58.189,105°51´58.140,1224
+08,Chihuahua,016,La Cruz,28°02´01.436,105°14´54.783,1240
+08,Chihuahua,017,Cuauhtémoc,29°10´53.000,107°13´17.730,2053
+08,Chihuahua,018,Cusihuiriachi,28°22´31.620,107°13´20.040,2096
+08,Chihuahua,019,Chihuahua,29°46´17.545,106°36´09.477,1570
+08,Chihuahua,020,Chínipas,27°46´59.369,108°41´48.169,1003
+08,Chihuahua,021,Delicias,28°16´30.614,105°38´12.796,1192
+08,Chihuahua,022,Dr. Belisario Domínguez,28°11´46.733,106°32´33.299,1655
+08,Chihuahua,023,Galeana,30°24´51.133,107°56´31.353,1460
+08,Chihuahua,024,Santa Isabel,28°25´16.738,106°31´01.084,1669
+08,Chihuahua,025,Gómez Farías,29°28´40.311,107°54´05.015,2198
+08,Chihuahua,026,Gran Morelos,28°24´43.522,106°43´23.483,1792
+08,Chihuahua,027,Guachochi,27°40´11.546,107°45´16.957,2247
+08,Chihuahua,028,Guadalupe,31°26´51.912,106°16´54.160,1169
+08,Chihuahua,029,Guadalupe y Calvo,26°40´38.268,107°52´01.355,2004
+08,Chihuahua,030,Guazapares,27°41´56.194,108°28´36.259,1569
+08,Chihuahua,031,Guerrero,28°53´43.000,108°04´15.121,2120
+08,Chihuahua,032,Hidalgo del Parral,27°20´20.339,105°56´42.543,1676
+08,Chihuahua,033,Huejotitán,27°11´23.060,106°13´05.709,1737
+08,Chihuahua,034,Ignacio Zaragoza,30°00´32.448,107°59´27.516,2068
+08,Chihuahua,035,Janos,31°19´56.705,108°53´01.112,1495
+08,Chihuahua,036,Jiménez,27°34´26.645,105°01´49.776,1367
+08,Chihuahua,037,Juárez,31°46´53.644,106°53´18.976,1245
+08,Chihuahua,038,Julimes,28°47´34.287,105°30´20.476,1209
+08,Chihuahua,039,López,27°10´04.154,105°13´51.693,1448
+08,Chihuahua,040,Madera,29°59´52.760,108°44´03.292,1859
+08,Chihuahua,041,Maguarichi,28°01´58.728,108°06´16.684,1980
+08,Chihuahua,042,Manuel Benavides,29°16´21.154,104°15´09.741,1305
+08,Chihuahua,043,Matachí,28°58´02.000,107°51´09.742,1965
+08,Chihuahua,044,Matamoros,26°52´33.984,105°45´34.327,1747
+08,Chihuahua,045,Meoqui,28°28´23.551,105°38´56.286,1156
+08,Chihuahua,046,Morelos,26°48´46.072,108°01´02.400,1300
+08,Chihuahua,047,Moris,28°21´11.806,109°04´08.738,1258
+08,Chihuahua,048,Namiquipa,29°32´13.136,107°35´46.502,1917
+08,Chihuahua,049,Nonoava,27°41´21.549,106°56´13.504,1835
+08,Chihuahua,050,Nuevo Casas Grandes,30°47´56.669,107°58´50.584,1466
+08,Chihuahua,051,Ocampo,28°21´04.765,108°29´13.016,1905
+08,Chihuahua,052,Ojinaga,30°28´04.710,104°52´34.408,1097
+08,Chihuahua,053,Praxedis G. Guerrero,31°22´46.407,106°01´42.160,1085
+08,Chihuahua,054,Riva Palacio,29°15´57.102,106°52´59.803,2055
+08,Chihuahua,055,Rosales,28°34´51.618,105°58´24.507,1184
+08,Chihuahua,056,Rosario,27°25´30.663,106°30´24.752,1580
+08,Chihuahua,057,San Francisco de Borja,28°03´43.538,106°54´33.892,1762
+08,Chihuahua,058,San Francisco de Conchos,27°47´30.445,105°33´15.946,1279
+08,Chihuahua,059,San Francisco del Oro,26°59´45.438,106°09´05.326,1917
+08,Chihuahua,060,Santa Bárbara,26°55´10.985,105°51´59.000,1880
+08,Chihuahua,061,Satevó,28°06´23.306,106°36´36.324,1510
+08,Chihuahua,062,Saucillo,28°18´33.502,105°44´58.377,1205
+08,Chihuahua,063,Temósachic,29°08´44.898,108°33´03.487,1898
+08,Chihuahua,064,El Tule,27°09´15.979,106°28´36.608,1599
+08,Chihuahua,065,Urique,27°36´41.347,108°17´10.820,1680
+08,Chihuahua,066,Uruachi,28°02´18.909,108°56´35.901,1554
+08,Chihuahua,067,Valle de Zaragoza,27°42´32.860,106°09´51.390,1430
+09,Ciudad de México,002,Azcapotzalco,19°29´02.770,099°11´03.698,2244
+09,Ciudad de México,003,Coyoacán,19°21´00.770,099°09´43.724,2247
+09,Ciudad de México,004,Cuajimalpa de Morelos,19°22´29.628,099°21´15.809,2858
+09,Ciudad de México,005,Gustavo A. Madero,19°28´58.603,099°06´48.495,2230
+09,Ciudad de México,006,Iztacalco,19°23´45.245,099°05´51.406,2230
+09,Ciudad de México,007,Iztapalapa,19°21´32.414,099°05´33.441,2239
+09,Ciudad de México,008,La Magdalena Contreras,19°18´17.633,099°18´04.467,2849
+09,Ciudad de México,009,Milpa Alta,19°13´32.983,099°08´46.359,2612
+09,Ciudad de México,010,Álvaro Obregón,19°23´26.902,099°19´01.794,2859
+09,Ciudad de México,011,Tláhuac,19°19´26.933,099°02´15.558,2271
+09,Ciudad de México,012,Tlalpan,19°17´17.790,099°16´28.952,3005
+09,Ciudad de México,013,Xochimilco,19°16´46.532,099°09´07.648,2430
+09,Ciudad de México,014,Benito Juárez,19°22´19.172,099°09´28.272,2238
+09,Ciudad de México,015,Cuauhtémoc,19°26´29.928,099°09´06.781,2230
+09,Ciudad de México,016,Miguel Hidalgo,19°24´26.168,099°11´26.716,2264
+09,Ciudad de México,017,Venustiano Carranza,19°25´09.343,099°06´49.324,2230
+10,Durango,001,Canatlán,24°48´55.353,105°28´01.646,2012
+10,Durango,002,Canelas,25°10´11.062,106°42´31.113,1634
+10,Durango,003,Coneto de Comonfort,25°08´30.962,104°59´08.667,1953
+10,Durango,004,Cuencamé,25°13´55.777,103°58´22.303,1852
+10,Durango,005,Durango,24°22´23.247,105°29´54.622,1996
+10,Durango,006,General Simón Bolívar,25°16´08.000,103°30´23.000,1407
+10,Durango,007,Gómez Palacio,25°53´10.650,103°40´32.128,1117
+10,Durango,008,Guadalupe Victoria,24°38´05.413,104°12´40.458,2028
+10,Durango,009,Guanaceví,26°27´08.970,106°31´34.238,2421
+10,Durango,010,Hidalgo,26°26´20.939,105°11´08.197,1835
+10,Durango,011,Indé,26°06´58.006,105°17´13.453,1728
+10,Durango,012,Lerdo,25°45´30.577,103°55´30.097,1161
+10,Durango,013,Mapimí,26°44´46.243,104°32´51.926,1277
+10,Durango,014,Mezquital,23°44´52.449,105°04´09.211,1777
+10,Durango,015,Nazas,25°31´32.273,104°22´00.838,1308
+10,Durango,016,Nombre de Dios,24°01´50.459,104°21´54.384,1824
+10,Durango,017,Ocampo,26°49´26.733,106°11´11.872,1983
+10,Durango,018,El Oro,26°02´47.387,105°30´41.545,1654
+10,Durango,019,Otáez,24°54´42.140,106°13´11.246,1785
+10,Durango,020,Pánuco de Coronado,24°37´12.246,104°31´01.081,1991
+10,Durango,021,Peñón Blanco,24°59´48.020,104°16´29.473,1778
+10,Durango,022,Poanas,24°11´07.119,104°11´59.109,1948
+10,Durango,023,Pueblo Nuevo,23°55´48.221,105°45´28.182,1857
+10,Durango,024,Rodeo,25°23´50.576,104°43´26.761,1433
+10,Durango,025,San Bernardo,26°28´43.576,105°56´21.673,1799
+10,Durango,026,San Dimas,24°38´41.174,106°11´02.113,2013
+10,Durango,027,San Juan de Guadalupe,25°00´11.000,102°57´12.000,1625
+10,Durango,028,San Juan del Río,25°00´58.317,104°39´41.252,1805
+10,Durango,029,San Luis del Cordero,25°28´25.540,104°28´23.525,1562
+10,Durango,030,San Pedro del Gallo,25°49´55.580,104°37´54.978,1767
+10,Durango,031,Santa Clara,24°36´01.885,103°32´34.865,1813
+10,Durango,032,Santiago Papasquiaro,25°21´50.754,106°36´11.701,1873
+10,Durango,033,Súchil,23°39´08.008,104°21´57.468,2219
+10,Durango,034,Tamazula,25°39´16.228,107°11´03.528,1176
+10,Durango,035,Tepehuanes,25°47´40.440,106°40´41.106,2234
+10,Durango,036,Tlahualilo,26°41´10.193,104°01´38.178,1105
+10,Durango,037,Topia,25°24´14.753,106°56´03.028,1324
+10,Durango,038,Vicente Guerrero,23°48´22.345,104°03´26.983,1972
+10,Durango,039,Nuevo Ideal,25°04´05.893,105°17´13.832,2008
+11,Guanajuato,001,Abasolo,20°45´02.412,101°38´13.970,1700
+11,Guanajuato,002,Acámbaro,20°13´11.447,101°00´05.331,1917
+11,Guanajuato,003,San Miguel de Allende,21°06´22.252,101°03´17.055,2006
+11,Guanajuato,004,Apaseo el Alto,20°31´57.157,100°41´26.957,1969
+11,Guanajuato,005,Apaseo el Grande,20°41´50.281,100°45´46.240,1797
+11,Guanajuato,006,Atarjea,21°23´40.000,099°52´53.836,1804
+11,Guanajuato,007,Celaya,20°40´40.750,100°54´26.440,1771
+11,Guanajuato,008,Manuel Doblado,20°49´54.191,102°02´10.773,1800
+11,Guanajuato,009,Comonfort,20°49´01.614,100°57´52.322,1863
+11,Guanajuato,010,Coroneo,20°16´57.974,100°25´07.966,2372
+11,Guanajuato,011,Cortazar,20°30´51.270,101°02´36.788,1764
+11,Guanajuato,012,Cuerámaro,20°41´39.815,101°46´15.794,1743
+11,Guanajuato,013,Doctor Mora,21°12´09.182,100°28´12.289,2107
+11,Guanajuato,014,Dolores Hidalgo Cuna de la Independencia Nacional,21°20´41.913,101°08´29.922,1987
+11,Guanajuato,015,Guanajuato,21°12´18.569,101°26´00.193,2127
+11,Guanajuato,016,Huanímaro,20°24´18.018,101°34´26.331,1709
+11,Guanajuato,017,Irapuato,20°50´35.171,101°31´03.059,1739
+11,Guanajuato,018,Jaral del Progreso,20°26´11.891,101°06´19.888,1725
+11,Guanajuato,019,Jerécuaro,20°23´08.629,100°40´32.371,2130
+11,Guanajuato,020,León,21°19´21.856,101°49´51.372,1911
+11,Guanajuato,021,Moroleón,20°08´56.653,101°18´30.268,1948
+11,Guanajuato,022,Ocampo,21°49´27.000,101°37´34.676,2221
+11,Guanajuato,023,Pénjamo,20°37´12.068,102°05´45.584,1791
+11,Guanajuato,024,Pueblo Nuevo,20°35´13.608,101°25´03.411,1705
+11,Guanajuato,025,Purísima del Rincón,21°06´27.181,102°04´58.996,1773
+11,Guanajuato,026,Romita,20°56´04.365,101°44´36.750,1757
+11,Guanajuato,027,Salamanca,20°51´07.103,101°18´21.872,1742
+11,Guanajuato,028,Salvatierra,20°20´39.579,101°02´44.296,1805
+11,Guanajuato,029,San Diego de la Unión,21°33´23.476,101°01´52.884,2035
+11,Guanajuato,030,San Felipe,21°50´14.000,101°38´36.270,2144
+11,Guanajuato,031,San Francisco del Rincón,21°02´49.990,101°53´47.429,1785
+11,Guanajuato,032,San José Iturbide,21°06´50.910,100°31´40.695,2088
+11,Guanajuato,033,San Luis de la Paz,21°40´45.304,100°42´33.222,1957
+11,Guanajuato,034,Santa Catarina,21°12´50.215,100°06´58.299,1743
+11,Guanajuato,035,Santa Cruz de Juventino Rosas,20°48´11.650,101°05´11.963,1799
+11,Guanajuato,036,Santiago Maravatío,20°12´26.115,101°01´45.264,1806
+11,Guanajuato,037,Silao de la Victoria,21°08´05.109,101°34´47.883,1799
+11,Guanajuato,038,Tarandacuao,20°04´14.209,100°34´57.843,1987
+11,Guanajuato,039,Tarimoro,20°24´00.138,100°50´15.407,1868
+11,Guanajuato,040,Tierra Blanca,21°08´05.862,100°17´09.495,2067
+11,Guanajuato,041,Uriangato,20°10´48.489,101°12´13.258,1890
+11,Guanajuato,042,Valle de Santiago,20°32´06.598,101°27´22.120,1741
+11,Guanajuato,043,Victoria,21°38´51.000,100°21´20.942,1714
+11,Guanajuato,044,Villagrán,20°34´51.805,101°05´01.666,1736
+11,Guanajuato,045,Xichú,21°31´26.000,100°08´24.812,1473
+11,Guanajuato,046,Yuriria,20°17´27.765,101°24´07.897,1842
+12,Guerrero,001,Acapulco de Juárez,17°11´41.490,099°56´41.765,189
+12,Guerrero,002,Ahuacuotzingo,17°53´50.108,099°05´27.430,1314
+12,Guerrero,003,Ajuchitlán del Progreso,18°16´25.448,100°51´15.413,1015
+12,Guerrero,004,Alcozauca de Guerrero,17°30´13.297,098°29´29.404,1739
+12,Guerrero,005,Alpoyeca,17°40´36.722,098°31´33.449,973
+12,Guerrero,006,Apaxtla,18°13´36.257,100°05´30.625,1006
+12,Guerrero,007,Arcelia,18°23´11.510,100°18´54.675,836
+12,Guerrero,008,Atenango del Río,18°28´26.453,099°11´51.459,780
+12,Guerrero,009,Atlamajalcingo del Monte,17°23´55.502,098°37´44.115,2033
+12,Guerrero,010,Atlixtac,17°38´31.250,099°01´18.643,1791
+12,Guerrero,011,Atoyac de Álvarez,17°33´29.958,100°32´00.294,557
+12,Guerrero,012,Ayutla de los Libres,17°08´18.334,099°14´54.432,591
+12,Guerrero,013,Azoyú,16°47´26.752,098°39´15.835,163
+12,Guerrero,014,Benito Juárez,17°10´16.817,100°37´03.364,6
+12,Guerrero,015,Buenavista de Cuéllar,18°33´31.759,099°29´23.450,1347
+12,Guerrero,016,Coahuayutla de José María Izazaga,18°35´23.876,101°54´06.656,453
+12,Guerrero,017,Cocula,18°18´03.427,099°47´26.190,719
+12,Guerrero,018,Copala,16°39´22.277,099°04´03.567,19
+12,Guerrero,019,Copalillo,18°05´53.326,099°11´59.430,710
+12,Guerrero,020,Copanatoyac,17°31´32.368,098°46´50.087,1793
+12,Guerrero,021,Coyuca de Benítez,17°16´26.410,100°18´05.933,232
+12,Guerrero,022,Coyuca de Catalán,18°28´56.062,101°21´58.094,1053
+12,Guerrero,023,Cuajinicuilapa,16°34´46.606,098°41´40.466,32
+12,Guerrero,024,Cualác,17°49´08.164,098°44´48.251,1556
+12,Guerrero,025,Cuautepec,16°49´17.361,099°06´13.380,140
+12,Guerrero,026,Cuetzala del Progreso,18°16´23.734,099°53´26.412,1273
+12,Guerrero,027,Cutzamala de Pinzón,18°51´31.446,100°46´58.488,478
+12,Guerrero,028,Chilapa de Álvarez,17°39´41.758,099°16´10.179,1583
+12,Guerrero,029,Chilpancingo de los Bravo,17°36´20.588,099°56´20.063,1167
+12,Guerrero,030,Florencio Villarreal,16°46´35.222,099°13´42.959,22
+12,Guerrero,031,General Canuto A. Neri,18°30´56.794,100°12´58.329,1061
+12,Guerrero,032,General Heliodoro Castillo,18°00´36.470,100°12´29.762,1488
+12,Guerrero,033,Huamuxtitlán,17°57´46.881,098°35´48.632,956
+12,Guerrero,034,Huitzuco de los Figueroa,18°25´52.506,099°25´33.567,1085
+12,Guerrero,035,Iguala de la Independencia,18°24´55.341,099°42´48.454,819
+12,Guerrero,036,Igualapa,16°55´51.751,098°30´22.560,314
+12,Guerrero,037,Ixcateopan de Cuauhtémoc,18°32´55.316,099°50´16.688,1650
+12,Guerrero,038,Zihuatanejo de Azueta,18°03´12.731,101°40´36.182,505
+12,Guerrero,039,Juan R. Escudero,17°11´43.221,099°35´15.814,289
+12,Guerrero,040,Leonardo Bravo,17°47´28.338,099°56´44.946,1887
+12,Guerrero,041,Malinaltepec,17°21´19.070,098°49´02.377,1672
+12,Guerrero,042,Mártir de Cuilapan,17°56´36.184,099°31´34.701,1121
+12,Guerrero,043,Metlatónoc,17°21´24.594,098°37´03.977,1575
+12,Guerrero,044,Mochitlán,17°29´50.004,099°26´57.474,1163
+12,Guerrero,045,Olinalá,17°59´51.624,098°56´20.460,1394
+12,Guerrero,046,Ometepec,16°46´33.621,098°29´32.513,241
+12,Guerrero,047,Pedro Ascencio Alquisiras,18°38´09.341,099°57´27.367,1654
+12,Guerrero,048,Petatlán,17°53´39.181,101°27´10.976,440
+12,Guerrero,049,Pilcaya,18°46´01.952,099°43´31.839,1453
+12,Guerrero,050,Pungarabato,18°24´43.429,100°41´54.647,250
+12,Guerrero,051,Quechultenango,17°29´25.903,099°18´15.079,952
+12,Guerrero,052,San Luis Acatlán,17°15´18.156,098°54´28.261,731
+12,Guerrero,053,San Marcos,17°01´47.394,099°36´13.584,99
+12,Guerrero,054,San Miguel Totolapan,18°11´06.972,100°29´51.457,1262
+12,Guerrero,055,Taxco de Alarcón,18°38´48.207,099°45´46.114,1779
+12,Guerrero,056,Tecoanapa,17°08´39.175,099°25´40.521,426
+12,Guerrero,057,Técpan de Galeana,17°41´16.679,101°03´49.445,490
+12,Guerrero,058,Teloloapan,18°35´51.276,100°13´03.387,1358
+12,Guerrero,059,Tepecoacuilco de Trujano,18°19´28.348,099°35´39.825,820
+12,Guerrero,060,Tetipac,18°43´56.417,099°46´07.393,1861
+12,Guerrero,061,Tixtla de Guerrero,17°39´54.972,099°27´54.592,1465
+12,Guerrero,062,Tlacoachistlahuaca,17°09´31.250,098°28´10.423,703
+12,Guerrero,063,Tlacoapa,17°19´37.456,098°50´53.407,1732
+12,Guerrero,064,Tlalchapa,18°36´54.115,100°32´05.161,470
+12,Guerrero,065,Tlalixtaquilla de Maldonado,17°37´25.520,098°28´50.898,1249
+12,Guerrero,066,Tlapa de Comonfort,17°40´43.128,098°46´44.124,1455
+12,Guerrero,067,Tlapehuala,18°19´21.863,100°33´52.789,342
+12,Guerrero,068,La Unión de Isidoro Montes de Oca,18°14´45.173,102°10´45.828,186
+12,Guerrero,069,Xalpatláhuac,17°29´21.833,098°38´24.314,1641
+12,Guerrero,070,Xochihuehuetlán,17°58´08.783,098°38´09.599,1301
+12,Guerrero,071,Xochistlahuaca,16°59´31.182,098°15´43.985,509
+12,Guerrero,072,Zapotitlán Tablas,17°26´21.848,098°54´09.167,1999
+12,Guerrero,073,Zirándaro,18°32´05.104,101°31´07.112,592
+12,Guerrero,074,Zitlala,17°48´22.000,099°15´27.454,1568
+12,Guerrero,075,Eduardo Neri,18°01´29.694,099°47´28.028,1203
+12,Guerrero,076,Acatepec,17°21´23.185,099°08´24.186,1524
+12,Guerrero,077,Marquelia,16°42´52.086,098°49´49.603,50
+12,Guerrero,078,Cochoapa el Grande,17°16´22.938,098°31´44.012,1584
+12,Guerrero,079,José Joaquín de Herrera,17°29´55.462,099°02´46.577,1565
+12,Guerrero,080,Juchitán,16°39´04.487,098°46´34.625,54
+12,Guerrero,081,Iliatenco,17°04´27.203,098°45´29.630,1197
+13,Hidalgo,001,Acatlán,20°19´32.855,098°29´33.181,2125
+13,Hidalgo,002,Acaxochitlán,20°15´06.858,098°17´10.469,2175
+13,Hidalgo,003,Actopan,20°25´36.955,098°58´51.073,2084
+13,Hidalgo,004,Agua Blanca de Iturbide,20°24´31.770,098°25´58.839,2074
+13,Hidalgo,005,Ajacuba,20°10´50.097,099°07´19.677,2136
+13,Hidalgo,006,Alfajayucan,20°30´04.620,099°30´38.636,1963
+13,Hidalgo,007,Almoloya,19°50´31.888,098°26´27.199,2661
+13,Hidalgo,008,Apan,19°51´30.699,098°31´54.334,2540
+13,Hidalgo,009,El Arenal,20°17´32.292,098°56´22.427,2196
+13,Hidalgo,010,Atitalaquia,20°05´26.864,099°16´22.000,2120
+13,Hidalgo,011,Atlapexco,21°05´10.973,098°25´55.155,244
+13,Hidalgo,012,Atotonilco el Grande,20°25´46.636,098°47´58.501,1887
+13,Hidalgo,013,Atotonilco de Tula,20°01´55.800,099°18´04.063,2210
+13,Hidalgo,014,Calnali,20°57´18.189,098°39´47.402,1011
+13,Hidalgo,015,Cardonal,20°46´01.749,099°10´21.514,2026
+13,Hidalgo,016,Cuautepec de Hinojosa,20°05´35.601,098°22´38.410,2475
+13,Hidalgo,017,Chapantongo,20°19´45.369,099°35´25.449,2263
+13,Hidalgo,018,Chapulhuacán,21°12´15.223,099°01´50.385,812
+13,Hidalgo,019,Chilcuautla,20°24´28.087,099°16´52.815,1912
+13,Hidalgo,020,Eloxochitlán,20°50´00.892,098°57´31.790,1348
+13,Hidalgo,021,Emiliano Zapata,19°42´43.709,098°38´57.810,2522
+13,Hidalgo,022,Epazoyucan,20°06´40.281,098°43´23.971,2510
+13,Hidalgo,023,Francisco I. Madero,20°16´55.290,099°08´04.332,1997
+13,Hidalgo,024,Huasca de Ocampo,20°19´31.877,098°37´22.532,2061
+13,Hidalgo,025,Huautla,21°08´25.262,098°18´52.923,320
+13,Hidalgo,026,Huazalingo,21°03´20.763,098°32´29.642,566
+13,Hidalgo,027,Huehuetla,20°39´31.133,098°10´14.698,638
+13,Hidalgo,028,Huejutla de Reyes,21°14´31.348,098°36´01.744,305
+13,Hidalgo,029,Huichapan,20°30´04.597,099°51´16.000,2176
+13,Hidalgo,030,Ixmiquilpan,20°41´52.713,099°16´45.395,1918
+13,Hidalgo,031,Jacala de Ledezma,21°05´36.090,099°13´18.330,1408
+13,Hidalgo,032,Jaltocán,21°11´18.000,098°32´43.853,164
+13,Hidalgo,033,Juárez Hidalgo,20°52´42.058,098°53´45.958,1624
+13,Hidalgo,034,Lolotla,21°11´05.873,098°46´30.712,915
+13,Hidalgo,035,Metepec,20°19´13.349,098°24´57.699,2174
+13,Hidalgo,036,San Agustín Metzquititlán,20°36´29.600,098°42´13.295,1618
+13,Hidalgo,037,Metztitlán,20°42´30.736,098°56´58.625,1539
+13,Hidalgo,038,Mineral del Chico,20°16´51.094,098°49´34.806,2450
+13,Hidalgo,039,Mineral del Monte,20°10´22.567,098°41´55.343,2756
+13,Hidalgo,040,La Misión,21°08´40.834,099°08´20.410,1347
+13,Hidalgo,041,Mixquiahuala de Juárez,20°18´28.591,099°17´28.366,2013
+13,Hidalgo,042,Molango de Escamilla,20°58´19.343,098°50´32.884,1308
+13,Hidalgo,043,Nicolás Flores,20°53´08.609,099°14´44.678,1828
+13,Hidalgo,044,Nopala de Villagrán,20°17´24.692,099°49´29.795,2365
+13,Hidalgo,045,Omitlán de Juárez,20°14´23.045,098°39´45.505,2500
+13,Hidalgo,046,San Felipe Orizatlán,21°22´45.325,098°41´37.284,164
+13,Hidalgo,047,Pacula,21°05´54.387,099°23´25.302,1541
+13,Hidalgo,048,Pachuca de Soto,20°09´30.666,098°50´56.083,2485
+13,Hidalgo,049,Pisaflores,21°18´09.285,099°03´32.490,674
+13,Hidalgo,050,Progreso de Obregón,20°21´11.647,099°13´15.405,1967
+13,Hidalgo,051,Mineral de la Reforma,20°07´32.275,098°46´30.715,2392
+13,Hidalgo,052,San Agustín Tlaxiaca,20°10´49.941,099°03´34.337,2384
+13,Hidalgo,053,San Bartolo Tutotepec,20°36´20.099,098°19´21.636,1235
+13,Hidalgo,054,San Salvador,20°24´23.294,099°09´39.058,1964
+13,Hidalgo,055,Santiago de Anaya,20°31´22.334,099°05´06.667,2051
+13,Hidalgo,056,Santiago Tulantepec de Lugo Guerrero,20°04´30.604,098°27´55.739,2242
+13,Hidalgo,057,Singuilucan,20°04´45.148,098°36´42.782,2637
+13,Hidalgo,058,Tasquillo,20°35´39.270,099°27´27.603,1703
+13,Hidalgo,059,Tecozautla,20°37´04.217,099°48´52.764,1825
+13,Hidalgo,060,Tenango de Doria,20°23´39.996,098°17´04.610,1468
+13,Hidalgo,061,Tepeapulco,19°54´23.652,098°35´42.552,2548
+13,Hidalgo,062,Tepehuacán de Guerrero,21°10´57.530,098°57´12.735,666
+13,Hidalgo,063,Tepeji del Río de Ocampo,20°00´10.540,099°27´27.922,2225
+13,Hidalgo,064,Tepetitlán,20°14´55.431,099°26´44.950,2097
+13,Hidalgo,065,Tetepango,20°09´05.376,099°11´02.210,2094
+13,Hidalgo,066,Villa de Tezontepec,19°56´56.195,098°51´16.777,2353
+13,Hidalgo,067,Tezontepec de Aldama,20°13´41.623,099°20´38.000,2021
+13,Hidalgo,068,Tianguistengo,20°51´57.385,098°40´04.622,1153
+13,Hidalgo,069,Tizayuca,19°53´36.910,099°00´49.858,2302
+13,Hidalgo,070,Tlahuelilpan,20°08´57.194,099°16´09.010,2073
+13,Hidalgo,071,Tlahuiltepa,21°01´36.061,099°04´58.892,1464
+13,Hidalgo,072,Tlanalapa,19°52´38.209,098°38´45.232,2515
+13,Hidalgo,073,Tlanchinol,21°10´24.252,098°44´06.956,864
+13,Hidalgo,074,Tlaxcoapan,20°06´55.272,099°17´04.808,2071
+13,Hidalgo,075,Tolcayuca,20°02´20.814,098°58´56.166,2385
+13,Hidalgo,076,Tula de Allende,20°08´31.794,099°29´04.811,2106
+13,Hidalgo,077,Tulancingo de Bravo,20°11´59.909,098°28´41.388,2194
+13,Hidalgo,078,Xochiatipan,20°55´38.528,098°20´01.150,452
+13,Hidalgo,079,Xochicoatlán,20°52´25.383,098°42´57.080,1419
+13,Hidalgo,080,Yahualica,20°58´39.386,098°26´16.290,441
+13,Hidalgo,081,Zacualtipán de Ángeles,20°43´51.901,098°41´18.919,1580
+13,Hidalgo,082,Zapotlán de Juárez,20°02´44.815,098°54´21.281,2394
+13,Hidalgo,083,Zempoala,20°01´49.068,098°49´46.571,2462
+13,Hidalgo,084,Zimapán,20°54´51.302,099°30´54.597,1934
+14,Jalisco,001,Acatic,20°52´23.129,103°01´35.652,1723
+14,Jalisco,002,Acatlán de Juárez,20°29´23.225,103°41´11.553,1435
+14,Jalisco,003,Ahualulco de Mercado,20°46´33.406,104°03´11.552,1367
+14,Jalisco,004,Amacueca,20°03´08.750,103°40´22.973,1588
+14,Jalisco,005,Amatitán,20°55´17.032,103°46´07.354,1125
+14,Jalisco,006,Ameca,20°39´00.590,104°14´27.994,1309
+14,Jalisco,007,San Juanito de Escobedo,20°54´02.286,104°05´06.750,1382
+14,Jalisco,008,Arandas,20°54´35.714,102°32´42.672,2044
+14,Jalisco,009,El Arenal,20°48´55.135,103°42´38.170,1422
+14,Jalisco,010,Atemajac de Brizuela,20°12´26.779,103°48´57.000,2259
+14,Jalisco,011,Atengo,20°24´26.710,104°24´12.371,1505
+14,Jalisco,012,Atenguillo,20°30´32.000,104°42´30.000,1471
+14,Jalisco,013,Atotonilco el Alto,20°39´46.403,102°40´30.837,1716
+14,Jalisco,014,Atoyac,20°04´44.267,103°36´07.220,1593
+14,Jalisco,015,Autlán de Navarro,19°52´40.173,104°26´34.002,944
+14,Jalisco,016,Ayotlán,20°35´57.103,102°27´08.986,1662
+14,Jalisco,017,Ayutla,20°13´27.423,104°36´33.939,1510
+14,Jalisco,018,La Barca,20°26´47.135,102°39´43.822,1547
+14,Jalisco,019,Bolaños,22°00´09.900,104°10´05.680,1413
+14,Jalisco,020,Cabo Corrientes,20°30´23.995,105°41´35.154,425
+14,Jalisco,021,Casimiro Castillo,19°45´28.182,104°33´33.568,396
+14,Jalisco,022,Cihuatlán,19°20´02.025,104°47´10.599,61
+14,Jalisco,023,Zapotlán el Grande,19°47´06.836,103°36´28.829,1613
+14,Jalisco,024,Cocula,20°31´04.781,103°54´51.000,1353
+14,Jalisco,025,Colotlán,22°14´10.553,103°23´55.807,1790
+14,Jalisco,026,Concepción de Buenos Aires,20°04´00.025,103°19´57.447,2006
+14,Jalisco,027,Cuautitlán de García Barragán,19°37´07.091,104°38´15.000,771
+14,Jalisco,028,Cuautla,20°17´38.909,104°39´47.567,1774
+14,Jalisco,029,Cuquío,21°06´08.937,103°10´44.019,1831
+14,Jalisco,030,Chapala,20°24´04.362,103°18´06.333,1575
+14,Jalisco,031,Chimaltitán,21°54´48.104,103°51´57.028,1586
+14,Jalisco,032,Chiquilistlán,20°09´42.736,103°58´43.777,1531
+14,Jalisco,033,Degollado,20°32´35.000,102°18´26.463,1766
+14,Jalisco,034,Ejutla,19°58´20.929,104°13´04.618,1079
+14,Jalisco,035,Encarnación de Díaz,21°44´57.072,102°24´01.000,1917
+14,Jalisco,036,Etzatlán,20°52´47.483,104°14´22.047,1412
+14,Jalisco,037,El Grullo,19°51´47.000,104°17´12.070,884
+14,Jalisco,038,Guachinango,20°55´52.512,104°36´53.712,1246
+14,Jalisco,039,Guadalajara,20°43´24.253,103°20´32.000,1303
+14,Jalisco,040,Hostotipaquillo,21°11´18.044,104°13´37.585,1174
+14,Jalisco,041,Huejúcar,22°23´47.196,103°21´25.300,1963
+14,Jalisco,042,Huejuquilla el Alto,22°44´14.824,104°04´18.897,1729
+14,Jalisco,043,La Huerta,19°45´15.363,105°11´00.227,175
+14,Jalisco,044,Ixtlahuacán de los Membrillos,20°28´22.000,103°17´01.930,1556
+14,Jalisco,045,Ixtlahuacán del Río,21°04´10.974,103°21´17.337,1663
+14,Jalisco,046,Jalostotitlán,21°19´55.000,102°37´01.118,1779
+14,Jalisco,047,Jamay,20°22´11.000,102°44´41.198,1534
+14,Jalisco,048,Jesús María,20°46´53.521,102°16´53.740,2098
+14,Jalisco,049,Jilotlán de los Dolores,19°30´16.515,103°07´58.311,770
+14,Jalisco,050,Jocotepec,20°24´00.620,103°32´06.110,1602
+14,Jalisco,051,Juanacatlán,20°34´13.895,103°11´29.317,1535
+14,Jalisco,052,Juchitlán,20°09´01.709,104°06´27.438,1187
+14,Jalisco,053,Lagos de Moreno,21°51´10.531,102°09´00.250,1988
+14,Jalisco,054,El Limón,19°53´28.993,104°10´52.051,841
+14,Jalisco,055,Magdalena,20°59´24.008,104°10´18.212,1409
+14,Jalisco,056,Santa María del Oro,19°38´45.794,103°00´51.917,979
+14,Jalisco,057,La Manzanilla de la Paz,20°04´34.399,103°11´00.194,1979
+14,Jalisco,058,Mascota,20°49´25.000,105°08´56.000,1291
+14,Jalisco,059,Mazamitla,19°59´07.927,103°09´49.871,1989
+14,Jalisco,060,Mexticacán,21°23´06.899,102°51´32.727,1771
+14,Jalisco,061,Mezquitic,22°33´52.232,104°22´02.313,1670
+14,Jalisco,062,Mixtlán,20°40´03.923,104°36´24.506,1560
+14,Jalisco,063,Ocotlán,20°28´10.434,102°52´34.970,1541
+14,Jalisco,064,Ojuelos de Jalisco,22°01´35.932,101°51´19.136,2183
+14,Jalisco,065,Pihuamo,19°21´50.892,103°30´24.105,834
+14,Jalisco,066,Poncitlán,20°24´04.770,103°06´39.527,1564
+14,Jalisco,067,Puerto Vallarta,20°54´24.062,105°19´09.406,114
+14,Jalisco,068,Villa Purificación,20°01´56.000,105°00´28.878,504
+14,Jalisco,069,Quitupan,19°58´11.293,102°58´34.797,1784
+14,Jalisco,070,El Salto,20°34´39.000,103°19´16.000,1548
+14,Jalisco,071,San Cristóbal de la Barranca,21°08´44.000,103°39´27.081,1197
+14,Jalisco,072,San Diego de Alejandría,21°03´52.930,102°07´01.000,1939
+14,Jalisco,073,San Juan de los Lagos,21°24´13.005,102°28´31.321,1824
+14,Jalisco,074,San Julián,21°05´40.650,102°14´07.789,2031
+14,Jalisco,075,San Marcos,20°52´51.677,104°19´39.290,1366
+14,Jalisco,076,San Martín de Bolaños,21°45´37.206,103°54´45.650,1180
+14,Jalisco,077,San Martín Hidalgo,20°35´57.000,104°01´54.800,1354
+14,Jalisco,078,San Miguel el Alto,21°06´26.378,102°33´30.720,1994
+14,Jalisco,079,Gómez Farías,19°56´40.304,103°32´23.258,1721
+14,Jalisco,080,San Sebastián del Oeste,21°00´27.514,105°04´40.425,807
+14,Jalisco,081,Santa María de los Ángeles,22°16´01.676,103°14´27.620,1844
+14,Jalisco,082,Sayula,19°55´09.200,103°41´12.159,1419
+14,Jalisco,083,Tala,20°43´55.874,103°50´40.867,1417
+14,Jalisco,084,Talpa de Allende,20°32´16.397,105°12´53.000,902
+14,Jalisco,085,Tamazula de Gordiano,19°52´56.762,103°21´05.165,1374
+14,Jalisco,086,Tapalpa,20°04´51.594,103°52´56.418,2204
+14,Jalisco,087,Tecalitlán,19°32´49.526,103°23´12.895,1310
+14,Jalisco,088,Tecolotlán,20°24´14.290,104°09´57.262,1389
+14,Jalisco,089,Techaluta de Montenegro,20°07´57.393,103°38´12.017,1703
+14,Jalisco,090,Tenamaxtlán,20°14´31.502,104°18´25.120,1434
+14,Jalisco,091,Teocaltiche,21°39´43.480,102°45´59.566,1798
+14,Jalisco,092,Teocuitatlán de Corona,20°09´15.241,103°29´27.672,1508
+14,Jalisco,093,Tepatitlán de Morelos,21°01´21.072,102°55´20.444,1892
+14,Jalisco,094,Tequila,21°26´08.546,104°03´30.772,1411
+14,Jalisco,095,Teuchitlán,20°46´47.180,103°54´35.340,1337
+14,Jalisco,096,Tizapán el Alto,20°10´25.879,103°08´57.796,1692
+14,Jalisco,097,Tlajomulco de Zúñiga,20°35´33.000,103°35´38.064,1559
+14,Jalisco,098,San Pedro Tlaquepaque,20°38´19.000,103°26´49.812,1569
+14,Jalisco,099,Tolimán,19°39´20.982,104°03´45.232,1047
+14,Jalisco,100,Tomatlán,20°12´07.610,105°32´42.903,149
+14,Jalisco,101,Tonalá,20°42´03.090,103°16´10.300,1518
+14,Jalisco,102,Tonaya,19°57´09.264,104°02´45.436,912
+14,Jalisco,103,Tonila,19°28´50.000,103°34´24.079,1231
+14,Jalisco,104,Totatiche,22°05´23.228,103°36´02.270,1852
+14,Jalisco,105,Tototlán,20°38´22.961,102°52´02.663,1585
+14,Jalisco,106,Tuxcacuesco,19°47´42.949,104°07´11.048,876
+14,Jalisco,107,Tuxcueca,20°13´05.773,103°21´59.687,1654
+14,Jalisco,108,Tuxpan,19°37´14.890,103°32´25.088,1165
+14,Jalisco,109,Unión de San Antonio,21°16´18.858,102°10´07.900,1881
+14,Jalisco,110,Unión de Tula,20°08´17.254,104°22´21.731,1390
+14,Jalisco,111,Valle de Guadalupe,21°08´27.342,102°48´37.556,1858
+14,Jalisco,112,Valle de Juárez,19°59´16.000,103°01´01.781,1870
+14,Jalisco,113,San Gabriel,19°49´16.149,103°56´03.220,1542
+14,Jalisco,114,Villa Corona,20°31´15.986,103°44´57.068,1408
+14,Jalisco,115,Villa Guerrero,22°09´08.383,103°50´27.442,1634
+14,Jalisco,116,Villa Hidalgo,21°44´42.175,102°44´34.919,1936
+14,Jalisco,117,Cañadas de Obregón,21°14´42.749,102°48´36.340,1819
+14,Jalisco,118,Yahualica de González Gallo,21°14´51.530,103°04´10.087,1885
+14,Jalisco,119,Zacoalco de Torres,20°20´01.570,103°39´52.892,1441
+14,Jalisco,120,Zapopan,20°59´19.000,103°39´34.407,1554
+14,Jalisco,121,Zapotiltic,19°44´44.444,103°28´23.588,1262
+14,Jalisco,122,Zapotitlán de Vadillo,19°34´59.268,103°52´14.153,1146
+14,Jalisco,123,Zapotlán del Rey,20°32´31.228,103°04´44.562,1582
+14,Jalisco,124,Zapotlanejo,20°46´13.682,103°14´52.097,1632
+14,Jalisco,125,San Ignacio Cerro Gordo,20°51´22.000,102°34´54.000,2065
+15,México,001,Acambay de Ruíz Castañeda,20°04´17.114,100°03´45.570,2665
+15,México,002,Acolman,19°40´39.000,098°58´39.642,2275
+15,México,003,Aculco,20°15´01.774,099°58´08.412,2482
+15,México,004,Almoloya de Alquisiras,18°54´03.000,099°55´36.339,2067
+15,México,005,Almoloya de Juárez,19°32´21.691,099°56´00.450,2700
+15,México,006,Almoloya del Río,19°09´33.791,099°29´19.830,2619
+15,México,007,Amanalco,19°19´19.663,100°04´46.787,2599
+15,México,008,Amatepec,18°48´02.649,100°28´31.526,1056
+15,México,009,Amecameca,19°10´03.414,098°48´44.692,2541
+15,México,010,Apaxco,20°00´08.221,099°11´51.255,2224
+15,México,011,Atenco,19°35´25.328,098°59´29.512,2239
+15,México,012,Atizapán,19°11´09.736,099°30´20.846,2583
+15,México,013,Atizapán de Zaragoza,19°35´00.445,099°20´54.707,2420
+15,México,014,Atlacomulco,19°53´11.104,099°56´52.425,2591
+15,México,015,Atlautla,19°05´00.128,098°48´29.313,2481
+15,México,016,Axapusco,19°52´27.992,098°49´30.758,2434
+15,México,017,Ayapango,19°08´41.555,098°50´10.880,2451
+15,México,018,Calimaya,19°12´45.158,099°40´37.372,2697
+15,México,019,Capulhuac,19°14´56.322,099°28´51.971,2622
+15,México,020,Coacalco de Berriozábal,19°37´45.476,099°06´15.758,2352
+15,México,021,Coatepec Harinas,19°04´02.846,099°52´07.114,2428
+15,México,022,Cocotitlán,19°14´51.614,098°52´31.410,2273
+15,México,023,Coyotepec,19°48´28.022,099°14´26.301,2272
+15,México,024,Cuautitlán,19°45´29.632,099°11´50.868,2247
+15,México,025,Chalco,19°18´14.380,098°57´37.832,2291
+15,México,026,Chapa de Mota,19°53´37.633,099°39´38.823,2607
+15,México,027,Chapultepec,19°12´49.306,099°34´33.769,2581
+15,México,028,Chiautla,19°36´09.381,098°54´00.073,2257
+15,México,029,Chicoloapan,19°25´34.966,098°54´07.244,2284
+15,México,030,Chiconcuac,19°33´09.800,098°53´53.465,2245
+15,México,031,Chimalhuacán,19°27´07.643,098°58´06.074,2343
+15,México,032,Donato Guerra,19°21´55.064,100°18´32.221,2262
+15,México,033,Ecatepec de Morelos,19°36´47.023,099°05´00.101,2311
+15,México,034,Ecatzingo,18°59´30.947,098°47´26.666,2348
+15,México,035,Huehuetoca,19°53´18.907,099°20´06.642,2282
+15,México,036,Hueypoxtla,20°01´16.220,099°04´42.132,2350
+15,México,037,Huixquilucan,19°25´57.213,099°23´17.195,2780
+15,México,038,Isidro Fabela,19°35´26.994,099°29´21.254,2812
+15,México,039,Ixtapaluca,19°23´27.275,098°55´34.290,2494
+15,México,040,Ixtapan de la Sal,18°53´53.022,099°44´53.170,1918
+15,México,041,Ixtapan del Oro,19°18´52.455,100°18´28.153,1794
+15,México,042,Ixtlahuaca,19°42´54.800,099°54´12.489,2575
+15,México,043,Xalatlaco,19°11´13.527,099°26´57.681,2883
+15,México,044,Jaltenco,19°45´07.996,099°05´38.513,2239
+15,México,045,Jilotepec,20°09´24.940,099°42´00.999,2580
+15,México,046,Jilotzingo,19°32´43.819,099°25´35.647,2786
+15,México,047,Jiquipilco,19°41´07.780,099°43´30.269,2650
+15,México,048,Jocotitlán,19°46´46.561,100°00´53.994,2634
+15,México,049,Joquicingo,19°06´57.923,099°33´24.899,2599
+15,México,050,Juchitepec,19°08´13.197,098°56´41.043,2541
+15,México,051,Lerma,19°25´27.327,099°32´37.577,2687
+15,México,052,Malinalco,18°59´44.057,099°32´44.463,1621
+15,México,053,Melchor Ocampo,19°43´30.041,099°09´22.533,2254
+15,México,054,Metepec,19°16´45.712,099°37´52.499,2613
+15,México,055,Mexicaltzingo,19°12´56.649,099°35´21.483,2596
+15,México,056,Morelos,19°49´52.243,099°44´35.845,2746
+15,México,057,Naucalpan de Juárez,19°32´07.095,099°23´44.808,2696
+15,México,058,Nezahualcóyotl,19°26´53.175,099°02´54.355,2244
+15,México,059,Nextlalpan,19°45´52.402,099°07´40.961,2239
+15,México,060,Nicolás Romero,19°42´13.272,099°26´40.985,2580
+15,México,061,Nopaltepec,19°51´11.598,098°46´15.089,2417
+15,México,062,Ocoyoacac,19°18´02.843,099°29´46.191,2748
+15,México,063,Ocuilan,19°06´24.117,099°28´25.790,2300
+15,México,064,El Oro,19°50´54.527,100°08´05.961,2750
+15,México,065,Otumba,19°43´41.117,098°48´32.407,2457
+15,México,066,Otzoloapan,19°09´00.790,100°24´35.463,1242
+15,México,067,Otzolotepec,19°30´14.097,099°38´10.232,2675
+15,México,068,Ozumba,19°03´15.971,098°50´11.889,2209
+15,México,069,Papalotla,19°33´48.961,098°51´58.493,2252
+15,México,070,La Paz,19°22´53.516,098°58´35.766,2331
+15,México,071,Polotitlán,20°16´26.685,099°55´50.724,2319
+15,México,072,Rayón,19°08´52.838,099°35´49.246,2590
+15,México,073,San Antonio la Isla,19°11´12.962,099°34´41.233,2583
+15,México,074,San Felipe del Progreso,19°45´04.437,100°04´16.386,2698
+15,México,075,San Martín de las Pirámides,19°45´34.831,098°52´47.792,2368
+15,México,076,San Mateo Atenco,19°16´02.904,099°33´10.999,2575
+15,México,077,San Simón de Guerrero,19°01´50.524,100°06´39.502,1951
+15,México,078,Santo Tomás,19°13´25.549,100°22´07.351,1416
+15,México,079,Soyaniquilpan de Juárez,20°05´51.182,099°33´50.222,2370
+15,México,080,Sultepec,18°52´06.495,100°07´13.477,1730
+15,México,081,Tecámac,19°48´04.318,099°02´25.910,2280
+15,México,082,Tejupilco,19°00´55.450,100°30´28.154,1206
+15,México,083,Temamatla,19°13´07.471,098°53´26.672,2273
+15,México,084,Temascalapa,19°53´48.595,098°56´03.273,2387
+15,México,085,Temascalcingo,20°02´32.723,100°08´36.982,2506
+15,México,086,Temascaltepec,19°10´06.370,100°13´40.319,2305
+15,México,087,Temoaya,19°31´19.979,099°42´51.373,2717
+15,México,088,Tenancingo,19°00´44.562,099°37´33.729,2135
+15,México,089,Tenango del Aire,19°10´57.002,098°52´31.391,2370
+15,México,090,Tenango del Valle,19°08´05.525,099°41´11.992,2708
+15,México,091,Teoloyucan,19°47´22.363,099°12´44.390,2255
+15,México,092,Teotihuacán,19°44´01.650,098°55´40.914,2304
+15,México,093,Tepetlaoxtoc,19°37´46.516,098°51´26.016,2443
+15,México,094,Tepetlixpa,19°02´26.597,098°51´22.442,2190
+15,México,095,Tepotzotlán,19°47´03.778,099°24´17.728,2357
+15,México,096,Tequixquiac,19°56´49.209,099°10´05.542,2256
+15,México,097,Texcaltitlán,19°02´22.702,100°00´25.298,2529
+15,México,098,Texcalyacac,19°08´27.700,099°30´32.643,2585
+15,México,099,Texcoco,19°33´17.459,098°59´31.378,2315
+15,México,100,Tezoyuca,19°36´33.729,098°57´41.639,2245
+15,México,101,Tianguistenco,19°13´53.023,099°31´18.159,2692
+15,México,102,Timilpan,19°58´34.114,099°46´20.442,2676
+15,México,103,Tlalmanalco,19°13´16.544,098°50´09.172,2481
+15,México,104,Tlalnepantla de Baz,19°34´25.280,099°11´42.714,2374
+15,México,105,Tlatlaya,18°39´55.301,100°26´07.888,877
+15,México,106,Toluca,19°28´35.340,099°44´51.284,2658
+15,México,107,Tonatico,18°49´14.191,099°41´06.791,1639
+15,México,108,Tultepec,19°41´56.902,099°08´46.422,2245
+15,México,109,Tultitlán,19°41´12.476,099°10´09.102,2282
+15,México,110,Valle de Bravo,19°15´56.706,100°14´28.188,2087
+15,México,111,Villa de Allende,19°28´53.557,100°14´28.143,2562
+15,México,112,Villa del Carbón,19°50´47.665,099°37´06.798,2579
+15,México,113,Villa Guerrero,19°02´37.978,099°44´38.119,2268
+15,México,114,Villa Victoria,19°33´27.577,100°08´42.652,2683
+15,México,115,Xonacatlán,19°27´15.592,099°32´27.963,2768
+15,México,116,Zacazonapan,19°04´28.046,100°17´55.800,1266
+15,México,117,Zacualpan,18°48´56.788,099°55´53.372,1817
+15,México,118,Zinacantepec,19°19´45.016,099°51´13.369,2887
+15,México,119,Zumpahuacán,18°54´53.639,099°37´06.753,1743
+15,México,120,Zumpango,19°52´26.868,099°10´16.051,2269
+15,México,121,Cuautitlán Izcalli,19°41´38.636,099°16´53.829,2308
+15,México,122,Valle de Chalco Solidaridad,19°17´37.020,098°58´17.199,2237
+15,México,123,Luvianos,19°03´46.607,100°36´10.419,1076
+15,México,124,San José del Rincón,19°45´00.929,100°15´37.496,2815
+15,México,125,Tonanitla,19°41´45.927,099°04´09.823,2243
+16,Michoacán de Ocampo,001,Acuitzio,19°31´40.585,101°24´31.309,2279
+16,Michoacán de Ocampo,002,Aguililla,19°03´17.848,102°55´45.614,950
+16,Michoacán de Ocampo,003,Álvaro Obregón,19°56´20.817,101°04´29.368,1839
+16,Michoacán de Ocampo,004,Angamacutiro,20°12´21.975,101°48´39.257,1726
+16,Michoacán de Ocampo,005,Angangueo,19°39´22.291,100°20´32.436,2635
+16,Michoacán de Ocampo,006,Apatzingán,19°11´41.663,102°38´30.978,372
+16,Michoacán de Ocampo,007,Aporo,19°40´49.902,100°25´51.636,2351
+16,Michoacán de Ocampo,008,Aquila,18°39´36.658,103°41´50.162,413
+16,Michoacán de Ocampo,009,Ario,19°18´16.256,101°49´21.009,1712
+16,Michoacán de Ocampo,010,Arteaga,18°40´36.424,102°51´21.414,614
+16,Michoacán de Ocampo,011,Briseñas,20°16´30.994,102°37´26.451,1523
+16,Michoacán de Ocampo,012,Buenavista,19°24´29.328,102°46´12.648,484
+16,Michoacán de Ocampo,013,Carácuaro,19°11´12.590,101°11´39.088,728
+16,Michoacán de Ocampo,014,Coahuayana,18°52´12.410,103°44´05.670,82
+16,Michoacán de Ocampo,015,Coalcomán de Vázquez Pallares,19°00´33.337,103°21´59.462,1270
+16,Michoacán de Ocampo,016,Coeneo,19°53´34.410,101°43´03.625,2030
+16,Michoacán de Ocampo,017,Contepec,20°04´19.114,100°18´38.768,2339
+16,Michoacán de Ocampo,018,Copándaro,19°54´37.817,101°17´09.000,1959
+16,Michoacán de Ocampo,019,Cotija,19°53´20.872,102°48´11.618,1743
+16,Michoacán de Ocampo,020,Cuitzeo,20°05´02.301,101°10´57.251,1849
+16,Michoacán de Ocampo,021,Charapan,19°47´48.936,102°16´11.623,2312
+16,Michoacán de Ocampo,022,Charo,19°47´38.474,101°05´03.752,1949
+16,Michoacán de Ocampo,023,Chavinda,20°05´08.000,102°29´25.976,1577
+16,Michoacán de Ocampo,024,Cherán,19°46´02.653,102°04´51.764,2262
+16,Michoacán de Ocampo,025,Chilchota,19°52´32.722,102°09´34.086,1895
+16,Michoacán de Ocampo,026,Chinicuila,18°58´49.956,103°34´38.109,890
+16,Michoacán de Ocampo,027,Chucándiro,19°56´42.304,101°23´56.876,1994
+16,Michoacán de Ocampo,028,Churintzio,20°12´09.682,102°08´49.709,1875
+16,Michoacán de Ocampo,029,Churumuco,18°56´02.210,101°51´51.028,484
+16,Michoacán de Ocampo,030,Ecuandureo,20°13´31.264,102°21´25.992,1623
+16,Michoacán de Ocampo,031,Epitacio Huerta,20°17´28.760,100°22´42.112,2461
+16,Michoacán de Ocampo,032,Erongarícuaro,19°40´53.636,101°45´32.960,2164
+16,Michoacán de Ocampo,033,Gabriel Zamora,19°16´04.650,102°04´39.657,639
+16,Michoacán de Ocampo,034,Hidalgo,19°50´43.536,100°51´01.083,2254
+16,Michoacán de Ocampo,035,La Huacana,19°02´16.679,102°11´12.756,403
+16,Michoacán de Ocampo,036,Huandacareo,20°00´48.403,101°19´09.521,1870
+16,Michoacán de Ocampo,037,Huaniqueo,19°55´57.274,101°34´51.014,2074
+16,Michoacán de Ocampo,038,Huetamo,18°51´53.288,101°28´13.295,408
+16,Michoacán de Ocampo,039,Huiramba,19°33´19.109,101°30´21.277,2173
+16,Michoacán de Ocampo,040,Indaparapeo,19°52´06.530,101°00´28.367,2085
+16,Michoacán de Ocampo,041,Irimbo,19°46´45.908,100°30´52.942,2170
+16,Michoacán de Ocampo,042,Ixtlán,20°11´20.075,102°28´04.174,1539
+16,Michoacán de Ocampo,043,Jacona,19°59´38.460,102°22´25.087,1621
+16,Michoacán de Ocampo,044,Jiménez,19°57´54.897,101°52´29.710,2011
+16,Michoacán de Ocampo,045,Jiquilpan,20°02´17.186,102°52´18.455,1842
+16,Michoacán de Ocampo,046,Juárez,19°20´26.724,100°30´09.716,1392
+16,Michoacán de Ocampo,047,Jungapeo,19°30´32.330,100°36´16.429,1634
+16,Michoacán de Ocampo,048,Lagunillas,19°36´03.988,101°27´10.354,2104
+16,Michoacán de Ocampo,049,Madero,19°31´34.964,101°20´42.043,1575
+16,Michoacán de Ocampo,050,Maravatío,19°59´02.944,100°35´59.692,2184
+16,Michoacán de Ocampo,051,Marcos Castellanos,20°07´13.402,103°02´22.741,1974
+16,Michoacán de Ocampo,052,Lázaro Cárdenas,18°14´52.955,102°47´18.054,122
+16,Michoacán de Ocampo,053,Morelia,19°50´37.701,101°28´47.141,2090
+16,Michoacán de Ocampo,054,Morelos,20°01´51.304,101°32´35.349,2257
+16,Michoacán de Ocampo,055,Múgica,19°05´50.657,102°11´41.113,340
+16,Michoacán de Ocampo,056,Nahuatzen,19°42´10.891,101°58´07.178,2484
+16,Michoacán de Ocampo,057,Nocupétaro,19°12´52.350,101°19´24.953,961
+16,Michoacán de Ocampo,058,Nuevo Parangaricutiro,19°27´54.210,102°15´25.594,2039
+16,Michoacán de Ocampo,059,Nuevo Urecho,19°16´29.589,101°55´16.042,765
+16,Michoacán de Ocampo,060,Numarán,20°19´14.535,101°59´34.594,1707
+16,Michoacán de Ocampo,061,Ocampo,19°38´15.400,100°24´15.237,2458
+16,Michoacán de Ocampo,062,Pajacuarán,20°11´39.861,102°35´47.846,1561
+16,Michoacán de Ocampo,063,Panindícuaro,20°05´56.495,101°50´01.594,1828
+16,Michoacán de Ocampo,064,Parácuaro,19°15´47.303,102°20´16.000,435
+16,Michoacán de Ocampo,065,Paracho,19°42´11.491,102°07´49.681,2278
+16,Michoacán de Ocampo,066,Pátzcuaro,19°35´59.583,101°46´29.599,2239
+16,Michoacán de Ocampo,067,Penjamillo,20°12´48.682,101°58´06.491,1741
+16,Michoacán de Ocampo,068,Peribán,19°34´33.994,102°33´12.953,1693
+16,Michoacán de Ocampo,069,La Piedad,20°23´21.045,102°10´18.000,1730
+16,Michoacán de Ocampo,070,Purépero,19°57´37.865,102°05´30.564,2075
+16,Michoacán de Ocampo,071,Puruándiro,20°16´24.717,101°39´59.991,1940
+16,Michoacán de Ocampo,072,Queréndaro,19°48´36.099,100°54´05.212,2245
+16,Michoacán de Ocampo,073,Quiroga,19°44´28.782,101°38´07.230,2153
+16,Michoacán de Ocampo,074,Cojumatlán de Régules,20°10´11.620,102°56´54.240,1748
+16,Michoacán de Ocampo,075,Los Reyes,19°47´11.200,102°33´54.663,1904
+16,Michoacán de Ocampo,076,Sahuayo,20°05´24.565,102°51´34.000,1674
+16,Michoacán de Ocampo,077,San Lucas,18°48´35.205,100°50´28.364,342
+16,Michoacán de Ocampo,078,Santa Ana Maya,20°04´55.562,101°06´58.148,1880
+16,Michoacán de Ocampo,079,Salvador Escalante,19°27´16.411,101°49´36.687,2147
+16,Michoacán de Ocampo,080,Senguio,19°48´49.599,100°26´14.864,2365
+16,Michoacán de Ocampo,081,Susupuato,19°18´54.492,100°28´31.110,1350
+16,Michoacán de Ocampo,082,Tacámbaro,19°24´14.900,101°37´28.844,1726
+16,Michoacán de Ocampo,083,Tancítaro,19°31´42.243,102°29´19.000,1787
+16,Michoacán de Ocampo,084,Tangamandapio,19°58´44.570,102°31´19.487,1804
+16,Michoacán de Ocampo,085,Tangancícuaro,19°56´52.661,102°23´40.579,1790
+16,Michoacán de Ocampo,086,Tanhuato,20°20´43.118,102°24´26.296,1538
+16,Michoacán de Ocampo,087,Taretan,19°22´41.532,101°57´56.614,1105
+16,Michoacán de Ocampo,088,Tarímbaro,19°52´19.514,101°13´52.000,1889
+16,Michoacán de Ocampo,089,Tepalcatepec,19°14´14.172,103°00´35.620,412
+16,Michoacán de Ocampo,090,Tingambato,19°34´27.785,101°53´59.900,1953
+16,Michoacán de Ocampo,091,Tingüindín,19°53´44.468,102°35´00.149,1737
+16,Michoacán de Ocampo,092,Tiquicheo de Nicolás Romero,19°19´56.672,101°02´07.984,835
+16,Michoacán de Ocampo,093,Tlalpujahua,19°51´50.000,100°16´51.865,2669
+16,Michoacán de Ocampo,094,Tlazazalca,20°04´28.204,102°07´40.652,1865
+16,Michoacán de Ocampo,095,Tocumbo,19°50´10.093,102°43´01.917,1283
+16,Michoacán de Ocampo,096,Tumbiscatío,18°49´14.680,102°51´49.643,980
+16,Michoacán de Ocampo,097,Turicato,19°10´14.861,101°37´53.579,895
+16,Michoacán de Ocampo,098,Tuxpan,19°38´26.327,100°34´55.646,1968
+16,Michoacán de Ocampo,099,Tuzantla,19°25´21.738,100°45´17.061,1022
+16,Michoacán de Ocampo,100,Tzintzuntzan,19°38´23.950,101°38´54.768,2111
+16,Michoacán de Ocampo,101,Tzitzio,19°39´40.385,101°07´13.559,1298
+16,Michoacán de Ocampo,102,Uruapan,19°36´57.467,102°21´31.081,1783
+16,Michoacán de Ocampo,103,Venustiano Carranza,20°12´21.610,102°46´50.304,1536
+16,Michoacán de Ocampo,104,Villamar,20°04´16.088,102°40´06.010,1672
+16,Michoacán de Ocampo,105,Vista Hermosa,20°19´48.771,102°31´54.727,1533
+16,Michoacán de Ocampo,106,Yurécuaro,20°21´07.891,102°18´42.547,1580
+16,Michoacán de Ocampo,107,Zacapu,19°53´02.834,101°58´25.897,2093
+16,Michoacán de Ocampo,108,Zamora,20°06´03.304,102°23´36.893,1574
+16,Michoacán de Ocampo,109,Zináparo,20°13´52.806,102°03´59.313,1853
+16,Michoacán de Ocampo,110,Zinapécuaro,19°57´27.782,100°58´24.666,2245
+16,Michoacán de Ocampo,111,Ziracuaretiro,19°28´30.804,101°57´36.027,1440
+16,Michoacán de Ocampo,112,Zitácuaro,19°31´44.295,100°28´38.739,2015
+16,Michoacán de Ocampo,113,José Sixto Verduzco,20°19´44.920,101°38´45.446,1695
+17,Morelos,001,Amacuzac,18°38´40.238,099°27´14.987,934
+17,Morelos,002,Atlatlahucan,18°58´36.270,098°56´34.428,1662
+17,Morelos,003,Axochiapan,18°36´26.078,098°48´35.057,1036
+17,Morelos,004,Ayala,18°48´04.766,099°03´29.452,1205
+17,Morelos,005,Coatlán del Río,18°46´00.560,099°29´37.761,1077
+17,Morelos,006,Cuautla,18°52´45.262,099°00´47.673,1320
+17,Morelos,007,Cuernavaca,19°00´04.753,099°18´36.875,1773
+17,Morelos,008,Emiliano Zapata,18°51´59.709,099°12´34.519,1205
+17,Morelos,009,Huitzilac,19°07´24.000,099°18´46.005,2545
+17,Morelos,010,Jantetelco,18°44´33.695,098°50´49.357,1381
+17,Morelos,011,Jiutepec,18°54´21.674,099°10´52.644,1395
+17,Morelos,012,Jojutla,18°38´52.601,099°17´35.203,909
+17,Morelos,013,Jonacatepec de Leandro Valle,18°42´37.553,098°51´53.999,1286
+17,Morelos,014,Mazatepec,18°45´26.298,099°22´51.287,969
+17,Morelos,015,Miacatlán,18°52´39.019,099°25´31.520,1102
+17,Morelos,016,Ocuituco,18°56´17.626,098°49´34.799,1959
+17,Morelos,017,Puente de Ixtla,18°41´22.404,099°21´09.117,982
+17,Morelos,018,Temixco,18°54´08.662,099°19´32.663,1328
+17,Morelos,019,Tepalcingo,18°40´40.612,098°58´57.607,1171
+17,Morelos,020,Tepoztlán,19°02´54.371,099°10´59.080,1628
+17,Morelos,021,Tetecala,18°44´13.965,099°27´31.623,1015
+17,Morelos,022,Tetela del Volcán,18°56´42.589,098°45´45.529,2164
+17,Morelos,023,Tlalnepantla,19°03´05.598,099°00´31.418,2260
+17,Morelos,024,Tlaltizapán de Zapata,18°49´05.952,099°11´44.639,977
+17,Morelos,025,Tlaquiltenango,18°39´21.918,099°12´58.428,935
+17,Morelos,026,Tlayacapan,18°59´05.767,099°01´33.752,1597
+17,Morelos,027,Totolapan,19°02´16.806,098°58´00.368,1986
+17,Morelos,028,Xochitepec,18°49´33.782,099°16´47.614,1116
+17,Morelos,029,Yautepec,18°56´26.311,099°07´31.722,1255
+17,Morelos,030,Yecapixtla,18°56´58.361,098°55´25.946,1571
+17,Morelos,031,Zacatepec,18°40´57.253,099°14´37.897,940
+17,Morelos,032,Zacualpan de Amilpas,18°49´54.371,098°46´28.700,1736
+17,Morelos,033,Temoac,18°46´54.063,098°48´53.493,1543
+17,Morelos,034,Coatetelco,18°46´47.137,099°20´55.278,1013
+17,Morelos,035,Xoxocotla,18°43´08.329,099°16´34.987,1003
+17,Morelos,036,Hueyapan,18°54´17.252,098°43´21.200,2283
+18,Nayarit,001,Acaponeta,22°39´46.178,105°39´51.452,216
+18,Nayarit,002,Ahuacatlán,21°09´43.261,104°43´32.929,962
+18,Nayarit,003,Amatlán de Cañas,20°59´36.080,104°36´45.661,896
+18,Nayarit,004,Compostela,21°21´57.739,105°20´53.734,350
+18,Nayarit,005,Huajicori,22°57´46.739,105°30´49.707,794
+18,Nayarit,006,Ixtlán del Río,21°12´18.000,104°25´46.015,1184
+18,Nayarit,007,Jala,21°17´54.621,104°33´19.425,1327
+18,Nayarit,008,Xalisco,21°29´05.892,105°06´50.489,960
+18,Nayarit,009,Del Nayar,22°36´55.293,105°02´19.990,1053
+18,Nayarit,010,Rosamorada,22°20´20.624,105°26´58.856,80
+18,Nayarit,011,Ruíz,22°08´27.907,105°13´18.647,326
+18,Nayarit,012,San Blas,21°43´00.000,106°37´56.135,86
+18,Nayarit,013,San Pedro Lagunillas,21°19´17.751,104°49´49.116,1173
+18,Nayarit,014,Santa María del Oro,21°35´54.271,104°47´14.801,996
+18,Nayarit,015,Santiago Ixcuintla,22°16´43.310,105°39´29.179,30
+18,Nayarit,016,Tecuala,22°30´59.405,105°43´23.546,4
+18,Nayarit,017,Tepic,21°50´25.124,105°07´00.348,734
+18,Nayarit,018,Tuxpan,21°59´54.815,105°25´49.738,9
+18,Nayarit,019,La Yesca,21°58´38.875,104°27´23.116,1397
+18,Nayarit,020,Bahía de Banderas,20°57´22.331,105°31´46.830,46
+19,Nuevo León,001,Abasolo,25°58´00.104,100°25´43.057,515
+19,Nuevo León,002,Agualeguas,26°24´32.089,099°55´31.746,231
+19,Nuevo León,003,Los Aldamas,26°16´41.713,099°22´35.525,120
+19,Nuevo León,004,Allende,25°21´37.177,100°04´40.603,425
+19,Nuevo León,005,Anáhuac,27°45´10.070,100°24´57.298,200
+19,Nuevo León,006,Apodaca,25°52´27.573,100°15´51.615,418
+19,Nuevo León,007,Aramberri,24°30´05.006,100°09´59.120,1429
+19,Nuevo León,008,Bustamante,26°41´21.861,100°39´53.799,479
+19,Nuevo León,009,Cadereyta Jiménez,25°41´06.622,100°08´05.921,335
+19,Nuevo León,010,El Carmen,25°58´11.294,100°23´57.086,500
+19,Nuevo León,011,Cerralvo,26°14´08.866,099°54´38.000,302
+19,Nuevo León,012,Ciénega de Flores,26°01´38.510,100°16´21.248,411
+19,Nuevo León,013,China,25°54´02.439,099°26´41.062,147
+19,Nuevo León,014,Doctor Arroyo,24°25´04.291,100°35´36.689,1772
+19,Nuevo León,015,Doctor Coss,26°05´30.796,099°11´40.388,108
+19,Nuevo León,016,Doctor González,25°58´21.501,099°58´14.652,334
+19,Nuevo León,017,Galeana,25°15´08.761,100°48´10.291,1940
+19,Nuevo León,018,García,25°56´47.260,100°49´08.352,782
+19,Nuevo León,019,San Pedro Garza García,25°39´54.610,100°25´10.999,967
+19,Nuevo León,020,General Bravo,26°02´09.175,099°12´32.975,141
+19,Nuevo León,021,General Escobedo,25°51´01.542,100°25´27.720,541
+19,Nuevo León,022,General Terán,25°29´28.430,099°47´37.768,254
+19,Nuevo León,023,General Treviño,26°18´35.496,099°34´21.713,159
+19,Nuevo León,024,General Zaragoza,24°01´57.041,100°01´35.758,1932
+19,Nuevo León,025,General Zuazua,25°58´39.221,100°15´08.121,376
+19,Nuevo León,026,Guadalupe,25°42´02.113,100°15´35.630,550
+19,Nuevo León,027,Los Herreras,26°04´40.613,099°32´46.111,161
+19,Nuevo León,028,Higueras,26°09´14.774,100°06´54.313,562
+19,Nuevo León,029,Hualahuises,24°55´49.719,099°44´28.787,411
+19,Nuevo León,030,Iturbide,24°47´29.779,099°58´07.063,1360
+19,Nuevo León,031,Juárez,25°41´56.233,100°12´39.451,428
+19,Nuevo León,032,Lampazos de Naranjo,27°20´56.209,100°49´54.067,305
+19,Nuevo León,033,Linares,25°08´39.879,099°56´10.147,397
+19,Nuevo León,034,Marín,26°01´00.891,100°05´44.360,396
+19,Nuevo León,035,Melchor Ocampo,26°05´22.678,099°35´53.295,224
+19,Nuevo León,036,Mier y Noriega,23°32´43.556,100°19´11.172,1609
+19,Nuevo León,037,Mina,26°43´26.120,101°09´44.527,732
+19,Nuevo León,038,Montemorelos,25°25´00.461,100°08´25.532,442
+19,Nuevo León,039,Monterrey,25°39´52.910,100°18´39.210,679
+19,Nuevo León,040,Parás,26°53´36.831,099°45´32.132,158
+19,Nuevo León,041,Pesquería,25°50´05.671,100°08´40.999,329
+19,Nuevo León,042,Los Ramones,25°53´28.634,099°45´41.164,215
+19,Nuevo León,043,Rayones,25°16´04.400,100°15´07.501,1134
+19,Nuevo León,044,Sabinas Hidalgo,26°52´31.993,100°18´02.026,307
+19,Nuevo León,045,Salinas Victoria,26°21´25.735,100°31´06.687,486
+19,Nuevo León,046,San Nicolás de los Garza,25°45´18.910,100°17´22.510,508
+19,Nuevo León,047,Hidalgo,26°05´52.115,100°30´42.441,669
+19,Nuevo León,048,Santa Catarina,25°44´29.801,100°42´40.098,1091
+19,Nuevo León,049,Santiago,25°30´46.808,100°30´58.663,896
+19,Nuevo León,050,Vallecillo,26°53´52.722,100°04´56.042,209
+19,Nuevo León,051,Villaldama,26°39´15.465,100°28´56.117,462
+20,Oaxaca,001,Abejones,17°26´08.708,096°36´29.427,2254
+20,Oaxaca,002,Acatlán de Pérez Figueroa,18°35´01.494,096°41´08.465,101
+20,Oaxaca,003,Asunción Cacalotepec,17°04´10.549,095°58´04.929,1486
+20,Oaxaca,004,Asunción Cuyotepeji,17°56´11.844,097°41´36.521,1759
+20,Oaxaca,005,Asunción Ixtaltepec,16°48´28.177,095°10´06.339,58
+20,Oaxaca,006,Asunción Nochixtlán,17°34´11.356,097°16´55.006,2130
+20,Oaxaca,007,Asunción Ocotlán,16°45´33.045,096°43´22.266,1477
+20,Oaxaca,008,Asunción Tlacolulita,16°18´00.947,095°46´23.778,523
+20,Oaxaca,009,Ayotzintepec,17°47´28.451,096°14´56.096,278
+20,Oaxaca,010,El Barrio de la Soledad,16°53´15.435,095°09´58.545,229
+20,Oaxaca,011,Calihualá,17°33´41.964,098°18´04.087,1446
+20,Oaxaca,012,Candelaria Loxicha,15°59´38.708,096°34´35.594,819
+20,Oaxaca,013,Ciénega de Zimatlán,16°54´04.291,096°46´40.760,1491
+20,Oaxaca,014,Ciudad Ixtepec,16°40´40.768,095°09´03.549,77
+20,Oaxaca,015,Coatecas Altas,16°33´04.712,096°41´15.216,1550
+20,Oaxaca,016,Coicoyán de las Flores,17°18´37.189,098°16´46.865,1687
+20,Oaxaca,017,La Compañía,16°36´48.553,096°55´22.346,1451
+20,Oaxaca,018,Concepción Buenavista,18°06´16.772,097°28´36.189,1988
+20,Oaxaca,019,Concepción Pápalo,17°53´49.378,096°53´19.199,1971
+20,Oaxaca,020,Constancia del Rosario,17°05´33.354,098°04´36.110,993
+20,Oaxaca,021,Cosolapa,18°38´42.392,096°43´31.348,182
+20,Oaxaca,022,Cosoltepec,18°10´19.120,097°51´29.623,1623
+20,Oaxaca,023,Cuilápam de Guerrero,17°02´49.702,096°49´58.953,1585
+20,Oaxaca,024,Cuyamecalco Villa de Zaragoza,17°59´52.157,096°52´20.711,1581
+20,Oaxaca,025,Chahuites,16°18´11.436,094°13´23.265,15
+20,Oaxaca,026,Chalcatongo de Hidalgo,17°02´38.827,097°37´41.633,2393
+20,Oaxaca,027,Chiquihuitlán de Benito Juárez,18°00´30.675,096°46´44.240,1110
+20,Oaxaca,028,Heroica Ciudad de Ejutla de Crespo,16°43´38.705,096°51´02.556,1502
+20,Oaxaca,029,Eloxochitlán de Flores Magón,18°13´49.872,096°53´56.218,1420
+20,Oaxaca,030,El Espinal,16°30´45.685,095°05´46.328,23
+20,Oaxaca,031,Tamazulápam del Espíritu Santo,17°04´27.754,096°06´47.545,2200
+20,Oaxaca,032,Fresnillo de Trujano,17°58´41.045,098°09´09.861,1124
+20,Oaxaca,033,Guadalupe Etla,17°11´01.893,096°48´38.072,1619
+20,Oaxaca,034,Guadalupe de Ramírez,17°45´49.809,098°12´11.880,1346
+20,Oaxaca,035,Guelatao de Juárez,17°19´05.424,096°30´29.397,1712
+20,Oaxaca,036,Guevea de Humboldt,16°52´00.968,095°32´33.200,772
+20,Oaxaca,037,Mesones Hidalgo,16°58´43.814,098°04´31.246,583
+20,Oaxaca,038,Villa Hidalgo,17°13´12.051,096°10´50.354,1439
+20,Oaxaca,039,Heroica Ciudad de Huajuapan de León,18°00´14.226,097°54´25.966,1683
+20,Oaxaca,040,Huautepec,18°06´33.587,096°48´35.246,1496
+20,Oaxaca,041,Huautla de Jiménez,18°13´34.431,096°51´53.628,1594
+20,Oaxaca,042,Ixtlán de Juárez,17°39´37.336,096°29´24.846,1526
+20,Oaxaca,043,Juchitán de Zaragoza,16°34´51.498,095°06´42.879,14
+20,Oaxaca,044,Loma Bonita,18°09´23.449,095°58´58.054,43
+20,Oaxaca,045,Magdalena Apasco,17°15´03.525,096°50´43.662,1655
+20,Oaxaca,046,Magdalena Jaltepec,17°21´48.549,097°18´18.599,2104
+20,Oaxaca,047,Santa Magdalena Jicotlán,17°48´33.042,097°28´31.500,2192
+20,Oaxaca,048,Magdalena Mixtepec,16°53´46.002,096°56´13.416,1930
+20,Oaxaca,049,Magdalena Ocotlán,16°42´34.039,096°42´44.515,1520
+20,Oaxaca,050,Magdalena Peñasco,17°15´59.081,097°35´42.188,2119
+20,Oaxaca,051,Magdalena Teitipac,16°54´23.834,096°34´12.425,1758
+20,Oaxaca,052,Magdalena Tequisistlán,16°34´08.647,095°45´19.116,431
+20,Oaxaca,053,Magdalena Tlacotepec,16°32´03.705,095°12´11.901,108
+20,Oaxaca,054,Magdalena Zahuatlán,17°24´10.568,097°14´14.090,2091
+20,Oaxaca,055,Mariscala de Juárez,17°53´05.510,098°11´11.108,1137
+20,Oaxaca,056,Mártires de Tacubaya,16°34´21.093,098°15´03.285,128
+20,Oaxaca,057,Matías Romero Avendaño,17°25´34.883,095°17´50.193,99
+20,Oaxaca,058,Mazatlán Villa de Flores,18°04´54.836,096°59´09.672,1590
+20,Oaxaca,059,Miahuatlán de Porfirio Díaz,16°28´24.417,096°50´00.522,1647
+20,Oaxaca,060,Mixistlán de la Reforma,17°10´27.930,096°07´56.723,1863
+20,Oaxaca,061,Monjas,16°30´14.926,096°38´57.996,1571
+20,Oaxaca,062,Natividad,17°17´48.752,096°25´59.857,1933
+20,Oaxaca,063,Nazareno Etla,17°10´40.764,096°50´29.695,1617
+20,Oaxaca,064,Nejapa de Madero,16°51´50.286,096°02´14.034,864
+20,Oaxaca,065,Ixpantepec Nieves,17°31´23.269,098°03´34.210,1880
+20,Oaxaca,066,Santiago Niltepec,16°37´20.000,094°43´51.215,45
+20,Oaxaca,067,Oaxaca de Juárez,17°07´47.750,096°45´59.015,1708
+20,Oaxaca,068,Ocotlán de Morelos,16°52´21.501,096°47´27.804,1537
+20,Oaxaca,069,La Pe,16°37´47.851,096°47´58.767,1469
+20,Oaxaca,070,Pinotepa de Don Luis,16°26´18.222,097°59´33.095,355
+20,Oaxaca,071,Pluma Hidalgo,15°57´56.294,096°29´33.136,860
+20,Oaxaca,072,San José del Progreso,16°44´18.926,096°43´13.479,1567
+20,Oaxaca,073,Putla Villa de Guerrero,17°11´24.694,098°07´26.619,1186
+20,Oaxaca,074,Santa Catarina Quioquitani,16°18´56.355,096°17´05.873,2084
+20,Oaxaca,075,Reforma de Pineda,16°25´33.578,094°27´30.362,27
+20,Oaxaca,076,La Reforma,16°42´23.370,097°55´41.213,915
+20,Oaxaca,077,Reyes Etla,17°14´07.802,096°49´57.580,1630
+20,Oaxaca,078,Rojas de Cuauhtémoc,17°00´29.821,096°37´07.126,1566
+20,Oaxaca,079,Salina Cruz,16°14´43.408,095°17´07.481,25
+20,Oaxaca,080,San Agustín Amatengo,16°31´07.557,096°47´46.475,1366
+20,Oaxaca,081,San Agustín Atenango,17°37´38.653,098°01´36.880,1430
+20,Oaxaca,082,San Agustín Chayuco,16°29´00.722,097°51´57.618,316
+20,Oaxaca,083,San Agustín de las Juntas,17°00´54.997,096°42´41.189,1567
+20,Oaxaca,084,San Agustín Etla,17°12´07.732,096°45´51.927,1765
+20,Oaxaca,085,San Agustín Loxicha,16°04´19.652,096°42´03.652,1198
+20,Oaxaca,086,San Agustín Tlacotepec,17°13´40.059,097°32´50.308,1969
+20,Oaxaca,087,San Agustín Yatareni,17°05´25.116,096°41´33.571,1609
+20,Oaxaca,088,San Andrés Cabecera Nueva,16°55´16.406,097°53´33.203,1346
+20,Oaxaca,089,San Andrés Dinicuiti,17°43´33.774,097°43´47.610,1764
+20,Oaxaca,090,San Andrés Huaxpaltepec,16°22´18.415,097°57´45.571,233
+20,Oaxaca,091,San Andrés Huayápam,17°06´30.390,096°41´07.854,1674
+20,Oaxaca,092,San Andrés Ixtlahuaca,17°04´56.558,096°52´43.195,1674
+20,Oaxaca,093,San Andrés Lagunas,17°35´23.233,097°31´51.571,2333
+20,Oaxaca,094,San Andrés Nuxiño,17°15´58.728,097°07´27.815,2126
+20,Oaxaca,095,San Andrés Paxtlán,16°14´41.928,096°34´36.048,2241
+20,Oaxaca,096,San Andrés Sinaxtla,17°30´08.098,097°19´50.932,2116
+20,Oaxaca,097,San Andrés Solaga,17°17´59.383,096°14´12.821,1441
+20,Oaxaca,098,San Andrés Teotilálpam,18°00´27.230,096°42´13.521,1036
+20,Oaxaca,099,San Andrés Tepetlapa,17°39´57.000,098°23´30.072,1446
+20,Oaxaca,100,San Andrés Yaá,17°17´53.346,096°09´13.018,1638
+20,Oaxaca,101,San Andrés Zabache,16°36´00.535,096°51´27.848,1432
+20,Oaxaca,102,San Andrés Zautla,17°12´05.971,096°52´32.653,1647
+20,Oaxaca,103,San Antonino Castillo Velasco,16°49´59.887,096°42´17.433,1489
+20,Oaxaca,104,San Antonino el Alto,16°51´43.556,097°09´07.730,2317
+20,Oaxaca,105,San Antonino Monte Verde,17°33´06.212,097°47´30.953,2346
+20,Oaxaca,106,San Antonio Acutla,17°45´16.678,097°30´20.955,2186
+20,Oaxaca,107,San Antonio de la Cal,17°02´59.579,096°42´06.681,1575
+20,Oaxaca,108,San Antonio Huitepec,16°58´57.993,097°11´54.238,2072
+20,Oaxaca,109,San Antonio Nanahuatípam,18°09´02.706,097°08´13.567,797
+20,Oaxaca,110,San Antonio Sinicahua,17°11´00.220,097°35´56.767,2339
+20,Oaxaca,111,San Antonio Tepetlapa,16°32´32.499,098°05´55.785,322
+20,Oaxaca,112,San Baltazar Chichicápam,16°46´14.325,096°29´58.698,1566
+20,Oaxaca,113,San Baltazar Loxicha,16°05´14.984,096°49´37.696,589
+20,Oaxaca,114,San Baltazar Yatzachi el Bajo,17°14´46.000,096°14´52.429,1476
+20,Oaxaca,115,San Bartolo Coyotepec,16°57´44.720,096°44´03.440,1508
+20,Oaxaca,116,San Bartolomé Ayautla,18°03´10.000,096°42´46.788,775
+20,Oaxaca,117,San Bartolomé Loxicha,15°59´53.512,096°48´45.570,736
+20,Oaxaca,118,San Bartolomé Quialana,16°55´08.937,096°30´34.667,1818
+20,Oaxaca,119,San Bartolomé Yucuañe,17°14´44.846,097°29´08.847,1798
+20,Oaxaca,120,San Bartolomé Zoogocho,17°14´26.839,096°14´34.982,1494
+20,Oaxaca,121,San Bartolo Soyaltepec,17°37´06.806,097°23´11.541,2344
+20,Oaxaca,122,San Bartolo Yautepec,16°26´14.945,095°58´48.915,845
+20,Oaxaca,123,San Bernardo Mixtepec,16°52´36.396,096°57´57.208,1724
+20,Oaxaca,124,San Blas Atempa,16°27´23.063,095°13´39.165,24
+20,Oaxaca,125,San Carlos Yautepec,16°54´25.639,096°15´14.862,1234
+20,Oaxaca,126,San Cristóbal Amatlán,16°19´47.494,096°25´01.055,1883
+20,Oaxaca,127,San Cristóbal Amoltepec,17°18´04.358,097°35´45.952,2263
+20,Oaxaca,128,San Cristóbal Lachirioag,17°20´34.286,096°09´54.170,1124
+20,Oaxaca,129,San Cristóbal Suchixtlahuaca,17°44´29.698,097°24´20.979,2119
+20,Oaxaca,130,San Dionisio del Mar,16°22´12.170,094°49´36.820,9
+20,Oaxaca,131,San Dionisio Ocotepec,16°48´39.714,096°24´30.549,1710
+20,Oaxaca,132,San Dionisio Ocotlán,16°45´03.199,096°40´51.007,1538
+20,Oaxaca,133,San Esteban Atatlahuca,17°07´12.584,097°44´52.186,2587
+20,Oaxaca,134,San Felipe Jalapa de Díaz,18°06´51.229,096°38´36.150,139
+20,Oaxaca,135,San Felipe Tejalápam,17°07´58.207,096°53´23.677,1679
+20,Oaxaca,136,San Felipe Usila,17°57´18.676,096°33´29.658,266
+20,Oaxaca,137,San Francisco Cahuacuá,16°56´39.830,097°30´10.742,1468
+20,Oaxaca,138,San Francisco Cajonos,17°10´19.539,096°16´17.553,1813
+20,Oaxaca,139,San Francisco Chapulapa,17°57´32.496,096°46´43.908,1589
+20,Oaxaca,140,San Francisco Chindúa,17°25´42.891,097°19´06.581,2099
+20,Oaxaca,141,San Francisco del Mar,16°23´38.445,094°43´48.917,4
+20,Oaxaca,142,San Francisco Huehuetlán,18°12´39.239,096°56´52.157,1719
+20,Oaxaca,143,San Francisco Ixhuatán,16°25´51.000,094°34´29.396,8
+20,Oaxaca,144,San Francisco Jaltepetongo,17°23´08.571,097°17´31.208,2130
+20,Oaxaca,145,San Francisco Lachigoló,17°02´13.739,096°36´38.858,1607
+20,Oaxaca,146,San Francisco Logueche,16°24´03.888,096°23´44.590,1729
+20,Oaxaca,147,San Francisco Nuxaño,17°23´07.189,097°20´38.223,2373
+20,Oaxaca,148,San Francisco Ozolotepec,16°06´01.941,096°13´14.455,1817
+20,Oaxaca,149,San Francisco Sola,16°33´28.269,096°58´27.841,1693
+20,Oaxaca,150,San Francisco Telixtlahuaca,17°25´53.096,097°00´45.953,1948
+20,Oaxaca,151,San Francisco Teopan,17°52´32.312,097°32´57.063,2381
+20,Oaxaca,152,San Francisco Tlapancingo,17°30´12.975,098°18´30.247,1620
+20,Oaxaca,153,San Gabriel Mixtepec,16°08´01.926,097°07´55.864,771
+20,Oaxaca,154,San Ildefonso Amatlán,16°20´33.428,096°29´29.603,1904
+20,Oaxaca,155,San Ildefonso Sola,16°37´31.809,096°59´21.421,1630
+20,Oaxaca,156,San Ildefonso Villa Alta,17°27´05.494,096°10´07.188,1350
+20,Oaxaca,157,San Jacinto Amilpas,17°06´02.904,096°45´45.222,1554
+20,Oaxaca,158,San Jacinto Tlacotepec,16°33´20.316,097°23´35.360,1024
+20,Oaxaca,159,San Jerónimo Coatlán,16°19´29.536,097°05´13.811,1332
+20,Oaxaca,160,San Jerónimo Silacayoapilla,17°49´48.114,097°51´23.985,1717
+20,Oaxaca,161,San Jerónimo Sosola,17°31´10.065,097°07´05.235,2016
+20,Oaxaca,162,San Jerónimo Taviche,16°44´41.222,096°37´58.686,1684
+20,Oaxaca,163,San Jerónimo Tecóatl,18°10´00.890,096°57´08.508,1729
+20,Oaxaca,164,San Jorge Nuchita,17°40´33.779,098°06´39.188,1193
+20,Oaxaca,165,San José Ayuquila,17°56´57.706,097°59´15.072,1565
+20,Oaxaca,166,San José Chiltepec,18°00´10.682,096°11´51.853,47
+20,Oaxaca,167,San José del Peñasco,16°18´57.814,096°30´33.590,1731
+20,Oaxaca,168,San José Estancia Grande,16°23´41.631,098°16´40.228,66
+20,Oaxaca,169,San José Independencia,18°16´31.109,096°40´28.976,103
+20,Oaxaca,170,San José Lachiguiri,16°26´42.342,096°21´38.984,1548
+20,Oaxaca,171,San José Tenango,18°15´44.984,096°44´53.086,885
+20,Oaxaca,172,San Juan Achiutla,17°22´06.009,097°31´34.425,2036
+20,Oaxaca,173,San Juan Atepec,17°26´52.598,096°32´59.743,2490
+20,Oaxaca,174,Ánimas Trujano,16°59´48.685,096°43´00.699,1506
+20,Oaxaca,175,San Juan Bautista Atatlahuca,17°33´27.371,096°50´58.976,1001
+20,Oaxaca,176,San Juan Bautista Coixtlahuaca,17°48´28.052,097°23´16.144,2297
+20,Oaxaca,177,San Juan Bautista Cuicatlán,17°54´54.406,097°07´34.696,1011
+20,Oaxaca,178,San Juan Bautista Guelache,17°14´23.070,096°47´48.134,1715
+20,Oaxaca,179,San Juan Bautista Jayacatlán,17°25´40.151,096°49´54.675,1317
+20,Oaxaca,180,San Juan Bautista Lo de Soto,16°33´36.926,098°21´36.070,72
+20,Oaxaca,181,San Juan Bautista Suchitepec,18°00´45.653,097°40´46.956,1848
+20,Oaxaca,182,San Juan Bautista Tlacoatzintepec,17°54´32.184,096°37´29.178,892
+20,Oaxaca,183,San Juan Bautista Tlachichilco,17°37´24.034,098°20´40.749,1287
+20,Oaxaca,184,San Juan Bautista Tuxtepec,18°18´28.228,096°17´48.757,36
+20,Oaxaca,185,San Juan Cacahuatepec,16°38´52.510,098°12´14.838,389
+20,Oaxaca,186,San Juan Cieneguilla,17°51´05.971,098°16´50.752,1520
+20,Oaxaca,187,San Juan Coatzóspam,18°03´07.211,096°46´46.633,1659
+20,Oaxaca,188,San Juan Colorado,16°31´17.962,097°58´23.437,425
+20,Oaxaca,189,San Juan Comaltepec,17°20´17.447,095°58´36.647,945
+20,Oaxaca,190,San Juan Cotzocón,17°34´54.829,095°46´56.317,107
+20,Oaxaca,191,San Juan Chicomezúchil,17°18´36.555,096°31´30.043,1578
+20,Oaxaca,192,San Juan Chilateca,16°49´51.545,096°40´50.155,1497
+20,Oaxaca,193,San Juan del Estado,17°18´02.167,096°47´57.382,1786
+20,Oaxaca,194,San Juan del Río,16°54´04.114,096°10´39.183,1252
+20,Oaxaca,195,San Juan Diuxi,17°16´53.434,097°23´28.056,2433
+20,Oaxaca,196,San Juan Evangelista Analco,17°24´32.218,096°32´16.620,2133
+20,Oaxaca,197,San Juan Guelavía,16°57´54.191,096°32´44.995,1598
+20,Oaxaca,198,San Juan Guichicovi,17°20´55.590,095°17´55.024,171
+20,Oaxaca,199,San Juan Ihualtepec,17°49´45.087,098°17´48.279,1699
+20,Oaxaca,200,San Juan Juquila Mixes,16°59´17.957,095°57´02.538,1249
+20,Oaxaca,201,San Juan Juquila Vijanos,17°21´31.281,096°18´14.453,1457
+20,Oaxaca,202,San Juan Lachao,16°15´04.254,097°10´20.941,1248
+20,Oaxaca,203,San Juan Lachigalla,16°35´30.407,096°34´32.139,1665
+20,Oaxaca,204,San Juan Lajarcia,16°30´30.398,095°55´32.126,809
+20,Oaxaca,205,San Juan Lalana,17°42´07.167,095°55´34.646,184
+20,Oaxaca,206,San Juan de los Cués,18°05´21.918,097°04´08.421,1747
+20,Oaxaca,207,San Juan Mazatlán,17°22´49.857,095°39´34.932,229
+20,Oaxaca,208,San Juan Mixtepec,17°26´45.604,097°56´35.917,2126
+20,Oaxaca,209,San Juan Mixtepec,16°16´39.142,096°17´58.120,2051
+20,Oaxaca,210,San Juan Ñumí,17°29´05.926,097°49´33.457,2217
+20,Oaxaca,211,San Juan Ozolotepec,16°08´43.435,096°17´09.625,1753
+20,Oaxaca,212,San Juan Petlapa,17°32´46.690,096°04´47.362,673
+20,Oaxaca,213,San Juan Quiahije,16°22´44.789,097°25´56.988,1378
+20,Oaxaca,214,San Juan Quiotepec,17°41´29.881,096°38´11.065,1602
+20,Oaxaca,215,San Juan Sayultepec,17°27´12.536,097°19´01.443,2103
+20,Oaxaca,216,San Juan Tabaá,17°18´18.669,096°13´00.998,1316
+20,Oaxaca,217,San Juan Tamazola,17°12´28.664,097°13´36.777,2067
+20,Oaxaca,218,San Juan Teita,17°06´32.926,097°26´27.440,1525
+20,Oaxaca,219,San Juan Teitipac,16°56´03.836,096°37´01.554,1635
+20,Oaxaca,220,San Juan Tepeuxila,17°48´56.603,096°50´27.970,1736
+20,Oaxaca,221,San Juan Teposcolula,17°38´18.141,097°26´26.550,2342
+20,Oaxaca,222,San Juan Yaeé,17°26´22.769,096°17´48.669,1319
+20,Oaxaca,223,San Juan Yatzona,17°24´08.728,096°10´09.280,1310
+20,Oaxaca,224,San Juan Yucuita,17°33´01.601,097°16´43.745,2095
+20,Oaxaca,225,San Lorenzo,16°26´16.555,097°55´09.599,307
+20,Oaxaca,226,San Lorenzo Albarradas,16°57´30.510,096°18´05.228,1695
+20,Oaxaca,227,San Lorenzo Cacaotepec,17°09´40.867,096°49´25.156,1592
+20,Oaxaca,228,San Lorenzo Cuaunecuiltitla,18°12´23.230,096°54´47.006,1898
+20,Oaxaca,229,San Lorenzo Texmelúcan,16°35´20.148,097°13´28.988,1409
+20,Oaxaca,230,San Lorenzo Victoria,17°40´06.082,098°07´12.985,1193
+20,Oaxaca,231,San Lucas Camotlán,16°57´01.983,095°43´06.543,1227
+20,Oaxaca,232,San Lucas Ojitlán,18°07´47.319,096°29´14.967,89
+20,Oaxaca,233,San Lucas Quiaviní,16°55´06.199,096°28´05.139,1699
+20,Oaxaca,234,San Lucas Zoquiápam,18°08´38.330,096°57´39.820,1812
+20,Oaxaca,235,San Luis Amatlán,16°33´26.860,096°33´23.932,1435
+20,Oaxaca,236,San Marcial Ozolotepec,16°05´23.730,096°25´33.480,2023
+20,Oaxaca,237,San Marcos Arteaga,17°46´55.059,098°03´05.149,1589
+20,Oaxaca,238,San Martín de los Cansecos,16°39´39.378,096°43´44.419,1550
+20,Oaxaca,239,San Martín Huamelúlpam,17°24´50.276,097°37´48.429,2227
+20,Oaxaca,240,San Martín Itunyoso,17°13´44.468,097°53´30.547,2437
+20,Oaxaca,241,San Martín Lachilá,16°36´39.112,096°50´57.738,1436
+20,Oaxaca,242,San Martín Peras,17°27´33.097,098°20´07.913,2056
+20,Oaxaca,243,San Martín Tilcajete,16°54´29.365,096°42´10.700,1572
+20,Oaxaca,244,San Martín Toxpalan,18°08´22.521,097°07´30.377,1478
+20,Oaxaca,245,San Martín Zacatepec,17°50´14.768,098°06´03.139,1400
+20,Oaxaca,246,San Mateo Cajonos,17°09´42.395,096°12´32.312,1367
+20,Oaxaca,247,Capulálpam de Méndez,17°18´56.715,096°27´06.788,2016
+20,Oaxaca,248,San Mateo del Mar,16°13´12.179,095°07´53.424,7
+20,Oaxaca,249,San Mateo Yoloxochitlán,18°09´01.294,096°52´12.265,1413
+20,Oaxaca,250,San Mateo Etlatongo,17°26´13.528,097°16´44.521,2041
+20,Oaxaca,251,San Mateo Nejápam,17°40´02.000,098°25´01.178,1314
+20,Oaxaca,252,San Mateo Peñasco,17°09´13.380,097°32´25.755,1893
+20,Oaxaca,253,San Mateo Piñas,16°00´56.773,096°24´17.084,939
+20,Oaxaca,254,San Mateo Río Hondo,16°11´10.405,096°37´27.077,2217
+20,Oaxaca,255,San Mateo Sindihui,17°02´45.591,097°25´48.899,1506
+20,Oaxaca,256,San Mateo Tlapiltepec,17°48´42.619,097°25´52.258,2204
+20,Oaxaca,257,San Melchor Betaza,17°15´54.413,096°09´15.679,1440
+20,Oaxaca,258,San Miguel Achiutla,17°19´14.757,097°30´24.678,1982
+20,Oaxaca,259,San Miguel Ahuehuetitlán,17°40´31.999,098°22´06.150,1387
+20,Oaxaca,260,San Miguel Aloápam,17°26´49.800,096°45´16.579,2437
+20,Oaxaca,261,San Miguel Amatitlán,17°57´31.755,098°05´36.149,1613
+20,Oaxaca,262,San Miguel Amatlán,17°16´48.400,096°28´35.247,2323
+20,Oaxaca,263,San Miguel Coatlán,16°15´05.592,096°43´47.710,1624
+20,Oaxaca,264,San Miguel Chicahua,17°39´30.365,097°14´33.779,2359
+20,Oaxaca,265,San Miguel Chimalapa,16°47´23.328,094°49´11.747,551
+20,Oaxaca,266,San Miguel del Puerto,16°05´25.761,096°14´43.882,507
+20,Oaxaca,267,San Miguel del Río,17°19´40.803,096°34´09.195,1600
+20,Oaxaca,268,San Miguel Ejutla,16°36´43.544,096°44´57.556,1478
+20,Oaxaca,269,San Miguel el Grande,17°09´19.243,097°38´36.193,2529
+20,Oaxaca,270,San Miguel Huautla,17°47´53.957,097°10´29.450,2069
+20,Oaxaca,271,San Miguel Mixtepec,16°47´22.911,096°58´41.864,1987
+20,Oaxaca,272,San Miguel Panixtlahuaca,16°18´07.604,097°27´27.083,810
+20,Oaxaca,273,San Miguel Peras,16°58´59.373,097°09´52.593,2342
+20,Oaxaca,274,San Miguel Piedras,17°01´57.967,097°14´52.179,1760
+20,Oaxaca,275,San Miguel Quetzaltepec,17°01´28.840,095°49´48.135,961
+20,Oaxaca,276,San Miguel Santa Flor,17°56´17.210,096°48´22.255,1854
+20,Oaxaca,277,Villa Sola de Vega,16°51´36.734,097°15´31.048,1586
+20,Oaxaca,278,San Miguel Soyaltepec,18°22´27.656,096°39´31.710,51
+20,Oaxaca,279,San Miguel Suchixtepec,16°06´41.503,096°30´19.873,2323
+20,Oaxaca,280,Villa Talea de Castro,17°23´40.525,096°14´59.716,1435
+20,Oaxaca,281,San Miguel Tecomatlán,17°23´52.364,097°16´36.436,2094
+20,Oaxaca,282,San Miguel Tenango,16°18´44.794,095°37´08.474,904
+20,Oaxaca,283,San Miguel Tequixtepec,17°50´12.191,097°23´49.605,2018
+20,Oaxaca,284,San Miguel Tilquiápam,16°46´54.992,096°34´53.603,1648
+20,Oaxaca,285,San Miguel Tlacamama,16°29´37.185,098°09´22.512,231
+20,Oaxaca,286,San Miguel Tlacotepec,17°29´03.995,098°02´14.552,1816
+20,Oaxaca,287,San Miguel Tulancingo,17°46´06.320,097°27´52.540,2226
+20,Oaxaca,288,San Miguel Yotao,17°22´22.447,096°20´21.562,1442
+20,Oaxaca,289,San Nicolás,16°27´35.093,096°44´26.966,1499
+20,Oaxaca,290,San Nicolás Hidalgo,17°47´10.056,098°12´16.400,1192
+20,Oaxaca,291,San Pablo Coatlán,16°14´03.225,096°52´52.552,1162
+20,Oaxaca,292,San Pablo Cuatro Venados,17°01´00.444,096°55´20.917,2454
+20,Oaxaca,293,San Pablo Etla,17°10´45.585,096°47´55.726,1638
+20,Oaxaca,294,San Pablo Huitzo,17°21´37.356,096°53´37.973,1778
+20,Oaxaca,295,San Pablo Huixtepec,16°50´17.229,096°49´37.952,1513
+20,Oaxaca,296,San Pablo Macuiltianguis,17°32´49.038,096°35´23.169,2219
+20,Oaxaca,297,San Pablo Tijaltepec,17°04´02.732,097°31´14.931,2229
+20,Oaxaca,298,San Pablo Villa de Mitla,17°02´23.376,096°25´25.613,1731
+20,Oaxaca,299,San Pablo Yaganiza,17°08´45.897,096°13´46.469,1447
+20,Oaxaca,300,San Pedro Amuzgos,16°41´21.000,098°07´04.986,481
+20,Oaxaca,301,San Pedro Apóstol,16°45´11.583,096°44´43.291,1479
+20,Oaxaca,302,San Pedro Atoyac,16°32´31.083,097°59´35.320,342
+20,Oaxaca,303,San Pedro Cajonos,17°10´07.214,096°15´38.301,1848
+20,Oaxaca,304,San Pedro Coxcaltepec Cántaros,17°33´17.000,097°09´58.997,2269
+20,Oaxaca,305,San Pedro Comitancillo,16°29´29.947,095°11´55.373,53
+20,Oaxaca,306,San Pedro el Alto,16°02´54.582,096°31´28.083,1671
+20,Oaxaca,307,San Pedro Huamelula,16°07´09.298,095°56´04.696,142
+20,Oaxaca,308,San Pedro Huilotepec,16°14´37.166,095°10´04.352,19
+20,Oaxaca,309,San Pedro Ixcatlán,18°12´58.798,096°36´33.774,142
+20,Oaxaca,310,San Pedro Ixtlahuaca,17°04´45.916,096°50´21.508,1642
+20,Oaxaca,311,San Pedro Jaltepetongo,17°41´35.642,097°02´47.760,1763
+20,Oaxaca,312,San Pedro Jicayán,16°30´03.657,098°06´27.246,262
+20,Oaxaca,313,San Pedro Jocotipac,17°46´29.614,097°05´17.757,2053
+20,Oaxaca,314,San Pedro Juchatengo,16°21´41.456,097°08´06.645,1011
+20,Oaxaca,315,San Pedro Mártir,16°45´03.003,096°43´08.415,1487
+20,Oaxaca,316,San Pedro Mártir Quiechapa,16°24´54.817,096°14´51.139,1808
+20,Oaxaca,317,San Pedro Mártir Yucuxaco,17°27´57.197,097°40´24.657,2229
+20,Oaxaca,318,San Pedro Mixtepec,16°01´40.413,097°11´28.237,148
+20,Oaxaca,319,San Pedro Mixtepec,16°16´18.475,096°16´58.072,2994
+20,Oaxaca,320,San Pedro Molinos,17°06´43.215,097°34´08.251,2204
+20,Oaxaca,321,San Pedro Nopala,17°50´58.346,097°35´39.687,2153
+20,Oaxaca,322,San Pedro Ocopetatillo,18°11´05.770,096°54´47.352,1737
+20,Oaxaca,323,San Pedro Ocotepec,16°58´50.860,095°51´36.007,1349
+20,Oaxaca,324,San Pedro Pochutla,15°58´52.812,096°31´28.132,242
+20,Oaxaca,325,San Pedro Quiatoni,16°53´21.721,096°08´48.418,1347
+20,Oaxaca,326,San Pedro Sochiápam,17°53´14.319,096°40´22.343,1056
+20,Oaxaca,327,San Pedro Tapanatepec,16°26´09.796,094°21´27.046,38
+20,Oaxaca,328,San Pedro Taviche,16°40´56.388,096°32´26.316,1530
+20,Oaxaca,329,San Pedro Teozacoalco,17°02´33.372,097°17´32.972,1592
+20,Oaxaca,330,San Pedro Teutila,18°02´10.972,096°42´33.183,938
+20,Oaxaca,331,San Pedro Tidaá,17°20´42.940,097°23´23.186,2354
+20,Oaxaca,332,San Pedro Topiltepec,17°27´59.087,097°21´20.450,2157
+20,Oaxaca,333,San Pedro Totolápam,16°41´52.045,096°24´16.693,953
+20,Oaxaca,334,Villa de Tututepec,16°14´40.874,097°46´56.579,85
+20,Oaxaca,335,San Pedro Yaneri,17°25´09.681,096°22´39.926,1252
+20,Oaxaca,336,San Pedro Yólox,17°40´58.896,096°38´20.077,1145
+20,Oaxaca,337,San Pedro y San Pablo Ayutla,17°06´47.663,096°11´44.428,1858
+20,Oaxaca,338,Villa de Etla,17°12´27.101,096°48´26.728,1645
+20,Oaxaca,339,San Pedro y San Pablo Teposcolula,17°32´16.986,097°36´46.699,2212
+20,Oaxaca,340,San Pedro y San Pablo Tequixtepec,18°10´05.028,097°49´59.391,1842
+20,Oaxaca,341,San Pedro Yucunama,17°33´39.615,097°28´57.328,2429
+20,Oaxaca,342,San Raymundo Jalpan,16°59´47.972,096°45´48.440,1522
+20,Oaxaca,343,San Sebastián Abasolo,16°59´40.830,096°36´56.075,1581
+20,Oaxaca,344,San Sebastián Coatlán,16°12´54.282,096°56´45.540,1182
+20,Oaxaca,345,San Sebastián Ixcapa,16°33´22.481,098°10´59.383,159
+20,Oaxaca,346,San Sebastián Nicananduta,17°31´06.930,097°41´16.553,2394
+20,Oaxaca,347,San Sebastián Río Hondo,16°13´18.858,096°29´00.927,2641
+20,Oaxaca,348,San Sebastián Tecomaxtlahuaca,17°26´47.937,098°10´01.495,2020
+20,Oaxaca,349,San Sebastián Teitipac,16°58´13.410,096°38´40.810,1621
+20,Oaxaca,350,San Sebastián Tutla,17°03´30.514,096°42´01.573,1555
+20,Oaxaca,351,San Simón Almolongas,16°27´34.972,096°44´30.363,1537
+20,Oaxaca,352,San Simón Zahuatlán,17°51´33.356,098°00´54.023,1849
+20,Oaxaca,353,Santa Ana,16°20´26.297,096°43´03.396,1606
+20,Oaxaca,354,Santa Ana Ateixtlahuaca,18°14´13.990,096°54´22.979,1203
+20,Oaxaca,355,Santa Ana Cuauhtémoc,17°59´33.845,096°48´45.386,1649
+20,Oaxaca,356,Santa Ana del Valle,16°59´41.377,096°28´18.029,1668
+20,Oaxaca,357,Santa Ana Tavela,16°40´17.338,095°54´41.643,665
+20,Oaxaca,358,Santa Ana Tlapacoyan,16°46´08.154,096°52´25.683,1496
+20,Oaxaca,359,Santa Ana Yareni,17°23´52.036,096°38´53.201,2333
+20,Oaxaca,360,Santa Ana Zegache,16°50´58.427,096°44´57.499,1476
+20,Oaxaca,361,Santa Catalina Quierí,16°19´19.924,096°15´57.089,1947
+20,Oaxaca,362,Santa Catarina Cuixtla,16°19´09.211,096°39´48.836,1787
+20,Oaxaca,363,Santa Catarina Ixtepeji,17°18´21.996,096°37´40.589,2275
+20,Oaxaca,364,Santa Catarina Juquila,16°22´59.815,097°24´46.252,964
+20,Oaxaca,365,Santa Catarina Lachatao,17°16´10.752,096°31´48.087,2475
+20,Oaxaca,366,Santa Catarina Loxicha,16°08´04.398,096°45´21.227,910
+20,Oaxaca,367,Santa Catarina Mechoacán,16°20´20.148,097°51´30.730,280
+20,Oaxaca,368,Santa Catarina Minas,16°47´55.850,096°37´56.190,1602
+20,Oaxaca,369,Santa Catarina Quiané,16°54´15.464,096°44´28.508,1509
+20,Oaxaca,370,Santa Catarina Tayata,17°23´08.586,097°34´29.788,2145
+20,Oaxaca,371,Santa Catarina Ticuá,17°05´14.985,097°33´04.719,2277
+20,Oaxaca,372,Santa Catarina Yosonotú,17°01´39.831,097°43´22.874,2403
+20,Oaxaca,373,Santa Catarina Zapoquila,18°04´07.062,097°36´13.828,2081
+20,Oaxaca,374,Santa Cruz Acatepec,18°09´49.542,096°53´33.275,1627
+20,Oaxaca,375,Santa Cruz Amilpas,17°03´31.320,096°41´02.462,1536
+20,Oaxaca,376,Santa Cruz de Bravo,17°34´52.946,098°13´26.361,1638
+20,Oaxaca,377,Santa Cruz Itundujia,16°55´05.822,097°47´54.014,1745
+20,Oaxaca,378,Santa Cruz Mixtepec,16°48´13.527,096°56´34.923,1610
+20,Oaxaca,379,Santa Cruz Nundaco,17°11´14.968,097°44´34.866,2367
+20,Oaxaca,380,Santa Cruz Papalutla,16°57´34.159,096°35´05.681,1585
+20,Oaxaca,381,Santa Cruz Tacache de Mina,17°50´20.456,098°09´27.814,1080
+20,Oaxaca,382,Santa Cruz Tacahua,16°56´26.967,097°30´15.490,1641
+20,Oaxaca,383,Santa Cruz Tayata,17°24´35.934,097°34´17.734,2162
+20,Oaxaca,384,Santa Cruz Xitla,16°24´01.464,096°42´16.112,1654
+20,Oaxaca,385,Santa Cruz Xoxocotlán,17°02´49.771,096°48´07.615,1572
+20,Oaxaca,386,Santa Cruz Zenzontepec,16°35´14.011,097°34´38.768,884
+20,Oaxaca,387,Santa Gertrudis,16°47´39.653,096°49´34.199,1493
+20,Oaxaca,388,Santa Inés del Monte,16°57´20.955,096°53´14.324,2196
+20,Oaxaca,389,Santa Inés Yatzeche,16°48´31.224,096°45´22.767,1466
+20,Oaxaca,390,Santa Lucía del Camino,17°04´15.222,096°41´40.838,1555
+20,Oaxaca,391,Santa Lucía Miahuatlán,16°13´53.574,096°38´53.235,1678
+20,Oaxaca,392,Santa Lucía Monteverde,16°59´41.354,097°49´17.241,2057
+20,Oaxaca,393,Santa Lucía Ocotlán,16°44´31.884,096°40´49.732,1543
+20,Oaxaca,394,Santa María Alotepec,17°07´10.670,095°52´55.383,1023
+20,Oaxaca,395,Santa María Apazco,17°39´59.989,097°06´37.608,2367
+20,Oaxaca,396,Santa María la Asunción,18°06´31.449,096°49´46.116,1663
+20,Oaxaca,397,Heroica Ciudad de Tlaxiaco,17°19´23.645,097°50´19.768,2103
+20,Oaxaca,398,Ayoquezco de Aldama,16°43´17.074,096°54´39.397,1486
+20,Oaxaca,399,Santa María Atzompa,17°07´26.904,096°48´49.956,1598
+20,Oaxaca,400,Santa María Camotlán,17°53´58.418,097°42´17.005,1740
+20,Oaxaca,401,Santa María Colotepec,15°56´59.753,097°03´26.959,106
+20,Oaxaca,402,Santa María Cortijo,16°27´52.241,098°21´24.114,86
+20,Oaxaca,403,Santa María Coyotepec,16°58´51.720,096°43´04.150,1498
+20,Oaxaca,404,Santa María Chachoápam,17°37´51.386,097°19´00.482,2202
+20,Oaxaca,405,Villa de Chilapa de Díaz,17°39´06.936,097°41´04.718,1945
+20,Oaxaca,406,Santa María Chilchotla,18°22´29.745,096°50´54.054,843
+20,Oaxaca,407,Santa María Chimalapa,17°10´40.115,094°54´05.463,423
+20,Oaxaca,408,Santa María del Rosario,17°21´46.341,097°37´41.388,2313
+20,Oaxaca,409,Santa María del Tule,17°02´48.126,096°38´13.490,1557
+20,Oaxaca,410,Santa María Ecatepec,16°24´56.110,096°00´50.565,1209
+20,Oaxaca,411,Santa María Guelacé,17°00´05.691,096°37´10.508,1575
+20,Oaxaca,412,Santa María Guienagati,16°52´47.647,095°28´42.408,619
+20,Oaxaca,413,Santa María Huatulco,15°57´00.865,096°20´56.819,175
+20,Oaxaca,414,Santa María Huazolotitlán,16°18´25.000,097°59´03.869,84
+20,Oaxaca,415,Santa María Ipalapa,16°39´05.722,098°02´58.624,537
+20,Oaxaca,416,Santa María Ixcatlán,17°51´26.698,097°11´52.253,1900
+20,Oaxaca,417,Santa María Jacatepec,17°58´22.286,096°15´15.087,91
+20,Oaxaca,418,Santa María Jalapa del Marqués,16°36´19.175,095°31´52.736,147
+20,Oaxaca,419,Santa María Jaltianguis,17°22´12.028,096°31´51.571,2290
+20,Oaxaca,420,Santa María Lachixío,16°45´46.490,097°02´35.130,2118
+20,Oaxaca,421,Santa María Mixtequilla,16°25´28.250,095°19´51.164,58
+20,Oaxaca,422,Santa María Nativitas,17°39´49.608,097°20´46.412,2313
+20,Oaxaca,423,Santa María Nduayaco,17°26´11.464,097°32´25.720,2325
+20,Oaxaca,424,Santa María Ozolotepec,16°09´41.489,096°24´22.986,2062
+20,Oaxaca,425,Santa María Pápalo,17°50´45.083,096°47´50.483,1781
+20,Oaxaca,426,Santa María Peñoles,17°07´22.476,097°06´51.578,2160
+20,Oaxaca,427,Santa María Petapa,16°59´21.522,095°07´41.437,188
+20,Oaxaca,428,Santa María Quiegolani,16°22´11.093,096°03´47.970,1812
+20,Oaxaca,429,Santa María Sola,16°36´41.130,097°02´59.946,1525
+20,Oaxaca,430,Santa María Tataltepec,17°08´32.852,097°23´42.416,1616
+20,Oaxaca,431,Santa María Tecomavaca,18°01´15.165,097°01´59.687,1042
+20,Oaxaca,432,Santa María Temaxcalapa,17°22´51.958,096°09´44.920,1082
+20,Oaxaca,433,Santa María Temaxcaltepec,16°11´39.966,097°13´14.446,889
+20,Oaxaca,434,Santa María Teopoxco,18°12´39.560,096°59´35.767,1915
+20,Oaxaca,435,Santa María Tepantlali,17°00´02.272,096°00´36.433,1672
+20,Oaxaca,436,Santa María Texcatitlán,17°42´56.632,097°04´35.669,1546
+20,Oaxaca,437,Santa María Tlahuitoltepec,17°08´27.601,096°09´15.796,2055
+20,Oaxaca,438,Santa María Tlalixtac,17°57´50.619,096°45´02.695,1344
+20,Oaxaca,439,Santa María Tonameca,15°53´58.453,096°50´46.298,104
+20,Oaxaca,440,Santa María Totolapilla,16°36´11.622,095°37´31.637,491
+20,Oaxaca,441,Santa María Xadani,16°24´49.938,095°05´02.136,8
+20,Oaxaca,442,Santa María Yalina,17°14´25.695,096°15´46.013,1857
+20,Oaxaca,443,Santa María Yavesía,17°14´39.182,096°25´56.230,2000
+20,Oaxaca,444,Santa María Yolotepec,16°53´26.343,097°30´19.181,1627
+20,Oaxaca,445,Santa María Yosoyúa,17°07´47.111,097°31´03.338,2035
+20,Oaxaca,446,Santa María Yucuhiti,17°05´05.234,097°50´13.888,1905
+20,Oaxaca,447,Santa María Zacatepec,16°51´42.751,098°03´35.401,465
+20,Oaxaca,448,Santa María Zaniza,16°39´50.611,097°20´43.014,1399
+20,Oaxaca,449,Santa María Zoquitlán,16°38´53.825,096°27´07.588,1171
+20,Oaxaca,450,Santiago Amoltepec,16°40´06.907,097°35´58.445,1080
+20,Oaxaca,451,Santiago Apoala,17°42´16.166,097°09´12.678,2234
+20,Oaxaca,452,Santiago Apóstol,16°48´37.261,096°43´26.479,1473
+20,Oaxaca,453,Santiago Astata,15°59´15.472,095°59´58.720,18
+20,Oaxaca,454,Santiago Atitlán,17°06´45.261,095°56´53.180,1183
+20,Oaxaca,455,Santiago Ayuquililla,17°57´28.500,098°00´42.300,1641
+20,Oaxaca,456,Santiago Cacaloxtepec,17°45´10.761,097°44´25.751,1818
+20,Oaxaca,457,Santiago Camotlán,17°39´31.908,096°13´52.419,647
+20,Oaxaca,458,Santiago Comaltepec,17°42´13.719,096°34´53.498,1441
+20,Oaxaca,459,Villa de Santiago Chazumba,18°16´50.951,097°50´17.251,1729
+20,Oaxaca,460,Santiago Choápam,17°30´37.113,095°56´54.275,543
+20,Oaxaca,461,Santiago del Río,17°27´46.663,098°06´38.925,1725
+20,Oaxaca,462,Santiago Huajolotitlán,17°52´11.302,097°44´29.097,1701
+20,Oaxaca,463,Santiago Huauclilla,17°32´20.228,097°06´07.424,1844
+20,Oaxaca,464,Santiago Ihuitlán Plumas,17°55´23.900,097°29´32.255,2085
+20,Oaxaca,465,Santiago Ixcuintepec,16°56´34.118,095°37´36.917,792
+20,Oaxaca,466,Santiago Ixtayutla,16°36´58.143,097°50´33.222,745
+20,Oaxaca,467,Santiago Jamiltepec,16°24´06.282,097°53´56.110,106
+20,Oaxaca,468,Santiago Jocotepec,17°48´18.566,096°06´32.210,112
+20,Oaxaca,469,Santiago Juxtlahuaca,17°22´24.125,098°10´58.856,1782
+20,Oaxaca,470,Santiago Lachiguiri,16°53´14.289,095°38´24.943,765
+20,Oaxaca,471,Santiago Lalopa,17°25´04.654,096°15´12.742,1166
+20,Oaxaca,472,Santiago Laollaga,16°41´37.525,095°18´09.036,155
+20,Oaxaca,473,Santiago Laxopa,17°13´42.027,096°19´15.923,2087
+20,Oaxaca,474,Santiago Llano Grande,16°31´58.796,098°18´07.734,91
+20,Oaxaca,475,Santiago Matatlán,16°54´02.614,096°29´47.015,1754
+20,Oaxaca,476,Santiago Miltepec,18°00´56.458,097°41´58.564,1859
+20,Oaxaca,477,Santiago Minas,16°29´29.583,097°18´20.479,1015
+20,Oaxaca,478,Santiago Nacaltepec,17°36´08.461,096°57´26.859,1795
+20,Oaxaca,479,Santiago Nejapilla,17°25´24.258,097°22´52.801,2299
+20,Oaxaca,480,Santiago Nundiche,17°22´30.770,097°42´20.997,2144
+20,Oaxaca,481,Santiago Nuyoó,17°03´03.554,097°45´59.541,1890
+20,Oaxaca,482,Santiago Pinotepa Nacional,16°25´29.739,098°18´52.236,89
+20,Oaxaca,483,Santiago Suchilquitongo,17°15´46.518,096°53´57.495,1676
+20,Oaxaca,484,Santiago Tamazola,17°51´42.795,098°17´20.488,1575
+20,Oaxaca,485,Santiago Tapextla,16°22´11.955,098°32´43.624,53
+20,Oaxaca,486,Villa Tejúpam de la Unión,17°42´15.687,097°30´10.356,2171
+20,Oaxaca,487,Santiago Tenango,17°23´02.872,097°02´01.168,2024
+20,Oaxaca,488,Santiago Tepetlapa,17°47´31.336,097°24´18.326,2155
+20,Oaxaca,489,Santiago Tetepec,16°25´25.825,097°46´09.690,547
+20,Oaxaca,490,Santiago Texcalcingo,18°13´31.615,096°59´30.653,1936
+20,Oaxaca,491,Santiago Textitlán,16°45´01.036,097°26´44.028,1823
+20,Oaxaca,492,Santiago Tilantongo,17°19´23.461,097°24´06.254,2225
+20,Oaxaca,493,Santiago Tillo,17°28´41.376,097°19´54.985,2088
+20,Oaxaca,494,Santiago Tlazoyaltepec,17°03´27.096,097°05´09.575,2597
+20,Oaxaca,495,Santiago Xanica,16°04´46.876,096°17´33.827,945
+20,Oaxaca,496,Santiago Xiacuí,17°17´35.231,096°26´14.145,2223
+20,Oaxaca,497,Santiago Yaitepec,16°13´32.056,097°16´09.695,1377
+20,Oaxaca,498,Santiago Yaveo,17°44´11.221,095°43´51.406,101
+20,Oaxaca,499,Santiago Yolomécatl,17°28´59.392,097°35´54.015,2120
+20,Oaxaca,500,Santiago Yosondúa,16°57´21.547,097°37´38.568,1826
+20,Oaxaca,501,Santiago Yucuyachi,17°37´19.752,098°14´01.912,1449
+20,Oaxaca,502,Santiago Zacatepec,17°14´07.096,095°56´01.955,1145
+20,Oaxaca,503,Santiago Zoochila,17°13´14.038,096°14´31.699,1516
+20,Oaxaca,504,Nuevo Zoquiápam,17°17´57.253,096°37´22.657,2041
+20,Oaxaca,505,Santo Domingo Ingenio,16°37´32.909,094°48´09.817,52
+20,Oaxaca,506,Santo Domingo Albarradas,17°04´33.225,096°12´21.657,1503
+20,Oaxaca,507,Santo Domingo Armenta,16°22´21.305,098°23´57.354,37
+20,Oaxaca,508,Santo Domingo Chihuitán,16°40´34.998,095°11´46.211,98
+20,Oaxaca,509,Santo Domingo de Morelos,15°52´22.260,096°41´58.792,259
+20,Oaxaca,510,Santo Domingo Ixcatlán,16°55´47.630,097°32´19.790,2384
+20,Oaxaca,511,Santo Domingo Nuxaá,17°13´45.287,097°09´44.550,2185
+20,Oaxaca,512,Santo Domingo Ozolotepec,16°11´42.732,096°21´01.224,2613
+20,Oaxaca,513,Santo Domingo Petapa,16°59´01.842,095°18´01.168,430
+20,Oaxaca,514,Santo Domingo Roayaga,17°20´15.470,096°07´13.307,1475
+20,Oaxaca,515,Santo Domingo Tehuantepec,16°54´04.933,095°34´17.170,91
+20,Oaxaca,516,Santo Domingo Teojomulco,16°37´31.164,097°21´49.880,1039
+20,Oaxaca,517,Santo Domingo Tepuxtepec,16°58´56.589,096°08´29.495,1976
+20,Oaxaca,518,Santo Domingo Tlatayápam,17°24´26.884,097°20´59.634,2290
+20,Oaxaca,519,Santo Domingo Tomaltepec,17°03´37.511,096°37´27.687,1572
+20,Oaxaca,520,Santo Domingo Tonalá,17°44´23.443,098°03´42.657,1514
+20,Oaxaca,521,Santo Domingo Tonaltepec,17°37´01.522,097°22´15.759,2466
+20,Oaxaca,522,Santo Domingo Xagacía,17°09´26.643,096°16´23.587,1548
+20,Oaxaca,523,Santo Domingo Yanhuitlán,17°33´55.819,097°23´21.859,2251
+20,Oaxaca,524,Santo Domingo Yodohino,17°37´00.791,097°40´58.880,1648
+20,Oaxaca,525,Santo Domingo Zanatepec,16°34´52.580,094°28´34.579,90
+20,Oaxaca,526,Santos Reyes Nopala,16°10´34.271,097°18´08.072,725
+20,Oaxaca,527,Santos Reyes Pápalo,17°48´25.345,096°53´38.235,2048
+20,Oaxaca,528,Santos Reyes Tepejillo,17°27´31.628,097°58´23.674,1860
+20,Oaxaca,529,Santos Reyes Yucuná,17°46´54.800,098°01´51.859,1815
+20,Oaxaca,530,Santo Tomás Jalieza,16°53´02.730,096°40´51.664,1583
+20,Oaxaca,531,Santo Tomás Mazaltepec,17°10´24.696,096°52´17.520,1657
+20,Oaxaca,532,Santo Tomás Ocotepec,17°09´39.562,097°48´15.841,2423
+20,Oaxaca,533,Santo Tomás Tamazulapan,16°16´35.351,096°35´44.850,2078
+20,Oaxaca,534,San Vicente Coatlán,16°23´49.972,096°52´46.445,1431
+20,Oaxaca,535,San Vicente Lachixío,16°42´36.109,097°02´24.556,2029
+20,Oaxaca,536,San Vicente Nuñú,17°28´11.897,097°26´48.715,2432
+20,Oaxaca,537,Silacayoápam,17°46´48.947,098°19´35.982,1686
+20,Oaxaca,538,Sitio de Xitlapehua,16°23´32.963,096°33´24.299,1538
+20,Oaxaca,539,Soledad Etla,17°10´26.474,096°50´05.759,1603
+20,Oaxaca,540,Villa de Tamazulápam del Progreso,17°46´07.099,097°38´29.692,1998
+20,Oaxaca,541,Tanetze de Zaragoza,17°24´01.892,096°18´08.050,1313
+20,Oaxaca,542,Taniche,16°34´01.072,096°45´12.893,1422
+20,Oaxaca,543,Tataltepec de Valdés,16°21´52.251,097°35´44.145,489
+20,Oaxaca,544,Teococuilco de Marcos Pérez,17°21´07.161,096°42´49.385,2144
+20,Oaxaca,545,Teotitlán de Flores Magón,18°10´36.624,097°06´55.844,1330
+20,Oaxaca,546,Teotitlán del Valle,17°02´07.119,096°34´20.170,1663
+20,Oaxaca,547,Teotongo,17°46´30.890,097°34´22.584,2069
+20,Oaxaca,548,Tepelmeme Villa de Morelos,18°08´29.578,097°25´06.655,2080
+20,Oaxaca,549,"Heroica Villa Tezoatlán de Segura y Luna, Cuna de la Independencia de Oaxaca",17°41´03.355,097°56´55.375,1771
+20,Oaxaca,550,San Jerónimo Tlacochahuaya,17°01´30.395,096°34´51.865,1611
+20,Oaxaca,551,Tlacolula de Matamoros,16°59´24.500,096°31´24.285,1615
+20,Oaxaca,552,Tlacotepec Plumas,17°52´05.537,097°27´15.646,2138
+20,Oaxaca,553,Tlalixtac de Cabrera,17°07´22.185,096°39´55.396,1597
+20,Oaxaca,554,Totontepec Villa de Morelos,17°18´26.840,096°05´47.231,1633
+20,Oaxaca,555,Trinidad Zaachila,16°56´38.993,096°46´48.338,1509
+20,Oaxaca,556,La Trinidad Vista Hermosa,17°46´40.202,097°30´44.048,2164
+20,Oaxaca,557,Unión Hidalgo,16°31´45.972,094°53´59.983,9
+20,Oaxaca,558,Valerio Trujano,17°48´53.172,096°59´44.594,601
+20,Oaxaca,559,San Juan Bautista Valle Nacional,17°55´51.794,096°27´41.756,340
+20,Oaxaca,560,Villa Díaz Ordaz,17°07´01.319,096°28´02.644,2202
+20,Oaxaca,561,Yaxe,16°44´14.120,096°28´38.681,1510
+20,Oaxaca,562,Magdalena Yodocono de Porfirio Díaz,17°23´06.338,097°22´42.433,2348
+20,Oaxaca,563,Yogana,16°27´40.370,096°48´57.104,1423
+20,Oaxaca,564,Yutanduchi de Guerrero,17°04´38.352,097°19´36.989,1412
+20,Oaxaca,565,Villa de Zaachila,16°58´15.719,096°48´24.236,1531
+20,Oaxaca,566,San Mateo Yucutindoo,16°53´50.781,097°32´44.510,1295
+20,Oaxaca,567,Zapotitlán Lagunas,17°49´39.570,098°28´42.531,1518
+20,Oaxaca,568,Zapotitlán Palmas,17°53´23.506,097°50´09.287,1865
+20,Oaxaca,569,Santa Inés de Zaragoza,17°19´19.184,097°10´43.368,1970
+20,Oaxaca,570,Zimatlán de Álvarez,16°56´11.473,097°11´07.508,1955
+21,Puebla,001,Acajete,19°11´21.754,098°00´19.549,2459
+21,Puebla,002,Acateno,20°10´46.455,097°18´05.430,227
+21,Puebla,003,Acatlán,18°19´22.000,098°17´32.400,1298
+21,Puebla,004,Acatzingo,19°05´52.200,097°49´24.026,2200
+21,Puebla,005,Acteopan,18°46´40.545,098°43´13.483,1671
+21,Puebla,006,Ahuacatlán,20°03´42.406,097°54´21.440,1501
+21,Puebla,007,Ahuatlán,18°38´14.619,098°18´57.438,1336
+21,Puebla,008,Ahuazotepec,20°05´54.528,098°10´24.294,2245
+21,Puebla,009,Ahuehuetitla,18°15´54.606,098°13´16.949,1273
+21,Puebla,010,Ajalpan,18°31´19.000,097°18´31.893,2017
+21,Puebla,011,Albino Zertuche,18°01´29.402,098°37´09.633,1322
+21,Puebla,012,Aljojuca,19°07´12.709,097°32´49.830,2488
+21,Puebla,013,Altepexi,18°24´01.895,097°20´03.343,1262
+21,Puebla,014,Amixtlán,20°04´38.335,097°49´33.878,1131
+21,Puebla,015,Amozoc,19°08´32.789,098°07´10.020,2338
+21,Puebla,016,Aquixtla,19°50´25.365,097°59´16.155,2342
+21,Puebla,017,Atempan,19°50´52.772,097°28´02.753,2059
+21,Puebla,018,Atexcal,18°27´08.417,097°46´35.970,1898
+21,Puebla,019,Atlixco,18°57´34.342,098°33´18.214,1867
+21,Puebla,020,Atoyatempan,18°50´29.694,097°55´01.301,1936
+21,Puebla,021,Atzala,18°33´34.309,098°33´36.867,1156
+21,Puebla,022,Atzitzihuacán,18°51´28.451,098°40´04.000,1918
+21,Puebla,023,Atzitzintla,18°58´05.885,097°21´19.109,2790
+21,Puebla,024,Axutla,18°15´48.000,098°24´56.000,985
+21,Puebla,025,Ayotoxco de Guerrero,20°08´25.360,097°27´10.771,276
+21,Puebla,026,Calpan,19°07´35.180,098°32´45.494,2453
+21,Puebla,027,Caltepec,18°14´08.715,097°38´37.413,2002
+21,Puebla,028,Camocuautla,20°03´26.000,097°46´04.262,842
+21,Puebla,029,Caxhuacan,20°05´41.119,097°37´18.543,577
+21,Puebla,030,Coatepec,20°03´49.276,097°44´01.589,1001
+21,Puebla,031,Coatzingo,18°37´21.096,098°13´20.885,1181
+21,Puebla,032,Cohetzala,18°17´58.025,098°48´21.199,945
+21,Puebla,033,Cohuecan,18°50´11.638,098°43´35.968,1763
+21,Puebla,034,Coronango,19°09´24.826,098°18´53.393,2189
+21,Puebla,035,Coxcatlán,18°20´20.714,097°11´31.265,1399
+21,Puebla,036,Coyomeapan,18°22´31.854,097°05´09.377,1956
+21,Puebla,037,Coyotepec,18°26´24.000,097°51´44.650,1890
+21,Puebla,038,Cuapiaxtla de Madero,18°57´05.707,097°51´20.701,2056
+21,Puebla,039,Cuautempan,19°57´56.010,097°49´22.476,1597
+21,Puebla,040,Cuautinchán,19°00´57.031,098°07´25.488,2146
+21,Puebla,041,Cuautlancingo,19°09´18.365,098°17´51.062,2174
+21,Puebla,042,Cuayuca de Andrade,18°29´48.091,098°17´12.089,1233
+21,Puebla,043,Cuetzalan del Progreso,20°05´48.020,097°34´03.000,672
+21,Puebla,044,Cuyoaco,19°41´15.455,097°41´05.535,2474
+21,Puebla,045,Chalchicomula de Sesma,19°03´56.829,097°31´48.028,2626
+21,Puebla,046,Chapulco,18°42´15.079,097°25´12.244,2014
+21,Puebla,047,Chiautla,18°27´39.533,098°48´13.480,1106
+21,Puebla,048,Chiautzingo,19°14´08.638,098°34´55.629,2508
+21,Puebla,049,Chiconcuautla,20°07´48.401,098°00´33.018,1570
+21,Puebla,050,Chichiquila,19°16´14.097,097°07´59.073,1905
+21,Puebla,051,Chietla,18°34´27.318,098°42´24.382,1099
+21,Puebla,052,Chigmecatitlán,18°39´16.453,098°04´32.236,1550
+21,Puebla,053,Chignahuapan,19°58´28.871,098°18´33.234,2561
+21,Puebla,054,Chignautla,19°49´55.432,097°27´56.603,2240
+21,Puebla,055,Chila,18°00´36.202,097°55´31.752,1659
+21,Puebla,056,Chila de la Sal,18°09´42.660,098°33´17.313,1032
+21,Puebla,057,Honey,20°16´43.284,098°16´30.302,2045
+21,Puebla,058,Chilchotla,19°19´35.335,097°14´32.468,2512
+21,Puebla,059,Chinantla,18°16´02.885,098°19´53.811,1188
+21,Puebla,060,Domingo Arenas,19°08´31.303,098°28´18.386,2367
+21,Puebla,061,Eloxochitlán,18°32´50.999,096°58´50.437,1133
+21,Puebla,062,Epatlán,18°39´17.962,098°24´13.122,1328
+21,Puebla,063,Esperanza,18°53´25.241,097°26´06.160,2456
+21,Puebla,064,Francisco Z. Mena,20°50´09.787,097°54´27.328,190
+21,Puebla,065,General Felipe Ángeles,19°02´51.598,097°43´15.000,2231
+21,Puebla,066,Guadalupe,18°07´39.880,098°11´54.579,1107
+21,Puebla,067,Guadalupe Victoria,19°23´07.610,097°27´04.759,2392
+21,Puebla,068,Hermenegildo Galeana,20°09´11.464,097°46´05.113,658
+21,Puebla,069,Huaquechula,18°51´21.197,098°39´45.792,1603
+21,Puebla,070,Huatlatlauca,18°44´07.409,098°09´01.329,1602
+21,Puebla,071,Huauchinango,20°16´49.856,098°06´59.401,1625
+21,Puebla,072,Huehuetla,20°09´20.871,097°39´16.151,635
+21,Puebla,073,Huehuetlán el Chico,18°27´09.646,098°45´41.325,952
+21,Puebla,074,Huejotzingo,19°14´03.118,098°35´23.791,2308
+21,Puebla,075,Hueyapan,19°59´09.920,097°27´13.576,1327
+21,Puebla,076,Hueytamalco,20°11´31.703,097°22´20.917,514
+21,Puebla,077,Hueytlalpan,20°04´31.643,097°43´02.723,836
+21,Puebla,078,Huitzilan de Serdán,19°59´32.831,097°43´54.097,1093
+21,Puebla,079,Huitziltepec,18°50´39.882,097°53´38.767,1935
+21,Puebla,080,Atlequizayan,20°01´20.399,097°38´05.284,929
+21,Puebla,081,Ixcamilpa de Guerrero,18°05´14.558,098°45´59.162,979
+21,Puebla,082,Ixcaquixtla,18°30´36.000,097°52´58.133,1866
+21,Puebla,083,Ixtacamaxtitlán,19°43´24.418,098°01´29.425,2691
+21,Puebla,084,Ixtepec,20°04´24.272,097°39´21.567,828
+21,Puebla,085,Izúcar de Matamoros,18°40´45.090,098°33´28.880,1257
+21,Puebla,086,Jalpan,20°29´25.000,097°59´38.207,440
+21,Puebla,087,Jolalpan,18°25´27.267,099°03´08.807,1080
+21,Puebla,088,Jonotla,20°08´36.731,097°34´52.824,449
+21,Puebla,089,Jopala,20°16´39.523,097°51´14.854,555
+21,Puebla,090,Juan C. Bonilla,19°08´11.680,098°22´30.138,2194
+21,Puebla,091,Juan Galindo,20°14´04.957,098°00´58.791,1314
+21,Puebla,092,Juan N. Méndez,18°34´37.000,097°50´46.053,2011
+21,Puebla,093,Lafragua,19°22´40.937,097°21´38.372,2774
+21,Puebla,094,Libres,19°32´05.953,097°46´07.957,2430
+21,Puebla,095,La Magdalena Tlatlauquitepec,18°45´44.000,098°06´07.000,1619
+21,Puebla,096,Mazapiltepec de Juárez,19°11´36.282,097°42´29.000,2361
+21,Puebla,097,Mixtla,18°54´54.141,097°54´32.081,2097
+21,Puebla,098,Molcaxac,18°44´39.994,097°55´59.000,1833
+21,Puebla,099,Cañada Morelos,18°48´55.810,097°29´27.343,2375
+21,Puebla,100,Naupan,20°17´43.851,098°07´58.446,1628
+21,Puebla,101,Nauzontla,19°59´50.978,097°36´24.324,1425
+21,Puebla,102,Nealtican,19°04´32.629,098°28´35.215,2337
+21,Puebla,103,Nicolás Bravo,18°40´44.858,097°25´01.425,2491
+21,Puebla,104,Nopalucan,19°16´44.838,097°54´30.034,2428
+21,Puebla,105,Ocotepec,19°34´39.682,097°41´45.909,2518
+21,Puebla,106,Ocoyucan,18°59´59.198,098°21´27.415,2090
+21,Puebla,107,Olintla,20°10´19.046,097°41´52.551,617
+21,Puebla,108,Oriental,19°25´03.217,097°39´34.715,2355
+21,Puebla,109,Pahuatlán,20°20´42.387,098°11´35.831,1239
+21,Puebla,110,Palmar de Bravo,18°56´57.000,097°39´45.909,2240
+21,Puebla,111,Pantepec,20°38´44.698,097°58´25.891,266
+21,Puebla,112,Petlalcingo,18°07´49.174,097°59´47.255,1409
+21,Puebla,113,Piaxtla,18°12´41.963,098°21´53.147,1067
+21,Puebla,114,Puebla,19°10´45.249,098°16´58.628,2260
+21,Puebla,115,Quecholac,19°00´20.000,097°44´38.642,2178
+21,Puebla,116,Quimixtlán,19°18´50.485,097°10´18.385,1973
+21,Puebla,117,Rafael Lara Grajales,19°15´45.833,097°49´46.250,2388
+21,Puebla,118,Los Reyes de Juárez,19°00´30.426,097°51´44.899,2165
+21,Puebla,119,San Andrés Cholula,19°03´03.398,098°20´22.389,2127
+21,Puebla,120,San Antonio Cañada,18°30´55.718,097°18´53.877,2029
+21,Puebla,121,San Diego la Mesa Tochimiltzingo,18°49´35.374,098°20´28.121,1754
+21,Puebla,122,San Felipe Teotlalcingo,19°15´16.843,098°32´27.948,2487
+21,Puebla,123,San Felipe Tepatlán,20°08´34.241,097°50´09.579,715
+21,Puebla,124,San Gabriel Chilac,18°20´53.175,097°23´05.298,1277
+21,Puebla,125,San Gregorio Atzompa,19°01´36.069,098°22´02.882,2149
+21,Puebla,126,San Jerónimo Tecuanipan,19°03´55.217,098°25´13.674,2168
+21,Puebla,127,San Jerónimo Xayacatlán,18°16´19.157,097°58´50.257,1378
+21,Puebla,128,San José Chiapa,19°17´54.000,097°49´31.000,2364
+21,Puebla,129,San José Miahuatlán,18°17´48.073,097°19´39.718,1072
+21,Puebla,130,San Juan Atenco,19°05´23.942,097°35´57.687,2437
+21,Puebla,131,San Juan Atzompa,18°45´01.256,098°01´32.238,1712
+21,Puebla,132,San Martín Texmelucan,19°19´09.733,098°28´35.720,2267
+21,Puebla,133,San Martín Totoltepec,18°39´07.338,098°21´24.442,1341
+21,Puebla,134,San Matías Tlalancaleca,19°22´28.149,098°32´35.888,2412
+21,Puebla,135,San Miguel Ixitlán,18°03´20.175,097°48´05.061,1778
+21,Puebla,136,San Miguel Xoxtla,19°10´47.419,098°18´34.916,2187
+21,Puebla,137,San Nicolás Buenos Aires,19°19´33.870,097°33´35.661,2386
+21,Puebla,138,San Nicolás de los Ranchos,19°06´12.284,098°37´20.142,2711
+21,Puebla,139,San Pablo Anicano,18°10´32.835,098°10´35.010,1199
+21,Puebla,140,San Pedro Cholula,19°06´48.189,098°23´41.013,2187
+21,Puebla,141,San Pedro Yeloixtlahuaca,18°07´01.578,098°05´42.982,1236
+21,Puebla,142,San Salvador el Seco,19°14´34.507,097°40´27.000,2371
+21,Puebla,143,San Salvador el Verde,19°20´25.109,098°34´42.957,2429
+21,Puebla,144,San Salvador Huixcolotla,18°57´00.009,097°47´34.411,2039
+21,Puebla,145,San Sebastián Tlacotepec,18°30´52.000,096°53´42.779,588
+21,Puebla,146,Santa Catarina Tlaltempan,18°36´51.345,098°04´47.640,1491
+21,Puebla,147,Santa Inés Ahuatempan,18°29´55.796,098°09´33.933,1738
+21,Puebla,148,Santa Isabel Cholula,18°59´43.748,098°24´26.392,2067
+21,Puebla,149,Santiago Miahuatlán,18°35´17.094,097°29´04.783,1791
+21,Puebla,150,Huehuetlán el Grande,18°47´53.116,098°14´06.000,1441
+21,Puebla,151,Santo Tomás Hueyotlipan,18°54´41.000,097°53´20.509,2032
+21,Puebla,152,Soltepec,19°10´31.000,097°47´16.419,2382
+21,Puebla,153,Tecali de Herrera,18°57´03.497,098°02´38.906,2099
+21,Puebla,154,Tecamachalco,18°57´09.607,097°47´45.604,2017
+21,Puebla,155,Tecomatlán,18°07´46.660,098°20´56.513,968
+21,Puebla,156,Tehuacán,18°35´32.277,097°36´20.000,1777
+21,Puebla,157,Tehuitzingo,18°26´40.905,098°25´26.290,1078
+21,Puebla,158,Tenampulco,20°14´32.868,097°28´46.942,154
+21,Puebla,159,Teopantlán,18°51´28.000,098°19´29.000,1594
+21,Puebla,160,Teotlalco,18°31´16.165,098°53´05.747,1078
+21,Puebla,161,Tepanco de López,18°36´03.435,097°38´01.681,1802
+21,Puebla,162,Tepango de Rodríguez,20°00´13.784,097°48´23.543,1443
+21,Puebla,163,Tepatlaxco de Hidalgo,19°11´57.000,098°02´06.830,2717
+21,Puebla,164,Tepeaca,19°04´13.679,097°56´46.327,2237
+21,Puebla,165,Tepemaxalco,18°46´30.394,098°38´27.903,1767
+21,Puebla,166,Tepeojuma,18°46´16.550,098°29´47.056,1469
+21,Puebla,167,Tepetzintla,19°58´54.659,097°54´28.016,1720
+21,Puebla,168,Tepexco,18°39´58.781,098°43´02.913,1267
+21,Puebla,169,Tepexi de Rodríguez,18°36´33.000,098°02´07.989,1750
+21,Puebla,170,Tepeyahualco,19°36´42.435,097°33´37.506,2365
+21,Puebla,171,Tepeyahualco de Cuauhtémoc,18°49´32.658,097°52´43.395,1954
+21,Puebla,172,Tetela de Ocampo,19°54´20.585,097°54´11.564,2021
+21,Puebla,173,Teteles de Ávila Castillo,19°51´41.833,097°28´06.559,1892
+21,Puebla,174,Teziutlán,19°57´23.428,097°23´37.957,1712
+21,Puebla,175,Tianguismanalco,19°02´37.199,098°28´52.705,2095
+21,Puebla,176,Tilapa,18°38´37.918,098°34´51.585,1261
+21,Puebla,177,Tlacotepec de Benito Juárez,18°45´23.433,097°43´26.473,1989
+21,Puebla,178,Tlacuilotepec,20°27´23.945,098°06´33.961,809
+21,Puebla,179,Tlachichuca,19°14´56.028,097°28´01.262,2684
+21,Puebla,180,Tlahuapan,19°27´50.925,098°39´17.000,2651
+21,Puebla,181,Tlaltenango,19°10´12.084,098°21´25.092,2200
+21,Puebla,182,Tlanepantla,18°52´09.164,097°54´17.972,1980
+21,Puebla,183,Tlaola,20°13´38.000,097°59´13.797,1168
+21,Puebla,184,Tlapacoya,20°10´46.223,097°52´07.094,939
+21,Puebla,185,Tlapanalá,18°43´27.777,098°34´26.547,1419
+21,Puebla,186,Tlatlauquitepec,20°01´44.984,097°35´54.614,1724
+21,Puebla,187,Tlaxco,20°25´56.254,098°04´52.580,959
+21,Puebla,188,Tochimilco,18°56´05.315,098°42´37.764,2150
+21,Puebla,189,Tochtepec,18°54´13.031,097°52´30.645,1977
+21,Puebla,190,Totoltepec de Guerrero,18°17´45.403,097°51´47.669,1407
+21,Puebla,191,Tulcingo,18°03´08.358,098°27´51.261,1168
+21,Puebla,192,Tuzamapan de Galeana,20°09´23.302,097°34´49.000,326
+21,Puebla,193,Tzicatlacoyan,18°54´18.314,098°07´56.589,2081
+21,Puebla,194,Venustiano Carranza,20°34´25.466,097°49´28.174,238
+21,Puebla,195,Vicente Guerrero,18°37´06.569,097°17´31.249,2505
+21,Puebla,196,Xayacatlán de Bravo,18°14´57.000,097°59´58.000,1256
+21,Puebla,197,Xicotepec,20°25´43.615,098°01´45.416,712
+21,Puebla,198,Xicotlán,18°07´31.205,098°40´46.000,1027
+21,Puebla,199,Xiutetelco,19°52´24.321,097°25´03.324,2251
+21,Puebla,200,Xochiapulco,19°53´48.656,097°40´37.677,1899
+21,Puebla,201,Xochiltepec,18°41´31.000,098°22´59.000,1360
+21,Puebla,202,Xochitlán de Vicente Suárez,19°59´09.065,097°40´11.840,1196
+21,Puebla,203,Xochitlán Todos Santos,18°43´13.408,097°51´07.443,1901
+21,Puebla,204,Yaonáhuac,19°57´44.953,097°28´22.194,1462
+21,Puebla,205,Yehualtepec,18°49´07.360,097°42´43.740,2013
+21,Puebla,206,Zacapala,18°40´51.533,098°14´58.564,1456
+21,Puebla,207,Zacapoaxtla,19°56´29.110,097°37´45.375,1942
+21,Puebla,208,Zacatlán,20°03´59.834,098°09´33.044,2186
+21,Puebla,209,Zapotitlán,18°24´38.000,097°36´53.324,1781
+21,Puebla,210,Zapotitlán de Méndez,20°00´13.998,097°43´01.025,795
+21,Puebla,211,Zaragoza,19°47´08.073,097°34´40.536,2330
+21,Puebla,212,Zautla,19°47´25.045,097°43´56.319,2188
+21,Puebla,213,Zihuateutla,20°22´40.000,097°56´39.837,663
+21,Puebla,214,Zinacatepec,18°21´18.751,097°15´28.971,1117
+21,Puebla,215,Zongozotla,19°59´02.384,097°46´59.736,1136
+21,Puebla,216,Zoquiapan,20°07´27.953,097°36´25.796,982
+21,Puebla,217,Zoquitlán,18°29´25.777,097°07´35.357,1648
+22,Querétaro,001,Amealco de Bonfil,20°19´11.484,100°16´11.816,2492
+22,Querétaro,002,Pinal de Amoles,21°20´30.657,099°42´37.894,1760
+22,Querétaro,003,Arroyo Seco,21°34´02.000,099°46´48.468,967
+22,Querétaro,004,Cadereyta de Montes,21°00´42.104,099°51´44.000,2058
+22,Querétaro,005,Colón,20°55´57.000,100°13´22.923,2037
+22,Querétaro,006,Corregidora,20°35´25.901,100°30´24.740,1953
+22,Querétaro,007,Ezequiel Montes,20°45´30.573,099°58´19.137,1992
+22,Querétaro,008,Huimilpan,20°32´46.707,100°24´00.000,2131
+22,Querétaro,009,Jalpan de Serra,21°39´05.000,099°32´15.987,1007
+22,Querétaro,010,Landa de Matamoros,21°25´22.461,099°20´56.553,1262
+22,Querétaro,011,El Marqués,20°57´39.991,100°24´04.863,1958
+22,Querétaro,012,Pedro Escobedo,20°34´38.095,100°17´29.221,1948
+22,Querétaro,013,Peñamiller,21°13´29.342,100°00´45.236,1606
+22,Querétaro,014,Querétaro,20°55´11.160,100°35´14.371,2038
+22,Querétaro,015,San Joaquín,21°04´29.928,099°40´15.858,1833
+22,Querétaro,016,San Juan del Río,20°32´32.304,100°09´23.446,2035
+22,Querétaro,017,Tequisquiapan,20°38´16.334,100°03´51.207,1930
+22,Querétaro,018,Tolimán,21°03´54.874,100°04´54.599,1801
+23,Quintana Roo,001,Cozumel,20°35´21.246,087°21´24.575,1
+23,Quintana Roo,002,Felipe Carrillo Puerto,20°21´33.304,088°38´32.328,16
+23,Quintana Roo,003,Isla Mujeres,21°36´16.688,087°06´11.780,7
+23,Quintana Roo,004,Othón P. Blanco,18°58´37.187,089°11´51.120,28
+23,Quintana Roo,005,Benito Juárez,21°12´41.170,087°05´27.313,7
+23,Quintana Roo,006,José María Morelos,20°09´56.552,089°09´57.669,38
+23,Quintana Roo,007,Lázaro Cárdenas,21°31´23.515,087°37´55.665,12
+23,Quintana Roo,008,Solidaridad,20°48´26.256,087°52´05.869,9
+23,Quintana Roo,009,Tulum,20°30´30.670,087°58´49.995,11
+23,Quintana Roo,010,Bacalar,19°11´49.000,089°08´08.077,27
+23,Quintana Roo,011,Puerto Morelos,21°05´51.664,087°19´22.389,8
+24,San Luis Potosí,001,Ahualulco,22°39´23.559,101°25´36.670,2026
+24,San Luis Potosí,002,Alaquines,22°11´41.732,099°46´42.465,1288
+24,San Luis Potosí,003,Aquismón,22°00´13.420,099°15´02.439,445
+24,San Luis Potosí,004,Armadillo de los Infante,22°25´40.001,100°50´15.540,1828
+24,San Luis Potosí,005,Cárdenas,22°07´07.327,099°46´14.582,1181
+24,San Luis Potosí,006,Catorce,23°51´08.344,101°19´45.899,2144
+24,San Luis Potosí,007,Cedral,24°08´00.457,100°49´57.769,1764
+24,San Luis Potosí,008,Cerritos,22°33´55.916,100°33´57.517,1256
+24,San Luis Potosí,009,Cerro de San Pedro,22°15´13.848,100°52´54.465,1913
+24,San Luis Potosí,010,Ciudad del Maíz,22°44´00.115,100°04´18.472,1175
+24,San Luis Potosí,011,Ciudad Fernández,22°06´26.103,100°28´05.651,1096
+24,San Luis Potosí,012,Tancanhuitz,21°42´28.346,099°00´47.884,242
+24,San Luis Potosí,013,Ciudad Valles,22°24´41.659,099°17´22.249,151
+24,San Luis Potosí,014,Coxcatlán,21°33´44.715,098°57´40.126,209
+24,San Luis Potosí,015,Charcas,23°34´07.362,101°24´38.524,2104
+24,San Luis Potosí,016,Ebano,22°22´22.001,098°40´34.242,36
+24,San Luis Potosí,017,Guadalcázar,23°16´09.187,100°36´24.612,1492
+24,San Luis Potosí,018,Huehuetlán,21°34´10.115,099°01´08.416,235
+24,San Luis Potosí,019,Lagunillas,21°44´47.901,099°47´44.117,973
+24,San Luis Potosí,020,Matehuala,23°46´40.637,100°46´55.391,1553
+24,San Luis Potosí,021,Mexquitic de Carmona,22°25´32.447,101°21´10.818,1959
+24,San Luis Potosí,022,Moctezuma,22°49´14.717,101°29´49.650,1784
+24,San Luis Potosí,023,Rayón,21°56´35.031,099°45´50.734,1039
+24,San Luis Potosí,024,Rioverde,22°21´03.436,100°24´01.262,1123
+24,San Luis Potosí,025,Salinas,23°10´05.277,101°54´25.999,2096
+24,San Luis Potosí,026,San Antonio,21°39´40.234,098°55´16.749,228
+24,San Luis Potosí,027,San Ciro de Acosta,21°41´06.992,100°04´50.385,1124
+24,San Luis Potosí,028,San Luis Potosí,22°39´24.947,101°08´34.835,1813
+24,San Luis Potosí,029,San Martín Chalchicuautla,21°32´27.538,098°43´40.257,138
+24,San Luis Potosí,030,San Nicolás Tolentino,22°17´08.802,100°34´28.391,1493
+24,San Luis Potosí,031,Santa Catarina,21°43´28.635,099°32´37.522,693
+24,San Luis Potosí,032,Santa María del Río,21°57´15.998,100°50´35.632,1842
+24,San Luis Potosí,033,Santo Domingo,23°42´00.027,102°15´11.999,2072
+24,San Luis Potosí,034,San Vicente Tancuayalab,21°56´11.977,098°43´05.642,36
+24,San Luis Potosí,035,Soledad de Graciano Sánchez,22°25´53.358,100°57´12.235,1840
+24,San Luis Potosí,036,Tamasopo,22°12´03.079,099°30´15.165,602
+24,San Luis Potosí,037,Tamazunchale,21°19´01.858,098°55´26.000,301
+24,San Luis Potosí,038,Tampacán,21°29´21.397,098°48´46.751,126
+24,San Luis Potosí,039,Tampamolón Corona,21°38´29.557,098°53´30.931,105
+24,San Luis Potosí,040,Tamuín,22°22´06.633,098°54´41.162,43
+24,San Luis Potosí,041,Tanlajás,21°50´47.405,098°58´02.073,95
+24,San Luis Potosí,042,Tanquián de Escobedo,21°39´38.999,098°43´12.232,50
+24,San Luis Potosí,043,Tierra Nueva,21°45´57.198,100°38´04.114,1789
+24,San Luis Potosí,044,Vanegas,24°23´44.491,101°11´22.177,1792
+24,San Luis Potosí,045,Venado,23°02´57.998,101°21´34.429,1872
+24,San Luis Potosí,046,Villa de Arriaga,22°07´37.605,101°29´42.238,2164
+24,San Luis Potosí,047,Villa de Guadalupe,23°36´04.655,100°54´24.516,1583
+24,San Luis Potosí,048,Villa de la Paz,23°42´33.397,100°47´34.248,1873
+24,San Luis Potosí,049,Villa de Ramos,23°08´37.932,102°13´37.854,2087
+24,San Luis Potosí,050,Villa de Reyes,21°58´56.145,101°10´20.913,1844
+24,San Luis Potosí,051,Villa Hidalgo,22°56´17.420,100°54´24.574,1668
+24,San Luis Potosí,052,Villa Juárez,22°23´33.278,100°19´36.671,1117
+24,San Luis Potosí,053,Axtla de Terrazas,21°30´20.770,098°56´55.830,98
+24,San Luis Potosí,054,Xilitla,21°29´25.159,099°06´24.523,827
+24,San Luis Potosí,055,Zaragoza,22°10´15.390,100°49´14.073,2056
+24,San Luis Potosí,056,Villa de Arista,22°46´03.851,100°55´54.216,1620
+24,San Luis Potosí,057,Matlapa,21°22´30.000,098°55´43.479,220
+24,San Luis Potosí,058,El Naranjo,22°44´36.324,099°32´27.423,451
+25,Sinaloa,001,Ahome,26°23´55.201,109°24´10.971,12
+25,Sinaloa,002,Angostura,25°26´53.580,108°20´26.992,27
+25,Sinaloa,003,Badiraguato,26°07´54.118,107°44´12.553,771
+25,Sinaloa,004,Concordia,23°45´30.194,106°12´45.511,489
+25,Sinaloa,005,Cosalá,24°48´02.491,107°02´22.710,340
+25,Sinaloa,006,Culiacán,25°15´28.324,107°42´59.561,75
+25,Sinaloa,007,Choix,27°00´47.618,108°36´59.703,530
+25,Sinaloa,008,Elota,24°15´32.806,107°02´50.400,70
+25,Sinaloa,009,Escuinapa,22°55´06.697,105°54´34.754,28
+25,Sinaloa,010,El Fuerte,26°36´40.598,109°01´43.628,78
+25,Sinaloa,011,Guasave,25°49´38.454,108°51´25.032,16
+25,Sinaloa,012,Mazatlán,23°49´16.232,106°36´39.646,64
+25,Sinaloa,013,Mocorito,25°45´05.197,108°01´26.135,146
+25,Sinaloa,014,Rosario,23°15´30.418,106°14´07.208,125
+25,Sinaloa,015,Salvador Alvarado,25°36´22.094,108°16´22.485,65
+25,Sinaloa,016,San Ignacio,24°21´34.179,106°49´02.030,365
+25,Sinaloa,017,Sinaloa,26°20´01.847,108°45´30.222,386
+25,Sinaloa,018,Navolato,25°01´12.936,108°03´52.857,11
+26,Sonora,001,Aconchi,29°50´50.046,110°19´12.673,786
+26,Sonora,002,Agua Prieta,31°20´01.270,109°41´04.617,1205
+26,Sonora,003,Álamos,27°44´03.000,109°14´51.730,342
+26,Sonora,004,Altar,31°38´05.655,112°15´33.865,548
+26,Sonora,005,Arivechi,28°57´50.673,109°16´42.000,936
+26,Sonora,006,Arizpe,30°45´28.938,110°28´19.491,975
+26,Sonora,007,Atil,30°54´56.862,111°38´33.133,600
+26,Sonora,008,Bacadéhuachi,30°02´33.303,109°14´32.981,1020
+26,Sonora,009,Bacanora,29°08´24.000,109°33´29.585,786
+26,Sonora,010,Bacerac,30°27´20.872,109°12´45.603,1456
+26,Sonora,011,Bacoachi,30°49´53.000,110°11´23.036,1142
+26,Sonora,012,Bácum,28°10´19.008,110°17´06.438,37
+26,Sonora,013,Banámichi,30°10´01.850,110°28´16.592,799
+26,Sonora,014,Baviácora,29°44´58.243,110°17´58.713,695
+26,Sonora,015,Bavispe,30°50´39.000,109°17´26.847,1176
+26,Sonora,016,Benjamín Hill,30°23´09.099,111°22´30.063,726
+26,Sonora,017,Caborca,31°38´32.052,113°06´16.275,212
+26,Sonora,018,Cajeme,28°20´28.041,110°07´42.840,48
+26,Sonora,019,Cananea,31°12´55.158,110°30´29.015,1420
+26,Sonora,020,Carbó,29°55´22.783,111°25´48.201,556
+26,Sonora,021,La Colorada,28°59´14.412,110°52´38.560,393
+26,Sonora,022,Cucurpe,30°37´24.020,110°48´46.789,971
+26,Sonora,023,Cumpas,30°18´37.375,110°04´05.623,891
+26,Sonora,024,Divisaderos,29°43´16.000,109°29´52.734,872
+26,Sonora,025,Empalme,28°08´44.352,110°48´57.576,30
+26,Sonora,026,Etchojoa,27°13´42.270,109°51´04.009,19
+26,Sonora,027,Fronteras,31°05´38.787,109°54´52.969,1219
+26,Sonora,028,Granados,29°51´44.256,109°24´57.013,685
+26,Sonora,029,Guaymas,28°33´17.831,111°22´54.030,74
+26,Sonora,030,Hermosillo,29°40´55.082,112°25´31.000,161
+26,Sonora,031,Huachinera,30°16´56.317,109°08´42.241,1343
+26,Sonora,032,Huásabas,30°05´34.021,109°31´49.000,825
+26,Sonora,033,Huatabampo,26°54´47.362,109°50´25.793,17
+26,Sonora,034,Huépac,29°59´36.589,110°27´29.552,773
+26,Sonora,035,Imuris,31°02´35.784,111°00´52.898,984
+26,Sonora,036,Magdalena,31°03´43.260,111°16´11.714,800
+26,Sonora,037,Mazatán,29°05´57.092,110°22´59.264,542
+26,Sonora,038,Moctezuma,29°56´05.046,110°01´32.464,793
+26,Sonora,039,Naco,31°19´53.570,110°17´49.468,1441
+26,Sonora,040,Nácori Chico,29°56´49.000,109°08´54.237,1287
+26,Sonora,041,Nacozari de García,30°42´00.212,109°47´35.920,1177
+26,Sonora,042,Navojoa,27°22´16.653,109°48´50.502,55
+26,Sonora,043,Nogales,31°19´53.581,111°19´13.455,1178
+26,Sonora,044,Ónavas,28°33´17.000,109°38´41.879,454
+26,Sonora,045,Opodepe,30°14´28.572,111°12´32.000,793
+26,Sonora,046,Oquitoa,31°01´22.818,111°46´34.616,510
+26,Sonora,047,Pitiquito,30°50´51.910,112°41´11.224,438
+26,Sonora,048,Puerto Peñasco,32°02´35.234,113°59´25.451,109
+26,Sonora,049,Quiriego,27°52´10.092,109°48´20.498,303
+26,Sonora,050,Rayón,29°54´40.877,110°42´33.757,626
+26,Sonora,051,Rosario,28°22´38.631,109°39´36.649,578
+26,Sonora,052,Sahuaripa,29°31´43.598,109°27´45.000,1041
+26,Sonora,053,San Felipe de Jesús,29°53´37.536,110°24´33.536,1060
+26,Sonora,054,San Javier,28°44´10.163,109°51´09.686,525
+26,Sonora,055,San Luis Río Colorado,32°29´25.391,115°02´51.964,27
+26,Sonora,056,San Miguel de Horcasitas,29°39´03.033,111°01´43.284,384
+26,Sonora,057,San Pedro de la Cueva,29°32´26.588,109°58´03.037,546
+26,Sonora,058,Santa Ana,30°42´24.598,111°18´01.960,709
+26,Sonora,059,Santa Cruz,31°19´56.948,110°44´08.488,1363
+26,Sonora,060,Sáric,31°29´19.140,111°39´16.280,900
+26,Sonora,061,Soyopa,29°02´47.667,109°50´56.921,427
+26,Sonora,062,Suaqui Grande,28°31´58.433,110°03´19.626,314
+26,Sonora,063,Tepache,29°36´19.000,109°42´43.358,762
+26,Sonora,064,Trincheras,30°36´40.227,111°49´24.903,606
+26,Sonora,065,Tubutama,31°11´00.595,111°38´29.560,731
+26,Sonora,066,Ures,29°41´04.649,110°35´53.144,493
+26,Sonora,067,Villa Hidalgo,30°26´24.987,109°31´19.018,963
+26,Sonora,068,Villa Pesqueira,29°27´48.252,110°06´52.779,677
+26,Sonora,069,Yécora,28°36´09.263,109°21´46.228,1330
+26,Sonora,070,General Plutarco Elías Calles,32°01´36.690,113°25´17.498,439
+26,Sonora,071,Benito Juárez,27°13´02.711,109°57´46.639,17
+26,Sonora,072,San Ignacio Río Muerto,27°31´08.267,110°35´39.284,9
+27,Tabasco,001,Balancán,18°09´25.723,091°42´08.036,31
+27,Tabasco,002,Cárdenas,18°22´51.916,094°07´33.024,8
+27,Tabasco,003,Centla,18°38´31.526,093°04´10.483,0
+27,Tabasco,004,Centro,18°18´12.006,093°13´41.241,8
+27,Tabasco,005,Comalcalco,18°24´29.817,093°28´27.485,4
+27,Tabasco,006,Cunduacán,18°12´52.881,093°23´40.987,9
+27,Tabasco,007,Emiliano Zapata,17°56´16.517,091°48´27.714,23
+27,Tabasco,008,Huimanguillo,18°11´37.966,094°06´24.726,29
+27,Tabasco,009,Jalapa,17°54´34.394,092°54´24.039,16
+27,Tabasco,010,Jalpa de Méndez,18°22´49.723,093°11´38.826,4
+27,Tabasco,011,Jonuta,18°27´44.000,092°19´42.000,1
+27,Tabasco,012,Macuspana,18°08´51.246,092°41´53.185,15
+27,Tabasco,013,Nacajuca,18°20´14.101,093°02´03.399,4
+27,Tabasco,014,Paraíso,18°26´18.620,093°26´30.194,3
+27,Tabasco,015,Tacotalpa,17°40´16.478,092°53´50.217,85
+27,Tabasco,016,Teapa,17°45´17.184,093°03´10.950,48
+27,Tabasco,017,Tenosique,17°37´56.564,091°35´14.067,61
+28,Tamaulipas,001,Abasolo,24°25´22.237,098°30´15.822,83
+28,Tamaulipas,002,Aldama,23°21´16.593,098°20´52.225,134
+28,Tamaulipas,003,Altamira,22°47´04.637,098°19´25.381,29
+28,Tamaulipas,004,Antiguo Morelos,22°45´09.412,099°11´13.013,209
+28,Tamaulipas,005,Burgos,25°06´58.440,099°10´47.304,178
+28,Tamaulipas,006,Bustamante,23°29´43.831,100°07´13.235,1613
+28,Tamaulipas,007,Camargo,26°22´35.190,099°00´51.627,65
+28,Tamaulipas,008,Casas,23°58´22.154,099°02´15.446,297
+28,Tamaulipas,009,Ciudad Madero,22°14´46.603,097°50´13.200,15
+28,Tamaulipas,010,Cruillas,24°52´40.936,098°40´35.634,170
+28,Tamaulipas,011,Gómez Farías,23°08´30.612,099°16´56.115,163
+28,Tamaulipas,012,González,23°08´53.216,098°54´16.511,89
+28,Tamaulipas,013,Güémez,24°05´22.045,099°28´42.227,226
+28,Tamaulipas,014,Guerrero,27°17´10.446,099°45´56.310,117
+28,Tamaulipas,015,Gustavo Díaz Ordaz,26°15´02.091,098°44´15.946,52
+28,Tamaulipas,016,Hidalgo,24°24´08.786,099°36´55.687,334
+28,Tamaulipas,017,Jaumave,23°48´29.662,099°36´02.705,988
+28,Tamaulipas,018,Jiménez,24°27´06.525,098°42´27.682,166
+28,Tamaulipas,019,Llera,23°34´12.955,099°10´34.733,310
+28,Tamaulipas,020,Mainero,24°43´59.753,099°41´50.811,441
+28,Tamaulipas,021,El Mante,22°51´15.059,099°07´14.804,76
+28,Tamaulipas,022,Matamoros,26°03´28.105,097°55´49.413,7
+28,Tamaulipas,023,Méndez,25°28´26.305,098°51´37.371,105
+28,Tamaulipas,024,Mier,26°34´05.796,099°24´47.627,95
+28,Tamaulipas,025,Miguel Alemán,26°24´03.745,099°11´17.516,84
+28,Tamaulipas,026,Miquihuana,23°46´36.711,099°56´04.837,2000
+28,Tamaulipas,027,Nuevo Laredo,27°39´52.434,099°54´47.530,148
+28,Tamaulipas,028,Nuevo Morelos,22°36´12.714,099°17´16.959,261
+28,Tamaulipas,029,Ocampo,23°04´10.756,099°31´44.536,302
+28,Tamaulipas,030,Padilla,24°10´15.229,099°08´08.740,158
+28,Tamaulipas,031,Palmillas,23°23´14.113,099°37´38.635,1427
+28,Tamaulipas,032,Reynosa,26°13´23.873,098°35´02.507,63
+28,Tamaulipas,033,Río Bravo,26°03´52.839,098°09´30.988,21
+28,Tamaulipas,034,San Carlos,24°51´11.629,099°14´41.909,301
+28,Tamaulipas,035,San Fernando,25°26´03.717,098°23´54.116,35
+28,Tamaulipas,036,San Nicolás,24°45´04.040,098°53´59.565,625
+28,Tamaulipas,037,Soto la Marina,24°24´37.520,098°28´57.135,85
+28,Tamaulipas,038,Tampico,22°19´31.348,097°58´23.923,0
+28,Tamaulipas,039,Tula,23°14´13.325,100°03´10.994,1212
+28,Tamaulipas,040,Valle Hermoso,26°03´15.757,097°58´17.562,14
+28,Tamaulipas,041,Victoria,23°58´45.363,099°17´27.125,329
+28,Tamaulipas,042,Villagrán,24°46´16.421,099°36´07.351,364
+28,Tamaulipas,043,Xicoténcatl,23°08´20.849,099°08´28.000,109
+29,Tlaxcala,001,Amaxac de Guerrero,19°23´01.707,098°13´41.153,2421
+29,Tlaxcala,002,Apetatitlán de Antonio Carvajal,19°21´48.000,098°12´10.324,2295
+29,Tlaxcala,003,Atlangatepec,19°36´10.422,098°14´39.552,2555
+29,Tlaxcala,004,Atltzayanca,19°29´07.048,097°52´38.140,2583
+29,Tlaxcala,005,Apizaco,19°28´18.727,098°10´41.059,2449
+29,Tlaxcala,006,Calpulalpan,19°37´55.947,098°41´13.322,2626
+29,Tlaxcala,007,El Carmen Tequexquitla,19°21´36.577,097°42´23.742,2412
+29,Tlaxcala,008,Cuapiaxtla,19°22´43.440,097°51´04.807,2462
+29,Tlaxcala,009,Cuaxomulco,19°21´28.681,098°06´19.599,2488
+29,Tlaxcala,010,Chiautempan,19°18´50.328,098°12´26.812,2463
+29,Tlaxcala,011,Muñoz de Domingo Arenas,19°31´50.458,098°16´09.777,2505
+29,Tlaxcala,012,Españita,19°29´21.809,098°29´55.944,2604
+29,Tlaxcala,013,Huamantla,19°25´58.808,098°01´42.849,2496
+29,Tlaxcala,014,Hueyotlipan,19°34´05.548,098°23´41.125,2588
+29,Tlaxcala,015,Ixtacuixtla de Mariano Matamoros,19°24´55.509,098°28´30.257,2380
+29,Tlaxcala,016,Ixtenco,19°16´06.373,097°57´39.640,2641
+29,Tlaxcala,017,Mazatecochco de José María Morelos,19°11´50.832,098°11´26.446,2380
+29,Tlaxcala,018,Contla de Juan Cuamatzi,19°20´04.264,098°10´04.463,2478
+29,Tlaxcala,019,Tepetitla de Lardizábal,19°17´31.845,098°24´00.956,2223
+29,Tlaxcala,020,Sanctórum de Lázaro Cárdenas,19°36´32.160,098°32´24.104,2684
+29,Tlaxcala,021,Nanacamilpa de Mariano Arista,19°33´13.568,098°36´04.773,2713
+29,Tlaxcala,022,Acuamanala de Miguel Hidalgo,19°13´34.100,098°12´02.927,2320
+29,Tlaxcala,023,Natívitas,19°17´04.568,098°22´27.371,2205
+29,Tlaxcala,024,Panotla,19°23´57.789,098°18´29.629,2345
+29,Tlaxcala,025,San Pablo del Monte,19°11´09.678,098°11´31.652,2477
+29,Tlaxcala,026,Santa Cruz Tlaxcala,19°21´43.480,098°09´01.367,2423
+29,Tlaxcala,027,Tenancingo,19°09´37.653,098°12´09.108,2286
+29,Tlaxcala,028,Teolocholco,19°15´10.258,098°13´09.102,2651
+29,Tlaxcala,029,Tepeyanco,19°16´10.081,098°14´52.829,2287
+29,Tlaxcala,030,Terrenate,19°32´14.757,098°01´46.798,2752
+29,Tlaxcala,031,Tetla de la Solidaridad,19°32´57.237,098°10´45.917,2550
+29,Tlaxcala,032,Tetlatlahuca,19°16´27.625,098°18´05.932,2240
+29,Tlaxcala,033,Tlaxcala,19°22´13.615,098°15´33.081,2324
+29,Tlaxcala,034,Tlaxco,19°43´25.290,098°22´09.749,2660
+29,Tlaxcala,035,Tocatlán,19°24´06.655,098°01´54.952,2527
+29,Tlaxcala,036,Totolac,19°20´07.139,098°15´51.960,2265
+29,Tlaxcala,037,Ziltlaltépec de Trinidad Sánchez Santos,19°14´11.498,097°56´16.279,2581
+29,Tlaxcala,038,Tzompantepec,19°23´47.105,098°06´19.899,2494
+29,Tlaxcala,039,Xaloztoc,19°26´25.614,098°03´31.154,2506
+29,Tlaxcala,040,Xaltocan,19°28´39.605,098°16´53.428,2499
+29,Tlaxcala,041,Papalotla de Xicohténcatl,19°12´02.794,098°12´16.511,2336
+29,Tlaxcala,042,Xicohtzinco,19°10´30.122,098°14´01.400,2202
+29,Tlaxcala,043,Yauhquemehcan,19°26´26.332,098°12´51.291,2425
+29,Tlaxcala,044,Zacatelco,19°12´58.140,098°17´45.946,2186
+29,Tlaxcala,045,Benito Juárez,19°35´46.431,098°26´48.685,2522
+29,Tlaxcala,046,Emiliano Zapata,19°36´00.633,097°57´28.285,2662
+29,Tlaxcala,047,Lázaro Cárdenas,19°33´00.799,098°00´29.781,2524
+29,Tlaxcala,048,La Magdalena Tlaltelulco,19°16´38.478,098°11´41.862,2328
+29,Tlaxcala,049,San Damián Texóloc,19°17´35.936,098°18´39.001,2247
+29,Tlaxcala,050,San Francisco Tetlanohcan,19°17´04.516,098°09´48.781,2887
+29,Tlaxcala,051,San Jerónimo Zacualpan,19°15´41.047,098°16´17.239,2248
+29,Tlaxcala,052,San José Teacalco,19°21´23.142,098°05´11.335,2674
+29,Tlaxcala,053,San Juan Huactzinco,19°14´16.604,098°15´56.150,2207
+29,Tlaxcala,054,San Lorenzo Axocomanitla,19°13´30.805,098°15´22.763,2205
+29,Tlaxcala,055,San Lucas Tecopilco,19°30´49.340,098°17´10.583,2550
+29,Tlaxcala,056,Santa Ana Nopalucan,19°17´59.408,098°20´33.224,2216
+29,Tlaxcala,057,Santa Apolonia Teacalco,19°14´48.992,098°19´14.168,2253
+29,Tlaxcala,058,Santa Catarina Ayometla,19°11´59.708,098°12´59.645,2248
+29,Tlaxcala,059,Santa Cruz Quilehtla,19°12´55.261,098°13´19.264,2293
+29,Tlaxcala,060,Santa Isabel Xiloxoxtla,19°16´05.032,098°12´48.809,2284
+30,Veracruz de Ignacio de la Llave,001,Acajete,19°36´59.166,097°05´54.793,2263
+30,Veracruz de Ignacio de la Llave,002,Acatlán,19°42´45.054,096°51´09.794,1752
+30,Veracruz de Ignacio de la Llave,003,Acayucan,18°08´18.263,095°13´51.098,90
+30,Veracruz de Ignacio de la Llave,004,Actopan,19°42´34.845,096°47´25.878,164
+30,Veracruz de Ignacio de la Llave,005,Acula,18°37´39.055,095°52´31.263,1
+30,Veracruz de Ignacio de la Llave,006,Acultzingo,18°46´48.559,097°20´45.317,1922
+30,Veracruz de Ignacio de la Llave,007,Camarón de Tejeda,19°02´49.827,096°37´29.383,271
+30,Veracruz de Ignacio de la Llave,008,Alpatláhuac,19°07´45.167,097°10´22.008,2200
+30,Veracruz de Ignacio de la Llave,009,Alto Lucero de Gutiérrez Barrios,19°54´41.476,096°44´11.615,468
+30,Veracruz de Ignacio de la Llave,010,Altotonga,19°52´49.335,097°16´18.640,1508
+30,Veracruz de Ignacio de la Llave,011,Alvarado,19°05´30.099,096°06´33.029,10
+30,Veracruz de Ignacio de la Llave,012,Amatitlán,18°31´02.094,095°44´05.367,1
+30,Veracruz de Ignacio de la Llave,013,Naranjos Amatlán,21°21´13.141,097°47´02.788,94
+30,Veracruz de Ignacio de la Llave,014,Amatlán de los Reyes,18°57´09.326,096°57´16.448,672
+30,Veracruz de Ignacio de la Llave,015,Angel R. Cabada,18°42´52.855,095°29´48.664,50
+30,Veracruz de Ignacio de la Llave,016,La Antigua,19°23´52.578,096°22´17.732,14
+30,Veracruz de Ignacio de la Llave,017,Apazapan,19°22´10.649,096°43´07.138,313
+30,Veracruz de Ignacio de la Llave,018,Aquila,18°48´32.418,097°20´56.057,2293
+30,Veracruz de Ignacio de la Llave,019,Astacinga,18°35´14.592,097°08´07.404,2213
+30,Veracruz de Ignacio de la Llave,020,Atlahuilco,18°43´33.138,097°10´49.781,2141
+30,Veracruz de Ignacio de la Llave,021,Atoyac,19°00´27.273,096°51´19.248,719
+30,Veracruz de Ignacio de la Llave,022,Atzacan,18°58´42.813,097°06´28.359,1365
+30,Veracruz de Ignacio de la Llave,023,Atzalan,20°02´58.194,097°14´47.236,662
+30,Veracruz de Ignacio de la Llave,024,Tlaltetela,19°21´50.648,096°59´48.492,998
+30,Veracruz de Ignacio de la Llave,025,Ayahualulco,19°28´28.826,097°14´47.522,2287
+30,Veracruz de Ignacio de la Llave,026,Banderilla,19°36´07.130,096°58´27.866,1514
+30,Veracruz de Ignacio de la Llave,027,Benito Juárez,20°53´57.982,098°15´30.478,346
+30,Veracruz de Ignacio de la Llave,028,Boca del Río,19°08´34.257,096°08´46.681,5
+30,Veracruz de Ignacio de la Llave,029,Calcahualco,19°09´29.974,097°13´21.672,2158
+30,Veracruz de Ignacio de la Llave,030,Camerino Z. Mendoza,18°48´15.267,097°11´04.982,1889
+30,Veracruz de Ignacio de la Llave,031,Carrillo Puerto,18°52´35.991,096°41´25.037,206
+30,Veracruz de Ignacio de la Llave,032,Catemaco,18°35´31.460,095°09´18.380,326
+30,Veracruz de Ignacio de la Llave,033,Cazones de Herrera,20°47´01.211,097°23´33.178,28
+30,Veracruz de Ignacio de la Llave,034,Cerro Azul,21°13´39.164,097°50´08.129,173
+30,Veracruz de Ignacio de la Llave,035,Citlaltépetl,21°24´42.641,097°56´58.299,200
+30,Veracruz de Ignacio de la Llave,036,Coacoatzintla,19°43´25.118,096°59´05.323,1716
+30,Veracruz de Ignacio de la Llave,037,Coahuitlán,20°18´11.016,097°44´39.370,242
+30,Veracruz de Ignacio de la Llave,038,Coatepec,19°31´13.731,097°05´00.634,1199
+30,Veracruz de Ignacio de la Llave,039,Coatzacoalcos,18°11´32.650,094°36´27.154,26
+30,Veracruz de Ignacio de la Llave,040,Coatzintla,20°29´53.866,097°38´09.359,115
+30,Veracruz de Ignacio de la Llave,041,Coetzala,18°47´10.051,096°55´59.988,845
+30,Veracruz de Ignacio de la Llave,042,Colipa,19°58´55.167,096°46´43.220,235
+30,Veracruz de Ignacio de la Llave,043,Comapa,19°11´26.016,096°55´02.138,593
+30,Veracruz de Ignacio de la Llave,044,Córdoba,19°00´00.017,096°59´53.508,982
+30,Veracruz de Ignacio de la Llave,045,Cosamaloapan de Carpio,18°25´24.170,096°11´12.192,9
+30,Veracruz de Ignacio de la Llave,046,Cosautlán de Carvajal,19°21´33.957,097°01´47.538,1151
+30,Veracruz de Ignacio de la Llave,047,Coscomatepec,19°07´11.913,097°10´39.255,1759
+30,Veracruz de Ignacio de la Llave,048,Cosoleacaque,18°08´03.406,094°40´53.492,16
+30,Veracruz de Ignacio de la Llave,049,Cotaxtla,18°58´08.673,096°31´08.731,74
+30,Veracruz de Ignacio de la Llave,050,Coxquihui,20°15´55.907,097°36´07.264,151
+30,Veracruz de Ignacio de la Llave,051,Coyutla,20°27´07.082,097°45´06.615,169
+30,Veracruz de Ignacio de la Llave,052,Cuichapa,18°47´22.781,096°53´42.991,462
+30,Veracruz de Ignacio de la Llave,053,Cuitláhuac,18°50´40.240,096°46´38.890,294
+30,Veracruz de Ignacio de la Llave,054,Chacaltianguis,18°19´55.452,095°54´16.262,15
+30,Veracruz de Ignacio de la Llave,055,Chalma,21°15´55.722,098°26´41.155,141
+30,Veracruz de Ignacio de la Llave,056,Chiconamel,21°19´36.611,098°31´50.255,115
+30,Veracruz de Ignacio de la Llave,057,Chiconquiaco,19°48´56.016,096°50´45.996,1643
+30,Veracruz de Ignacio de la Llave,058,Chicontepec,21°09´38.652,098°14´01.993,255
+30,Veracruz de Ignacio de la Llave,059,Chinameca,18°06´47.064,094°48´13.875,25
+30,Veracruz de Ignacio de la Llave,060,Chinampa de Gorostiza,21°24´49.867,097°45´39.934,63
+30,Veracruz de Ignacio de la Llave,061,Las Choapas,17°58´46.186,094°15´44.782,39
+30,Veracruz de Ignacio de la Llave,062,Chocamán,19°01´48.729,097°05´20.460,1408
+30,Veracruz de Ignacio de la Llave,063,Chontla,21°37´36.720,098°03´37.548,127
+30,Veracruz de Ignacio de la Llave,064,Chumatlán,20°14´03.918,097°35´49.052,176
+30,Veracruz de Ignacio de la Llave,065,Emiliano Zapata,19°33´39.985,096°53´48.038,869
+30,Veracruz de Ignacio de la Llave,066,Espinal,20°21´15.878,097°35´52.020,91
+30,Veracruz de Ignacio de la Llave,067,Filomeno Mata,20°15´35.438,097°42´15.225,458
+30,Veracruz de Ignacio de la Llave,068,Fortín,18°58´43.164,097°01´29.233,1006
+30,Veracruz de Ignacio de la Llave,069,Gutiérrez Zamora,20°30´55.772,097°10´43.294,31
+30,Veracruz de Ignacio de la Llave,070,Hidalgotitlán,17°50´04.992,094°50´31.433,24
+30,Veracruz de Ignacio de la Llave,071,Huatusco,19°12´09.382,097°02´42.000,1250
+30,Veracruz de Ignacio de la Llave,072,Huayacocotla,20°42´43.934,098°34´23.582,1828
+30,Veracruz de Ignacio de la Llave,073,Hueyapan de Ocampo,18°18´18.055,095°21´16.905,109
+30,Veracruz de Ignacio de la Llave,074,Huiloapan de Cuauhtémoc,18°50´04.373,097°09´21.311,1301
+30,Veracruz de Ignacio de la Llave,075,Ignacio de la Llave,18°46´13.528,096°02´20.727,4
+30,Veracruz de Ignacio de la Llave,076,Ilamatlán,20°50´55.300,098°32´12.611,732
+30,Veracruz de Ignacio de la Llave,077,Isla,18°21´11.108,095°42´37.259,45
+30,Veracruz de Ignacio de la Llave,078,Ixcatepec,21°19´57.392,098°05´24.305,185
+30,Veracruz de Ignacio de la Llave,079,Ixhuacán de los Reyes,19°25´50.089,097°09´12.394,1716
+30,Veracruz de Ignacio de la Llave,080,Ixhuatlán del Café,19°04´51.458,097°00´16.354,1259
+30,Veracruz de Ignacio de la Llave,081,Ixhuatlancillo,18°54´19.182,097°09´13.270,1392
+30,Veracruz de Ignacio de la Llave,082,Ixhuatlán del Sureste,18°03´45.798,094°27´23.772,23
+30,Veracruz de Ignacio de la Llave,083,Ixhuatlán de Madero,20°52´36.644,098°08´02.038,223
+30,Veracruz de Ignacio de la Llave,084,Ixmatlahuacan,18°34´45.561,095°59´10.878,3
+30,Veracruz de Ignacio de la Llave,085,Ixtaczoquitlán,18°56´45.184,097°04´47.958,1010
+30,Veracruz de Ignacio de la Llave,086,Jalacingo,19°56´03.083,097°21´22.012,1864
+30,Veracruz de Ignacio de la Llave,087,Xalapa,19°35´16.673,096°58´06.886,1184
+30,Veracruz de Ignacio de la Llave,088,Jalcomulco,19°23´23.890,096°47´19.247,422
+30,Veracruz de Ignacio de la Llave,089,Jáltipan,18°01´10.783,094°47´41.436,26
+30,Veracruz de Ignacio de la Llave,090,Jamapa,19°03´29.140,096°18´49.825,17
+30,Veracruz de Ignacio de la Llave,091,Jesús Carranza,17°34´15.862,095°10´08.743,52
+30,Veracruz de Ignacio de la Llave,092,Xico,19°31´05.907,097°07´59.184,1736
+30,Veracruz de Ignacio de la Llave,093,Jilotepec,19°38´30.435,096°58´28.082,1263
+30,Veracruz de Ignacio de la Llave,094,Juan Rodríguez Clara,18°10´48.147,095°30´52.404,91
+30,Veracruz de Ignacio de la Llave,095,Juchique de Ferrer,19°53´16.091,096°44´25.046,578
+30,Veracruz de Ignacio de la Llave,096,Landero y Coss,19°45´34.898,096°51´17.261,1871
+30,Veracruz de Ignacio de la Llave,097,Lerdo de Tejada,18°42´00.496,095°33´07.501,7
+30,Veracruz de Ignacio de la Llave,098,Magdalena,18°46´10.069,097°02´59.029,1511
+30,Veracruz de Ignacio de la Llave,099,Maltrata,18°54´51.568,097°19´30.137,2129
+30,Veracruz de Ignacio de la Llave,100,Manlio Fabio Altamirano,19°11´47.715,096°25´53.066,40
+30,Veracruz de Ignacio de la Llave,101,Mariano Escobedo,18°58´25.966,097°14´42.842,1994
+30,Veracruz de Ignacio de la Llave,102,Martínez de la Torre,20°16´04.866,097°08´02.897,85
+30,Veracruz de Ignacio de la Llave,103,Mecatlán,20°14´37.276,097°41´55.293,392
+30,Veracruz de Ignacio de la Llave,104,Mecayapan,18°32´48.880,094°54´31.749,95
+30,Veracruz de Ignacio de la Llave,105,Medellín de Bravo,19°08´19.668,096°15´33.984,15
+30,Veracruz de Ignacio de la Llave,106,Miahuatlán,19°46´05.645,096°53´54.521,1629
+30,Veracruz de Ignacio de la Llave,107,Las Minas,19°45´10.885,097°10´46.677,1612
+30,Veracruz de Ignacio de la Llave,108,Minatitlán,18°04´44.004,094°38´23.507,14
+30,Veracruz de Ignacio de la Llave,109,Misantla,20°08´15.792,096°58´52.668,266
+30,Veracruz de Ignacio de la Llave,110,Mixtla de Altamirano,18°37´47.839,097°02´26.592,1528
+30,Veracruz de Ignacio de la Llave,111,Moloacán,18°05´44.715,094°20´49.495,39
+30,Veracruz de Ignacio de la Llave,112,Naolinco,19°42´29.452,096°54´39.329,1230
+30,Veracruz de Ignacio de la Llave,113,Naranjal,18°48´57.788,096°58´24.383,902
+30,Veracruz de Ignacio de la Llave,114,Nautla,20°12´51.930,096°54´17.681,44
+30,Veracruz de Ignacio de la Llave,115,Nogales,18°54´28.160,097°13´44.664,1632
+30,Veracruz de Ignacio de la Llave,116,Oluta,17°57´16.349,094°56´44.988,67
+30,Veracruz de Ignacio de la Llave,117,Omealca,18°46´26.097,096°53´53.130,359
+30,Veracruz de Ignacio de la Llave,118,Orizaba,18°52´21.716,097°07´51.265,1269
+30,Veracruz de Ignacio de la Llave,119,Otatitlán,18°12´30.787,096°04´59.240,10
+30,Veracruz de Ignacio de la Llave,120,Oteapan,17°59´58.212,094°39´59.722,60
+30,Veracruz de Ignacio de la Llave,121,Ozuluama de Mascareñas,21°56´54.733,098°08´35.296,48
+30,Veracruz de Ignacio de la Llave,122,Pajapan,18°19´40.072,094°43´34.602,30
+30,Veracruz de Ignacio de la Llave,123,Pánuco,22°28´16.258,098°39´31.904,28
+30,Veracruz de Ignacio de la Llave,124,Papantla,20°39´26.564,097°30´40.917,88
+30,Veracruz de Ignacio de la Llave,125,Paso del Macho,19°02´22.045,096°48´12.490,404
+30,Veracruz de Ignacio de la Llave,126,Paso de Ovejas,19°21´23.050,096°35´30.176,62
+30,Veracruz de Ignacio de la Llave,127,La Perla,19°02´21.400,097°13´41.103,2318
+30,Veracruz de Ignacio de la Llave,128,Perote,19°38´34.935,097°23´32.133,2501
+30,Veracruz de Ignacio de la Llave,129,Platón Sánchez,21°24´34.742,098°28´46.796,64
+30,Veracruz de Ignacio de la Llave,130,Playa Vicente,17°55´39.600,095°53´50.432,87
+30,Veracruz de Ignacio de la Llave,131,Poza Rica de Hidalgo,20°34´56.110,097°27´11.322,105
+30,Veracruz de Ignacio de la Llave,132,Las Vigas de Ramírez,19°40´39.723,097°09´06.288,2404
+30,Veracruz de Ignacio de la Llave,133,Pueblo Viejo,22°15´15.771,098°03´32.517,14
+30,Veracruz de Ignacio de la Llave,134,Puente Nacional,19°25´01.496,096°48´38.741,220
+30,Veracruz de Ignacio de la Llave,135,Rafael Delgado,18°49´56.065,097°07´35.912,1371
+30,Veracruz de Ignacio de la Llave,136,Rafael Lucio,19°37´09.858,096°59´49.462,1768
+30,Veracruz de Ignacio de la Llave,137,Los Reyes,18°41´55.327,097°03´55.269,1730
+30,Veracruz de Ignacio de la Llave,138,Río Blanco,18°51´19.008,097°10´19.113,1496
+30,Veracruz de Ignacio de la Llave,139,Saltabarranca,18°36´47.016,095°34´04.153,6
+30,Veracruz de Ignacio de la Llave,140,San Andrés Tenejapan,18°47´19.329,097°05´35.611,1449
+30,Veracruz de Ignacio de la Llave,141,San Andrés Tuxtla,18°42´23.644,095°25´36.779,248
+30,Veracruz de Ignacio de la Llave,142,San Juan Evangelista,17°58´45.500,095°25´18.876,65
+30,Veracruz de Ignacio de la Llave,143,Santiago Tuxtla,18°33´44.026,095°32´18.809,138
+30,Veracruz de Ignacio de la Llave,144,Sayula de Alemán,17°55´44.392,095°04´25.207,68
+30,Veracruz de Ignacio de la Llave,145,Soconusco,18°02´57.268,094°54´17.133,57
+30,Veracruz de Ignacio de la Llave,146,Sochiapa,19°11´54.157,096°56´58.453,1185
+30,Veracruz de Ignacio de la Llave,147,Soledad Atzompa,18°46´34.017,097°13´21.738,2260
+30,Veracruz de Ignacio de la Llave,148,Soledad de Doblado,19°10´42.527,096°34´20.266,115
+30,Veracruz de Ignacio de la Llave,149,Soteapan,18°21´34.992,095°01´01.095,552
+30,Veracruz de Ignacio de la Llave,150,Tamalín,21°36´50.364,097°49´06.810,31
+30,Veracruz de Ignacio de la Llave,151,Tamiahua,21°34´49.977,097°41´28.871,29
+30,Veracruz de Ignacio de la Llave,152,Tampico Alto,22°09´37.590,098°01´58.546,21
+30,Veracruz de Ignacio de la Llave,153,Tancoco,21°19´21.569,097°51´40.737,211
+30,Veracruz de Ignacio de la Llave,154,Tantima,21°31´39.081,097°55´41.301,54
+30,Veracruz de Ignacio de la Llave,155,Tantoyuca,21°38´59.568,098°23´47.497,106
+30,Veracruz de Ignacio de la Llave,156,Tatatila,19°46´21.308,097°08´22.635,1745
+30,Veracruz de Ignacio de la Llave,157,Castillo de Teayo,20°49´21.814,097°45´01.258,99
+30,Veracruz de Ignacio de la Llave,158,Tecolutla,20°35´23.850,097°10´41.360,24
+30,Veracruz de Ignacio de la Llave,159,Tehuipango,18°34´26.501,097°06´16.610,2203
+30,Veracruz de Ignacio de la Llave,160,Álamo Temapache,21°11´17.824,097°55´03.003,81
+30,Veracruz de Ignacio de la Llave,161,Tempoal,21°42´52.151,098°37´38.981,66
+30,Veracruz de Ignacio de la Llave,162,Tenampa,19°16´58.424,096°54´57.441,939
+30,Veracruz de Ignacio de la Llave,163,Tenochtitlán,19°52´47.355,096°58´10.395,1056
+30,Veracruz de Ignacio de la Llave,164,Teocelo,19°23´53.681,097°01´13.094,1156
+30,Veracruz de Ignacio de la Llave,165,Tepatlaxco,19°05´22.172,096°52´40.662,1016
+30,Veracruz de Ignacio de la Llave,166,Tepetlán,19°42´42.172,096°49´07.611,1329
+30,Veracruz de Ignacio de la Llave,167,Tepetzintla,21°13´14.300,097°56´41.529,235
+30,Veracruz de Ignacio de la Llave,168,Tequila,18°47´24.388,097°07´52.803,1479
+30,Veracruz de Ignacio de la Llave,169,José Azueta,18°20´26.777,095°49´06.310,36
+30,Veracruz de Ignacio de la Llave,170,Texcatepec,20°41´07.362,098°23´22.775,1076
+30,Veracruz de Ignacio de la Llave,171,Texhuacán,18°38´15.613,097°03´47.586,1725
+30,Veracruz de Ignacio de la Llave,172,Texistepec,17°58´35.123,094°52´45.290,24
+30,Veracruz de Ignacio de la Llave,173,Tezonapa,18°45´04.785,096°52´31.609,394
+30,Veracruz de Ignacio de la Llave,174,Tierra Blanca,18°44´18.646,096°37´13.804,55
+30,Veracruz de Ignacio de la Llave,175,Tihuatlán,20°51´50.804,097°41´47.278,84
+30,Veracruz de Ignacio de la Llave,176,Tlacojalpan,18°14´48.846,095°59´43.871,8
+30,Veracruz de Ignacio de la Llave,177,Tlacolulan,19°46´07.850,097°02´57.099,2026
+30,Veracruz de Ignacio de la Llave,178,Tlacotalpan,18°41´26.715,095°45´27.402,1
+30,Veracruz de Ignacio de la Llave,179,Tlacotepec de Mejía,19°12´00.657,096°51´30.817,814
+30,Veracruz de Ignacio de la Llave,180,Tlachichilco,20°43´45.353,098°17´10.648,775
+30,Veracruz de Ignacio de la Llave,181,Tlalixcoyan,18°56´45.576,096°26´08.766,27
+30,Veracruz de Ignacio de la Llave,182,Tlalnelhuayocan,19°34´21.964,097°00´10.023,1493
+30,Veracruz de Ignacio de la Llave,183,Tlapacoyan,20°06´19.289,097°15´09.786,258
+30,Veracruz de Ignacio de la Llave,184,Tlaquilpa,18°38´28.354,097°08´19.928,2294
+30,Veracruz de Ignacio de la Llave,185,Tlilapan,18°48´20.684,097°06´05.682,1225
+30,Veracruz de Ignacio de la Llave,186,Tomatlán,19°02´51.134,097°01´25.581,1321
+30,Veracruz de Ignacio de la Llave,187,Tonayán,19°46´05.139,096°57´41.316,1955
+30,Veracruz de Ignacio de la Llave,188,Totutla,19°17´12.984,096°58´57.998,1142
+30,Veracruz de Ignacio de la Llave,189,Tuxpan,21°08´17.584,097°35´36.448,26
+30,Veracruz de Ignacio de la Llave,190,Tuxtilla,18°14´20.255,095°54´11.111,9
+30,Veracruz de Ignacio de la Llave,191,Ursulo Galván,19°29´34.916,096°28´26.638,19
+30,Veracruz de Ignacio de la Llave,192,Vega de Alatorre,20°09´06.277,096°45´51.787,137
+30,Veracruz de Ignacio de la Llave,193,Veracruz,19°15´15.468,096°19´48.247,24
+30,Veracruz de Ignacio de la Llave,194,Villa Aldama,19°40´44.219,097°15´08.858,2406
+30,Veracruz de Ignacio de la Llave,195,Xoxocotla,18°39´04.380,097°12´57.586,2404
+30,Veracruz de Ignacio de la Llave,196,Yanga,18°51´29.564,096°50´19.632,493
+30,Veracruz de Ignacio de la Llave,197,Yecuatla,19°54´24.048,096°49´40.464,688
+30,Veracruz de Ignacio de la Llave,198,Zacualpan,20°35´35.030,098°26´19.156,1587
+30,Veracruz de Ignacio de la Llave,199,Zaragoza,17°57´55.633,094°40´21.363,18
+30,Veracruz de Ignacio de la Llave,200,Zentla,19°07´47.649,096°52´30.120,635
+30,Veracruz de Ignacio de la Llave,201,Zongolica,18°46´28.153,097°00´49.061,945
+30,Veracruz de Ignacio de la Llave,202,Zontecomatlán de López y Fuentes,20°47´12.131,098°24´32.565,653
+30,Veracruz de Ignacio de la Llave,203,Zozocolco de Hidalgo,20°10´02.763,097°36´10.357,269
+30,Veracruz de Ignacio de la Llave,204,Agua Dulce,18°12´23.367,094°15´16.533,31
+30,Veracruz de Ignacio de la Llave,205,El Higo,21°52´59.889,098°33´23.592,40
+30,Veracruz de Ignacio de la Llave,206,Nanchital de Lázaro Cárdenas del Río,18°04´57.555,094°24´50.848,19
+30,Veracruz de Ignacio de la Llave,207,Tres Valles,18°25´06.437,096°17´22.023,25
+30,Veracruz de Ignacio de la Llave,208,Carlos A. Carrillo,18°25´04.005,095°47´31.633,5
+30,Veracruz de Ignacio de la Llave,209,Tatahuicapan de Juárez,18°30´11.886,094°50´07.847,156
+30,Veracruz de Ignacio de la Llave,210,Uxpanapa,17°27´58.318,094°45´05.850,102
+30,Veracruz de Ignacio de la Llave,211,San Rafael,20°17´40.301,097°01´00.176,22
+30,Veracruz de Ignacio de la Llave,212,Santiago Sochiapan,17°44´17.480,095°48´09.695,121
+31,Yucatán,001,Abalá,20°43´09.946,089°44´51.113,11
+31,Yucatán,002,Acanceh,20°54´33.405,089°29´59.073,11
+31,Yucatán,003,Akil,20°18´56.232,089°22´58.783,22
+31,Yucatán,004,Baca,21°12´31.324,089°26´01.826,8
+31,Yucatán,005,Bokobá,21°02´15.379,089°12´35.433,8
+31,Yucatán,006,Buctzotz,21°20´33.564,088°50´07.642,10
+31,Yucatán,007,Cacalchén,21°01´30.595,089°17´25.919,9
+31,Yucatán,008,Calotmul,21°04´50.496,088°13´43.778,20
+31,Yucatán,009,Cansahcab,21°12´45.639,089°09´38.946,1
+31,Yucatán,010,Cantamayec,20°31´30.749,089°10´39.054,20
+31,Yucatán,011,Celestún,21°03´04.834,090°23´58.069,2
+31,Yucatán,012,Cenotillo,21°10´55.848,088°42´41.035,21
+31,Yucatán,013,Conkal,21°07´07.891,089°33´28.386,8
+31,Yucatán,014,Cuncunul,20°40´53.036,088°31´17.786,24
+31,Yucatán,015,Cuzamá,20°45´42.693,089°22´12.039,16
+31,Yucatán,016,Chacsinkín,20°17´13.188,089°02´24.418,31
+31,Yucatán,017,Chankom,20°37´56.314,088°38´05.827,25
+31,Yucatán,018,Chapab,20°32´32.365,089°32´54.210,15
+31,Yucatán,019,Chemax,20°59´26.404,088°01´39.555,25
+31,Yucatán,020,Chicxulub Pueblo,21°10´41.082,089°32´45.652,8
+31,Yucatán,021,Chichimilá,20°38´45.602,088°15´59.592,24
+31,Yucatán,022,Chikindzonot,20°23´20.344,088°36´45.811,28
+31,Yucatán,023,Chocholá,20°48´53.511,089°57´04.588,7
+31,Yucatán,024,Chumayel,20°31´20.431,089°19´47.200,18
+31,Yucatán,025,Dzán,20°26´52.086,089°29´56.310,19
+31,Yucatán,026,Dzemul,21°20´02.424,089°26´23.642,4
+31,Yucatán,027,Dzidzantún,21°22´37.136,089°04´39.206,3
+31,Yucatán,028,Dzilam de Bravo,21°29´18.766,088°57´24.897,3
+31,Yucatán,029,Dzilam González,21°25´07.832,088°59´25.260,3
+31,Yucatán,030,Dzitás,20°52´16.362,088°39´48.013,27
+31,Yucatán,031,Dzoncauich,21°09´32.636,088°55´00.046,16
+31,Yucatán,032,Espita,21°10´32.106,088°30´14.019,23
+31,Yucatán,033,Halachó,20°40´15.322,090°15´32.777,7
+31,Yucatán,034,Hocabá,20°50´35.462,089°17´01.077,10
+31,Yucatán,035,Hoctún,20°56´11.133,089°13´45.211,15
+31,Yucatán,036,Homún,20°45´00.180,089°20´31.512,19
+31,Yucatán,037,Huhí,20°44´49.458,089°11´35.168,9
+31,Yucatán,038,Hunucmá,21°11´54.182,090°01´57.145,4
+31,Yucatán,039,Ixil,21°19´09.303,089°30´07.981,6
+31,Yucatán,040,Izamal,20°59´59.406,089°08´58.357,14
+31,Yucatán,041,Kanasín,20°58´12.869,089°36´10.897,10
+31,Yucatán,042,Kantunil,20°49´15.944,089°03´33.467,17
+31,Yucatán,043,Kaua,20°39´31.869,088°31´51.467,24
+31,Yucatán,044,Kinchil,20°56´16.788,090°12´19.458,4
+31,Yucatán,045,Kopomá,20°41´22.252,089°59´18.954,9
+31,Yucatán,046,Mama,20°33´11.166,089°26´27.739,16
+31,Yucatán,047,Maní,20°26´22.253,089°26´21.854,22
+31,Yucatán,048,Maxcanú,20°47´46.979,090°17´09.062,9
+31,Yucatán,049,Mayapán,20°33´21.853,089°13´30.605,13
+31,Yucatán,050,Mérida,21°11´03.775,089°46´51.126,8
+31,Yucatán,051,Mocochá,21°08´40.631,089°28´36.010,8
+31,Yucatán,052,Motul,21°15´57.854,089°24´39.024,4
+31,Yucatán,053,Muna,20°34´41.726,089°46´50.461,31
+31,Yucatán,054,Muxupip,21°04´05.873,089°21´03.411,8
+31,Yucatán,055,Opichén,20°35´00.828,089°57´25.333,13
+31,Yucatán,056,Oxkutzcab,20°21´19.680,089°39´10.898,50
+31,Yucatán,057,Panabá,21°27´48.642,088°30´15.019,8
+31,Yucatán,058,Peto,20°16´52.626,088°59´12.100,33
+31,Yucatán,059,Progreso,22°22´58.126,089°48´58.368,3
+31,Yucatán,060,Quintana Roo,20°53´25.077,088°40´33.357,26
+31,Yucatán,061,Río Lagartos,21°36´31.409,088°12´28.323,4
+31,Yucatán,062,Sacalum,20°35´42.643,089°42´44.999,17
+31,Yucatán,063,Samahil,20°55´11.200,089°59´28.637,5
+31,Yucatán,064,Sanahcat,20°47´07.609,089°13´48.102,13
+31,Yucatán,065,San Felipe,21°34´03.356,088°27´36.118,6
+31,Yucatán,066,Santa Elena,20°21´52.245,089°50´13.294,55
+31,Yucatán,067,Seyé,20°55´38.990,089°26´19.339,11
+31,Yucatán,068,Sinanché,21°21´16.126,089°14´12.996,4
+31,Yucatán,069,Sotuta,20°42´39.522,089°07´39.348,19
+31,Yucatán,070,Sucilá,21°17´58.289,088°27´49.651,16
+31,Yucatán,071,Sudzal,20°53´42.927,089°00´07.223,20
+31,Yucatán,072,Suma,21°09´42.114,089°11´01.120,4
+31,Yucatán,073,Tahdziú,20°18´49.406,088°58´51.447,27
+31,Yucatán,074,Tahmek,20°55´07.427,089°19´55.885,14
+31,Yucatán,075,Teabo,20°26´30.259,089°18´43.821,19
+31,Yucatán,076,Tecoh,20°46´17.589,089°34´35.833,12
+31,Yucatán,077,Tekal de Venegas,21°03´48.677,088°58´46.483,14
+31,Yucatán,078,Tekantó,21°02´28.325,089°08´47.509,11
+31,Yucatán,079,Tekax,20°20´00.753,089°34´38.056,62
+31,Yucatán,080,Tekit,20°37´18.509,089°23´11.039,10
+31,Yucatán,081,Tekom,20°36´43.199,088°29´08.631,25
+31,Yucatán,082,Telchac Pueblo,21°15´24.050,089°17´10.318,5
+31,Yucatán,083,Telchac Puerto,21°20´34.814,089°19´27.117,4
+31,Yucatán,084,Temax,21°16´46.665,089°00´32.946,9
+31,Yucatán,085,Temozón,20°59´57.990,088°17´00.628,24
+31,Yucatán,086,Tepakán,21°05´47.135,089°02´52.658,10
+31,Yucatán,087,Tetiz,21°00´17.723,090°08´27.142,12
+31,Yucatán,088,Teya,21°07´13.177,089°06´36.249,5
+31,Yucatán,089,Ticul,20°26´39.349,089°39´15.348,25
+31,Yucatán,090,Timucuy,20°52´35.170,089°34´43.332,10
+31,Yucatán,091,Tinum,20°50´50.089,088°40´43.742,26
+31,Yucatán,092,Tixcacalcupul,20°33´06.208,088°25´49.186,26
+31,Yucatán,093,Tixkokob,21°03´20.783,089°26´59.406,9
+31,Yucatán,094,Tixmehuac,20°21´20.648,089°09´32.804,21
+31,Yucatán,095,Tixpéhual,20°59´54.654,089°32´21.039,9
+31,Yucatán,096,Tizimín,21°32´31.389,088°16´13.967,15
+31,Yucatán,097,Tunkás,21°00´52.975,088°51´08.537,23
+31,Yucatán,098,Tzucacab,20°08´52.780,089°09´00.850,50
+31,Yucatán,099,Uayma,20°51´17.893,088°26´09.705,25
+31,Yucatán,100,Ucú,21°04´01.072,089°48´14.328,4
+31,Yucatán,101,Umán,20°58´10.316,089°52´54.530,8
+31,Yucatán,102,Valladolid,20°51´51.200,088°19´51.444,25
+31,Yucatán,103,Xocchel,20°50´45.303,089°11´52.258,16
+31,Yucatán,104,Yaxcabá,20°44´10.953,088°58´12.000,26
+31,Yucatán,105,Yaxkukul,21°04´19.045,089°29´35.150,6
+31,Yucatán,106,Yobaín,21°21´29.243,089°10´25.761,3
+32,Zacatecas,001,Apozol,21°31´27.659,103°11´53.523,1546
+32,Zacatecas,002,Apulco,21°33´06.194,102°43´57.000,1920
+32,Zacatecas,003,Atolinga,21°51´47.543,103°32´08.576,2142
+32,Zacatecas,004,Benito Juárez,21°33´33.871,103°39´29.141,2129
+32,Zacatecas,005,Calera,23°06´30.236,102°52´24.450,2153
+32,Zacatecas,006,Cañitas de Felipe Pescador,23°38´23.525,102°51´50.286,2045
+32,Zacatecas,007,Concepción del Oro,24°46´30.492,101°27´18.120,1859
+32,Zacatecas,008,Cuauhtémoc,22°33´37.257,102°31´40.506,2105
+32,Zacatecas,009,Chalchihuites,23°35´09.894,104°01´38.622,2201
+32,Zacatecas,010,Fresnillo,23°34´43.513,103°30´34.054,2125
+32,Zacatecas,011,Trinidad García de la Cadena,21°18´21.729,103°36´09.880,1595
+32,Zacatecas,012,Genaro Codina,22°36´37.946,102°40´35.066,2318
+32,Zacatecas,013,General Enrique Estrada,23°03´59.893,102°53´23.722,2167
+32,Zacatecas,014,General Francisco R. Murguía,24°26´08.257,103°14´25.192,1920
+32,Zacatecas,015,El Plateado de Joaquín Amaro,22°06´28.799,103°08´02.367,2273
+32,Zacatecas,016,General Pánfilo Natera,22°49´03.492,102°13´07.380,2095
+32,Zacatecas,017,Guadalupe,22°59´24.444,102°39´13.555,2234
+32,Zacatecas,018,Huanusco,21°50´44.230,103°04´17.185,1683
+32,Zacatecas,019,Jalpa,21°44´19.601,103°10´30.638,1568
+32,Zacatecas,020,Jerez,22°54´42.620,103°13´31.856,2101
+32,Zacatecas,021,Jiménez del Teul,23°18´57.051,104°08´11.974,1978
+32,Zacatecas,022,Juan Aldama,24°22´13.202,103°25´37.910,2052
+32,Zacatecas,023,Juchipila,21°26´10.966,103°14´36.119,1427
+32,Zacatecas,024,Loreto,22°21´07.321,102°08´10.410,2089
+32,Zacatecas,025,Luis Moya,22°30´39.367,102°17´48.782,1996
+32,Zacatecas,026,Mazapil,25°02´33.087,102°36´52.558,1908
+32,Zacatecas,027,Melchor Ocampo,25°04´44.321,102°18´33.000,1898
+32,Zacatecas,028,Mezquital del Oro,21°20´12.238,103°26´00.527,1506
+32,Zacatecas,029,Miguel Auza,24°18´15.950,103°41´45.673,2124
+32,Zacatecas,030,Momax,21°58´54.659,103°22´49.291,1728
+32,Zacatecas,031,Monte Escobedo,22°38´46.079,103°38´21.279,2087
+32,Zacatecas,032,Morelos,22°55´44.205,102°42´57.994,2253
+32,Zacatecas,033,Moyahua de Estrada,21°19´52.093,103°16´53.931,1434
+32,Zacatecas,034,Nochistlán de Mejía,21°37´28.785,103°02´27.932,2069
+32,Zacatecas,035,Noria de Ángeles,22°27´29.295,102°03´51.906,2130
+32,Zacatecas,036,Ojocaliente,22°44´02.442,102°24´56.734,2097
+32,Zacatecas,037,Pánuco,23°05´58.908,102°38´49.299,2077
+32,Zacatecas,038,Pinos,22°43´43.684,101°48´40.056,2212
+32,Zacatecas,039,Río Grande,23°59´58.205,103°20´29.330,1929
+32,Zacatecas,040,Sain Alto,23°44´32.466,103°26´31.226,2100
+32,Zacatecas,041,El Salvador,24°34´57.916,101°01´39.116,1941
+32,Zacatecas,042,Sombrerete,23°59´47.153,103°51´47.563,2280
+32,Zacatecas,043,Susticacán,22°39´45.069,103°14´24.671,2154
+32,Zacatecas,044,Tabasco,22°01´14.584,103°01´01.000,1602
+32,Zacatecas,045,Tepechitlán,21°42´25.350,103°29´50.622,1857
+32,Zacatecas,046,Tepetongo,22°35´32.003,103°14´26.305,1958
+32,Zacatecas,047,Teúl de González Ortega,21°29´34.384,103°41´29.614,2043
+32,Zacatecas,048,Tlaltenango de Sánchez Román,21°54´24.620,103°24´35.623,1880
+32,Zacatecas,049,Valparaíso,23°08´50.361,104°20´43.000,2062
+32,Zacatecas,050,Vetagrande,22°56´32.559,102°34´50.338,2275
+32,Zacatecas,051,Villa de Cos,23°59´06.212,102°32´46.239,1988
+32,Zacatecas,052,Villa García,22°12´43.182,102°00´45.591,2156
+32,Zacatecas,053,Villa González Ortega,22°38´42.109,102°02´23.718,2135
+32,Zacatecas,054,Villa Hidalgo,22°29´21.224,101°49´42.453,2166
+32,Zacatecas,055,Villanueva,22°39´12.566,103°08´13.989,1970
+32,Zacatecas,056,Zacatecas,22°48´56.790,102°49´46.541,2265
+32,Zacatecas,057,Trancoso,22°49´06.010,102°23´53.594,2130
+32,Zacatecas,058,Santa María de la Paz,21°33´55.682,103°29´42.793,2028

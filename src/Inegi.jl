@@ -40,7 +40,7 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 # Ejemplo
 ```julia-repl
@@ -66,7 +66,7 @@ end
 
 Regresa un una `DataFrame` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV), de la siguiente manera.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV), de la siguiente manera.
 
 ```julia-repl
 julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
@@ -124,7 +124,7 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 !!! note
     ### Área geoestadística municipal (AGEM)
@@ -301,7 +301,7 @@ end
 
 """
     idh(cve_entidad::String, cve_municipio::String="")::DataFrame
-Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresara el IDH de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per cápita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresará el IDH de la entidad. Los datos son obtenidos de la página oficial de las Naciones Unidas, se pueden consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
 julia> idh(clave("Campeche"),"003").idh*100
@@ -348,7 +348,7 @@ end
 """
     idh_todos_municipios()::DataFrame
 
-Regresa un `DataFrame` con todos los valores agregados del  índice de desarrollo humano de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa un `DataFrame` con todos los valores agregados del índice de desarrollo humano de todos los municipios. Los datos son obtenidos de la página oficial de las Naciones Unidas, se pueden consultar [aquí.](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html)
 
 # Ejemplo
 ```julia-repl
@@ -376,6 +376,8 @@ Proporciona el número de personas que cumple con los indicadores de pobreza seg
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+
+# Ejemplo
 ```julia-repl
 julia> df = indicadores_pobreza("01", "001")
 1×20 DataFrame
@@ -569,7 +571,7 @@ end
     int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
 
 Devuelve la intensidad migratoria de una entidad o municipio,
-los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+los datos se pueden obtener de [aquí](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
 
 # Ejemplo
 
@@ -604,7 +606,7 @@ end
 """
     int_migratoria_todos()::DataFrame
 
-Regresa un `DataFrame` con  los indices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+Regresa un `DataFrame` con los índices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aquí](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
 
 # Ejemplo
 
@@ -628,7 +630,7 @@ julia> int_migratoria_todos()
 """
     geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
 
-Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.Puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
+Devuelve un `DataFrame` con los valores clave de entidad, clave municipal (si es requerida), latitud, longitud y altitud promedio. Puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 Se pueden hacer consultas de una entidad o de un municipio.
 ```julia-repl
@@ -677,7 +679,7 @@ end
 
 """
     geografia_todos_municipios()::DataFrame
-Devuelve los datos geograficos de todos los municipios, puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
+    Devuelve los datos geográficos de todos los municipios(latitud, longitud y altitud promedio), puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 # Ejemplo
 
@@ -764,8 +766,8 @@ end
     tasas_vitales()::DataFrame
 
 Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
-En caso de omitir el parametro cve_municipio, se mostraran datos de la entidad indicada.
-Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fertil (15-45 años, 2020) del INEGI.
+En caso de omitir el parámetro cve_municipio, se mostrarán datos de la entidad indicada.
+Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fértil (15-45 años, 2020) del INEGI.
 
 # Ejemplo
 
