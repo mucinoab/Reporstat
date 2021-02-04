@@ -278,7 +278,7 @@ end
 """
     clave(id::String)::String
 
-Toma como parámetro el nombre de algún municipio o entidad y regresa la clave de este.
+Toma como parámetro el nombre de algún municipio o entidad y regresa la clave del mismo.
 
 # Ejemplo
 
