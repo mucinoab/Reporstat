@@ -353,9 +353,20 @@ julia> df = indicadores_pobreza("01", "001")
 ```
 """
 function indicadores_pobreza(cve_entidad::String,cve_municipio::String)::DataFrame
-  path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
-  tabla = get.info(path, ypes=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
-  return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio") 
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+ 	path = "indicadores_de_pobreza_municipal_2015_poblacion.csv"
+  	tabla = get_info(path, types=[String, String, String, String, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64])
+  	return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'") 
 end
 
 """
@@ -376,9 +387,21 @@ julia> df = indicadores_pobreza_porcentaje("01", "001")
 ```
 """
 function indicadores_pobreza_porcentaje(cve_entidad::String,cve_municipio::String)::DataFrame
-  path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
-  tabla = get.info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
-  return filtrar(tabla, ":entidad==$cve_entidad", ":municipio==$cve_municipio")
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+	
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
+	
+  	path = "indicadores_de_pobreza_municipal_2015_porcentaje.csv"
+ 	 tabla = get_info(path,  types=[String, String, String, String, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64])
+ 	 return filtrar(tabla, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
 """
@@ -631,8 +654,19 @@ julia> codigos_postales("01", "001")
 ```
 """
 function codigos_postales(cve_entidad::String, cve_municipio::String)::DataFrame
+	try
+		estado = entidades[cve_entidad]
+	catch e
+		error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
+	end
+
+	try
+    		 municipio = municipios[cve_entidad*cve_municipio]
+	catch e
+    		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
+	end
  	codigos = get_info("codigos_postales_municipios_2021.csv",[String,String,String,String,Int64,String])
-	return filtrar(codigos, ":entidad==$cve_entidad", ":municipio==$cve_municipio")
+	return filtrar(codigos, ":entidad=='$cve_entidad'", ":municipio=='$cve_municipio'")
 end
 
 """
@@ -677,9 +711,7 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
-
-	token_INEGI = token_check(token_INEGI)
+function tasas_vitales(cve_entidad::String, cve_municipio::String)::DataFrame
 
 	try
 		estado = entidades[cve_entidad]
@@ -693,13 +725,13 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
     		error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
 	end
 
-	nacimientos = get_info("nacimientos.csv")
+	nacimientos = get_info("nacimientos.csv", types=[String, String, String, Int64])
 
 	if(cve_municipio=="")
 		localidad = poblacion_entidad(cve_entidad)
 		pob_mujeres = localidad[:1, :4]
 
-		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+		estado = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '000'")
   		nacimientos_ent = estado[:1, :4]
 		if(nacimientos_ent == "")
 			natalidad = 0
@@ -710,7 +742,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
 		localidad = poblacion_municipio(cve_entidad, cve_municipio)
 		pob_mujeres = localidad[:1, :4]
 
-		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		municipio = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
   		nacimientos_muni = municipio[:1, :4]
 		if(nacimientos_muni == "")
 			natalidad = 0
@@ -719,24 +751,24 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
 		end
 	end
 
-	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv")
+	fertilidades = get_info("fertilidad_entidad_municipio_2020.csv", types=[String, String, String, Int64])
 
 	if(cve_municipio=="")
-		fertil_ent = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == '000'")
+		fertil_ent = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '000'")
 		pob_fertil = fertil_ent[:1, :4]
 		fecundidad = nacimientos_ent/pob_fertil
 	else
-		fertil_muni = filtrar(fertilidades, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		fertil_muni = filtrar(fertilidades, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
 		pob_fertil = fertil_muni[:1, :4]
 		fecundidad = nacimientos_muni/pob_fertil
 	end
 	
-	defunciones = get_info("defunciones_municipio_2019.csv")
+	defunciones = get_info("defunciones_municipio_2019.csv", types=[String, String, String, Int64])
 
 	pob_total = localidad[:1, :2]
 
 	if(cve_municipio=="")
-		estado = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == '000'")
+		estado = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '000'")
 		defunciones_ent = estado[:1, :4]
 		if(defunciones_ent == "")
 			mortalidad = 0
@@ -744,7 +776,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
 			mortalidad = defunciones_ent/pob_total
 		end
 	else
-		municipio = filtrar(nacimientos, ":entidad == $cve_entidad", ":municipio == $cve_municipio")
+		municipio = filtrar(nacimientos, ":entidad == '$cve_entidad'", ":municipio == '$cve_municipio'")
 		defunciones_muni = municipio[:1, :4]
 		if(defunciones_muni == "")
 			mortalidad = 0
