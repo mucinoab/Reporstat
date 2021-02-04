@@ -758,7 +758,7 @@ function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEG
 			mortalidad = defunciones_muni/pob_total
 		end
 	end
-	return DataFrame(Natalidad=[natalidad], Fecundidad=[fecundidad], Mortalidad=[mortalidad])
+	return DataFrame(natalidad=[natalidad], fecundidad=[fecundidad], mortalidad=[mortalidad])
 end
 
 
