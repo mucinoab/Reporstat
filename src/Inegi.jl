@@ -827,17 +827,6 @@ julia> tasas_vitales("01", "001")
 function tasas_vitales(cve_entidad::String, cve_municipio::String="",token_INEGI="")::DataFrame
    cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
      token_INEGI = token_check(token_INEGI)
-  # try
-    # estado = ENTIDADES[cve_entidad]
-  # catch e
-    # error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
-  # end
-
-  # try
-    # municipio = MUNICIPIOS[cve_entidad*cve_municipio]
-  # catch e
-    # error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
-  # end
 
   nacimientos = get_info("nacimientos.csv", [String, String, String, Int64])
 
