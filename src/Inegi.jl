@@ -40,19 +40,19 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, a nivel nacional, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 # Ejemplo
 ```julia-repl
 julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
 "00000000-0000-0000-0000-000000000000"
 
-julia> popu = poblacion_mexico()
-1×8 DataFrame
- Row │ lugar   total      hombres    mujeres    porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String  Float64    Float64    Float64    Float64             Float64             Float64              Float64
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ México  1.19938e8  5.48552e7  5.74813e7               48.57               51.43              21.4965   60.9642
+julia> poblacion_mexico()
+1×9 DataFrame
+ Row │ lugar   total      hombres   mujeres   porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad_poblacion  extesion_territorial
+     │ String  Int64      Int64     Int64     Float64             Float64             Float64              Float64             Float64
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ México  126014024  61473390  64540634              48.783              51.217              21.4965             64.2717             1.96065e6
 ```
 """
 function poblacion_mexico(token_INEGI::String="")::DataFrame
@@ -66,7 +66,7 @@ end
 
 Regresa un una `DataFrame` con los datos más recientes, por entidad federativa, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV), de la siguiente manera.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV), de la siguiente manera.
 
 ```julia-repl
 julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
@@ -76,6 +76,7 @@ El `DataFrame` resultante contiene los siguientes datos.
 - lugar
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
+- extensión terrotorial (kilómetros cuadrados)
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
@@ -100,11 +101,11 @@ El `DataFrame` resultante contiene los siguientes datos.
 # Ejemplo
 ```julia-repl
 julia> popu = poblacion_entidad("31", token)
-1×8 DataFrame
- Row │ lugar    total      hombres   mujeres   porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String   Float64    Float64   Float64   Float64             Float64             Float64              Float64
-─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ Yucatán  2.10226e6  963333.0  992244.0             48.9968             51.0032              65.4035   53.0607
+1×9 DataFrame
+ Row │ lugar    total    hombres  mujeres  porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad_poblacion  extesion_territorial
+     │ String   Int64    Int64    Int64    Float64             Float64             Float64              Float64             Float64
+─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ Yucatán  2320898  1140279  1180619             49.1309             50.8691              65.4035             58.7206               39524.4
 ```
 """
 function poblacion_entidad(cve_entidad::String, token_INEGI::String="")::DataFrame
@@ -125,7 +126,7 @@ end
 
 Regresa un `DataFrame` con los datos más recientes, por municipio, proporcionados por la API de Indicadores del INEGI.
 Requiere el token (`token_INEGI`) de la API, puede obtenerse [aquí.](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
-Se pude proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
+Se puede proporcionar el token directamente o por medio de una [variable de entorno](https://docs.julialang.org/en/v1/base/base/#Base.ENV) llamada de la misma manera, `token_INEGI`.
 
 !!! note
     ### Área geoestadística municipal (AGEM)
@@ -148,11 +149,11 @@ julia> ENV["token_INEGI"] = "00000000-0000-0000-0000-000000000000"
 "00000000-0000-0000-0000-000000000000"
 
 julia> popu = poblacion_municipio("01", "002")
-1×8 DataFrame
- Row │ lugar                     total    hombres  mujeres  porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad
-     │ String                    Float64  Float64  Float64  Float64             Float64             Float64              Float64
-─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ Aguascalientes, Asientos  45492.0  22512.0  22980.0             48.9519             51.0481              3.63938   84.6325
+1×9 DataFrame
+ Row │ lugar                     total  hombres  mujeres  porcentaje_hombres  porcentaje_mujeres  porcentaje_indigena  densidad_poblacion  extesion_territorial
+     │ String                    Int64  Int64    Int64    Float64             Float64             Float64              Float64             Float64
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ Aguascalientes, Asientos  51536    25261    26275             49.0162             50.9838              3.63938             93.8709               549.009
 ```
 """
 function poblacion_municipio(cve_entidad::String, cve_municipio::String, token_INEGI::String="")::DataFrame
@@ -219,6 +220,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
 - nombre de municipio
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
+- extensión territorial
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
@@ -229,14 +231,14 @@ Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
 ```julia-repl
 julia> poblacion_todos_municipios()
 2469×11 DataFrame
-  Row │ entidad  entidad_nombre  municipio  municipio_nombre              total     densidad   hombres   mujeres   porcentaje_hombres  porcentajes_mujeres ⋯
-      │ String   String          String     String                        Float64   Float64    Float64   Float64   Float64             Float64             ⋯
-──────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    1 │ 01       Aguascalientes  001        Aguascalientes                797010.0  744.58     386429.0  410581.0             48.5335              51.4665 ⋯
-    2 │ 01       Aguascalientes  002        Asientos                      797010.0  744.58     386429.0  410581.0             48.5335              51.4665
-    ⋮   │    ⋮           ⋮             ⋮                   ⋮                   ⋮          ⋮         ⋮         ⋮              ⋮                    ⋮          ⋱
- 2468 │ 32       Zacatecas       057        Trancoso                      138176.0  331.026     66297.0   71879.0             48.482               51.518  ⋯
- 2469 │ 32       Zacatecas       058        Santa María de la Paz          16934.0   87.9192     8358.0    8576.0             48.962               51.038
+  Row │ entidad  entidad_nombre  municipio  municipio_nombre              total   densidad   hombres   mujeres   porcentaje_hombres  porcentajes_mujeres ⋯
+      │ String   String          String     String                        Int64   Float64    Int64     Int64     Float64             Float64             ⋯
+──────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1 │ 01       Aguascalientes  001        Aguascalientes                797010   744.58     386429   410581.0             48.5335              51.4665 ⋯
+    2 │ 01       Aguascalientes  002        Asientos                      797010   744.58     386429   410581.0             48.5335              51.4665
+    ⋮   │    ⋮           ⋮             ⋮                   ⋮                   ⋮           ⋮         ⋮         ⋮              ⋮                    ⋮          ⋱
+ 2468 │ 32       Zacatecas       057        Trancoso                      138176   331.026     66297    71879.0             48.482               51.518  ⋯
+ 2469 │ 32       Zacatecas       058        Santa María de la Paz          16934    87.9192     8358     8576.0             48.962               51.038
 ```
 """
 function poblacion_todos_municipios()::DataFrame
@@ -253,6 +255,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 - nombre oficial de la entidad
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
+- extensión territorial
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
@@ -262,14 +265,14 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 # Ejemplo
 ```julia-repl
 julia> poblacion_todas_entidades()
-32×9 DataFrame
- Row │ entidad  entidad_nombre     total         densidad    hombres         mujeres         porcentaje_hombres ⋯
-     │ String   String             Float64       Float64     Float64         Float64         Float64            ⋯
-─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1 │ 01       Aguascalientes      1.185e6     233.729    576638.0        608358.0           48.7672 ⋯
-   2 │ 02       Baja California     3.15507e6    46.4066        1.59161e6       1.56346e6     49.7725
-   ⋮ │ ⋮             ⋮               ⋮               ⋮            ⋮           ⋮                 ⋮
-  32 │ 32       Zacatecas           1.49067e6    20.9791   726897.0        763771.0           48.7819
+32×10 DataFrame
+ Row │ entidad  entidad_nombre     total     densidad   extension_territorial  hombres    mujeres    ⋯
+     │ String   String             Int64     Float64    Float64                Int64      Int64      ⋯
+─────┼───────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ 01       Aguascalientes      1425607   253.862            5615.67        69668300   72892400  ⋯
+   2 │ 02       Baja California     3769020    52.7505          71450.0        190058900  186843100        
+   ⋮ │ ⋮             ⋮                 ⋮            ⋮           ⋮                 ⋮                      ⋱
+  32 │ 32       Zacatecas           1622138    21.5494          75275.3         79105800   83108000  ⋯
 ```
 """
 function poblacion_todas_entidades()::DataFrame
@@ -280,7 +283,7 @@ end
 """
     clave(id::String)::String
 
-Toma como parámetro el nombre de algún municipio o entidad y regresa la clave de este.
+Toma como parámetro el nombre de algún municipio o entidad y regresa la clave del mismo.
 
 # Ejemplo
 
@@ -328,7 +331,7 @@ end
 
 """
     idh(cve_entidad::String, cve_municipio::String="")::DataFrame
-Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per capita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresara el IDH de la entidad.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa el índice de desarrollo humano, los años promedio de escolaridad, los años esperados de escolaridad y los ingresos per cápita de una entidad o de un municipio en formato `DataFrame`, se debe especificar la clave para ambos parámetros, si solo se manda el parámetro _cve_entidad_ se regresará el IDH de la entidad. Los datos son obtenidos de la página oficial de las Naciones Unidas, se pueden consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
 # Ejemplo
 ```julia-repl
 julia> idh(clave("Campeche"),"003").idh*100
@@ -376,7 +379,7 @@ end
 """
     idh_todos_municipios()::DataFrame
 
-Regresa un `DataFrame` con todos los valores agregados del  índice de desarrollo humano de todos los municipios.Los datos son obtenidos de  la pagina oficial de las naciones unidas  puedes consultar [aquí](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html).
+Regresa un `DataFrame` con todos los valores agregados del índice de desarrollo humano de todos los municipios. Los datos son obtenidos de la página oficial de las Naciones Unidas, se pueden consultar [aquí.](https://www.mx.undp.org/content/mexico/es/home/library/poverty/idh-municipal-en-mexico--nueva-metodologia.html)
 
 # Ejemplo
 ```julia-repl
@@ -404,6 +407,8 @@ Proporciona el número de personas que cumple con los indicadores de pobreza seg
 
 Los datos son obtenidos de la página oficial de datos abiertos del gobierno federal de México [datos.gob.mx](https://www.datos.gob.mx/busca/dataset/indicadores-de-pobreza-municipal-2010--2015/resource/d6d6e2a8-a2e3-4e7d-84f8-dd5ea9336671)
 Consulta el [Diccionario de Datos, Indicadores de pobreza municipal (2015)](@ref)
+
+# Ejemplo
 ```julia-repl
 julia> df = indicadores_pobreza("01", "001")
 1×20 DataFrame
@@ -598,10 +603,11 @@ function edad_entidades()::DataFrame
 end
 
 """
-    int_migratoria(cve_entidad::String,cve_municipio::String ="")::Float64
+    int_migratoria(cve_entidad::String, cve_municipio::String ="")::Float64
 
-Devuelve la intensidad migratoria de una entidad o municipio,
-los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+Devuelve el índice de intensidad migratoria del municipio indicado. En caso de omitir el parámetro `cve_municipio`, devuelve los datos de la entidad indicada.
+Datos obtenidos de [aquí](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+
 
 # Ejemplo
 
@@ -638,7 +644,8 @@ end
 """
     int_migratoria_todos()::DataFrame
 
-Regresa un `DataFrame` con  los indices de intensidad migratoria de todos los municipios, los datos se pueden obtener de [aqui](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
+Regresa un `DataFrame` con los índices de intensidad migratoria de todos los municipios.
+Datos obtenidos de [aquí](https://www.datos.gob.mx/busca/dataset/indice-absoluto-de-intensidad-migratoria-mexico--estados-unidos-2000--2010).
 
 # Ejemplo
 
@@ -662,7 +669,9 @@ julia> int_migratoria_todos()
 """
     geografia(cve_entidad::String,cve_municipio::String ="")::DataFrame
 
-Devuelve un `DataFrame` con los valores clave de entidad, clave municipal ( si es requerida ), latitud, longitud, altitud.Puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
+
+Devuelve un `DataFrame` con la latitud, longitud y altitud promedio del municipio indicado. En caso de omitir el parámetro `cve_municipio`, devuelve los datos de la entidad indicada. 
+Datos obtenidos de [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 Se pueden hacer consultas de una entidad o de un municipio.
 ```julia-repl
@@ -712,7 +721,7 @@ end
 
 """
     geografia_todos_municipios()::DataFrame
-Devuelve los datos geograficos de todos los municipios, puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
+    Devuelve los datos geográficos de todos los municipios(latitud, longitud y altitud promedio), puedes consultar la información [aquí](https://www.inegi.org.mx/app/ageeml/#).
 
 # Ejemplo
 
@@ -801,8 +810,8 @@ end
     tasas_vitales()::DataFrame
 
 Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
-En caso de omitir el parametro cve_municipio, se mostraran datos de la entidad indicada.
-Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fertil (15-45 años, 2020) del INEGI.
+En caso de omitir el parámetro cve_municipio, se mostrarán datos de la entidad indicada.
+Datos obtenidos del registro de nacimientos (2019), defunciones generales (2019) y población de mujeres en edad fértil (15-45 años, 2020) del INEGI.
 
 # Ejemplo
 
@@ -817,6 +826,7 @@ julia> tasas_vitales("01", "001")
 """
 function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEGI="")::DataFrame
    cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
+
   token_INEGI = token_check(token_INEGI)
 
   try

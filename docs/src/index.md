@@ -1,6 +1,6 @@
 # Reporstat.jl
 
-Paquete que tiene como objetivo aprovechar la información a nivel municipal del INEGI, CONAPO y CONEVAL para consolidar en un solo lugar los datos abiertos de la Secretaría de Salud sobre COVID-19 en México, junto con información relevante del municipio de residencia de cada caso.
+Paquete que tiene como objetivo agilizar la consulta de información poblacional de instituciones como INEGI, CONAPO y CONEVAL segregada por municipios para que, en conjunto con datos abiertos de cualquier índole, se facilite la realización de análisis y reportes estadísticos al usuario.
 
 ## Indice
 ```@contents
@@ -14,10 +14,7 @@ Order   = [:function]
 
 ## Población
 
-Datos proporcionados por el INEGI, actualizados al 2020 a excepción del
-porcentaje de población que se considera indígena, que los últimos datos 
-proporcionados son del 2015 y la extensión territorial que se calcula con 
-la densidad y población total.
+Funciones que manejan datos proporcionados por INEGI, CONAPO y CONEVAL y proporcionan consultas por municipio. Detalles de año de actualización, consideraciones, y ejemplos proporcionados en cada apartado por función.
 
 ```@docs
 idh
