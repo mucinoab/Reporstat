@@ -987,7 +987,6 @@ function check(cve_entidad,cve_municipio)::Any
    if cve_municipio != "" && !haskey(MUNICIPIOS,cve_entidad*cve_municipio)
      cve_municipio =  clave(cve_municipio,false)
   end
-  # print("$cve_entidad $cve_municipio")
 
   if haskey(MUNICIPIO_NOMBRE , cve_mun)
     if cve_entidad*cve_municipio != MUNICIPIO_NOMBRE[cve_mun]
