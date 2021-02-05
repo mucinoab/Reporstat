@@ -149,7 +149,7 @@ julia> dt= DataFrame(A = [1,2,2,3],B = ["A","A","B","BB"])
    3 │     2  B
    4 │     3  BB
 
-julia> Filtrar(dt, ":1 == 2")
+julia> filtrar(dt, ":1 == 2")
 2×2 DataFrame
  Row │ A    B
      │ Any  Any
@@ -160,7 +160,7 @@ julia> Filtrar(dt, ":1 == 2")
 En caso de que se trate de una string se deben siempre encerrar entre comillas simples.
 
 ```julia-repl
-julia> Filtrar(dt, "'A' == :2")
+julia> filtrar(dt, "'A' == :2")
 2×2 DataFrame
  Row │ A    B
      │ Any  Any
@@ -171,7 +171,7 @@ julia> Filtrar(dt, "'A' == :2")
 Las condiciones se deben poner en parámetros diferentes.
 
 ```julia-repl
-julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+julia> filtrar(dt, "2 == :A" , "'A'== :B")
 1×2 DataFrame
  Row │ A    B
      │ Any  Any
@@ -312,7 +312,7 @@ julia> dt
    3 │     2  B
    4 │     3  BB
 
-julia> Filtrar(dt, "2 == :A" , "'A'== :B")
+julia> filtrar(dt, "2 == :A" , "'A'== :B")
 1×2 DataFrame
  Row │ A    B
      │ Any  Any

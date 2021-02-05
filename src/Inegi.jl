@@ -807,7 +807,7 @@ function codigos_postales_todos()::DataFrame
 end
 
 """
-    tasas_vitales()::DataFrame
+    tasas_vitales(cve_entidad::String, cve_municipio::String="")::DataFrame
 
 Proporciona un `DataFrame` con las tasas de natalidad, fecundidad y mortalidad del municipio indicado.
 En caso de omitir el parámetro cve_municipio, se mostrarán datos de la entidad indicada.
@@ -824,22 +824,9 @@ julia> tasas_vitales("01", "001")
    1 │ 0.0430915   0.0915221   0.0221098
 ```
 """
-function tasas_vitales(cve_entidad::String, cve_municipio::String="", token_INEGI="")::DataFrame
+function tasas_vitales(cve_entidad::String, cve_municipio::String="",token_INEGI="")::DataFrame
    cve_entidad, cve_municipio= check(cve_entidad,cve_municipio) 
-
-  token_INEGI = token_check(token_INEGI)
-
-  try
-    estado = ENTIDADES[cve_entidad]
-  catch e
-    error("Verifica tu clave de entidad. Debe ser de dos digitos en el rango [01, 32]. cve_entidad '$cve_entidad' no existe.")
-  end
-
-  try
-    municipio = MUNICIPIOS[cve_entidad*cve_municipio]
-  catch e
-    error("Verifica tu clave de municipio. Debe de ser de tres dígitos en el rango [001, 570]. cve_municipio '$cve_municipio' no existe.")
-  end
+     token_INEGI = token_check(token_INEGI)
 
   nacimientos = get_info("nacimientos.csv", [String, String, String, Int64])
 
