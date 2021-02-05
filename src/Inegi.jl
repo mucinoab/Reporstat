@@ -220,7 +220,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todos_ los municipios.
 - nombre de municipio
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
-- extensión territorial
+- extensión territorial (kilómetros cuadrados)
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
@@ -243,7 +243,7 @@ julia> poblacion_todos_municipios()
 """
 function poblacion_todos_municipios()::DataFrame
   path = "poblacion_municipios.csv"
-  return get_info(path, [String, String, String, String, Int64, Float64, Int64, Int64, Float64, Float64, Float64, Float64])
+  return get_info(path, [String, String, String, String, Int64, Float64, Float64, Int64, Int64, Float64, Float64, Float64, Float64])
 end
 
 """
@@ -255,7 +255,7 @@ Regresa un `DataFrame` con los datos poblacionales de _todas_ las entidades.
 - nombre oficial de la entidad
 - población total
 - densidad de población (habitantes por kilómetro cuadrado)
-- extensión territorial
+- extensión territorial (kilómetros cuadrados)
 - población total hombres
 - población total mujeres
 - porcentaje de hombres
